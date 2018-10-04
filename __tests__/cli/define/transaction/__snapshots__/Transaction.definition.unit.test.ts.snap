@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cics define program should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "tran",
+  ],
+  "description": "Define a new transaction to CICS.",
+  "examples": Array [
+    Object {
+      "description": "Define a transaction named TRN1 for the program named PGM123 to the region named MYREGION in the CSD group MYGRP",
+      "options": "TRN1 PGM123 MYGRP --region-name MYREGION",
+    },
+  ],
+  "name": "transaction",
+  "options": Array [
+    Object {
+      "description": "The CICS region name to which to define the new transaction",
+      "name": "region-name",
+      "type": "string",
+    },
+    Object {
+      "description": "The name of the CICSPlex to which to define the new transaction",
+      "name": "cics-plex",
+      "type": "string",
+    },
+  ],
+  "positionals": Array [
+    Object {
+      "description": "The name of the new transaction to define. The maximum length of the transaction name is four characters.",
+      "name": "transactionName",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "description": "The name of the program that the transaction uses. The maximum length of the program name is eight characters.",
+      "name": "programName",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "description": "The CICS system definition (CSD) Group for the new transaction that you want to define. The maximum length of the group name is eight characters.",
+      "name": "csdGroup",
+      "required": true,
+      "type": "string",
+    },
+  ],
+  "profile": Object {
+    "required": Array [
+      "cics",
+    ],
+  },
+  "type": "command",
+}
+`;

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cics delete program should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "del",
+  ],
+  "description": "Delete resources (for example, programs) from CICS through IBM CMCI.",
+  "name": "delete",
+  "summary": "Delete resources from CICS",
+  "type": "group",
+}
+`;

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cics delete transaction should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "tran",
+  ],
+  "description": "Delete a transaction from CICS.",
+  "examples": Array [
+    Object {
+      "description": "Delete a transaction named TRN1 from the region named MYREGION",
+      "options": "TRN1 MYGRP --region-name MYREGION",
+    },
+  ],
+  "name": "transaction",
+  "options": Array [
+    Object {
+      "description": "The CICS region name from which to delete the transaction",
+      "name": "region-name",
+      "type": "string",
+    },
+    Object {
+      "description": "The name of the CICSPlex from which to delete the transaction",
+      "name": "cics-plex",
+      "type": "string",
+    },
+  ],
+  "positionals": Array [
+    Object {
+      "description": "The name of the transaction to delete. The maximum length of the transaction name is four characters.",
+      "name": "transactionName",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "description": "The CICS system definition (CSD) Group for the new transaction that you want to delete. The maximum length of the group name is eight characters.",
+      "name": "csdGroup",
+      "required": true,
+      "type": "string",
+    },
+  ],
+  "profile": Object {
+    "required": Array [
+      "cics",
+    ],
+  },
+  "type": "command",
+}
+`;

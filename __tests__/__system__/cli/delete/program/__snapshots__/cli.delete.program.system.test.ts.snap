@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CICS delete program command should be able to display the help 1`] = `
+"
+ COMMAND NAME
+ ------------
+
+   program | prog
+
+ DESCRIPTION
+ -----------
+
+   Delete a program from CICS.
+
+ USAGE
+ -----
+
+   bright cics delete program <programName> <csdGroup> [options]
+
+ POSITIONAL ARGUMENTS
+ --------------------
+
+   programName		 (string)
+
+      The name of the program to delete. The maximum length of the program name is
+      eight characters.
+
+   csdGroup		 (string)
+
+      The CICS system definition (CSD) Group for the program that you want to delete.
+      The maximum length of the group name is eight characters.
+
+ OPTIONS
+ -------
+
+   --region-name  (string)
+
+      The CICS region name from which to delete the program
+
+   --cics-plex  (string)
+
+      The name of the CICSPlex from which to delete the program
+
+ PROFILE OPTIONS
+ ---------------
+
+   --cics-profile  | --cics-p (string)
+
+      The name of a (cics) profile to load for this command execution.
+
+ GLOBAL OPTIONS
+ --------------
+
+   --response-format-json  | --rfj (boolean)
+
+      Produce the command response as a JSON document
+
+   --help  | -h (boolean)
+
+      Display help text
+
+
+ EXAMPLES
+ --------
+
+   - Delete a program named PGM123 from the region named
+   MYREGION:
+
+      $ bright cics delete program PGM123 --region-name MYREGION
+
+"
+`;

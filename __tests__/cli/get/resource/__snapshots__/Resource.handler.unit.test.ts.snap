@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GetResourceHandler should call the getResource api 1`] = `
+Object {
+  "fields": Array [],
+  "format": "object",
+  "output": Array [
+    Object {
+      "prop": "test1",
+    },
+    Object {
+      "prop": "test2",
+    },
+  ],
+}
+`;
+
+exports[`GetResourceHandler should call the getResource api 2`] = `
+Object {
+  "response": Object {
+    "records": Object {
+      "testresource": Array [
+        Object {
+          "prop": "test1",
+        },
+        Object {
+          "prop": "test2",
+        },
+      ],
+    },
+    "resultsummary": Object {
+      "api_response1": "1024",
+      "api_response2": "0",
+      "displayed_recordcount": "0",
+      "recordcount": "0",
+    },
+  },
+}
+`;

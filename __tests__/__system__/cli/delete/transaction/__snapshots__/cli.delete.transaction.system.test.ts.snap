@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CICS delete transaction command should be able to display the help 1`] = `
+"
+ COMMAND NAME
+ ------------
+
+   transaction | tran
+
+ DESCRIPTION
+ -----------
+
+   Delete a transaction from CICS.
+
+ USAGE
+ -----
+
+   bright cics delete transaction <transactionName> <csdGroup> [options]
+
+ POSITIONAL ARGUMENTS
+ --------------------
+
+   transactionName		 (string)
+
+      The name of the transaction to delete. The maximum length of the transaction
+      name is four characters.
+
+   csdGroup		 (string)
+
+      The CICS system definition (CSD) Group for the new transaction that you want to
+      delete. The maximum length of the group name is eight characters.
+
+ OPTIONS
+ -------
+
+   --region-name  (string)
+
+      The CICS region name from which to delete the transaction
+
+   --cics-plex  (string)
+
+      The name of the CICSPlex from which to delete the transaction
+
+ PROFILE OPTIONS
+ ---------------
+
+   --cics-profile  | --cics-p (string)
+
+      The name of a (cics) profile to load for this command execution.
+
+ GLOBAL OPTIONS
+ --------------
+
+   --response-format-json  | --rfj (boolean)
+
+      Produce the command response as a JSON document
+
+   --help  | -h (boolean)
+
+      Display help text
+
+
+ EXAMPLES
+ --------
+
+   - Delete a transaction named TRN1 from the region named
+   MYREGION:
+
+      $ bright cics delete transaction TRN1 MYGRP --region-name MYREGION
+
+"
+`;

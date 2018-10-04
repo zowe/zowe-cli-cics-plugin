@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CICS refresh program command should be able to display the help 1`] = `
+"
+ COMMAND NAME
+ ------------
+
+   program | prog
+
+ DESCRIPTION
+ -----------
+
+   Refresh a program on CICS.
+
+ USAGE
+ -----
+
+   bright cics refresh program <programName> [options]
+
+ POSITIONAL ARGUMENTS
+ --------------------
+
+   programName		 (string)
+
+      The name of the program to refresh. The maximum length of the program name is
+      eight characters.
+
+ OPTIONS
+ -------
+
+   --region-name  (string)
+
+      The CICS region name on which you want to refresh the program
+
+   --cics-plex  (string)
+
+      The name of the CICSPlex on which to refresh the program
+
+ PROFILE OPTIONS
+ ---------------
+
+   --cics-profile  | --cics-p (string)
+
+      The name of a (cics) profile to load for this command execution.
+
+ GLOBAL OPTIONS
+ --------------
+
+   --response-format-json  | --rfj (boolean)
+
+      Produce the command response as a JSON document
+
+   --help  | -h (boolean)
+
+      Display help text
+
+
+ EXAMPLES
+ --------
+
+   - Refresh a program named PGM123 from the region named
+   MYREGION:
+
+      $ bright cics refresh program PGM123 --region-name MYREGION
+
+"
+`;

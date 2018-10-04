@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cics get resource should not have changed 1`] = `
+Object {
+  "description": "Get resources (for example, programs or transactions) from CICS through IBM CMCI.",
+  "name": "get",
+  "summary": "Get resources from CICS",
+  "type": "group",
+}
+`;

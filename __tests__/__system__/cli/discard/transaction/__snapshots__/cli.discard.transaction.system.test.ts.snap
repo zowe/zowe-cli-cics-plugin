@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CICS discard transaction command should be able to display the help 1`] = `
+"
+ COMMAND NAME
+ ------------
+
+   transaction | tran
+
+ DESCRIPTION
+ -----------
+
+   Discard a transaction from CICS.
+
+ USAGE
+ -----
+
+   bright cics discard transaction <transactionName> [options]
+
+ POSITIONAL ARGUMENTS
+ --------------------
+
+   transactionName		 (string)
+
+      The name of the transaction to discard. The maximum length of the transaction
+      name is four characters.
+
+ OPTIONS
+ -------
+
+   --region-name  (string)
+
+      The CICS region name from which to discard the transaction
+
+   --cics-plex  (string)
+
+      The name of the CICSPlex from which to discard the transaction
+
+ PROFILE OPTIONS
+ ---------------
+
+   --cics-profile  | --cics-p (string)
+
+      The name of a (cics) profile to load for this command execution.
+
+ GLOBAL OPTIONS
+ --------------
+
+   --response-format-json  | --rfj (boolean)
+
+      Produce the command response as a JSON document
+
+   --help  | -h (boolean)
+
+      Display help text
+
+
+ EXAMPLES
+ --------
+
+   - Discard a transaction named TRN1 from the region named
+   MYREGION:
+
+      $ bright cics discard transaction TRN1 --region-name MYREGION
+
+"
+`;

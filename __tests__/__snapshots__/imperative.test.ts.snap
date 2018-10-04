@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`imperative config should match the snapshot 1`] = `
+Object {
+  "commandModuleGlobs": Array [
+    "**/cli/*/*.definition!(.d).*s",
+  ],
+  "name": "cics",
+  "productDisplayName": "CLI Plug-in for IBM CICS",
+  "profiles": Array [
+    Object {
+      "createProfileExamples": Array [
+        Object {
+          "description": "Create a cics profile named 'cics123' to connect to CICS at host zos123 and port 1490",
+          "options": "cics123 --host zos123 --port 1490 --user ibmuser --password myp4ss",
+        },
+      ],
+      "schema": Object {
+        "description": "A cics profile is required to issue commands in the cics command group that interact with CICS regions. The cics profile contains your host, port, user name, and password for the IBM CICS management client interface (CMCI) server of your choice.",
+        "properties": Object {
+          "cicsPlex": Object {
+            "optionDefinition": Object {
+              "description": "The name of the CICSPlex to interact with",
+              "name": "cics-plex",
+              "type": "string",
+            },
+            "type": "string",
+          },
+          "host": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "H",
+              ],
+              "description": "The CMCI server host name",
+              "name": "host",
+              "required": true,
+              "type": "string",
+            },
+            "type": "string",
+          },
+          "password": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "p",
+              ],
+              "description": "Your password to connect to CICS",
+              "implies": Array [
+                "user",
+              ],
+              "name": "password",
+              "required": true,
+              "type": "string",
+            },
+            "secure": true,
+            "type": "string",
+          },
+          "port": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "P",
+              ],
+              "defaultValue": 1490,
+              "description": "The CMCI server port",
+              "name": "port",
+              "type": "number",
+            },
+            "type": "number",
+          },
+          "regionName": Object {
+            "optionDefinition": Object {
+              "description": "The name of the CICS region name to interact with",
+              "name": "region-name",
+              "type": "string",
+            },
+            "type": "string",
+          },
+          "user": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "u",
+              ],
+              "description": "Your username to connect to CICS",
+              "implies": Array [
+                "password",
+              ],
+              "name": "user",
+              "required": true,
+              "type": "string",
+            },
+            "secure": true,
+            "type": "string",
+          },
+        },
+        "required": Array [
+          "host",
+        ],
+        "title": "CICS Profile",
+        "type": "object",
+      },
+      "type": "cics",
+    },
+  ],
+  "rootCommandDescription": "Interact with IBM CICS programs and transactions.",
+}
+`;

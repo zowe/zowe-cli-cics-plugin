@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CICS discard program command should be able to display the help 1`] = `
+"
+ COMMAND NAME
+ ------------
+
+   program | prog
+
+ DESCRIPTION
+ -----------
+
+   Discard a program from CICS.
+
+ USAGE
+ -----
+
+   bright cics discard program <programName> [options]
+
+ POSITIONAL ARGUMENTS
+ --------------------
+
+   programName		 (string)
+
+      The name of the program to discard. The maximum length of the program name is
+      eight characters.
+
+ OPTIONS
+ -------
+
+   --region-name  (string)
+
+      The CICS region name from which to discard the program
+
+   --cics-plex  (string)
+
+      The name of the CICSPlex from which to discard the program
+
+ PROFILE OPTIONS
+ ---------------
+
+   --cics-profile  | --cics-p (string)
+
+      The name of a (cics) profile to load for this command execution.
+
+ GLOBAL OPTIONS
+ --------------
+
+   --response-format-json  | --rfj (boolean)
+
+      Produce the command response as a JSON document
+
+   --help  | -h (boolean)
+
+      Display help text
+
+
+ EXAMPLES
+ --------
+
+   - Discard a program named PGM123 from the region named
+   MYREGION:
+
+      $ bright cics discard program PGM123 --region-name MYREGION
+
+"
+`;

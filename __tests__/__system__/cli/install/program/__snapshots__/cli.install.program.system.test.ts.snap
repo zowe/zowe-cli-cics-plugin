@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CICS install program command should be able to display the help 1`] = `
+"
+ COMMAND NAME
+ ------------
+
+   program | prog
+
+ DESCRIPTION
+ -----------
+
+   Install a program to CICS.
+
+ USAGE
+ -----
+
+   bright cics install program <programName> <csdGroup> [options]
+
+ POSITIONAL ARGUMENTS
+ --------------------
+
+   programName		 (string)
+
+      The name of the program to install. The maximum length of the program name is
+      eight characters.
+
+   csdGroup		 (string)
+
+      The CICS system definition (CSD) Group for the program that you want to install.
+      The maximum length of the group name is eight characters.
+
+ OPTIONS
+ -------
+
+   --region-name  (string)
+
+      The CICS region name to which to install the program
+
+   --cics-plex  (string)
+
+      The name of the CICSPlex to which to install the program
+
+ PROFILE OPTIONS
+ ---------------
+
+   --cics-profile  | --cics-p (string)
+
+      The name of a (cics) profile to load for this command execution.
+
+ GLOBAL OPTIONS
+ --------------
+
+   --response-format-json  | --rfj (boolean)
+
+      Produce the command response as a JSON document
+
+   --help  | -h (boolean)
+
+      Display help text
+
+
+ EXAMPLES
+ --------
+
+   - Install a program named PGM123 to the region named MYREGION
+   in the CSD group MYGRP:
+
+      $ bright cics install program PGM123 MYGRP --region-name MYREGION
+
+"
+`;

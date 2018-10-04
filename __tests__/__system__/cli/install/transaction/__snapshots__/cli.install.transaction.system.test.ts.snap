@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CICS install transaction command should be able to display the help 1`] = `
+"
+ COMMAND NAME
+ ------------
+
+   transaction | tran
+
+ DESCRIPTION
+ -----------
+
+   Install a transaction to CICS.
+
+ USAGE
+ -----
+
+   bright cics install transaction <transactionName> <csdGroup> [options]
+
+ POSITIONAL ARGUMENTS
+ --------------------
+
+   transactionName		 (string)
+
+      The name of the new transaction to install. The maximum length of the
+      transaction name is four characters.
+
+   csdGroup		 (string)
+
+      The CICS system definition (CSD) Group for the new transaction that you want to
+      install. The maximum length of the group name is eight characters.
+
+ OPTIONS
+ -------
+
+   --region-name  (string)
+
+      The CICS region name to which to install the transaction
+
+   --cics-plex  (string)
+
+      The name of the CICSPlex to which to install the transaction
+
+ PROFILE OPTIONS
+ ---------------
+
+   --cics-profile  | --cics-p (string)
+
+      The name of a (cics) profile to load for this command execution.
+
+ GLOBAL OPTIONS
+ --------------
+
+   --response-format-json  | --rfj (boolean)
+
+      Produce the command response as a JSON document
+
+   --help  | -h (boolean)
+
+      Display help text
+
+
+ EXAMPLES
+ --------
+
+   - Install a transaction named TRN1 to the region named
+   MYREGION in the CSD group MYGRP:
+
+      $ bright cics install transaction TRN1 MYGRP --region-name MYREGION
+
+"
+`;

@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CICS define transaction command should be able to display the help 1`] = `
+"
+ COMMAND NAME
+ ------------
+
+   transaction | tran
+
+ DESCRIPTION
+ -----------
+
+   Define a new transaction to CICS.
+
+ USAGE
+ -----
+
+   bright cics define transaction <transactionName> <programName> <csdGroup> [options]
+
+ POSITIONAL ARGUMENTS
+ --------------------
+
+   transactionName		 (string)
+
+      The name of the new transaction to define. The maximum length of the transaction
+      name is four characters.
+
+   programName		 (string)
+
+      The name of the program that the transaction uses. The maximum length of the
+      program name is eight characters.
+
+   csdGroup		 (string)
+
+      The CICS system definition (CSD) Group for the new transaction that you want to
+      define. The maximum length of the group name is eight characters.
+
+ OPTIONS
+ -------
+
+   --region-name  (string)
+
+      The CICS region name to which to define the new transaction
+
+   --cics-plex  (string)
+
+      The name of the CICSPlex to which to define the new transaction
+
+ PROFILE OPTIONS
+ ---------------
+
+   --cics-profile  | --cics-p (string)
+
+      The name of a (cics) profile to load for this command execution.
+
+ GLOBAL OPTIONS
+ --------------
+
+   --response-format-json  | --rfj (boolean)
+
+      Produce the command response as a JSON document
+
+   --help  | -h (boolean)
+
+      Display help text
+
+
+ EXAMPLES
+ --------
+
+   - Define a transaction named TRN1 for the program named
+   PGM123 to the region named MYREGION in the CSD group MYGRP:
+
+      $ bright cics define transaction TRN1 PGM123 MYGRP --region-name MYREGION
+
+"
+`;

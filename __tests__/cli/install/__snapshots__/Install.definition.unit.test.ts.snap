@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cics install program should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "ins",
+  ],
+  "description": "Install resources (for example, programs) to CICS through IBM CMCI.",
+  "name": "install",
+  "summary": "Install resources to CICS",
+  "type": "group",
+}
+`;

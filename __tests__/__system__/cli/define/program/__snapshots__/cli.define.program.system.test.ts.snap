@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CICS define program command should be able to display the help 1`] = `
+"
+ COMMAND NAME
+ ------------
+
+   program | prog
+
+ DESCRIPTION
+ -----------
+
+   Define a new program to CICS.
+
+ USAGE
+ -----
+
+   bright cics define program <programName> <csdGroup> [options]
+
+ POSITIONAL ARGUMENTS
+ --------------------
+
+   programName		 (string)
+
+      The name of the new program to define. The maximum length of the program name is
+      eight characters.
+
+   csdGroup		 (string)
+
+      The CICS system definition (CSD) Group for the new program that you want to
+      define. The maximum length of the group name is eight characters.
+
+ OPTIONS
+ -------
+
+   --region-name  (string)
+
+      The CICS region name to which to define the new program
+
+   --cics-plex  (string)
+
+      The name of the CICSPlex to which to define the new program
+
+ PROFILE OPTIONS
+ ---------------
+
+   --cics-profile  | --cics-p (string)
+
+      The name of a (cics) profile to load for this command execution.
+
+ GLOBAL OPTIONS
+ --------------
+
+   --response-format-json  | --rfj (boolean)
+
+      Produce the command response as a JSON document
+
+   --help  | -h (boolean)
+
+      Display help text
+
+
+ EXAMPLES
+ --------
+
+   - Define a program named PGM123 to the region name MYREGION
+   in the CSD group MYGRP:
+
+      $ bright cics define program PGM123 MYGRP --region-name MYREGION
+
+"
+`;

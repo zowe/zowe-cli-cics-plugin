@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cics discard program should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "dis",
+  ],
+  "description": "Discard resources (for example, programs) from CICS through IBM CMCI.",
+  "name": "discard",
+  "summary": "Discard resources from CICS",
+  "type": "group",
+}
+`;

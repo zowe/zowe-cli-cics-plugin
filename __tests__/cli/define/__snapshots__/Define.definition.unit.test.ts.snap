@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cics define program should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "def",
+  ],
+  "description": "Define new resources (for example, programs) to CICS through IBM CMCI.",
+  "name": "define",
+  "summary": "Define new resources to CICS",
+  "type": "group",
+}
+`;

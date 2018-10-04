@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cics define program should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "prog",
+  ],
+  "description": "Define a new program to CICS.",
+  "examples": Array [
+    Object {
+      "description": "Define a program named PGM123 to the region name MYREGION in the CSD group MYGRP",
+      "options": "PGM123 MYGRP --region-name MYREGION",
+    },
+  ],
+  "name": "program",
+  "options": Array [
+    Object {
+      "description": "The CICS region name to which to define the new program",
+      "name": "region-name",
+      "type": "string",
+    },
+    Object {
+      "description": "The name of the CICSPlex to which to define the new program",
+      "name": "cics-plex",
+      "type": "string",
+    },
+  ],
+  "positionals": Array [
+    Object {
+      "description": "The name of the new program to define. The maximum length of the program name is eight characters.",
+      "name": "programName",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "description": "The CICS system definition (CSD) Group for the new program that you want to define. The maximum length of the group name is eight characters.",
+      "name": "csdGroup",
+      "required": true,
+      "type": "string",
+    },
+  ],
+  "profile": Object {
+    "required": Array [
+      "cics",
+    ],
+  },
+  "type": "command",
+}
+`;

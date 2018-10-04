@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Create cics Profile Success scenarios should display create cics profile help 1`] = `
+"===============CREATE cics PROFILE HELP===============
+
+ COMMAND NAME
+ ------------
+
+   cics-profile | cics
+
+ DESCRIPTION
+ -----------
+
+   A cics profile is required to issue commands in the cics command group that
+   interact with CICS regions. The cics profile contains your host, port, user
+   name, and password for the IBM CICS management client interface (CMCI) server of
+   your choice.
+
+ USAGE
+ -----
+
+   bright profiles create cics-profile <profileName> [options]
+
+ POSITIONAL ARGUMENTS
+ --------------------
+
+   profileName		 (string)
+
+      Specifies the name of the new cics profile. You can load this profile by using
+      the name on commands that support the \\"--cics-profile\\" option.
+
+ REQUIRED OPTIONS
+ ----------------
+
+   --host  | -H (string)
+
+      The CMCI server host name
+
+   --user  | -u (string)
+
+      Your username to connect to CICS
+
+   --password  | -p (string)
+
+      Your password to connect to CICS
+
+ OPTIONS
+ -------
+
+   --port  | -P (number)
+
+      The CMCI server port
+
+      Default value: 1490
+
+   --region-name  (string)
+
+      The name of the CICS region name to interact with
+
+   --cics-plex  (string)
+
+      The name of the CICSPlex to interact with
+
+   --overwrite  | --ow (boolean)
+
+      Overwrite the cics profile when a profile of the same name exists.
+
+ GLOBAL OPTIONS
+ --------------
+
+   --response-format-json  | --rfj (boolean)
+
+      Produce the command response as a JSON document
+
+   --help  | -h (boolean)
+
+      Display help text
+
+
+ EXAMPLES
+ --------
+
+   - Create a cics profile named 'cics123' to connect to CICS at
+   host zos123 and port 1490:
+
+      $ bright profiles create cics-profile cics123 --host zos123 --port 1490 --user ibmuser --password myp4ss
+
+"
+`;

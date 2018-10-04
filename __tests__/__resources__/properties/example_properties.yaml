@@ -1,0 +1,25 @@
+# Example properties file for CICS plugin
+# Copy this to custom_properties.yaml in the same directory and modify to fill
+# in your customized connection and test details
+
+#-----------------------------------------------------------------------------#
+#  find and replace the following:                                            #
+#                                                                             #
+#  my-user-name    - This is your TSO user  ID   to connect to FTP            #
+#  my-password     - This is your TSO password                                #
+#  my-cics-host    - This is the hostname for the CICS CMCI server            #
+#  my-cics-port    - this is the port for the CICS CMCI server                #
+#  my-csd-group    - this is the CSD group to which new resources will be     #
+#                    defined                                                  #
+#  my-region-name  - name of the CICS region                                  #
+###############################################################################
+
+
+#  see bright profiles create cics --help for more info
+cmci:
+      user: my-user-name
+      password: my-password
+      host: my-cics-host
+      port: my-cics-port
+      csdGroup: my-csd-group
+      regionName: my-region-name

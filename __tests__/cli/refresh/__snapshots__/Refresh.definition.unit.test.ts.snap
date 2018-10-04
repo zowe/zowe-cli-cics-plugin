@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cics refresh program should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "ref",
+  ],
+  "description": "Refresh a program on CICS through IBM CMCI.",
+  "name": "refresh",
+  "summary": "Refresh program on CICS",
+  "type": "group",
+}
+`;
