@@ -11,7 +11,7 @@ As an application developer, you can use the plug-in to perform various CICS-rel
 
 For more information about general development guidelines and CICS plug-in specific information, see [the Contribution Guidelines](CONTRIBUTING.md).
 
-**Tip:** Visit our [Sample Plug-in repository](https://github.com/gizafoundation/brightside-sample-plugin) and follow the tutorials to start developing your first plug-in! 
+**Tip:** Visit our [Sample Plug-in repository](https://github.com/zowe/zowe-cli-sample-plugin) and follow the [tutorials on the documentation site](https://zowe.github.io/docs-site/guides/cli-devTutorials) to start developing your first plug-in! 
 
 ## Prerequisites
 Before you install the plug-in, meet the following prerequisites:
@@ -80,7 +80,7 @@ zowe profiles create cics -h
 
 ## Run Tests
 
-For information about running automated, unit, and system and integration tests using the plug-in, see [Zowe CLI Plug-in Testing Guidelines](https://github.com/gizafoundation/brightside/blob/master/docs/PluginTESTINGGuidelines.md#ca-brightside-plug-in-testing-guidelines).
+For information about running automated, unit, and system and integration tests using the plug-in, see [Zowe CLI Plug-in Testing Guidelines](https://github.com/zowe/zowe-cli/master/docs/PluginTESTINGGuidelines.md).
 
 ## Uninstall the Plug-in
 
