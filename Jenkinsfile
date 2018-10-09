@@ -100,22 +100,22 @@ def MASTER_RECIPIENTS_LIST = "cc:Fernando.RijoCedeno@ca.com"
 /**
  * The user's name for git commits
  */
-def GIT_USER_NAME = 'giza-jenkins'
+def GIT_USER_NAME = 'zowe-robot'
 
 /**
  * The user's email address for git commits
  */
-def GIT_USER_EMAIL = 'giza.jenkins@gmail.com'
+def GIT_USER_EMAIL = 'zowe.robot@gmail.com'
 
 /**
  * The base repository url for github
  */
-def GIT_REPO_URL = 'https://github.com/gizafoundation/zowe-cli-cics-plugin.git'
+def GIT_REPO_URL = 'https://github.com/zowe/zowe-cli-cics-plugin.git'
 
 /**
  * The credentials id field for the authorization token for GitHub stored in Jenkins
  */
-def GIT_CREDENTIALS_ID = 'giza-jenkins-github'
+def GIT_CREDENTIALS_ID = 'zowe-robot-github'
 
 /**
  * A command to be run that gets the current revision pulled down
