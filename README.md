@@ -20,7 +20,8 @@ Before you install the plug-in, meet the following prerequisites:
     **Note:** For more information, see the [Zowe CLI](https://zowe.github.io/docs-site/user-guide/cli-installcli.html) documentation.
 
 * Ensure that [IBM CICS Transaction Server v5.2](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.home.doc/welcomePage/welcomePage.html) or later is installed and running in your mainframe environment.
-  - Ensure that [IBM CICS Management Client Interface (CMCI)](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) is configured and running in your CICS region. 
+
+ * Ensure that [IBM CICS Management Client Interface (CMCI)](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) is configured and running in your CICS region. 
 
 ## Build the Plug-in from Source
 **Follow these steps:**
