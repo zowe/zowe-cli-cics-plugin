@@ -15,19 +15,19 @@ exports[`CICS install transaction command should be able to display the help 1`]
  USAGE
  -----
 
-   bright cics install transaction <transactionName> <csdGroup> [options]
+   zowe cics install transaction <transactionName> <csdGroup> [options]
 
  POSITIONAL ARGUMENTS
  --------------------
 
    transactionName		 (string)
 
-      The name of the new transaction to install. The maximum length of the
-      transaction name is four characters.
+      The name of the transaction to install. The maximum length of the transaction
+      name is four characters.
 
    csdGroup		 (string)
 
-      The CICS system definition (CSD) Group for the new transaction that you want to
+      The CICS system definition (CSD) Group for the transaction that you want to
       install. The maximum length of the group name is eight characters.
 
  OPTIONS
@@ -41,6 +41,27 @@ exports[`CICS install transaction command should be able to display the help 1`]
 
       The name of the CICSPlex to which to install the transaction
 
+ CICS CONNECTION OPTIONS
+ -----------------------
+
+   --host  | -H (string)
+
+      The CICS server host name.
+
+   --port  | -P (number)
+
+      The CICS server port.
+
+      Default value: 443
+
+   --user  | -u (string)
+
+      Mainframe (CICS) user name, which can be the same as your TSO login.
+
+   --password  | --pw (string)
+
+      Mainframe (CICS) password, which can be the same as your TSO password.
+
  PROFILE OPTIONS
  ---------------
 
@@ -53,7 +74,7 @@ exports[`CICS install transaction command should be able to display the help 1`]
 
    --response-format-json  | --rfj (boolean)
 
-      Produce the command response as a JSON document
+      Produce JSON formatted data from a command
 
    --help  | -h (boolean)
 
@@ -66,7 +87,7 @@ exports[`CICS install transaction command should be able to display the help 1`]
    - Install a transaction named TRN1 to the region named
    MYREGION in the CSD group MYGRP:
 
-      $ bright cics install transaction TRN1 MYGRP --region-name MYREGION
+      $ zowe cics install transaction TRN1 MYGRP --region-name MYREGION
 
 "
 `;

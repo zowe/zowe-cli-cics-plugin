@@ -38,7 +38,7 @@ export const ProgramDefinition: ICommandDefinition = {
             description: strings.OPTIONS.CICSPLEX,
             type: "string"
         }],
-    profile: {required: ["cics"]},
+    profile: {optional: ["cics"]},
     examples: [{
         description: strings.EXAMPLES.DEFINE_EXAMPLE_ONE,
         options: "PGM123 --region-name MYREGION"

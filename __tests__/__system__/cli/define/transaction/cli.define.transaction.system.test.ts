@@ -78,7 +78,7 @@ describe("CICS define transaction command", () => {
             ["", "FAKEPGM", "FAKEGRP", "FAKERGN"]);
         const stderr = output.stderr.toString();
         expect(stderr).toContain("Syntax");
-        expect(stderr).toContain("Missing Positional Option");
+        expect(stderr).toContain("Missing Positional Argument");
         expect(stderr).toContain("transactionName");
         expect(output.status).toEqual(1);
     });
@@ -88,7 +88,7 @@ describe("CICS define transaction command", () => {
             ["FAKETRAN", "", "FAKEGRP", "FAKERGN"]);
         const stderr = output.stderr.toString();
         expect(stderr).toContain("Syntax");
-        expect(stderr).toContain("Missing Positional Option");
+        expect(stderr).toContain("Missing Positional Argument");
         expect(stderr).toContain("programName");
         expect(output.status).toEqual(1);
     });
@@ -98,7 +98,7 @@ describe("CICS define transaction command", () => {
             ["FAKETRAN", "FAKEPGM", "", "FAKERGN"]);
         const stderr = output.stderr.toString();
         expect(stderr).toContain("Syntax");
-        expect(stderr).toContain("Missing Positional Option");
+        expect(stderr).toContain("Missing Positional Argument");
         expect(stderr).toContain("csdGroup");
         expect(output.status).toEqual(1);
     });

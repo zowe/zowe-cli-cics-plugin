@@ -134,6 +134,7 @@ export class CicsSession {
             user: args.user,
             password: args.password,
             basePath: args.basePath,
+            strictSSL: false,
             protocol: "http",
         });
     }

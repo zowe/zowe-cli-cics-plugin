@@ -33,14 +33,14 @@ Object {
       "type": "string",
     },
     Object {
-      "description": "The CICS system definition (CSD) Group for the new transaction that you want to delete. The maximum length of the group name is eight characters.",
+      "description": "The CICS system definition (CSD) Group for the transaction that you want to delete. The maximum length of the group name is eight characters.",
       "name": "csdGroup",
       "required": true,
       "type": "string",
     },
   ],
   "profile": Object {
-    "required": Array [
+    "optional": Array [
       "cics",
     ],
   },

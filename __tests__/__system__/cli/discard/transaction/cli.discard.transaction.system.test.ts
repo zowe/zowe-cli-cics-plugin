@@ -95,7 +95,7 @@ describe("CICS discard transaction command", () => {
         const output = runCliScript(__dirname + "/__scripts__/discard_transaction.sh", TEST_ENVIRONMENT, ["", "FAKERGN"]);
         const stderr = output.stderr.toString();
         expect(stderr).toContain("Syntax");
-        expect(stderr).toContain("Missing Positional Option");
+        expect(stderr).toContain("Missing Positional Argument");
         expect(stderr).toContain("transactionName");
         expect(output.status).toEqual(1);
     });

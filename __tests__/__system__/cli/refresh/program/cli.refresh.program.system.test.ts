@@ -83,7 +83,7 @@ describe("CICS refresh program command", () => {
         const output = runCliScript(__dirname + "/__scripts__/refresh_program.sh", TEST_ENVIRONMENT, ["", "FAKERGN"]);
         const stderr = output.stderr.toString();
         expect(stderr).toContain("Syntax");
-        expect(stderr).toContain("Missing Positional Option");
+        expect(stderr).toContain("Missing Positional Argument");
         expect(stderr).toContain("programName");
         expect(output.status).toEqual(1);
     });

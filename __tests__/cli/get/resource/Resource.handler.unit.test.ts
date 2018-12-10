@@ -17,15 +17,20 @@ import ResourceHandler from "../../../../src/cli/get/resource/Resource.handler";
 jest.mock("../../../../src/api/methods/get");
 const Get = require("../../../../src/api/methods/get");
 
+const host = "somewhere.com";
+const port = "43443";
+const user = "someone";
+const password = "somesecret";
+
 const PROFILE_MAP = new Map<string, IProfile[]>();
 PROFILE_MAP.set(
     "cics", [{
         name: "cics",
         type: "cics",
-        host: "somewhere.com",
-        port: "43443",
-        user: "someone",
-        password: "somesecret"
+        host,
+        port,
+        user,
+        password
     }]
 );
 const PROFILES: CommandProfiles = new CommandProfiles(PROFILE_MAP);
@@ -90,7 +95,11 @@ describe("GetResourceHandler", () => {
         commandParameters.arguments = {
             ...commandParameters.arguments,
             resourceName,
-            regionName
+            regionName,
+            host,
+            port,
+            user,
+            password
         };
 
         await handler.process(commandParameters);
