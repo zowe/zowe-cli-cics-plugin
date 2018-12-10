@@ -1,4 +1,4 @@
-brightside-cics-plugin.iml
+zowe-cli-cics-plugin.iml
 node_modules/
 lib/
 .vscode
