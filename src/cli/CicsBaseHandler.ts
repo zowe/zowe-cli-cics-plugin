@@ -11,6 +11,7 @@
 
 import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, Session } from "@brightside/imperative";
 import { ICMCIApiResponse } from "../api/doc/ICMCIApiResponse";
+import { CicsSession } from "./CicsSession";
 
 /**
  * This class is used by the various cics handlers as the base class for their implementation.
@@ -26,20 +27,35 @@ export abstract class CicsBaseHandler implements ICommandHandler {
      * @returns {Promise<void>}
      */
     public async process(commandParameters: IHandlerParameters) {
-        const profile = commandParameters.profiles.get("cics");
-        const session = new Session({
-            type: "basic",
-            hostname: profile.host,
-            port: profile.port,
-            user: profile.user,
-            password: profile.password,
-            strictSSL: false,
-            protocol: "http",
-        });
+        const profile = commandParameters.profiles.get("cics", false);
+        const session = CicsSession.createBasicCicsSessionFromArguments(commandParameters.arguments);
+
+        const response = await this.processWithSession(commandParameters, session, profile);
+        //
+        // commandParameters.response.progress.endBar(); // end any progress bars
+        // // Print out the response
+        // if (response.commandResponse) {
+        //     commandParameters.response.console.log(response.commandResponse);
+        // }
 
         // Return as an object when using --response-format-json
-        commandParameters.response.data.setObj(await this.processWithSession(commandParameters, session, profile));
+        commandParameters.response.data.setObj(response);
     }
+    // public async process(commandParameters: IHandlerParameters) {
+    //     const profile = commandParameters.profiles.get("cics");
+    //     const session = new Session({
+    //         type: "basic",
+    //         hostname: profile.host,
+    //         port: profile.port,
+    //         user: profile.user,
+    //         password: profile.password,
+    //         strictSSL: false,
+    //         protocol: "http",
+    //     });
+    //
+    //     // Return as an object when using --response-format-json
+    //     commandParameters.response.data.setObj(await this.processWithSession(commandParameters, session, profile));
+    // }
 
     /**
      * This is called by the {@link CicsBaseHandler#process} after it creates a session. Should

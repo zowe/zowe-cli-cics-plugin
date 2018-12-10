@@ -9,6 +9,7 @@
 *                                                                                 *
 */
 
+import { CicsSession } from "../CicsSession";
 import { ICommandDefinition } from "@brightside/imperative";
 import { ResourceDefinition } from "./resource/Resource.definition";
 
@@ -25,6 +26,16 @@ const definition: ICommandDefinition = {
     summary: strings.SUMMARY,
     description: strings.DESCRIPTION,
     type: "group",
-    children: [ResourceDefinition]
+    children: [ResourceDefinition],
+    passOn: [
+        {
+            property: "options",
+            value: CicsSession.CICS_CONNECTION_OPTIONS,
+            merge: true,
+            ignoreNodes: [
+                {type: "group"}
+            ]
+        }
+    ]
 };
 export = definition;
