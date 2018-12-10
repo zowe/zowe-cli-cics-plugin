@@ -83,7 +83,7 @@ export default {
                 DESCRIPTION: "Delete a transaction from CICS.",
                 POSITIONALS: {
                     TRANSACTIONNAME: "The name of the transaction to delete. The maximum length of the transaction name is four characters.",
-                    CSDGROUP: "The CICS system definition (CSD) Group for the new transaction that you want to delete." +
+                    CSDGROUP: "The CICS system definition (CSD) Group for the transaction that you want to delete." +
                         " The maximum length of the group "
                         + "name is eight characters."
                 },
@@ -194,8 +194,8 @@ export default {
             TRANSACTION: {
                 DESCRIPTION: "Install a transaction to CICS.",
                 POSITIONALS: {
-                    TRANSACTIONNAME: "The name of the new transaction to install. The maximum length of the transaction name is four characters.",
-                    CSDGROUP: "The CICS system definition (CSD) Group for the new transaction that you want to install." +
+                    TRANSACTIONNAME: "The name of the transaction to install. The maximum length of the transaction name is four characters.",
+                    CSDGROUP: "The CICS system definition (CSD) Group for the transaction that you want to install." +
                         " The maximum length of the group name is eight characters."
                 },
                 OPTIONS: {
