@@ -19,6 +19,10 @@ let TEST_ENVIRONMENT: ITestEnvironment;
 let regionName: string;
 let csdGroup: string;
 let session: Session;
+let host: string;
+let port: number;
+let user: string;
+let password: string;
 
 describe("CICS refresh program command", () => {
 
@@ -30,13 +34,16 @@ describe("CICS refresh program command", () => {
         });
         csdGroup = TEST_ENVIRONMENT.systemTestProperties.cmci.csdGroup;
         regionName = TEST_ENVIRONMENT.systemTestProperties.cmci.regionName;
-        const cmciProperties = await TEST_ENVIRONMENT.systemTestProperties.cmci;
+        host = TEST_ENVIRONMENT.systemTestProperties.cmci.host;
+        port = TEST_ENVIRONMENT.systemTestProperties.cmci.port;
+        user = TEST_ENVIRONMENT.systemTestProperties.cmci.user;
+        password = TEST_ENVIRONMENT.systemTestProperties.cmci.password;
 
         session = new Session({
-            user: cmciProperties.user,
-            password: cmciProperties.password,
-            hostname: cmciProperties.host,
-            port: cmciProperties.port,
+            user: user,
+            password: password,
+            hostname: host,
+            port: port,
             type: "basic",
             strictSSL: false,
             protocol: "http",
@@ -86,5 +93,35 @@ describe("CICS refresh program command", () => {
         expect(stderr).toContain("Missing Positional Argument");
         expect(stderr).toContain("programName");
         expect(output.status).toEqual(1);
+    });
+
+    it("should be able to successfully refresh a program with profile options", async () => {
+        // Expecting to be able to refresh a program called TESTPRG# (where # is a number from 1 to MAX_PROGRAMS)
+        const MAX_PROGRAMS = 4;
+        const programName = "TESTPRG" + (Math.floor(Math.random() * MAX_PROGRAMS) + 1).toString();
+
+        const options: IProgramParms = {
+            name: programName,
+            csdGroup,
+            regionName
+        };
+
+        await defineProgram(session, options);
+        await installProgram(session, options);
+
+        const output = runCliScript(__dirname + "/__scripts__/refresh_program.sh", TEST_ENVIRONMENT,
+            [programName,
+                regionName,
+                host,
+                port,
+                user,
+                password]);
+        const stderr = output.stderr.toString();
+        expect(stderr).toEqual("");
+        expect(output.status).toEqual(0);
+        expect(output.stdout.toString()).toContain("success");
+
+        await discardProgram(session, options);
+        await deleteProgram(session, options);
     });
 });

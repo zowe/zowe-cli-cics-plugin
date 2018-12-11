@@ -18,6 +18,10 @@ import { CicsCmciConstants, CicsCmciRestClient } from "../../../../../src";
 let TEST_ENVIRONMENT: ITestEnvironment;
 let regionName: string;
 let csdGroup: string;
+let host: string;
+let port: number;
+let user: string;
+let password: string;
 
 describe("CICS install program command", () => {
 
@@ -29,6 +33,10 @@ describe("CICS install program command", () => {
         });
         csdGroup = TEST_ENVIRONMENT.systemTestProperties.cmci.csdGroup;
         regionName = TEST_ENVIRONMENT.systemTestProperties.cmci.regionName;
+        host = TEST_ENVIRONMENT.systemTestProperties.cmci.host;
+        port = TEST_ENVIRONMENT.systemTestProperties.cmci.port;
+        user = TEST_ENVIRONMENT.systemTestProperties.cmci.user;
+        password = TEST_ENVIRONMENT.systemTestProperties.cmci.password;
     });
 
     afterAll(async () => {
@@ -112,6 +120,40 @@ describe("CICS install program command", () => {
         expect(stderr).toContain("Syntax");
         expect(stderr).toContain("csdGroup");
         expect(output.status).toEqual(1);
+    });
+
+    it("should be able to successfully install a program with profile options", async () => {
+
+        // first define the program
+        const programNameSuffixLength = 4;
+        const programName = "AAA" + generateRandomAlphaNumericString(programNameSuffixLength);
+        let output = runCliScript(__dirname + "/../../define/program/__scripts__/define_program_fully_qualified.sh", TEST_ENVIRONMENT,
+            [programName,
+                csdGroup,
+                regionName,
+                host,
+                port,
+                user,
+                password]);
+        let stderr = output.stderr.toString();
+        expect(stderr).toEqual("");
+        expect(output.status).toEqual(0);
+        expect(output.stdout.toString()).toContain("success");
+
+        output = runCliScript(__dirname + "/__scripts__/install_program_fully_qualified.sh", TEST_ENVIRONMENT,
+            [programName,
+                csdGroup,
+                regionName,
+                host,
+                port,
+                user,
+                password]);
+        stderr = output.stderr.toString();
+        expect(stderr).toEqual("");
+        expect(output.status).toEqual(0);
+        expect(output.stdout.toString()).toContain("success");
+        await discardProgram(programName);
+        await deleteProgram(programName);
     });
 
 });

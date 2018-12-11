@@ -18,7 +18,10 @@ import { CicsCmciRestClient, CicsCmciConstants } from "../../../../../src";
 let TEST_ENVIRONMENT: ITestEnvironment;
 let regionName: string;
 let csdGroup: string;
-
+let host: string;
+let port: number;
+let user: string;
+let password: string;
 
 describe("CICS define transaction command", () => {
 
@@ -30,6 +33,10 @@ describe("CICS define transaction command", () => {
         });
         csdGroup = TEST_ENVIRONMENT.systemTestProperties.cmci.csdGroup;
         regionName = TEST_ENVIRONMENT.systemTestProperties.cmci.regionName;
+        host = TEST_ENVIRONMENT.systemTestProperties.cmci.host;
+        port = TEST_ENVIRONMENT.systemTestProperties.cmci.port;
+        user = TEST_ENVIRONMENT.systemTestProperties.cmci.user;
+        password = TEST_ENVIRONMENT.systemTestProperties.cmci.password;
     });
 
     afterAll(async () => {
@@ -103,4 +110,23 @@ describe("CICS define transaction command", () => {
         expect(output.status).toEqual(1);
     });
 
+    it("should be able to successfully define a transaction with profile options", async () => {
+        const transactionNameSuffixLength = 3;
+        const transactionName = "X" + generateRandomAlphaNumericString(transactionNameSuffixLength);
+        const dummyPgmName = "TESTING";
+        const output = runCliScript(__dirname + "/__scripts__/define_transaction_fully_qualified.sh", TEST_ENVIRONMENT,
+            [transactionName,
+                dummyPgmName,
+                csdGroup,
+                regionName,
+                host,
+                port,
+                user,
+                password]);
+        const stderr = output.stderr.toString();
+        expect(stderr).toEqual("");
+        expect(output.status).toEqual(0);
+        expect(output.stdout.toString()).toContain("success");
+        await deleteTransaction(transactionName);
+    });
 });

@@ -31,8 +31,8 @@ export abstract class CicsBaseHandler implements ICommandHandler {
         const session = CicsSession.createBasicCicsSessionFromArguments(commandParameters.arguments);
 
         const response = await this.processWithSession(commandParameters, session, profile);
-        //
-        // commandParameters.response.progress.endBar(); // end any progress bars
+
+        commandParameters.response.progress.endBar(); // end any progress bars
         // // Print out the response
         // if (response.commandResponse) {
         //     commandParameters.response.console.log(response.commandResponse);

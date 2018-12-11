@@ -18,6 +18,10 @@ import { CicsCmciConstants, CicsCmciRestClient } from "../../../../../src";
 let TEST_ENVIRONMENT: ITestEnvironment;
 let regionName: string;
 let csdGroup: string;
+let host: string;
+let port: number;
+let user: string;
+let password: string;
 
 describe("CICS discard program command", () => {
 
@@ -29,6 +33,10 @@ describe("CICS discard program command", () => {
         });
         csdGroup = TEST_ENVIRONMENT.systemTestProperties.cmci.csdGroup;
         regionName = TEST_ENVIRONMENT.systemTestProperties.cmci.regionName;
+        host = TEST_ENVIRONMENT.systemTestProperties.cmci.host;
+        port = TEST_ENVIRONMENT.systemTestProperties.cmci.port;
+        user = TEST_ENVIRONMENT.systemTestProperties.cmci.user;
+        password = TEST_ENVIRONMENT.systemTestProperties.cmci.password;
     });
 
     afterAll(async () => {
@@ -97,5 +105,55 @@ describe("CICS discard program command", () => {
         expect(stderr).toContain("Missing Positional Argument");
         expect(stderr).toContain("programName");
         expect(output.status).toEqual(1);
+    });
+
+    it("should be able to successfully discard a program with profile options", async () => {
+
+        // Get a random program name
+        const programNameSuffixLength = 4;
+        const programName = "AAA" + generateRandomAlphaNumericString(programNameSuffixLength);
+
+        // Define the program
+        let output = runCliScript(__dirname + "/../../define/program/__scripts__/define_program_fully_qualified.sh", TEST_ENVIRONMENT,
+            [programName,
+                csdGroup,
+                regionName,
+                host,
+                port,
+                user,
+                password]);
+        let stderr = output.stderr.toString();
+        expect(stderr).toEqual("");
+        expect(output.status).toEqual(0);
+        expect(output.stdout.toString()).toContain("success");
+
+        // Install defined program
+        output = runCliScript(__dirname + "/../../install/program/__scripts__/install_program_fully_qualified.sh", TEST_ENVIRONMENT,
+            [programName,
+                csdGroup,
+                regionName,
+                host,
+                port,
+                user,
+                password]);
+        stderr = output.stderr.toString();
+        expect(stderr).toEqual("");
+        expect(output.status).toEqual(0);
+        expect(output.stdout.toString()).toContain("success");
+
+        output = runCliScript(__dirname + "/__scripts__/discard_program_fully_qualified.sh",
+                 TEST_ENVIRONMENT,
+            [programName,
+                regionName,
+                host,
+                port,
+                user,
+                password]);
+        stderr = output.stderr.toString();
+        expect(stderr).toEqual("");
+        expect(output.status).toEqual(0);
+        expect(output.stdout.toString()).toContain("success");
+
+        await deleteProgram(programName);
     });
 });
