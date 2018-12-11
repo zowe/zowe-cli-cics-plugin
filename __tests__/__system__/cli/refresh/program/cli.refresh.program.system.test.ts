@@ -40,10 +40,10 @@ describe("CICS refresh program command", () => {
         password = TEST_ENVIRONMENT.systemTestProperties.cmci.password;
 
         session = new Session({
-            user: user,
-            password: password,
+            user,
+            password,
             hostname: host,
-            port: port,
+            port,
             type: "basic",
             strictSSL: false,
             protocol: "http",

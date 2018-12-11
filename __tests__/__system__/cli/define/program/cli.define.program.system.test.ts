@@ -97,7 +97,7 @@ describe("CICS define program command", () => {
 
     it("should be able to successfully define a program using profile options", async () => {
         const programNameSuffixLength = 4;
-        const programName = "DFN" + generateRandomAlphaNumericString(programNameSuffixLength)
+        const programName = "DFN" + generateRandomAlphaNumericString(programNameSuffixLength);
         const output = runCliScript(__dirname + "/__scripts__/define_program_fully_qualified.sh", TEST_ENVIRONMENT,
             [programName,
                 csdGroup,
