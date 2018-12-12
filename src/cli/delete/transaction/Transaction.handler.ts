@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile } from "@brightside/imperative";
+import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
 import { deleteTransaction, ICMCIApiResponse } from "../../../api";
 import { CicsBaseHandler } from "../../CicsBaseHandler";
 
@@ -26,6 +26,14 @@ const strings = (require("../../-strings-/en").default as typeof i18nTypings).DE
  */
 export default class TransactionHandler extends CicsBaseHandler {
     public async processWithSession(params: IHandlerParameters, session: AbstractSession, profile: IProfile): Promise<ICMCIApiResponse> {
+
+        const status: ITaskWithStatus = {
+            statusMessage: "Deleting transaction from CICS",
+            percentComplete: 0,
+            stageName: TaskStage.IN_PROGRESS
+        };
+        params.response.progress.startBar({task: status});
+
         const response = await deleteTransaction(session, {
             name: params.arguments.transactionName,
             csdGroup: params.arguments.csdGroup,
