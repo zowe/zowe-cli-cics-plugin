@@ -16,6 +16,10 @@ import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment
 // Test environment will be populated in the "beforeAll"
 let TEST_ENVIRONMENT: ITestEnvironment;
 let regionName: string;
+let host: string;
+let port: number;
+let user: string;
+let password: string;
 
 describe("cics get resource", () => {
 
@@ -27,6 +31,10 @@ describe("cics get resource", () => {
             tempProfileTypes: ["cics"]
         });
         regionName = TEST_ENVIRONMENT.systemTestProperties.cmci.regionName;
+        host = TEST_ENVIRONMENT.systemTestProperties.cmci.host;
+        port = TEST_ENVIRONMENT.systemTestProperties.cmci.port;
+        user = TEST_ENVIRONMENT.systemTestProperties.cmci.user;
+        password = TEST_ENVIRONMENT.systemTestProperties.cmci.password;
     });
 
     it("should display the help", async () => {
@@ -46,4 +54,18 @@ describe("cics get resource", () => {
         expect(stdout).toContain("_keydata:");
     });
 
+    it("should be able to successfully get resources using profile options", async () => {
+        const output = runCliScript(__dirname + "/__scripts__/get_resource_fully_qualified.sh", TEST_ENVIRONMENT,
+            ["CICSProgram",
+                regionName,
+                host,
+                port,
+                user,
+                password]);
+        const stderr = output.stderr.toString();
+        const stdout = output.stdout.toString();
+        expect(stderr).toEqual("");
+        expect(output.status).toEqual(0);
+        expect(stdout).toContain("_keydata:");
+    });
 });

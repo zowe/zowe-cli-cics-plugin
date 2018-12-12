@@ -19,7 +19,7 @@ exports[`Create cics Profile Success scenarios should display create cics profil
  USAGE
  -----
 
-   bright profiles create cics-profile <profileName> [options]
+   zowe profiles create cics-profile <profileName> [options]
 
  POSITIONAL ARGUMENTS
  --------------------
@@ -70,7 +70,7 @@ exports[`Create cics Profile Success scenarios should display create cics profil
 
    --response-format-json  | --rfj (boolean)
 
-      Produce the command response as a JSON document
+      Produce JSON formatted data from a command
 
    --help  | -h (boolean)
 
@@ -83,7 +83,7 @@ exports[`Create cics Profile Success scenarios should display create cics profil
    - Create a cics profile named 'cics123' to connect to CICS at
    host zos123 and port 1490:
 
-      $ bright profiles create cics-profile cics123 --host zos123 --port 1490 --user ibmuser --password myp4ss
+      $ zowe profiles create cics-profile cics123 --host zos123 --port 1490 --user ibmuser --password myp4ss
 
 "
 `;

@@ -19,7 +19,7 @@
   "scripts": {
     "build": "node scripts/updateLicense.js && tsc --pretty && npm run checkTestsCompile",
     "checkTestsCompile": "echo \"Checking that test source compiles...\" && tsc --project __tests__/test-tsconfig.json --noEmit ",
-    "prebuild": "node scripts/linkPluginToCli.js -p && npm run clean && npm run lint && echo Using TypeScript && tsc --version",
+    "prebuild": "npm run clean && npm run lint && echo Using TypeScript && tsc --version",
     "clean": "rimraf lib",
     "watch": "tsc --pretty --watch",
     "prepublishOnly": "npm run build",
@@ -29,7 +29,7 @@
     "test": "npm run test:unit && npm run test:system",
     "test:system": "env-cmd __tests__/__resources__/env/system.env jest .*/__system__/.* --coverage false --runInBand",
     "test:unit": "env-cmd __tests__/__resources__/env/unit.env jest --coverage --testPathIgnorePatterns \".*/__system__/.*\" ",
-    "installPlugin": "npm install && npm run clean && npm run build && bright plugins install ."
+    "installPlugin": "npm install && npm run clean && npm run build && zowe plugins install ."
   },
   "imperative": {
     "configurationModule": "lib/imperative.js"

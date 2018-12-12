@@ -158,7 +158,7 @@ export class TestEnvironment {
         let installScript: string = TemporaryScripts.SHEBANG;
         installScript += "bright plugins install ../../../../\n"; // install plugin from root of project
         installScript += "bright plugins validate @brightside/cics";
-        installScript += "bright cics --help\n"; // check that the plugin help is available
+        installScript += "zowe cics --help\n"; // check that the plugin help is available
         const scriptPath = testEnvironment.workingDir + "/install_plugin.sh";
         IO.writeFile(scriptPath, Buffer.from(installScript));
 

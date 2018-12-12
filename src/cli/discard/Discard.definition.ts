@@ -14,6 +14,7 @@ import { ProgramDefinition } from "./program/Program.definition";
 import { TransactionDefinition } from "./transaction/Transaction.definition";
 
 import i18nTypings from "../-strings-/en";
+import { CicsSession } from "../CicsSession";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
 const strings = (require("../-strings-/en").default as typeof i18nTypings).DISCARD;
@@ -27,6 +28,16 @@ const definition: ICommandDefinition = {
     description: strings.DESCRIPTION,
     type: "group",
     children: [ProgramDefinition,
-               TransactionDefinition]
+               TransactionDefinition],
+    passOn: [
+        {
+            property: "options",
+            value: CicsSession.CICS_CONNECTION_OPTIONS,
+            merge: true,
+            ignoreNodes: [
+                {type: "group"}
+            ]
+        }
+    ]
 };
 export = definition;

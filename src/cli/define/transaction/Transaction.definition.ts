@@ -48,7 +48,7 @@ export const TransactionDefinition: ICommandDefinition = {
             description: strings.OPTIONS.CICSPLEX,
             type: "string"
         }],
-    profile: {required: ["cics"]},
+    profile: {optional: ["cics"]},
     examples: [{
         description: strings.EXAMPLES.EX1,
         options: "TRN1 PGM123 MYGRP --region-name MYREGION"
