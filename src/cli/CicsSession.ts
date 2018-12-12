@@ -66,26 +66,6 @@ export class CicsSession {
         group: CicsSession.CICS_CONNECTION_OPTION_GROUP,
         required: true
     };
-    //
-    // /**
-    //  * Option used in profile creation and commands for region name setting for connecting to CICS
-    //  */
-    // public static CICS_OPTION_REGION_NAME: ICommandOptionDefinition = {
-    //     name: "region-name",
-    //     description: "CICS region name.",
-    //     type: "string",
-    //     group: CicsSession.CICS_CONNECTION_OPTION_GROUP
-    // };
-    //
-    // /**
-    //  * Option used in profile creation and commands for region name setting for connecting to CICS
-    //  */
-    // public static CICS_OPTION_CICS_PLEX: ICommandOptionDefinition = {
-    //     name: "cics-plex-name",
-    //     description: "CICS plex name.",
-    //     type: "string",
-    //     group: CicsSession.CICS_CONNECTION_OPTION_GROUP
-    // };
 
     /**
      * Options related to connecting to CICS
@@ -96,8 +76,6 @@ export class CicsSession {
         CicsSession.CICS_OPTION_PORT,
         CicsSession.CICS_OPTION_USER,
         CicsSession.CICS_OPTION_PASSWORD
-        // CicsSession.CICS_OPTION_REGION_NAME,
-        // CicsSession.CICS_OPTION_CICS_PLEX
     ];
 
     /**
