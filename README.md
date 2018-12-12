@@ -65,8 +65,8 @@ Before you install the plug-in, meet the following prerequisites:
 
 4.  [Create a profile](#create-a-profile).
 
-## Create a Profile
-After you install the plug-in, you create a CICS profile. A CICS profile is required to issue commands in the CICS group that interact with CICS regions. CICS profiles contain your host, port, user name, and password for the IBM CMCI server of your choice. You can create multiple profiles and switch between them as needed.
+## Create a User Profile
+You can create a `cics` user profile to avoid typing your connection details on every command. A `cics` profile contains the host, port, username, and password for the IBM CMCI server of your choice. You can create multiple profiles and switch between them as needed.
 
 **Follow these steps:**
 1.  Create a CICS profile: 
