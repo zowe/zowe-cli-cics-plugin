@@ -18,7 +18,10 @@ import { CicsCmciConstants, CicsCmciRestClient } from "../../../../../src";
 let TEST_ENVIRONMENT: ITestEnvironment;
 let regionName: string;
 let csdGroup: string;
-
+let host: string;
+let port: number;
+let user: string;
+let password: string;
 
 describe("CICS define program command", () => {
 
@@ -30,6 +33,10 @@ describe("CICS define program command", () => {
         });
         csdGroup = TEST_ENVIRONMENT.systemTestProperties.cmci.csdGroup;
         regionName = TEST_ENVIRONMENT.systemTestProperties.cmci.regionName;
+        host = TEST_ENVIRONMENT.systemTestProperties.cmci.host;
+        port = TEST_ENVIRONMENT.systemTestProperties.cmci.port;
+        user = TEST_ENVIRONMENT.systemTestProperties.cmci.user;
+        password = TEST_ENVIRONMENT.systemTestProperties.cmci.password;
     });
 
     afterAll(async () => {
@@ -86,6 +93,24 @@ describe("CICS define program command", () => {
         expect(stderr).toContain("Syntax");
         expect(stderr).toContain("csdGroup");
         expect(output.status).toEqual(1);
+    });
+
+    it("should be able to successfully define a program using profile options", async () => {
+        const programNameSuffixLength = 4;
+        const programName = "DFN" + generateRandomAlphaNumericString(programNameSuffixLength);
+        const output = runCliScript(__dirname + "/__scripts__/define_program_fully_qualified.sh", TEST_ENVIRONMENT,
+            [programName,
+                csdGroup,
+                regionName,
+                host,
+                port,
+                user,
+                password]);
+        const stderr = output.stderr.toString();
+        expect(stderr).toEqual("");
+        expect(output.status).toEqual(0);
+        expect(output.stdout.toString()).toContain("success");
+        await deleteProgram(programName);
     });
 
 });

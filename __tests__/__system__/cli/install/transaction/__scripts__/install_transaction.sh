@@ -5,4 +5,4 @@ transaction_name=$1
 csd_group=$2
 region_name=$3
 
-bright cics install transaction "$transaction_name" "$csd_group" --region-name "$region_name"
+zowe cics install transaction "$transaction_name" "$csd_group" --region-name "$region_name"

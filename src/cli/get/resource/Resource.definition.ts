@@ -50,7 +50,7 @@ export const ResourceDefinition: ICommandDefinition = {
             type: "string"
         }],
 
-    profile: {required: ["cics"]},
+    profile: {optional: ["cics"]},
     examples: [
         {
             description: strings.EXAMPLES.EX1,

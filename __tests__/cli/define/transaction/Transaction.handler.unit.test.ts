@@ -17,15 +17,20 @@ import TransactionHandler from "../../../../src/cli/define/transaction/Transacti
 jest.mock("../../../../src/api/methods/define");
 const Define = require("../../../../src/api/methods/define");
 
+const host = "somewhere.com";
+const port = "43443";
+const user = "someone";
+const password = "somesecret";
+
 const PROFILE_MAP = new Map<string, IProfile[]>();
 PROFILE_MAP.set(
     "cics", [{
         name: "cics",
         type: "cics",
-        host: "somewhere.com",
-        port: "43443",
-        user: "someone",
-        password: "somesecret"
+        host,
+        port,
+        user,
+        password
     }]
 );
 const PROFILES: CommandProfiles = new CommandProfiles(PROFILE_MAP);
@@ -93,7 +98,11 @@ describe("DefineTransactionHandler", () => {
             transactionName,
             programName,
             regionName,
-            csdGroup
+            csdGroup,
+            host,
+            port,
+            user,
+            password
         };
 
         await handler.process(commandParameters);

@@ -15,7 +15,7 @@ exports[`CICS delete transaction command should be able to display the help 1`] 
  USAGE
  -----
 
-   bright cics delete transaction <transactionName> <csdGroup> [options]
+   zowe cics delete transaction <transactionName> <csdGroup> [options]
 
  POSITIONAL ARGUMENTS
  --------------------
@@ -27,7 +27,7 @@ exports[`CICS delete transaction command should be able to display the help 1`] 
 
    csdGroup		 (string)
 
-      The CICS system definition (CSD) Group for the new transaction that you want to
+      The CICS system definition (CSD) Group for the transaction that you want to
       delete. The maximum length of the group name is eight characters.
 
  OPTIONS
@@ -41,6 +41,27 @@ exports[`CICS delete transaction command should be able to display the help 1`] 
 
       The name of the CICSPlex from which to delete the transaction
 
+ CICS CONNECTION OPTIONS
+ -----------------------
+
+   --host  | -H (string)
+
+      The CICS server host name.
+
+   --port  | -P (number)
+
+      The CICS server port.
+
+      Default value: 443
+
+   --user  | -u (string)
+
+      Mainframe (CICS) user name, which can be the same as your TSO login.
+
+   --password  | --pw (string)
+
+      Mainframe (CICS) password, which can be the same as your TSO password.
+
  PROFILE OPTIONS
  ---------------
 
@@ -53,7 +74,7 @@ exports[`CICS delete transaction command should be able to display the help 1`] 
 
    --response-format-json  | --rfj (boolean)
 
-      Produce the command response as a JSON document
+      Produce JSON formatted data from a command
 
    --help  | -h (boolean)
 
@@ -66,7 +87,7 @@ exports[`CICS delete transaction command should be able to display the help 1`] 
    - Delete a transaction named TRN1 from the region named
    MYREGION:
 
-      $ bright cics delete transaction TRN1 MYGRP --region-name MYREGION
+      $ zowe cics delete transaction TRN1 MYGRP --region-name MYREGION
 
 "
 `;

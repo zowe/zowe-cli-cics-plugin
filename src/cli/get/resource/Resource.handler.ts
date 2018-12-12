@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, TextUtils } from "@brightside/imperative";
+import { AbstractSession, ICommandHandler, IHandlerParameters, ITaskWithStatus, TaskStage, IProfile } from "@brightside/imperative";
 import { getResource, ICMCIApiResponse } from "../../../api";
 import { CicsBaseHandler } from "../../CicsBaseHandler";
 
@@ -26,6 +26,14 @@ const strings = (require("../../-strings-/en").default as typeof i18nTypings).GE
  */
 export default class ResourceHandler extends CicsBaseHandler {
     public async processWithSession(params: IHandlerParameters, session: AbstractSession, profile: IProfile): Promise<ICMCIApiResponse> {
+
+        const status: ITaskWithStatus = {
+            statusMessage: "Getting resources from CICS",
+            percentComplete: 0,
+            stageName: TaskStage.IN_PROGRESS
+        };
+        params.response.progress.startBar({task: status});
+
         const response = await getResource(session, {
             name: params.arguments.resourceName,
             regionName: params.arguments.regionName || profile.regionName,
