@@ -298,7 +298,6 @@ pipeline {
             steps {
                 timeout(time: 10, unit: 'MINUTES') {
                     echo 'Installing Dependencies'
-                    sh "rm -f .npmrc"
                     sh "npm install"
                 }
             }
