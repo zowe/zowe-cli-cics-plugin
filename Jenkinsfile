@@ -94,8 +94,7 @@ def INTEGRATION_RESULTS = "${TEST_RESULTS_FOLDER}/integration"
 /**
  * List of people who will get all emails for master builds
  */
-// def MASTER_RECIPIENTS_LIST = "cc:Christopher.Wright@ca.com, cc:Fernando.RijoCedeno@ca.com, cc:Michael.Bauer2@ca.com, cc:Mark.Ackert@ca.com, cc:Daniel.Kelosky@ca.com"
-def MASTER_RECIPIENTS_LIST = "cc:Fernando.RijoCedeno@ca.com"
+def MASTER_RECIPIENTS_LIST = "team-mfaas-darkside.pdl@broadcom.com, cc:Michael.Bauer2@broadcom.com, cc:Mark.Ackert@broadcom.com, cc:Daniel.Kelosky@broadcom.com"
 
 /**
  * The user's name for git commits
