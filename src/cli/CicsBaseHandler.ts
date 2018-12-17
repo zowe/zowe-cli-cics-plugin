@@ -27,7 +27,7 @@ export abstract class CicsBaseHandler implements ICommandHandler {
      * @returns {Promise<void>}
      */
     public async process(commandParameters: IHandlerParameters) {
-        const profile = commandParameters.profiles.get("cics", false);
+        const profile = commandParameters.profiles.get("cics", false) || {};
         const session = CicsSession.createBasicCicsSessionFromArguments(commandParameters.arguments);
 
         const response = await this.processWithSession(commandParameters, session, profile);
