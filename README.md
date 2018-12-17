@@ -11,13 +11,13 @@ As an application developer, you can use the plug-in to perform various CICS-rel
 
 For more information about general development guidelines and CICS plug-in specific information, see [the Contribution Guidelines](CONTRIBUTING.md).
 
-**Tip:** Visit our [Sample Plug-in repository](https://github.com/zowe/zowe-cli-sample-plugin) and follow the [tutorials on the documentation site](https://zowe.github.io/docs-site/guides/cli-devTutorials) to start developing your first plug-in! 
+**Tip:** Follow the [tutorials on the documentation site](https://zowe.github.io/docs-site/latest/extend/extend-cli/cli-devTutorials.html) to start developing your first plug-in! 
 
 ## Prerequisites
 Before you install the plug-in, meet the following prerequisites:
 * Install Zowe CLI on your PC.
 
-    **Note:** For more information, see the [Zowe CLI](https://zowe.github.io/docs-site/user-guide/cli-installcli.html) documentation.
+    **Note:** For more information, see [Installing Zowe CLI](https://zowe.github.io/docs-site/latest/user-guide/cli-installcli.html).
 
 * Ensure that [IBM CICS Transaction Server v5.2](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.home.doc/welcomePage/welcomePage.html) or later is installed and running in your mainframe environment.
 
@@ -63,7 +63,7 @@ Before you install the plug-in, meet the following prerequisites:
     ``` 
     **Tip:** When an unsuccessful message displays, you can troubleshoot the installation by addressing the issues that the message describes. You can also review the information that is contained in the log file that is located in the directory where you installed Zowe CLI.  
 
-4.  [Create a profile](#create-a-profile).
+4.  [Create a user profile](#create-a-user-profile).
 
 ## Create a User Profile
 You can create a `cics` user profile to avoid typing your connection details on every command. A `cics` profile contains the host, port, username, and password for the IBM CMCI server of your choice. You can create multiple profiles and switch between them as needed.
@@ -83,7 +83,7 @@ zowe profiles create cics -h
 
 ## Run Tests
 
-For information about running automated, unit, and system and integration tests using the plug-in, see [Zowe CLI Plug-in Testing Guidelines](https://github.com/zowe/zowe-cli/master/docs/PluginTESTINGGuidelines.md).
+For information about running automated, unit, and system and integration tests using the plug-in, see [Zowe CLI Plug-in Testing Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/PluginTESTINGGuidelines.md).
 
 ## Uninstall the Plug-in
 
