@@ -37,6 +37,10 @@
   "dependencies": {
     "xml2js": "0.4.19"
   },
+  "peerDependencies": {
+    "@brightside/core": "1.x",
+    "@brightside/imperative": ">=2.0.0-0"
+  },
   "devDependencies": {
     "@brightside/imperative": ">=2.0.0-0",
     "@types/jest": "^20.0.5",
@@ -113,9 +117,5 @@
     "includeFailureMsg": true
   },
   "author": "Darkside",
-  "license": "EPL-2.0",
-  "peerDependencies": {
-    "@brightside/core": "1.x",
-    "@brightside/imperative": ">=2.0.0-0"
-  }
+  "license": "EPL-2.0"
 }
