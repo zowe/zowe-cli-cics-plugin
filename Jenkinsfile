@@ -13,14 +13,20 @@
 //System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
 
 /**
- * The name of the master branch
- */
-def MASTER_BRANCH = "master"
+* Development branches considered for release purposes
+*/ 
+def DEV_BRANCH = [
+    master: "master",
+    beta: "beta",
+    latest: "latest",
+    incremental: "lts-incremental",
+    stable: "lts-stable",
+]
 
 /**
- * Release branches
- */
-def RELEASE_BRANCHES = ["master", "1.0.0"]
+* List of release branches
+*/ 
+def RELEASE_BRANCHES = [DEV_BRANCH.master, DEV_BRANCH.beta, DEV_BRANCH.latest, DEV_BRANCH.incremental, DEV_BRANCH.stable]
 
 /**
  * The following flags are switches to control which stages of the pipeline to be run.  This is helpful when
@@ -240,7 +246,7 @@ pipeline {
          * -------
          * able to issue zowe command.
          ************************************************************************/
-        stage('Install Zowe CLI @next version') {
+        stage('Install Zowe CLI version') {
             when {
                 allOf {
                     expression {
@@ -717,7 +723,10 @@ pipeline {
                         return PIPELINE_CONTROL.deploy
                     }
                     expression {
-                        return RELEASE_BRANCHES.contains(BRANCH_NAME)
+                        return currentBuild.resultIsBetterOrEqualTo(BUILD_RESULT.success)
+                    }
+                    expression {
+                        return BRANCH_NAME.equals(DEV_BRANCH.master) || BRANCH_NAME.equals(DEV_BRANCH.beta)
                     }
                 }
             }
@@ -736,7 +745,7 @@ pipeline {
                     sh "git config user.email \"${GIT_USER_EMAIL}\""
                     sh "git config push.default simple"
 
-                    // Make sure that the revision of the build and the current revision of the MASTER_BRANCH match
+                    // Make sure that the revision of the build and the current revision of the DEV_BRANCH.master match
                     script {
                         revision = sh returnStdout: true, script: GIT_REVISION_LOOKUP
 
@@ -745,17 +754,16 @@ pipeline {
                         }
                     }
 
-                    // This npm command does the version bump, and a git commit and tag
                     script {
-                        if (BRANCH_NAME == MASTER_BRANCH) {
+                        if (BRANCH_NAME == DEV_BRANCH.master) {
                             def baseVersion = sh returnStdout: true, script: 'node -e "console.log(require(\'./package.json\').version.split(\'-\')[0])"'
-                            def preReleaseVersion = baseVersion.trim() + "-next." + new Date().format("yyyyMMddHHmm", TimeZone.getTimeZone("UTC"))
+                            def preReleaseVersion = baseVersion.trim() + "-alpha." + new Date().format("yyyyMMddHHmm", TimeZone.getTimeZone("UTC"))
                             sh "npm version ${preReleaseVersion} -m \"Bumped pre-release version to ${preReleaseVersion} [ci skip]\""
                         }
-                        else {
-                            if (RELEASE_BRANCHES.contains(BRANCH_NAME)) {
-                                sh "npm version patch"
-                            }
+                        else if (BRANCH_NAME == DEV_BRANCH.beta) {
+                            def baseVersion = sh returnStdout: true, script: 'node -e "console.log(require(\'./package.json\').version.split(\'-\')[0])"'
+                            def preReleaseVersion = baseVersion.trim() + "-beta." + new Date().format("yyyyMMddHHmm", TimeZone.getTimeZone("UTC"))
+                            sh "npm version ${preReleaseVersion} -m \"Bumped pre-release version to ${preReleaseVersion} [ci skip]\""
                         }
                     }
 
@@ -809,37 +817,36 @@ pipeline {
                         return PIPELINE_CONTROL.deploy
                     }
                     expression {
-                        return GIT_SOURCE_UPDATED == 'true'
+                        return currentBuild.resultIsBetterOrEqualTo(BUILD_RESULT.success)
                     }
                     expression {
-                        return RELEASE_BRANCHES.contains(BRANCH_NAME)
+                        return GIT_SOURCE_UPDATED == 'true' || RELEASE_BRANCHES.contains(BRANCH_NAME)
                     }
                 }
             }
             steps {
                 timeout(time: 5, unit: 'MINUTES') {
                     echo 'Deploy Binary'
+                    sh "rm -f .npmrc"
+                    sh "rm -f ~/.npmrc"
+
+                    // Set the SCOPED registry and token to the npmrc of the user 
+                    sh "npm config set ${TARGET_SCOPE}:registry ${DL_URL.artifactory}"
                     withCredentials([usernamePassword(credentialsId: ARTIFACTORY_CREDENTIALS_ID, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                        sh "rm -f .npmrc"
-                        sh "rm -f ~/.npmrc"
-
-                        // Set the SCOPED registry and token to the npmrc of the user 
-                        sh "npm config set ${TARGET_SCOPE}:registry ${DL_URL.artifactory}"
                         sh "expect -f ./jenkins/npm_login.expect $USERNAME $PASSWORD \"$ARTIFACTORY_EMAIL\" ${DL_URL.artifactory} ${TARGET_SCOPE}"
-
-                        script {
-                            if (BRANCH_NAME == MASTER_BRANCH) {
-                                echo "publishing next to ${DL_URL.artifactory}"
-                                sh "npm publish --tag next"
-                            }
-                            else {
-                                echo "publishing latest to ${DL_URL.artifactory}"
-                                sh "npm publish --tag latest"
-                            }
-                        }
-                        sh "npm logout --registry=${DL_URL.artifactory} --scope=${TARGET_SCOPE}"
-                        sh "rm -f ~/.npmrc"
                     }
+
+                    script {
+                        if (BRANCH_NAME == DEV_BRANCH.master) {
+                            sh "npm publish --tag daily"
+                        }
+                        else {
+                            sh "npm publish --tag ${BRANCH_NAME}"
+                        }
+                    }
+
+                    sh "npm logout --registry=${DL_URL.artifactory} --scope=${TARGET_SCOPE}"
+                    sh "rm -f ~/.npmrc"
                 }
             }
         }
@@ -870,7 +877,10 @@ pipeline {
                         return PIPELINE_CONTROL.ci_skip == false
                     }
                     expression {
-                        return PIPELINE_CONTROL.smoke_test
+                        return PIPELINE_CONTROL.deploy
+                    }
+                    expression {
+                        return currentBuild.resultIsBetterOrEqualTo(BUILD_RESULT.success)
                     }
                     expression {
                         return RELEASE_BRANCHES.contains(BRANCH_NAME)
@@ -880,26 +890,25 @@ pipeline {
             steps {
                 timeout(time: 5, unit: 'MINUTES') {
                     echo "Smoke Test"
+                    sh "rm -f .npmrc"
+                    sh "rm -f ~/.npmrc"
+                    
+                    // Set the registry and token to the npmrc of the user 
+                    sh "npm config set ${TARGET_SCOPE}:registry ${DL_URL.artifactory}"
                     withCredentials([usernamePassword(credentialsId: ARTIFACTORY_CREDENTIALS_ID, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                        script {
-                            sh "rm -f .npmrc"
-                            sh "rm -f ~/.npmrc"
-                            
-                            // Set the registry and token to the npmrc of the user 
-                            sh "npm config set ${TARGET_SCOPE}:registry ${DL_URL.artifactory}"
-                            sh "expect -f ./jenkins/npm_login.expect $USERNAME $PASSWORD \"$ARTIFACTORY_EMAIL\" ${DL_URL.artifactory} ${TARGET_SCOPE}"
+                        sh "expect -f ./jenkins/npm_login.expect $USERNAME $PASSWORD \"$ARTIFACTORY_EMAIL\" ${DL_URL.artifactory} ${TARGET_SCOPE}"
+                    }
 
-                            // Install the plugin
-                            if (BRANCH_NAME == MASTER_BRANCH) {
-                                sh "bright plugins install ${TARGET_SCOPE}/cics@next"
-                            } else {
-                                sh "bright plugins install ${TARGET_SCOPE}/cics@latest"
-                            }
-
-                            sh "npm logout --registry=${DL_URL.artifactory} --scope=${TARGET_SCOPE}"
-                            sh 'rm -f ~/.npmrc'
+                    script {
+                        if (BRANCH_NAME == DEV_BRANCH.master) {
+                            sh "zowe plugins install ${TARGET_SCOPE}/cics@daily"
+                        } else {
+                            sh "zowe plugins install ${TARGET_SCOPE}/cics@${BRANCH_NAME}"
                         }
                     }
+                    
+                    sh "npm logout --registry=${DL_URL.artifactory} --scope=${TARGET_SCOPE}"
+                    sh 'rm -f ~/.npmrc'
 
                     sh "zowe plugins list"
                     sh "zowe cics"
@@ -997,11 +1006,11 @@ pipeline {
          * - It is the first build for a new branch
          * - The build is successful but the previous build was not
          * - The build failed or is unstable
-         * - The build is on the MASTER_BRANCH
+         * - The build is on the DEV_BRANCH.master
          *
          * In the case that an email was sent out, it will send it to individuals
          * who were involved with the build and if broken those involved in
-         * breaking the build. If this build is for the MASTER_BRANCH, then an
+         * breaking the build. If this build is for the DEV_BRANCH.master, then an
          * additional set of individuals will also get an email that the build
          * occurred.
          ************************************************************************/
@@ -1042,7 +1051,7 @@ pipeline {
                             details = "${details}<p>Build Failure.</p>"
                         }
 
-                        if (BRANCH_NAME == MASTER_BRANCH) {
+                        if (BRANCH_NAME == DEV_BRANCH.master) {
                             recipients = MASTER_RECIPIENTS_LIST
 
                             details = "${details}<p>A build of master has finished.</p>"
@@ -1057,7 +1066,7 @@ pipeline {
 
                                 <b>Possible causes of this error:</b>
                                 <ul>
-                                    <li>A commit was made to <b>${MASTER_BRANCH}</b> during the current run.</li>
+                                    <li>A commit was made to <b>${DEV_BRANCH.master}</b> during the current run.</li>
                                     <li>The user account tied to the build is no longer valid.</li>
                                     <li>The remote server is experiencing issues.</li>
                                 </ul>
