@@ -9,10 +9,6 @@
 *                                                                                 *
 */
 
-import { ICommandHandler, IHandlerParameters } from "@brightside/imperative";
-
-export default class HealthCheckHandler implements ICommandHandler {
-  public async process(params: IHandlerParameters): Promise<void> {
-      // dummy health check
-  }
-}
+export = () => {
+  return true;
+};
