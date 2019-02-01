@@ -38,8 +38,8 @@
     "xml2js": "0.4.19"
   },
   "peerDependencies": {
-    "@brightside/core": "1.x",
-    "@brightside/imperative": ">=2.0.0-0"
+    "@brightside/core": "2.x",
+    "@brightside/imperative": "2.x"
   },
   "devDependencies": {
     "@brightside/imperative": ">=2.0.0-0",

@@ -18,6 +18,7 @@ const config: IImperativeConfig = {
     rootCommandDescription: PluginConstants.PLUGIN_DESCRIPTION,
     productDisplayName: PluginConstants.PLUGIN_NAME,
     name: PluginConstants.PLUGIN_GROUP_NAME,
+    pluginHealthCheck: "",
     profiles: [
         {
             type: "cics",
