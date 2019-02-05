@@ -1,6 +1,6 @@
 {
   "name": "@brightside/cics",
-  "version": "1.0.0-beta.201901301721",
+  "version": "1.0.0",
   "description": "CLI Plug-in for IBM CICS",
   "repository": {
     "type": "git",
@@ -38,8 +38,8 @@
     "xml2js": "0.4.19"
   },
   "peerDependencies": {
-    "@brightside/core": "1.x",
-    "@brightside/imperative": ">=2.0.0-0"
+    "@brightside/core": "2.x",
+    "@brightside/imperative": "2.x"
   },
   "devDependencies": {
     "@brightside/imperative": ">=2.0.0-0",
