@@ -6,6 +6,7 @@ Object {
     "**/cli/*/*.definition!(.d).*s",
   ],
   "name": "cics",
+  "pluginHealthCheck": "./lib/healthCheck.handler",
   "productDisplayName": "CLI Plug-in for IBM CICS",
   "profiles": Array [
     Object {
