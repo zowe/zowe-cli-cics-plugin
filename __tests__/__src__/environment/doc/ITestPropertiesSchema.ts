@@ -15,35 +15,40 @@
  */
 export interface ITestPropertiesSchema {
 
+  /**
+   * Properties related to connecting to CMCI
+   */
+  cmci: {
     /**
-     * Properties related to connecting to CMCI
+     * user ID to connect to CMCI
      */
-    cmci: {
-        /**
-         * user ID to connect to CMCI
-         */
-        user: string,
-        /**
-         * Password to connect to CMCI
-         */
-        password: string,
-        /**
-         * host name for  CMCI
-         */
-        host: string,
-        /**
-         * Port for CMCI
-         */
-        port?: number,
-        /**
-         * CSD group to define resources to
-         */
-        csdGroup?: string;
+    user: string,
+    /**
+     * Password to connect to CMCI
+     */
+    password: string,
+    /**
+     * host name for  CMCI
+     */
+    host: string,
+    /**
+     * Port for CMCI
+     */
+    port?: number,
+    /**
+     * CSD group to define resources to
+     */
+    csdGroup?: string;
 
-        /**
-         * Name of the CICS region e.g. "CICSCMCI"
-         */
-        regionName?: string;
-    };
+    /**
+     * Name of the CICS region e.g. "CICSCMCI"
+     */
+    regionName?: string;
+
+    /**
+     * http or https protocol for CMCI
+     */
+    protocol?: string;
+  };
 
 }

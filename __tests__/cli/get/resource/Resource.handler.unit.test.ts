@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { IHandlerParameters, IProfile, CommandProfiles, Session } from "@brightside/imperative";
+import { CommandProfiles, IHandlerParameters, IProfile, Session } from "@brightside/imperative";
 import { ICMCIApiResponse } from "../../../../src";
 import { ResourceDefinition } from "../../../../src/cli/get/resource/Resource.definition";
 import ResourceHandler from "../../../../src/cli/get/resource/Resource.handler";
@@ -21,6 +21,8 @@ const host = "somewhere.com";
 const port = "43443";
 const user = "someone";
 const password = "somesecret";
+const protocol = "http";
+const rejectUnauthorized = false;
 
 const PROFILE_MAP = new Map<string, IProfile[]>();
 PROFILE_MAP.set(
@@ -84,7 +86,7 @@ describe("GetResourceHandler", () => {
 
     beforeEach(() => {
         functionSpy.mockClear();
-        defaultReturn.response.records[resourceName.toLowerCase()] = [{prop:"test1"}, {prop:"test2"}];
+        defaultReturn.response.records[resourceName.toLowerCase()] = [{prop: "test1"}, {prop: "test2"}];
         functionSpy.mockImplementation(async () => defaultReturn);
     });
 
@@ -99,7 +101,9 @@ describe("GetResourceHandler", () => {
             host,
             port,
             user,
-            password
+            password,
+            protocol,
+            rejectUnauthorized
         };
 
         await handler.process(commandParameters);
@@ -113,8 +117,8 @@ describe("GetResourceHandler", () => {
                 port: testProfile.port,
                 user: testProfile.user,
                 password: testProfile.password,
-                strictSSL: false,
-                protocol: "http",
+                rejectUnauthorized,
+                protocol
             }),
             {
                 name: resourceName,
