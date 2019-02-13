@@ -57,6 +57,35 @@ Object {
           "required": true,
           "type": "string",
         },
+        Object {
+          "aliases": Array [
+            "ru",
+          ],
+          "defaultValue": true,
+          "description": "Reject self-signed certificates.",
+          "group": "Cics Connection Options",
+          "name": "reject-unauthorized",
+          "required": false,
+          "type": "boolean",
+        },
+        Object {
+          "aliases": Array [
+            "o",
+          ],
+          "allowableValues": Object {
+            "caseSensitive": false,
+            "values": Array [
+              "http",
+              "https",
+            ],
+          },
+          "defaultValue": "http",
+          "description": "Specifies CMCI protocol (http or https).",
+          "group": "Cics Connection Options",
+          "name": "protocol",
+          "required": true,
+          "type": "string",
+        },
       ],
     },
   ],

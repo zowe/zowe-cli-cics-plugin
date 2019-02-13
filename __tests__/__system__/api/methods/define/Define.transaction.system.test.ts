@@ -39,7 +39,7 @@ describe("CICS Define transaction", () => {
             port: cmciProperties.port,
             type: "basic",
             strictSSL: false,
-            protocol: "http",
+            protocol: testEnvironment.systemTestProperties.cmci.protocol as any || "http",
         });
     });
 
