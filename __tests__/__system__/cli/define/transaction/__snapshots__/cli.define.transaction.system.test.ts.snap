@@ -67,6 +67,19 @@ exports[`CICS define transaction command should be able to display the help 1`] 
 
       Mainframe (CICS) password, which can be the same as your TSO password.
 
+   --reject-unauthorized  | --ru (boolean)
+
+      Reject self-signed certificates.
+
+      Default value: true
+
+   --protocol  | -o (string)
+
+      Specifies CMCI protocol (http or https).
+
+      Default value: http
+      Allowed values: http, https
+
  PROFILE OPTIONS
  ---------------
 

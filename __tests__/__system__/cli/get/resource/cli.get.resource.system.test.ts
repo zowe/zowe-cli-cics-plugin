@@ -37,6 +37,10 @@ describe("cics get resource", () => {
         password = TEST_ENVIRONMENT.systemTestProperties.cmci.password;
     });
 
+    afterAll(async () => {
+        await TestEnvironment.cleanUp(TEST_ENVIRONMENT);
+    });
+
     it("should display the help", async () => {
         const response = await runCliScript(__dirname + "/__scripts__/get_resource_help.sh", TEST_ENVIRONMENT);
         expect(response.stderr.toString()).toBe("");
