@@ -13,7 +13,7 @@ import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { generateRandomAlphaNumericString, runCliScript } from "../../../../__src__/TestUtils";
 import { Session } from "@brightside/imperative";
-import { CicsCmciRestClient, CicsCmciConstants } from "../../../../../src";
+import { CicsCmciConstants, CicsCmciRestClient } from "../../../../../src";
 
 let TEST_ENVIRONMENT: ITestEnvironment;
 let regionName: string;
@@ -52,7 +52,7 @@ describe("CICS define transaction command", () => {
             user: cmciProperties.user,
             password: cmciProperties.password,
             strictSSL: false,
-            protocol: "http",
+            protocol: cmciProperties.protocol as any || "http",
         });
 
         return CicsCmciRestClient.deleteExpectParsedXml(session,
