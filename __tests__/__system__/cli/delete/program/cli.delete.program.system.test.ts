@@ -20,7 +20,8 @@ let host: string;
 let port: number;
 let user: string;
 let password: string;
-
+let protocol: string;
+let rejectUnauthorized: boolean;
 describe("CICS delete program command", () => {
 
     beforeAll(async () => {
@@ -35,6 +36,8 @@ describe("CICS delete program command", () => {
         port = TEST_ENVIRONMENT.systemTestProperties.cmci.port;
         user = TEST_ENVIRONMENT.systemTestProperties.cmci.user;
         password = TEST_ENVIRONMENT.systemTestProperties.cmci.password;
+        protocol = TEST_ENVIRONMENT.systemTestProperties.cmci.protocol;
+        rejectUnauthorized = TEST_ENVIRONMENT.systemTestProperties.cmci.rejectUnauthorized;
     });
 
     afterAll(async () => {
@@ -93,7 +96,9 @@ describe("CICS delete program command", () => {
                 host,
                 port,
                 user,
-                password]);
+                password,
+                protocol,
+                rejectUnauthorized]);
         let stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -106,7 +111,9 @@ describe("CICS delete program command", () => {
                 host,
                 port,
                 user,
-                password]);
+                password,
+                protocol,
+                rejectUnauthorized]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);

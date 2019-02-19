@@ -9,5 +9,6 @@ HOST=$5
 PORT=$6
 USER=$7
 PASSWORD=$8
-
-zowe cics define transaction "$transaction_name" "$program_name" "$csd_group" --region-name "$region_name" --host $HOST --port $PORT --user $USER --password $PASSWORD
+PROTOCOL=$9
+REJECT="${10}"
+zowe cics define transaction "$transaction_name" "$program_name" "$csd_group" --region-name "$region_name" --host $HOST --port $PORT --user $USER --password $PASSWORD --protocol "$PROTOCOL" --reject-unauthorized "$REJECT"
