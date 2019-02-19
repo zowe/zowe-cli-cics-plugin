@@ -22,7 +22,8 @@ let host: string;
 let port: number;
 let user: string;
 let password: string;
-
+let protocol: string;
+let rejectUnauthorized: boolean;
 describe("CICS define transaction command", () => {
 
     beforeAll(async () => {
@@ -37,6 +38,8 @@ describe("CICS define transaction command", () => {
         port = TEST_ENVIRONMENT.systemTestProperties.cmci.port;
         user = TEST_ENVIRONMENT.systemTestProperties.cmci.user;
         password = TEST_ENVIRONMENT.systemTestProperties.cmci.password;
+        protocol = TEST_ENVIRONMENT.systemTestProperties.cmci.protocol;
+        rejectUnauthorized = TEST_ENVIRONMENT.systemTestProperties.cmci.rejectUnauthorized;
     });
 
     afterAll(async () => {
@@ -122,7 +125,9 @@ describe("CICS define transaction command", () => {
                 host,
                 port,
                 user,
-                password]);
+                password,
+                protocol,
+                rejectUnauthorized]);
         const stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
