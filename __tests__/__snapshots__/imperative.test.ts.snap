@@ -67,6 +67,27 @@ Object {
             },
             "type": "number",
           },
+          "protocol": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "o",
+              ],
+              "allowableValues": Object {
+                "caseSensitive": false,
+                "values": Array [
+                  "http",
+                  "https",
+                ],
+              },
+              "defaultValue": "http",
+              "description": "Specifies CMCI protocol (http or https).",
+              "group": "Cics Connection Options",
+              "name": "protocol",
+              "required": true,
+              "type": "string",
+            },
+            "type": "string",
+          },
           "regionName": Object {
             "optionDefinition": Object {
               "description": "The name of the CICS region name to interact with",
@@ -74,6 +95,20 @@ Object {
               "type": "string",
             },
             "type": "string",
+          },
+          "rejectUnauthorized": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "ru",
+              ],
+              "defaultValue": true,
+              "description": "Reject self-signed certificates.",
+              "group": "Cics Connection Options",
+              "name": "reject-unauthorized",
+              "required": false,
+              "type": "boolean",
+            },
+            "type": "boolean",
           },
           "user": Object {
             "optionDefinition": Object {
