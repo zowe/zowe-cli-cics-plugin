@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { IHandlerParameters, IProfile, CommandProfiles, Session } from "@brightside/imperative";
+import { CommandProfiles, IHandlerParameters, IProfile, Session } from "@brightside/imperative";
 import { ICMCIApiResponse } from "../../../../src";
 import { ProgramDefinition } from "../../../../src/cli/define/program/Program.definition";
 import ProgramHandler from "../../../../src/cli/define/program/Program.handler";
@@ -21,6 +21,8 @@ const host = "somewhere.com";
 const port = "43443";
 const user = "someone";
 const password = "somesecret";
+const protocol = "http";
+const rejectUnauthorized = false;
 
 const PROFILE_MAP = new Map<string, IProfile[]>();
 PROFILE_MAP.set(
@@ -100,7 +102,9 @@ describe("DefineProgramHandler", () => {
             host,
             port,
             user,
-            password
+            password,
+            rejectUnauthorized,
+            protocol
         };
 
         await handler.process(commandParameters);
@@ -114,8 +118,8 @@ describe("DefineProgramHandler", () => {
                 port: testProfile.port,
                 user: testProfile.user,
                 password: testProfile.password,
-                strictSSL: false,
-                protocol: "http",
+                rejectUnauthorized,
+                protocol
             }),
             {
                 name: programName,

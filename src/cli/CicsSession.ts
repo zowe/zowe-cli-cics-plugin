@@ -66,6 +66,31 @@ export class CicsSession {
         group: CicsSession.CICS_CONNECTION_OPTION_GROUP,
         required: true
     };
+    /**
+     * Option used in profile creation and commands for rejectUnauthorized setting for connecting to FMP
+     */
+    public static CICS_OPTION_REJECT_UNAUTHORIZED: ICommandOptionDefinition = {
+        name: "reject-unauthorized",
+        aliases: ["ru"],
+        description: "Reject self-signed certificates.",
+        type: "boolean",
+        defaultValue: true,
+        required: false,
+        group: CicsSession.CICS_CONNECTION_OPTION_GROUP
+    };
+    /**
+     * Option used in profile creation and commands for protocol for CMCI
+     */
+    public static CICS_OPTION_PROTOCOL: ICommandOptionDefinition = {
+        name: "protocol",
+        aliases: ["o"],
+        description: "Specifies CMCI protocol (http or https).",
+        type: "string",
+        defaultValue: "http",
+        required: true,
+        allowableValues: {values: ["http", "https"], caseSensitive: false},
+        group: CicsSession.CICS_CONNECTION_OPTION_GROUP
+    };
 
     /**
      * Options related to connecting to CICS
@@ -75,7 +100,9 @@ export class CicsSession {
         CicsSession.CICS_OPTION_HOST,
         CicsSession.CICS_OPTION_PORT,
         CicsSession.CICS_OPTION_USER,
-        CicsSession.CICS_OPTION_PASSWORD
+        CicsSession.CICS_OPTION_PASSWORD,
+        CicsSession.CICS_OPTION_REJECT_UNAUTHORIZED,
+        CicsSession.CICS_OPTION_PROTOCOL
     ];
 
     /**
@@ -93,7 +120,7 @@ export class CicsSession {
             user: profile.user,
             password: profile.pass,
             basePath: profile.basePath,
-            protocol: "http",
+            protocol: profile.protocol || "http",
         });
     }
 
@@ -112,8 +139,8 @@ export class CicsSession {
             user: args.user,
             password: args.password,
             basePath: args.basePath,
-            strictSSL: false,
-            protocol: "http",
+            rejectUnauthorized: args.rejectUnauthorized,
+            protocol: args.protocol || "http",
         });
     }
 

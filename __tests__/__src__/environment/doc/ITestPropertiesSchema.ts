@@ -44,6 +44,16 @@ export interface ITestPropertiesSchema {
          * Name of the CICS region e.g. "CICSCMCI"
          */
         regionName?: string;
+
+        /**
+         * http or https protocol for CMCI
+         */
+        protocol?: string;
+
+        /**
+         * http or https protocol for CMCI
+         */
+        rejectUnauthorized?: boolean;
     };
 
 }

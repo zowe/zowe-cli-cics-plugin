@@ -12,6 +12,7 @@
 // Imperative version of Zowe CLI
 import { IImperativeConfig } from "@brightside/imperative";
 import { PluginConstants } from "./api/constants/PluginConstants";
+import { CicsSession } from "./cli/CicsSession";
 
 const config: IImperativeConfig = {
     commandModuleGlobs: ["**/cli/*/*.definition!(.d).*s"],
@@ -88,6 +89,14 @@ const config: IImperativeConfig = {
                             description: "The name of the CICSPlex to interact with",
                             type: "string"
                         },
+                    },
+                    rejectUnauthorized: {
+                        type: "boolean",
+                        optionDefinition: CicsSession.CICS_OPTION_REJECT_UNAUTHORIZED
+                    },
+                    protocol: {
+                        type: "string",
+                        optionDefinition: CicsSession.CICS_OPTION_PROTOCOL
                     }
                 },
                 required: ["host"],

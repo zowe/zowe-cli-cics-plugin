@@ -86,10 +86,16 @@ export class TempTestProfiles {
     private static async createCicsProfile(testEnvironment: ITestEnvironment) {
         const profileName: string = "tmp_cics" + uuidv4();
         const cmciProps = testEnvironment.systemTestProperties.cmci;
-        const createProfileScript = TemporaryScripts.SHEBANG +
+        let createProfileScript = TemporaryScripts.SHEBANG +
             `${TemporaryScripts.BRIGHT_BIN} profiles create cics ${profileName} --user ${cmciProps.user} -p ` +
             `${cmciProps.password} ` +
             ` --host ${cmciProps.host} --port ${cmciProps.port}`;
+        if (cmciProps.protocol != null) {
+            createProfileScript += ` --protocol ${cmciProps.protocol}`;
+        }
+        if (cmciProps.rejectUnauthorized != null) {
+            createProfileScript += ` --reject-unauthorized ${cmciProps.rejectUnauthorized}`;
+        }
 
         const scriptPath = testEnvironment.workingDir + "_create_profile_" + profileName;
         await IO.writeFileAsync(scriptPath, createProfileScript);
@@ -97,9 +103,9 @@ export class TempTestProfiles {
         if (output.status !== 0 || output.stderr.toString().trim().length > 0) {
             throw new ImperativeError({
                 msg: "Creation of cics profile '" + profileName + "' failed! You should delete the script: \n'" + scriptPath + "' " +
-                "after reviewing it to check for possible errors.\n Output of the profile create command:\n" + output.stderr.toString() +
-                output.stdout.toString() +
-                TempTestProfiles.GLOBAL_INSTALL_NOTE
+                    "after reviewing it to check for possible errors.\n Output of the profile create command:\n" + output.stderr.toString() +
+                    output.stdout.toString() +
+                    TempTestProfiles.GLOBAL_INSTALL_NOTE
             });
         }
         IO.deleteFile(scriptPath);
@@ -123,8 +129,8 @@ export class TempTestProfiles {
         if (output.status !== 0 || output.stderr.toString().trim().length > 0) {
             throw new ImperativeError({
                 msg: "Deletion of " + profileType + " profile '" + profileName + "' failed! You should delete the script: '" + scriptPath + "' " +
-                "after reviewing it to check for possible errors. Stderr of the profile create command:\n" + output.stderr.toString()
-                + TempTestProfiles.GLOBAL_INSTALL_NOTE
+                    "after reviewing it to check for possible errors. Stderr of the profile create command:\n" + output.stderr.toString()
+                    + TempTestProfiles.GLOBAL_INSTALL_NOTE
             });
         }
         this.log(testEnvironment, `Deleted ${profileType} profile '${profileName}'. Stdout from deletion:\n${output.stdout.toString()}`);

@@ -65,6 +65,22 @@ exports[`Create cics Profile Success scenarios should display create cics profil
 
       Overwrite the cics profile when a profile of the same name exists.
 
+ CICS CONNECTION OPTIONS
+ -----------------------
+
+   --reject-unauthorized  | --ru (boolean)
+
+      Reject self-signed certificates.
+
+      Default value: true
+
+   --protocol  | -o (string)
+
+      Specifies CMCI protocol (http or https).
+
+      Default value: http
+      Allowed values: http, https
+
  GLOBAL OPTIONS
  --------------
 

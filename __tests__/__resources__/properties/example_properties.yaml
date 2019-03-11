@@ -17,9 +17,11 @@
 
 #  see bright profiles create cics --help for more info
 cmci:
-      user: my-user-name
-      password: my-password
-      host: my-cics-host
-      port: my-cics-port
-      csdGroup: my-csd-group
-      regionName: my-region-name
+  user: my-user-name
+  password: my-password
+  host: my-cics-host
+  port: my-cics-port
+  csdGroup: my-csd-group
+  regionName: my-region-name
+  protocol: http
+  rejectUnauthorized: false

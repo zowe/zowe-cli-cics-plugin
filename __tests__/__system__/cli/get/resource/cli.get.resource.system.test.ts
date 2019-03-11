@@ -20,6 +20,8 @@ let host: string;
 let port: number;
 let user: string;
 let password: string;
+let protocol: string;
+let rejectUnauthorized: boolean;
 
 describe("cics get resource", () => {
 
@@ -35,6 +37,12 @@ describe("cics get resource", () => {
         port = TEST_ENVIRONMENT.systemTestProperties.cmci.port;
         user = TEST_ENVIRONMENT.systemTestProperties.cmci.user;
         password = TEST_ENVIRONMENT.systemTestProperties.cmci.password;
+        protocol = TEST_ENVIRONMENT.systemTestProperties.cmci.protocol;
+        rejectUnauthorized = TEST_ENVIRONMENT.systemTestProperties.cmci.rejectUnauthorized;
+    });
+
+    afterAll(async () => {
+        await TestEnvironment.cleanUp(TEST_ENVIRONMENT);
     });
 
     it("should display the help", async () => {
@@ -61,7 +69,9 @@ describe("cics get resource", () => {
                 host,
                 port,
                 user,
-                password]);
+                password,
+                protocol,
+                rejectUnauthorized]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");

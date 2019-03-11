@@ -7,5 +7,6 @@ HOST=$3
 PORT=$4
 USER=$5
 PASSWORD=$6
-
-zowe cics get resource "$resource_name" --region-name "$region_name" --host $HOST --port $PORT --user $USER --password $PASSWORD
+PROTOCOL=$7
+REJECT=$8
+zowe cics get resource "$resource_name" --region-name "$region_name" --host $HOST --port $PORT --user $USER --password $PASSWORD --protocol $PROTOCOL --reject-unauthorized $REJECT
