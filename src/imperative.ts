@@ -10,7 +10,7 @@
 */
 
 // Imperative version of Zowe CLI
-import { IImperativeConfig } from "@brightside/imperative";
+import { IImperativeConfig } from "@zowe/imperative";
 import { PluginConstants } from "./api/constants/PluginConstants";
 import { CicsSession } from "./cli/CicsSession";
 

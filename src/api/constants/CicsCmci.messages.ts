@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { IMessageDefinition } from "@brightside/imperative";
+import { IMessageDefinition } from "@zowe/imperative";
 
 /**
  * Messages for the CICS plugin

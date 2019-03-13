@@ -1,5 +1,5 @@
 {
-  "name": "@brightside/cics",
+  "name": "@zowe/cics",
   "version": "1.1.0-alpha.201902201940",
   "description": "CLI Plug-in for IBM CICS",
   "repository": {
@@ -12,9 +12,6 @@
   ],
   "publishConfig": {
     "registry": "https://gizaartifactory.jfrog.io/gizaartifactory/api/npm/npm-local-release/"
-  },
-  "bin": {
-    "cics": "./lib/main.js"
   },
   "scripts": {
     "build": "node scripts/updateLicense.js && tsc --pretty && npm run checkTestsCompile",
@@ -37,12 +34,8 @@
   "dependencies": {
     "xml2js": "0.4.19"
   },
-  "peerDependencies": {
-    "@brightside/core": ">=2.0.0-0 || <3.0.0",
-    "@brightside/imperative": ">=2.0.0-0 || <3.0.0"
-  },
   "devDependencies": {
-    "@brightside/imperative": "^2.0.0",
+    "@zowe/imperative": "^2.0.0",
     "@types/jest": "^20.0.5",
     "@types/node": "^8.0.0",
     "@types/xml2js": "^0.4.3",

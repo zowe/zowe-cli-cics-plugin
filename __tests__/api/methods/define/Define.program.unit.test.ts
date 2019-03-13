@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { Session } from "@brightside/imperative";
+import { Session } from "@zowe/imperative";
 import { CicsCmciConstants, CicsCmciRestClient, defineProgram, IProgramParms } from "../../../../src";
 
 describe("CMCI - Define program", () => {

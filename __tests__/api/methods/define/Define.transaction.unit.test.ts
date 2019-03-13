@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { Session } from "@brightside/imperative";
+import { Session } from "@zowe/imperative";
 import { CicsCmciRestClient, CicsCmciConstants, ITransactionParms, defineTransaction } from "../../../../src";
 
 describe("CMCI - Define transaction", () => {

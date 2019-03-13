@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { CommandProfiles, IHandlerParameters, IProfile, Session } from "@brightside/imperative";
+import { CommandProfiles, IHandlerParameters, IProfile, Session } from "@zowe/imperative";
 import { ICMCIApiResponse } from "../../../../src";
 import { ProgramDefinition } from "../../../../src/cli/install/program/Program.definition";
 import ProgramHandler from "../../../../src/cli/install/program/Program.handler";

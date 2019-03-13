@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { AbstractSession, IImperativeError, ImperativeError, Logger, RestClient, TextUtils } from "@brightside/imperative";
+import { AbstractSession, IImperativeError, ImperativeError, Logger, RestClient, TextUtils } from "@zowe/imperative";
 import { Builder, Parser } from "xml2js";
 import { ICMCIApiResponse } from "../doc/ICMCIApiResponse";
 import { CicsCmciMessages } from "../constants/CicsCmci.messages";
