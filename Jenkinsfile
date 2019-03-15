@@ -69,7 +69,7 @@ def TARGET_SCOPE = "@zowe"
 /**
 * Brightside tag to be installed
 */
-def BRIGHTSIDE_TAG_VERSION = "@next"
+def BRIGHTSIDE_TAG_VERSION = "@daily"
 
 /**
  * Test npm registry using for smoke test
