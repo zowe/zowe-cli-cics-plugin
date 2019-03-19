@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { ICommandDefinition } from "@brightside/imperative";
+import { ICommandDefinition } from "@zowe/imperative";
 
 describe("cics delete transaction", () => {
     it ("should not have changed", () => {

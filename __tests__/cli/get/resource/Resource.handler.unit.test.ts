@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { CommandProfiles, IHandlerParameters, IProfile, Session } from "@brightside/imperative";
+import { CommandProfiles, IHandlerParameters, IProfile, Session } from "@zowe/imperative";
 import { ICMCIApiResponse } from "../../../../src";
 import { ResourceDefinition } from "../../../../src/cli/get/resource/Resource.definition";
 import ResourceHandler from "../../../../src/cli/get/resource/Resource.handler";

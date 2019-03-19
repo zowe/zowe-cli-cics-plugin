@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { ICommandDefinition } from "@brightside/imperative";
+import { ICommandDefinition } from "@zowe/imperative";
 import { ProgramDefinition } from "./program/Program.definition";
 
 import i18nTypings from "../-strings-/en";

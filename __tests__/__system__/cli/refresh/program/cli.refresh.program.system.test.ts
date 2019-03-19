@@ -12,7 +12,7 @@
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { runCliScript } from "../../../../__src__/TestUtils";
-import { Session } from "@brightside/imperative";
+import { Session } from "@zowe/imperative";
 import { defineProgram, deleteProgram, discardProgram, installProgram, IProgramParms } from "../../../../../src";
 
 let TEST_ENVIRONMENT: ITestEnvironment;

@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { ICommandDefinition } from "@brightside/imperative";
+import { ICommandDefinition } from "@zowe/imperative";
 import { ProgramDefinition } from "./program/Program.definition";
 import { TransactionDefinition } from "./transaction/Transaction.definition";
 

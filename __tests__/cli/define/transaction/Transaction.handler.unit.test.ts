@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { CommandProfiles, IHandlerParameters, IProfile, Session } from "@brightside/imperative";
+import { CommandProfiles, IHandlerParameters, IProfile, Session } from "@zowe/imperative";
 import { ICMCIApiResponse } from "../../../../src";
 import { TransactionDefinition } from "../../../../src/cli/define/transaction/Transaction.definition";
 import TransactionHandler from "../../../../src/cli/define/transaction/Transaction.handler";

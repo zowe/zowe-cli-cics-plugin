@@ -10,7 +10,7 @@
 */
 
 import { ISetupEnvironmentParms } from "./doc/parms/ISetupEnvironmentParms";
-import { ImperativeError, ImperativeExpect, IO, Logger, TextUtils } from "@brightside/imperative";
+import { ImperativeError, ImperativeExpect, IO, Logger, TextUtils } from "@zowe/imperative";
 import * as nodePath from "path";
 import { mkdirpSync } from "fs-extra";
 import { ITestEnvironment } from "./doc/response/ITestEnvironment";
@@ -157,7 +157,7 @@ export class TestEnvironment {
     private static async installPlugin(testEnvironment: ITestEnvironment) {
         let installScript: string = TemporaryScripts.SHEBANG;
         installScript += "bright plugins install ../../../../\n"; // install plugin from root of project
-        installScript += "bright plugins validate @brightside/cics";
+        installScript += "bright plugins validate @zowe/cics";
         installScript += "zowe cics --help\n"; // check that the plugin help is available
         const scriptPath = testEnvironment.workingDir + "/install_plugin.sh";
         IO.writeFile(scriptPath, Buffer.from(installScript));

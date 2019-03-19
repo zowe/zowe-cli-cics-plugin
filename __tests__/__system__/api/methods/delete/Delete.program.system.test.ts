@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { Session } from "@brightside/imperative";
+import { Session } from "@zowe/imperative";
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
 import { generateRandomAlphaNumericString } from "../../../../__src__/TestUtils";

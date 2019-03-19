@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, ITaskWithStatus, TaskStage, IProfile } from "@brightside/imperative";
+import { AbstractSession, ICommandHandler, IHandlerParameters, ITaskWithStatus, TaskStage, IProfile } from "@zowe/imperative";
 import { getResource, ICMCIApiResponse } from "../../../api";
 import { CicsBaseHandler } from "../../CicsBaseHandler";
 

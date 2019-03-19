@@ -64,12 +64,12 @@ def rmProt(String url) {
 /**
 * Targeted scope
 */
-def TARGET_SCOPE = "@brightside"
+def TARGET_SCOPE = "@zowe"
 
 /**
 * Brightside tag to be installed
 */
-def BRIGHTSIDE_TAG_VERSION = "@next"
+def BRIGHTSIDE_TAG_VERSION = "@daily"
 
 /**
  * Test npm registry using for smoke test
@@ -260,7 +260,7 @@ pipeline {
             steps('Install Zowe CLI') {
                 timeout(time: 10, unit: 'MINUTES') {
                     echo "Install Zowe CLI globally"
-                    sh "npm install -g ${TARGET_SCOPE}/core${BRIGHTSIDE_TAG_VERSION} --${TARGET_SCOPE}:registry=${DL_URL.bintray}"
+                    sh "npm install -g ${TARGET_SCOPE}/cli${BRIGHTSIDE_TAG_VERSION} --${TARGET_SCOPE}:registry=${DL_URL.bintray}"
                     sh "zowe --version"
                     sh "zowe"
                 }
