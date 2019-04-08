@@ -79,6 +79,14 @@ node('ca-jenkins-agent') {
         unit: 'MINUTES'
     ])
 
+    pipeline.createStage(
+        name: "Check for vulnerabilities",
+        stage: {
+            sh "npm audit"
+        },
+        timeout: [time: 5, unit: 'MINUTES']
+    )
+
     def TEST_ROOT = "__tests__/__results__"
     def UNIT_TEST_ROOT = "$TEST_ROOT/unit"
     def UNIT_JUNIT_OUTPUT = "$UNIT_TEST_ROOT/junit.xml"
