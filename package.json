@@ -44,7 +44,7 @@
     "@types/node": "^8.10.45",
     "@types/xml2js": "^0.4.4",
     "@types/yargs": "8.0.2",
-    "@zowe/imperative": "^3.0.2-alpha.201903251633",
+    "@zowe/imperative": "^3.1.0-alpha.201903281852",
     "env-cmd": "^8.0.2",
     "fs-extra": "^5.0.0",
     "glob": "^7.1.3",
