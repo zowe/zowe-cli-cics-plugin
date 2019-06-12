@@ -39,8 +39,8 @@
     "xml2js": "0.4.19"
   },
   "peerDependencies": {
-    "@brightside/core": "2.x",
-    "@brightside/imperative": "2.x"
+    "@brightside/core": ">=2.0.0-0 || <3.0.0",
+    "@brightside/imperative": ">=2.0.0-0 || <3.0.0"
   },
   "devDependencies": {
     "@types/jest": "^20.0.5",

@@ -8,5 +8,6 @@ HOST=$4
 PORT=$5
 USER=$6
 PASSWORD=$7
-
-zowe cics install program "$program_name" "$csd_group" --region-name "$region_name" --host $HOST --port $PORT --user $USER --password $PASSWORD
+PROTOCOL=$8
+REJECT=$9
+zowe cics install program "$program_name" "$csd_group" --region-name "$region_name" --host $HOST --port $PORT --user $USER --password $PASSWORD --protocol "$PROTOCOL" --reject-unauthorized "$REJECT"
