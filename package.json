@@ -1,6 +1,6 @@
 {
   "name": "@brightside/cics",
-  "version": "1.1.0",
+  "version": "1.0.1",
   "description": "CLI Plug-in for IBM CICS",
   "repository": {
     "type": "git",
