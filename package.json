@@ -42,6 +42,7 @@
     "configurationModule": "lib/imperative.js"
   },
   "dependencies": {
+    "@zowe/imperative": "^4.1.7-alpha.201906131540",
     "xml2js": "0.4.19"
   },
   "peerDependencies": {
@@ -54,7 +55,6 @@
     "@types/node": "^8.10.45",
     "@types/xml2js": "^0.4.4",
     "@types/yargs": "8.0.2",
-    "@zowe/imperative": "^3.1.0-alpha.201903281852",
     "env-cmd": "^8.0.2",
     "fs-extra": "^5.0.0",
     "glob": "^7.1.3",
