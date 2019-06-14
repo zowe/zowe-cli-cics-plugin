@@ -2,14 +2,28 @@
   "name": "@zowe/cics",
   "version": "2.0.1-alpha.201904081502",
   "description": "Zowe CLI Plug-in for IBM CICS",
-  "repository":   {
+  "homepage": "https://github.com/zowe/zowe-cli-cics-plugin#readme",
+  "bugs": {
+    "url": "https://github.com/zowe/zowe-cli-cics-plugin/issues"
+  },
+  "keywords": [
+    "zowe",
+    "cli",
+    "cics",
+    "plugin"
+  ],
+  "repository": {
     "type": "git",
     "url": "https://github.com/gizafoundation/zowe-cli-cics-plugin.git"
   },
   "main": "lib/index.js",
-  "files": ["lib"],
-  "publishConfig": {"registry": "https://gizaartifactory.jfrog.io/gizaartifactory/api/npm/npm-local-release/"},
-  "scripts":   {
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://gizaartifactory.jfrog.io/gizaartifactory/api/npm/npm-local-release/"
+  },
+  "scripts": {
     "build": "node scripts/updateLicense.js && tsc --pretty && npm run checkTestsCompile",
     "checkTestsCompile": "echo \"Checking that test source compiles...\" && tsc --project __tests__/test-tsconfig.json --noEmit ",
     "prebuild": "npm run clean && npm run lint && echo Using TypeScript && tsc --version",
@@ -24,13 +38,17 @@
     "test:unit": "env-cmd __tests__/__resources__/env/unit.env jest --coverage --testPathIgnorePatterns \".*/__system__/.*\" ",
     "installPlugin": "npm install && npm run clean && npm run build && zowe plugins install ."
   },
-  "imperative": {"configurationModule": "lib/imperative.js"},
-  "dependencies": {"xml2js": "0.4.19"},
-  "peerDependencies":   {
+  "imperative": {
+    "configurationModule": "lib/imperative.js"
+  },
+  "dependencies": {
+    "xml2js": "0.4.19"
+  },
+  "peerDependencies": {
     "@zowe/imperative": "^3.0.0",
     "@zowe/cli": "^3.0.0"
   },
-  "devDependencies":   {
+  "devDependencies": {
     "@types/fs-extra": "^5.0.5",
     "@types/jest": "^20.0.5",
     "@types/node": "^8.10.45",
@@ -56,31 +74,39 @@
     "typescript": "3.2.2",
     "uuid": "^3.2.1"
   },
-  "jest":   {
-    "setupFilesAfterEnv": ["./__tests__/setUpJest.js"],
-    "modulePathIgnorePatterns": ["__tests__/__snapshots__/"],
-    "transform": {".(ts)": "ts-jest"},
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./__tests__/setUpJest.js"
+    ],
+    "modulePathIgnorePatterns": [
+      "__tests__/__snapshots__/"
+    ],
+    "transform": {
+      ".(ts)": "ts-jest"
+    },
     "testRegex": "(test|spec)\\.ts$",
-    "moduleFileExtensions":     [
+    "moduleFileExtensions": [
       "ts",
       "js"
     ],
-    "testPathIgnorePatterns": ["<rootDir>/__tests__/__results__"],
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/__results__"
+    ],
     "testEnvironment": "node",
-    "collectCoverageFrom":     [
+    "collectCoverageFrom": [
       "src/**/*.ts",
       "!**/__tests__/**",
       "!**/index.ts",
       "!**/main.ts"
     ],
     "collectCoverage": false,
-    "reporters":     [
+    "reporters": [
       "default",
       "jest-junit",
       "jest-stare",
       "jest-html-reporter"
     ],
-    "coverageReporters":     [
+    "coverageReporters": [
       "json",
       "lcov",
       "text",
@@ -88,12 +114,14 @@
     ],
     "coverageDirectory": "<rootDir>/__tests__/__results__/unit/coverage"
   },
-  "jest-stare":   {
+  "jest-stare": {
     "resultDir": "__tests__/__results__/jest-stare",
     "coverageLink": "../coverage/lcov-report/index.html"
   },
-  "jest-junit": {"output": "__tests__/__results__/junit.xml"},
-  "jest-html-reporter":   {
+  "jest-junit": {
+    "output": "__tests__/__results__/junit.xml"
+  },
+  "jest-html-reporter": {
     "pageTitle": "Brightside CICS Plugin Test Results",
     "outputPath": "__tests__/__results__/results.html",
     "includeFailureMsg": true
