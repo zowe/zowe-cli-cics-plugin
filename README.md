@@ -1,4 +1,7 @@
 # Zowe CLI Plug-in for IBM® CICS® 
+
+[![codecov](https://codecov.io/gh/zowe/zowe-cli-cics-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/zowe/zowe-cli-cics-plugin)
+
 The Zowe CLI Plug-in for IBM® CICS® lets you extend Zowe CLI to interact with IBM CICS programs and transactions. The plug-in uses the IBM CICS Management Client Interface (CMCI) API to achieve the interaction with CICS. For more information, see [CICS management client interface](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.3.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) on the IBM Knowledge Center.
 
 As an application developer, you can use the plug-in to perform various CICS-related tasks, such as the following:
