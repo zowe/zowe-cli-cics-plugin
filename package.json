@@ -32,7 +32,7 @@
     "configurationModule": "lib/imperative.js"
   },
   "dependencies": {
-    "@brightside/imperative": "^2.4.6",
+    "@brightside/imperative": "^2.4.9",
     "xml2js": "0.4.19"
   },
   "peerDependencies": {
