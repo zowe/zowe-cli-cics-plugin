@@ -13,9 +13,6 @@
   "publishConfig": {
     "registry": "https://gizaartifactory.jfrog.io/gizaartifactory/api/npm/npm-local-release/"
   },
-  "bin": {
-    "cics": "./lib/main.js"
-  },
   "scripts": {
     "build": "node scripts/updateLicense.js && tsc --pretty && npm run checkTestsCompile",
     "checkTestsCompile": "echo \"Checking that test source compiles...\" && tsc --project __tests__/test-tsconfig.json --noEmit ",
