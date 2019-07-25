@@ -122,7 +122,7 @@
     "output": "__tests__/__results__/junit.xml"
   },
   "jest-html-reporter": {
-    "pageTitle": "Brightside CICS Plugin Test Results",
+    "pageTitle": "Zowe CICS Plugin Test Results",
     "outputPath": "__tests__/__results__/results.html",
     "includeFailureMsg": true
   },

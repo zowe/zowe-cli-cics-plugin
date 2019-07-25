@@ -13,7 +13,6 @@ import * as fs from "fs";
 import { spawnSync, SpawnSyncReturns } from "child_process";
 import { ITestEnvironment } from "./environment/doc/response/ITestEnvironment";
 
-
 /**
  * Execute a CLI script
  * @export
