@@ -92,6 +92,9 @@ exports[`Create cics Profile Success scenarios should display create cics profil
 
       Display help text
 
+   --help-web  | --hw (boolean)
+
+      Display HTML help in browser
 
  EXAMPLES
  --------

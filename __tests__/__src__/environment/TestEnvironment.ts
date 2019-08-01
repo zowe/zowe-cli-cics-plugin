@@ -102,7 +102,7 @@ export class TestEnvironment {
      * @returns  - The unique directory (within the results/data/ area).
      */
     public static createUniqueTestDataDir(testName: string): string {
-        const app = uuidv4() + "_" + testName + "/";
+        const app = testName + "_" + uuidv4() + "/";
         const path = nodePath.resolve(TEST_RESULT_DATA_DIR + "/" + app);
         mkdirpSync(path);
         return path;
@@ -156,8 +156,8 @@ export class TestEnvironment {
      */
     private static async installPlugin(testEnvironment: ITestEnvironment) {
         let installScript: string = TemporaryScripts.SHEBANG;
-        installScript += "bright plugins install ../../../../\n"; // install plugin from root of project
-        installScript += "bright plugins validate @zowe/cics";
+        installScript += "zowe plugins install ../../../../\n"; // install plugin from root of project
+        installScript += "zowe plugins validate @zowe/cics\n";
         installScript += "zowe cics --help\n"; // check that the plugin help is available
         const scriptPath = testEnvironment.workingDir + "/install_plugin.sh";
         IO.writeFile(scriptPath, Buffer.from(installScript));

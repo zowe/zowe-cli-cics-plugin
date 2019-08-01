@@ -93,6 +93,9 @@ exports[`CICS install program command should be able to display the help 1`] = `
 
       Display help text
 
+   --help-web  | --hw (boolean)
+
+      Display HTML help in browser
 
  EXAMPLES
  --------
