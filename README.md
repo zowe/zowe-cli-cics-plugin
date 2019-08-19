@@ -73,7 +73,7 @@ Use one of the following methods to install the plug-in:
 
 The validation process helps to ensure the following conditions:
 -   The installation process completed successfully.
--   The plug-in does ***not*** contain commands, options, and arguments that conflict with (possess the same names)other plug-ins that are installed in your Zowe CLI installation.
+-   The plug-in does ***not*** contain commands, options, and arguments that conflict with (possess the same names) other plug-ins that are installed in your Zowe CLI installation.
 
 **Follow these steps:**
 
