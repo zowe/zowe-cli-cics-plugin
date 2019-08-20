@@ -42,7 +42,7 @@ Use one of the following methods to install the plug-in:
     
     For more information, see [Building the plug-in from source](#building-the-plug-in-from-source).
 
-## Building the Plug-in from source
+## Building the plug-in from source
 
 **Follow these steps:**
 
