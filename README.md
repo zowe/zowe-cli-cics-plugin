@@ -116,7 +116,7 @@ You can perform the following types of tests on the IBM MQ plug-in:
 - Integration
 - System
 
-**Note:** For detailed information about conventions and best practices for running tests against Zowe CLI plug-ins, see see [Zowe CLI Plug-in Testing Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/PluginTESTINGGuidelines.md).
+**Note:** For detailed information about conventions and best practices for running tests against Zowe CLI plug-ins, see [Zowe CLI Plug-in Testing Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/PluginTESTINGGuidelines.md).
 
 Before running the system and integration tests, IBM CICS Transaction Server v5.2 (or later) and IBM CICS Management Client Interface (CMCI) must be installed and running in your mainframe environment. For more information, see [Prerequisites](#prerequisites).
 
