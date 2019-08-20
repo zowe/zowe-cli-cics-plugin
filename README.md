@@ -15,14 +15,16 @@ As an application developer, you can use the plug-in to perform various CICS-rel
 The plug-in uses the IBM CICS Management Client Interface (CMCI) API to achieve the interaction with CICS. For more information, see [CICS management client interface](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.3.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) on the IBM Knowledge Center.
 
 ## Prerequisites
+
 Before you install the plug-in, meet the following prerequisites:
-* Install Zowe CLI on your PC.
+
+-   Install Zowe CLI on your computer.
 
     **Note:** For more information, see [Installing Zowe CLI](https://zowe.github.io/docs-site/latest/user-guide/cli-installcli.html).
 
-* Ensure that [IBM CICS Transaction Server v5.2](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.home.doc/welcomePage/welcomePage.html) or later is installed and running in your mainframe environment.
+-   Ensure that [IBM CICS Transaction Server v5.2](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.home.doc/welcomePage/welcomePage.html) or later is installed and running in your mainframe environment.
 
- * Ensure that [IBM CICS Management Client Interface (CMCI)](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) is configured and running in your CICS region.
+-   Ensure that [IBM CICS Management Client Interface (CMCI)](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) is configured and running in your CICS region.
 
 ## Installing the plug-in
 
@@ -72,7 +74,9 @@ Use one of the following methods to install the plug-in:
 ## (Optional) Validating the plug-in
 
 The validation process helps to ensure the following conditions:
+
 -   The installation process completed successfully.
+
 -   The plug-in does ***not*** contain commands, options, and arguments that conflict with (possess the same names)other plug-ins that are installed in your Zowe CLI installation.
 
 **Follow these steps:**
@@ -108,6 +112,7 @@ zowe profiles create cis --help
 ## Running tests
 
 You can perform the following types of tests on the IBM MQ plug-in:
+
 - Unit
 - Integration
 - System
