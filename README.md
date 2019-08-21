@@ -71,29 +71,16 @@ Use one of the following methods to install the plug-in:
     zowe plugins install .
     ```
 
-## (Optional) Validating the plug-in
+**Tip:** After the installation process completes, it validates that the plug-in was installed correct and the names of its commands, options, and arguments do not conflict with that of the other plug-ins that you installed into your Zowe CLi implimentation.
 
-The validation process helps to ensure the following conditions:
+When the validation process is successful, the following message displays:
 
--   The installation process completed successfully.
--   The plug-in does ***not*** contain commands, options, and arguments that conflict with (possess the same names) other plug-ins that are installed in your Zowe CLI installation.
+```
+Validation results for plugin 'cics':
+Successfully validated.
+```
 
-**Follow these steps:**
-
-1. Issue the following command:
-
-    ```
-    zowe plugins validate @zowe/cics-for-zowe-cli
-    ```
-
-    When you install the plug-in successfully, the following message displays:
-
-    ```
-    Validation results for plugin 'cics':
-    Successfully validated.
-    ```
-
-    **Tip:** When an unsuccessful message displays, you can troubleshoot the installation by addressing the issues that the message describes. You can also review the information that is contained in the log file that is located in the directory where you installed Zowe CLI.
+When an unsuccessful message displays, you can troubleshoot the installation by addressing the issues that the message describes. You can also review the information that is contained in the log file that is located in the directory where you installed Zowe CLI.
 
 ## Creating a user profile
 
