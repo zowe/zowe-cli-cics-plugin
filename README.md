@@ -108,7 +108,7 @@ zowe profiles create cis --help
 
 ## Running tests
 
-You can perform the following types of tests on the IBM MQ plug-in:
+You can perform the following types of tests on the IBM CICS plug-in:
 
 - Unit
 - Integration
