@@ -51,14 +51,14 @@ Before you install the plug-in, meet the following prerequisites:
 1.  Meet the prerequisites.
 2.  Install the plug-in:
     ```
-    zowe plugins install @zowe/cics@latest
+    zowe plugins install @zowe/cics-for-zowe-cli
     ```
 
     **Note**: The `latest` npm tag installs a version of the product that is intended for public consumption. You can use different npm tags to install other versions of the product. For example, you can install with the `@daily` tag to try new features that have not been fully validated. For more information about tag usage, see [NPM Tag Names](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md#npm-tag-names).
 
 3.  (Optional) Verify the installation:
     ```
-    zowe plugins validate @zowe/cics
+    zowe plugins validate @zowe/cics-for-zowe-cli
     ```
     When you install the plug-in successfully, the following message displays:
     ```
@@ -94,7 +94,7 @@ For information about running automated, unit, and system and integration tests 
 **Follow these steps:**
 1.  To uninstall the plug-in from a base application, issue the following command:
     ```
-    zowe plugins uninstall @zowe/cics
+    zowe plugins uninstall @zowe/cics-for-zowe-cli
     ```
 After the uninstallation process completes successfully, the product no longer contains the plug-in configuration.
 

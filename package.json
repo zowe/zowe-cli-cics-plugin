@@ -1,7 +1,7 @@
 {
-  "name": "@zowe/cics",
+  "name": "@zowe/cics-for-zowe-cli",
   "version": "2.0.3-alpha.201908011904",
-  "description": "Zowe CLI Plug-in for IBM CICS",
+  "description": "IBM CICS Plug-in for Zowe CLI",
   "homepage": "https://github.com/zowe/zowe-cli-cics-plugin#readme",
   "bugs": {
     "url": "https://github.com/zowe/zowe-cli-cics-plugin/issues"
@@ -46,8 +46,8 @@
     "xml2js": "0.4.19"
   },
   "peerDependencies": {
-    "@zowe/imperative": "^3.0.0",
-    "@zowe/cli": "^3.0.0"
+    "@zowe/imperative": "^4.0.0",
+    "@zowe/cli": "^5.0.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^5.0.5",
