@@ -1,5 +1,4 @@
 # Contribution Guidelines
-
 This document is intended to be a living summary of conventions & best practices for development within IBM® CICS® Plug-in for Zowe CLI.
 
 ## Primary Contribution Guidelines

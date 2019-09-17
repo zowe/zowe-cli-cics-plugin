@@ -157,7 +157,7 @@ export class TestEnvironment {
     private static async installPlugin(testEnvironment: ITestEnvironment) {
         let installScript: string = TemporaryScripts.SHEBANG;
         installScript += "zowe plugins install ../../../../\n"; // install plugin from root of project
-        installScript += "zowe plugins validate @zowe/cics\n";
+        installScript += "zowe plugins validate @zowe/cics-for-zowe-cli\n";
         installScript += "zowe cics --help\n"; // check that the plugin help is available
         const scriptPath = testEnvironment.workingDir + "/install_plugin.sh";
         IO.writeFile(scriptPath, Buffer.from(installScript));

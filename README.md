@@ -75,7 +75,7 @@ Use one of the following methods to install the plug-in:
 3.  Issue one of the following commands to install the plug-in:
         
     ```
-    zowe plugins install <local path your cloned repo>
+    zowe plugins install @zowe/cics-for-zowe-cli
     ```
     Or:
     ```
