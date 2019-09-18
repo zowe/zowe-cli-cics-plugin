@@ -39,6 +39,11 @@ export const CicsCmciConstants: { [key: string]: any } = {
     CICS_PROGRAM_RESOURCE: "CICSProgram",
 
     /**
+     * Specifies the required part of the REST interface URI to access URIMap definitions
+     */
+    CICS_DEFINITION_URIMAP: "CICSDefinitionURIMap",
+
+    /**
      * ORDERBY parameter
      */
     ORDER_BY: "ORDERBY",
