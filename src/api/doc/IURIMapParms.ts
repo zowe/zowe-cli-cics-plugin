@@ -23,28 +23,34 @@ export interface IURIMapParms {
     csdGroup: string;
 
     /**
-     * The path of the URIMap
+     * Path component of URI to which the map applies
      * Up to 255 characters long
      */
     path: string;
 
     /**
-     * The host of the URIMap
+     * Host component of URI to which the map applies
      * Up to 116 characters long
      */
     host: string;
 
     /**
-     * The program name of the URIMap
-     * Up to 8 characters long
-     */
-    programName: string;
-
-    /**
-     * The scheme of the URIMap
+     * Scheme component of URI to which the map applies
      * Allowed values: http, https
      */
     scheme: string;
+
+    /**
+     * Application program that will process the request
+     * Only used for server URIMaps; up to 8 characters long
+     */
+    programName?: string;
+
+    /**
+     * Pipeline that will process the request
+     * Only used for pipeline URIMaps; up to 8 characters long
+     */
+    pipelineName?: string;
 
     /**
      * The name of the CICS region of the URIMap
