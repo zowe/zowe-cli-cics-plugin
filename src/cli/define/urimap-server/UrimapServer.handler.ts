@@ -10,7 +10,7 @@
 */
 
 import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@zowe/imperative";
-import { defineProgram, ICMCIApiResponse, defineUrimapServer } from "../../../api";
+import { ICMCIApiResponse, defineUrimapServer } from "../../../api";
 import { CicsBaseHandler } from "../../CicsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
@@ -21,7 +21,7 @@ const strings = (require("../../-strings-/en").default as typeof i18nTypings).DE
 /**
  * Command handler for defining CICS URIMaps via CMCI
  * @export
- * @class ProgramHandler
+ * @class UrimapServerHandler
  * @implements {ICommandHandler}
  */
 export default class UrimapServerHandler extends CicsBaseHandler {
@@ -45,7 +45,7 @@ export default class UrimapServerHandler extends CicsBaseHandler {
             cicsPlex: params.arguments.cicsPlex || profile.cicsPlex
         });
 
-        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.programName);
+        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.urimapName);
         return response;
     }
 }
