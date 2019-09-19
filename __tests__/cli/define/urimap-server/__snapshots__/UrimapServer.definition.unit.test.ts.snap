@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cics define urimap-server should not have changed 1`] = `
+Object {
+  "aliases": Array [],
+  "description": "Define a new URIMAP of type server to CICS. This acts as an HTTP(S) server",
+  "examples": Array [
+    Object {
+      "description": "Define a URIMAP named URIMAPA for the program named PGM123 to the region named MYREGION in the CSD group MYGRP where the host is www.example.com and the path is /example/index.html",
+      "options": "URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --program-name PGM123 --region-name MYREGION",
+    },
+  ],
+  "name": "urimap-server",
+  "options": Array [
+    Object {
+      "aliases": Array [
+        "up",
+      ],
+      "description": "The path component of the URI",
+      "name": "urimap-path",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "uh",
+      ],
+      "description": "The host component of the URI",
+      "name": "urimap-host",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "us",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": false,
+        "values": Array [
+          "http",
+          "https",
+        ],
+      },
+      "defaultValue": "http",
+      "description": "The scheme component to be used with the request (http or https)",
+      "name": "urimap-scheme",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "pn",
+      ],
+      "description": "The application program that makes or handles the requests",
+      "name": "program-name",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "description": "The CICS region name to which to define the new URIMAP",
+      "name": "region-name",
+      "type": "string",
+    },
+    Object {
+      "description": "The name of the CICSPlex to which to define the new URIMAP",
+      "name": "cics-plex",
+      "type": "string",
+    },
+  ],
+  "positionals": Array [
+    Object {
+      "description": "The name of the URIMAP to create. The maximum length of the program name is eight characters.",
+      "name": "urimapName",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "description": "The CICS system definition (CSD) Group for the new transaction that you want to define. The maximum length of the group name is eight characters.",
+      "name": "csdGroup",
+      "required": true,
+      "type": "string",
+    },
+  ],
+  "profile": Object {
+    "optional": Array [
+      "cics",
+    ],
+  },
+  "type": "command",
+}
+`;
