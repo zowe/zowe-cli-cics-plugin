@@ -12,7 +12,7 @@
 import { AbstractSession, ImperativeExpect, Logger } from "@zowe/imperative";
 import { CicsCmciRestClient } from "../../rest";
 import { CicsCmciConstants } from "../../constants";
-import { ICMCIApiResponse, IProgramParms, ITransactionParms } from "../../doc";
+import { ICMCIApiResponse, IProgramParms, ITransactionParms, IURIMapParms } from "../../doc";
 
 /**
  * Delete a program installed in CICS through CMCI REST API
@@ -58,6 +58,31 @@ export async function deleteTransaction(session: AbstractSession, parms: ITransa
     const cicsPlex = parms.cicsPlex == null ? "" : parms.cicsPlex + "/";
     const cmciResource = "/" + CicsCmciConstants.CICS_SYSTEM_MANAGEMENT + "/" +
         CicsCmciConstants.CICS_DEFINITION_TRANSACTION + "/" + cicsPlex +
+        `${parms.regionName}?CRITERIA=(NAME=${parms.name})&PARAMETER=CSDGROUP(${parms.csdGroup})`;
+    return CicsCmciRestClient.deleteExpectParsedXml(session, cmciResource, []);
+}
+
+/**
+ * Delete a URIMap installed in CICS through CMCI REST API
+ * @param {AbstractSession} session - the session to connect to CMCI with
+ * @param {IURIMapParms} parms - parameters for deleting your URIMap
+ * @returns {Promise<ICMCIApiResponse>} promise that resolves to the response (XML parsed into a javascript object)
+ *                          when the request is complete
+ * @throws {ImperativeError} CICS URIMap name not defined or blank
+ * @throws {ImperativeError} CICS CSD group not defined or blank
+ * @throws {ImperativeError} CICS region name not defined or blank
+ * @throws {ImperativeError} CicsCmciRestClient request fails
+ */
+export async function deleteUrimap(session: AbstractSession, parms: IURIMapParms): Promise<ICMCIApiResponse> {
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "CICS URIMap name", "CICS URIMap name is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.csdGroup, "CICS CSD Group", "CICS CSD group is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.regionName, "CICS Region name", "CICS region name is required");
+
+    Logger.getAppLogger().debug("Attempting to delete a URIMap with the following parameters:\n%s", JSON.stringify(parms));
+
+    const cicsPlex = parms.cicsPlex == null ? "" : parms.cicsPlex + "/";
+    const cmciResource = "/" + CicsCmciConstants.CICS_SYSTEM_MANAGEMENT + "/" +
+        CicsCmciConstants.CICS_DEFINITION_URIMAP + "/" + cicsPlex +
         `${parms.regionName}?CRITERIA=(NAME=${parms.name})&PARAMETER=CSDGROUP(${parms.csdGroup})`;
     return CicsCmciRestClient.deleteExpectParsedXml(session, cmciResource, []);
 }

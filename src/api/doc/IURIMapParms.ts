@@ -26,19 +26,19 @@ export interface IURIMapParms {
      * Path component of URI to which the map applies
      * Up to 255 characters long
      */
-    path: string;
+    path?: string;
 
     /**
      * Host component of URI to which the map applies
      * Up to 116 characters long
      */
-    host: string;
+    host?: string;
 
     /**
      * Scheme component of URI to which the map applies
      * Allowed values: http, https
      */
-    scheme: string;
+    scheme?: string;
 
     /**
      * Application program that will process the request
