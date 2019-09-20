@@ -1,0 +1,142 @@
+/*
+* This program and the accompanying materials are made available under the terms of the *
+* Eclipse Public License v2.0 which accompanies this distribution, and is available at *
+* https://www.eclipse.org/legal/epl-v20.html                                      *
+*                                                                                 *
+* SPDX-License-Identifier: EPL-2.0                                                *
+*                                                                                 *
+* Copyright Contributors to the Zowe Project.                                     *
+*                                                                                 *
+*/
+
+import { Session } from "@zowe/imperative";
+import { ITestEnvironment } from "../../../../../__tests__/__src__/environment/doc/response/ITestEnvironment";
+import { TestEnvironment } from "../../../../../__tests__/__src__/environment/TestEnvironment";
+import { generateRandomAlphaNumericString } from "../../../../__src__/TestUtils";
+import { defineUrimapClient, deleteUrimap, IURIMapParms, } from "../../../../../src";
+
+let testEnvironment: ITestEnvironment;
+let regionName: string;
+let csdGroup: string;
+let session: Session;
+
+describe("CICS Define client URImap", () => {
+
+    beforeAll(async () => {
+        testEnvironment = await TestEnvironment.setUp({
+            testName: "cics_cmci_define_urimap-client",
+            installPlugin: true,
+            tempProfileTypes: ["cics"]
+        });
+        csdGroup = testEnvironment.systemTestProperties.cmci.csdGroup;
+        regionName = testEnvironment.systemTestProperties.cmci.regionName;
+        const cmciProperties = await testEnvironment.systemTestProperties.cmci;
+
+        session = new Session({
+            user: cmciProperties.user,
+            password: cmciProperties.password,
+            hostname: cmciProperties.host,
+            port: cmciProperties.port,
+            type: "basic",
+            strictSSL: false,
+            protocol: testEnvironment.systemTestProperties.cmci.protocol as any || "http",
+        });
+    });
+
+    afterAll(async () => {
+        await TestEnvironment.cleanUp(testEnvironment);
+    });
+
+    const options: IURIMapParms = {} as any;
+
+    it("should define a URIMap to CICS", async () => {
+        let error;
+        let response;
+
+        const urimapNameSuffixLength = 3;
+        const urimapName = "X" + generateRandomAlphaNumericString(urimapNameSuffixLength);
+
+        options.name = urimapName;
+        options.path = "fake";
+        options.host = "fake";
+        options.scheme = "http";
+        options.csdGroup = csdGroup;
+        options.regionName = regionName;
+
+        try {
+            response = await defineUrimapClient(session, options);
+        } catch (err) {
+            error = err;
+        }
+
+        expect(error).toBeFalsy();
+        expect(response).toBeTruthy();
+        expect(response.response.resultsummary.api_response1).toBe("1024");
+        await deleteUrimap(session, options);
+    });
+
+    it("should fail to define a URIMap to CICS with invalid CICS region", async () => {
+        let error;
+        let response;
+
+        const urimapNameSuffixLength = 3;
+        const urimapName = "X" + generateRandomAlphaNumericString(urimapNameSuffixLength);
+
+        options.name = urimapName;
+        options.path = "fake";
+        options.host = "fake";
+        options.scheme = "http";
+        options.csdGroup = csdGroup;
+        options.regionName = "FAKE";
+
+        try {
+            response = await defineUrimapClient(session, options);
+        } catch (err) {
+            error = err;
+        }
+
+        expect(error).toBeTruthy();
+        expect(response).toBeFalsy();
+        expect(error.message).toContain("Did not receive the expected response from CMCI REST API");
+        expect(error.message).toContain("INVALIDPARM");
+    });
+
+    it("should fail to define a URIMap to CICS due to duplicate name", async () => {
+        let error;
+        let response;
+
+        const urimapNameSuffixLength = 3;
+        const urimapName = "X" + generateRandomAlphaNumericString(urimapNameSuffixLength);
+
+        options.name = urimapName;
+        options.path = "fake";
+        options.host = "fake";
+        options.scheme = "http";
+        options.csdGroup = csdGroup;
+        options.regionName = regionName;
+
+        // define a URIMap to CICS
+        try {
+            response = await defineUrimapClient(session, options);
+        } catch (err) {
+            error = err;
+        }
+
+        expect(error).toBeFalsy();
+        expect(response).toBeTruthy();
+        response = null; // reset
+
+        // define the same URIMap and validate duplicate error
+        try {
+            response = await defineUrimapClient(session, options);
+        } catch (err) {
+            error = err;
+        }
+
+        expect(error).toBeTruthy();
+        expect(response).toBeFalsy();
+        expect(error.message).toContain("Did not receive the expected response from CMCI REST API");
+        expect(error.message).toContain("DUPRES");
+        await deleteUrimap(session, options);
+    });
+});
