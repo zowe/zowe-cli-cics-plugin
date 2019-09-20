@@ -196,7 +196,7 @@ export async function defineUrimapPipeline(session: AbstractSession, parms: IURI
  * @throws {ImperativeError} CICS region name not defined or blank
  */
 function validateUrimapParms(parms: IURIMapParms) {
-    ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "CICS URIMap name", "CICS URIMap name is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "CICS URIMap Name", "CICS URIMap name is required");
     ImperativeExpect.toBeDefinedAndNonBlank(parms.csdGroup, "CICS CSD Group", "CICS CSD group is required");
     ImperativeExpect.toBeDefinedAndNonBlank(parms.path, "CICS URIMap Path", "CICS URIMap path is required");
     ImperativeExpect.toBeDefinedAndNonBlank(parms.host, "CICS URIMap Host", "CICS URIMap host is required");
