@@ -16,7 +16,7 @@ import { CicsBaseHandler } from "../../CicsBaseHandler";
 import i18nTypings from "../../-strings-/en";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../../-strings-/en").default as typeof i18nTypings).DEFINE.RESOURCES.URIMAPSERVER;
+const strings = (require("../../-strings-/en").default as typeof i18nTypings).DEFINE.RESOURCES.URIMAP;
 
 /**
  * Command handler for defining CICS URIMaps via CMCI

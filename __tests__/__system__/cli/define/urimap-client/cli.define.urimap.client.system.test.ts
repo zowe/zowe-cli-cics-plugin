@@ -14,6 +14,7 @@ import { ITestEnvironment } from "../../../../__src__/environment/doc/response/I
 import { generateRandomAlphaNumericString, runCliScript } from "../../../../__src__/TestUtils";
 import { Session } from "@zowe/imperative";
 import { IURIMapParms } from "../../../../../src";
+import { getResource } from "../../../../../src/api/methods/get/Get";
 import { deleteUrimap } from "../../../../../src/api/methods/delete/Delete";
 
 let TEST_ENVIRONMENT: ITestEnvironment;
@@ -70,12 +71,22 @@ describe("CICS define urimap-client command", () => {
         const urimapNameSuffixLength = 4;
         const urimapName = "DFN" + generateRandomAlphaNumericString(urimapNameSuffixLength);
         const options: IURIMapParms = { name: urimapName, csdGroup, regionName };
-        const output = runCliScript(__dirname + "/__scripts__/define_urimap_client.sh", TEST_ENVIRONMENT,
+        let output = runCliScript(__dirname + "/__scripts__/define_urimap_client.sh", TEST_ENVIRONMENT,
             [urimapName, csdGroup, "urimap/test/invalid.html", "www.example.com", regionName]);
-        const stderr = output.stderr.toString();
+        let stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+
+        output = runCliScript(__dirname + "/__scripts__/get_resource_urimap.sh", TEST_ENVIRONMENT,
+            [regionName,
+                csdGroup]);
+        stderr = output.stderr.toString();
+        expect(stderr).toEqual("");
+        expect(output.status).toEqual(0);
+        expect(output.stdout.toString()).toContain(urimapName);
+        expect(output.stdout.toString()).toContain("ENABLED");
+
         await deleteUrimap(session, options);
     });
 
@@ -132,7 +143,7 @@ describe("CICS define urimap-client command", () => {
         const urimapScheme = "http";
         const urimapPath = "urimap/test/invalid.html";
         const options: IURIMapParms = { name: urimapName, csdGroup, regionName };
-        const output = runCliScript(__dirname + "/__scripts__/define_urimap_client_fully_qualified.sh", TEST_ENVIRONMENT,
+        let output = runCliScript(__dirname + "/__scripts__/define_urimap_client_fully_qualified.sh", TEST_ENVIRONMENT,
             [urimapName,
                 csdGroup,
                 urimapPath,
@@ -145,10 +156,26 @@ describe("CICS define urimap-client command", () => {
                 password,
                 protocol,
                 rejectUnauthorized]);
-        const stderr = output.stderr.toString();
+        let stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+
+        output = runCliScript(__dirname + "/__scripts__/get_resource_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
+            [regionName,
+                csdGroup,
+                host,
+                port,
+                user,
+                password,
+                protocol,
+                rejectUnauthorized]);
+        stderr = output.stderr.toString();
+        expect(stderr).toEqual("");
+        expect(output.status).toEqual(0);
+        expect(output.stdout.toString()).toContain(urimapName);
+        expect(output.stdout.toString()).toContain("ENABLED");
+
         await deleteUrimap(session, options);
     });
 

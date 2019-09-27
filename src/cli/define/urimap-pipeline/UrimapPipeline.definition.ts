@@ -14,11 +14,11 @@ import { ICommandDefinition } from "@zowe/imperative";
 import i18nTypings from "../../-strings-/en";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../../-strings-/en").default as typeof i18nTypings).DEFINE.RESOURCES.URIMAPPIPELINE;
+const strings = (require("../../-strings-/en").default as typeof i18nTypings).DEFINE.RESOURCES.URIMAP;
 
 export const UrimapPipelineDefinition: ICommandDefinition = {
     name: "urimap-pipeline", aliases: [],
-    description: strings.DESCRIPTION,
+    description: strings.DESCRIPTION.PIPELINE,
     handler: __dirname + "/UrimapPipeline.handler",
     type: "command",
     positionals: [{

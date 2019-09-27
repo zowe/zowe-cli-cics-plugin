@@ -74,14 +74,18 @@ export const ResourceDefinition: ICommandDefinition = {
         },
         {
             description: strings.EXAMPLES.EX6,
-            options: `CICSProgram --region-name MYREGION --criteria "PROGRAM=PRG*"`
+            options: `CICSDefinitionURIMap --region-name MYREGION --parameter "CSDGROUP(GRP1)"`
         },
         {
             description: strings.EXAMPLES.EX7,
-            options: `CICSLocalTransaction --region-name MYREGION --criteria "TRANID=TRAN"`
+            options: `CICSProgram --region-name MYREGION --criteria "PROGRAM=PRG*"`
         },
         {
             description: strings.EXAMPLES.EX8,
+            options: `CICSLocalTransaction --region-name MYREGION --criteria "TRANID=TRAN"`
+        },
+        {
+            description: strings.EXAMPLES.EX9,
             options: `CICSProgram --region-name MYREGION --criteria "PROGRAM=MYPRG*" --rft table --rfh --rff program length status`
         }
     ]

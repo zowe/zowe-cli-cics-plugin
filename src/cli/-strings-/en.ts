@@ -55,8 +55,12 @@ export default {
                         "in the CSD group MYGRP"
                 }
             },
-            URIMAPSERVER: {
-                DESCRIPTION: "Define a new URIMAP of type server to CICS. This acts as an HTTP(S) server",
+            URIMAP: {
+                DESCRIPTION: {
+                    SERVER: "Define a new URIMAP of type server to CICS. This acts as an HTTP(S) server",
+                    CLIENT: "Define a new URIMAP of type client to CICS. This acts as an HTTP(S) client",
+                    PIPELINE: "Define a new URIMAP of type pipeline to CICS. This processes incoming HTTP(S) requests"
+                },
                 POSITIONALS: {
                     URIMAPNAME: "The name of the URIMAP to create. The maximum length of the program name is eight characters.",
                     CSDGROUP: "The CICS system definition (CSD) Group for the new transaction that you want to define." +
@@ -66,9 +70,11 @@ export default {
                     URIMAPHOST: "The host component of the URI",
                     URIMAPPATH: "The path component of the URI",
                     URIMAPSCHEME: "The scheme component to be used with the request (http or https)",
-                    PROGRAMNAME: "The application program that makes or handles the requests",
                     REGIONNAME: "The CICS region name to which to define the new URIMAP",
-                    CICSPLEX: "The name of the CICSPlex to which to define the new URIMAP"
+                    CICSPLEX: "The name of the CICSPlex to which to define the new URIMAP",
+                    PROGRAMNAME: "The application program that makes or handles the requests",
+                    PIPELINENAME: "The name of the PIPELINE resource definition for the web service." +
+                        " The maximum length of the pipeline name is eight characters",
                 },
                 MESSAGES: {
                     SUCCESS: "The URIMAP '%s' was defined successfully."
@@ -76,52 +82,6 @@ export default {
                 EXAMPLES: {
                     EX1: "Define a URIMAP named URIMAPA for the program named PGM123 to the region named MYREGION " +
                        "in the CSD group MYGRP where the host is www.example.com and the path is /example/index.html"
-                }
-            },
-            URIMAPCLIENT: {
-                DESCRIPTION: "Define a new URIMAP of type client to CICS. This acts as an HTTP(S) client",
-                POSITIONALS: {
-                    URIMAPNAME: "The name of the URIMAP to create. The maximum length of the program name is eight characters.",
-                    CSDGROUP: "The CICS system definition (CSD) Group for the new transaction that you want to define." +
-                        " The maximum length of the group name is eight characters."
-                },
-                OPTIONS: {
-                    URIMAPHOST: "The host component of the URI",
-                    URIMAPPATH: "The path component of the URI",
-                    URIMAPSCHEME: "The scheme component to be used with the request (http or https)",
-                    REGIONNAME: "The CICS region name to which to define the new URIMAP",
-                    CICSPLEX: "The name of the CICSPlex to which to define the new URIMAP"
-                },
-                MESSAGES: {
-                    SUCCESS: "The URIMAP '%s' was defined successfully."
-                },
-                EXAMPLES: {
-                    EX1: "Define a URIMAP named URIMAPA to the region named MYREGION in the CSD group MYGRP " +
-                       "where the host is www.example.com and the path is /example/index.html"
-                }
-            },
-            URIMAPPIPELINE: {
-                DESCRIPTION: "Define a new URIMAP of type pipeline to CICS. This processes incoming HTTP(S) requests",
-                POSITIONALS: {
-                    URIMAPNAME: "The name of the URIMAP to create. The maximum length of the program name is eight characters.",
-                    CSDGROUP: "The CICS system definition (CSD) Group for the new transaction that you want to define." +
-                        " The maximum length of the group name is eight characters."
-                },
-                OPTIONS: {
-                    URIMAPHOST: "The host component of the URI",
-                    URIMAPPATH: "The path component of the URI",
-                    URIMAPSCHEME: "The scheme component to be used with the request (http or https)",
-                    PIPELINENAME: "The name of the PIPELINE resource definition for the web service." +
-                        " The maximum length of the pipeline name is eight characters",
-                    REGIONNAME: "The CICS region name to which to define the new URIMAP",
-                    CICSPLEX: "The name of the CICSPlex to which to define the new URIMAP"
-                },
-                MESSAGES: {
-                    SUCCESS: "The URIMAP '%s' was defined successfully."
-                },
-                EXAMPLES: {
-                    EX1: "Define a URIMAP named URIMAPA to the region named MYREGION in the CSD group MYGRP " +
-                       "where the host is www.example.com and the path is /example/index.html"
                 }
             }
         }
@@ -231,9 +191,10 @@ export default {
                     EX3: "Get local file resources from the region named MYREGION",
                     EX4: "Get program definition resources from the CSD group named GRP1 and the region named MYREGION",
                     EX5: "Get transaction definition resources from the CSD group named GRP1 and the region named MYREGION",
-                    EX6: "Get program resources that start with the name PRG from the region named MYREGION",
-                    EX7: "Get a local transaction resource named TRAN from the region named MYREGION",
-                    EX8: "Get program resources that start with the name MYPRG from the region named MYREGION and display various fields as a table",
+                    EX6: "Get URIMap definition resources from the CSD group named GRP1 and the region named MYREGION",
+                    EX7: "Get program resources that start with the name PRG from the region named MYREGION",
+                    EX8: "Get a local transaction resource named TRAN from the region named MYREGION",
+                    EX9: "Get program resources that start with the name MYPRG from the region named MYREGION and display various fields as a table",
                 }
             }
         }
