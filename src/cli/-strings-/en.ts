@@ -80,8 +80,18 @@ export default {
                     SUCCESS: "The URIMAP '%s' was defined successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Define a URIMAP named URIMAPA for the program named PGM123 to the region named MYREGION " +
-                       "in the CSD group MYGRP where the host is www.example.com and the path is /example/index.html"
+                    SERVER: {
+                        EX1: "Define a URIMAP named URIMAPA for the program named PGM123 to the region named MYREGION " +
+                            "in the CSD group MYGRP where the host is www.example.com and the path is /example/index.html"
+                    },
+                    CLIENT: {
+                        EX1: "Define a URIMAP named URIMAPA to the region named MYREGION in the CSD group MYGRP " +
+                            "where the host is www.example.com and the path is /example/index.html"
+                    },
+                    PIPELINE: {
+                        EX1: "Define a URIMAP named URIMAPA for the pipeline named PIPE123 to the region named MYREGION " +
+                            "in the CSD group MYGRP where the host is www.example.com and the path is /example/index.html"
+                    }
                 }
             }
         }

@@ -2,11 +2,13 @@
 
 exports[`cics define urimap-pipeline should not have changed 1`] = `
 Object {
-  "aliases": Array [],
+  "aliases": Array [
+    "up",
+  ],
   "description": "Define a new URIMAP of type pipeline to CICS. This processes incoming HTTP(S) requests",
   "examples": Array [
     Object {
-      "description": "Define a URIMAP named URIMAPA to the region named MYREGION in the CSD group MYGRP where the host is www.example.com and the path is /example/index.html",
+      "description": "Define a URIMAP named URIMAPA for the pipeline named PIPE123 to the region named MYREGION in the CSD group MYGRP where the host is www.example.com and the path is /example/index.html",
       "options": "URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --pipeline-name PIPE123 --region-name MYREGION",
     },
   ],

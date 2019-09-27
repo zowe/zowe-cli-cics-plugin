@@ -17,7 +17,8 @@ import i18nTypings from "../../-strings-/en";
 const strings = (require("../../-strings-/en").default as typeof i18nTypings).DEFINE.RESOURCES.URIMAP;
 
 export const UrimapPipelineDefinition: ICommandDefinition = {
-    name: "urimap-pipeline", aliases: [],
+    name: "urimap-pipeline",
+    aliases: ["up"],
     description: strings.DESCRIPTION.PIPELINE,
     handler: __dirname + "/UrimapPipeline.handler",
     type: "command",
@@ -74,7 +75,7 @@ export const UrimapPipelineDefinition: ICommandDefinition = {
         }],
     profile: {optional: ["cics"]},
     examples: [{
-        description: strings.EXAMPLES.EX1,
+        description: strings.EXAMPLES.PIPELINE.EX1,
         options: "URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --pipeline-name PIPE123 --region-name MYREGION"
     }]
 };

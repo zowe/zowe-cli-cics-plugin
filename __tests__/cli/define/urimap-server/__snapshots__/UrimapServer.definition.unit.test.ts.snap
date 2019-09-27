@@ -2,7 +2,9 @@
 
 exports[`cics define urimap-server should not have changed 1`] = `
 Object {
-  "aliases": Array [],
+  "aliases": Array [
+    "us",
+  ],
   "description": "Define a new URIMAP of type server to CICS. This acts as an HTTP(S) server",
   "examples": Array [
     Object {

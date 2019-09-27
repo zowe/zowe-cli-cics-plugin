@@ -2,7 +2,9 @@
 
 exports[`cics define urimap-client should not have changed 1`] = `
 Object {
-  "aliases": Array [],
+  "aliases": Array [
+    "uc",
+  ],
   "description": "Define a new URIMAP of type client to CICS. This acts as an HTTP(S) client",
   "examples": Array [
     Object {
