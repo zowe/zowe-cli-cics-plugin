@@ -12,7 +12,7 @@
 import { AbstractSession, ImperativeExpect, Logger } from "@zowe/imperative";
 import { CicsCmciRestClient } from "../../rest";
 import { CicsCmciConstants } from "../../constants";
-import { ICMCIApiResponse, IProgramParms, ITransactionParms } from "../../doc";
+import { ICMCIApiResponse, IProgramParms, ITransactionParms, IURIMapParms } from "../../doc";
 
 /**
  * Define a new program resource to CICS through CMCI REST API
@@ -99,4 +99,136 @@ export async function defineTransaction(session: AbstractSession, parms: ITransa
         parms.regionName;
     return CicsCmciRestClient.postExpectParsedXml(session, cmciResource,
         [], requestBody) as any;
+}
+
+/**
+ * Define a new server URIMap resource to CICS through CMCI REST API
+ * @param {AbstractSession} session - the session to connect to CMCI with
+ * @param {IURIMapParms} parms - parameters for defining your URIMap
+ * @returns {Promise<any>} promise that resolves to the response (XML parsed into a javascript object)
+ *                          when the request is complete
+ * @throws {ImperativeError} CICS URIMap name not defined or blank
+ * @throws {ImperativeError} CICS CSD group not defined or blank
+ * @throws {ImperativeError} CICS URIMap path not defined or blank
+ * @throws {ImperativeError} CICS URIMap host not defined or blank
+ * @throws {ImperativeError} CICS URIMap scheme not defined or blank
+ * @throws {ImperativeError} CICS region name not defined or blank
+ * @throws {ImperativeError} CICS URIMap program name not defined or blank
+ * @throws {ImperativeError} CicsCmciRestClient request fails
+ */
+export async function defineUrimapServer(session: AbstractSession, parms: IURIMapParms): Promise<ICMCIApiResponse> {
+    validateUrimapParms(parms);
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.programName, "CICS URIMap Program name", "CICS URIMap program name is required");
+
+    Logger.getAppLogger().debug("Attempting to define a server URIMap with the following parameters:\n%s", JSON.stringify(parms));
+    const requestBody: any = buildUrimapRequestBody(parms, "server");
+    requestBody.request.create.attributes.$.program = parms.programName;
+
+    const cicsPlex = parms.cicsPlex == null ? "" : parms.cicsPlex + "/";
+    const cmciResource = "/" + CicsCmciConstants.CICS_SYSTEM_MANAGEMENT + "/" +
+        CicsCmciConstants.CICS_DEFINITION_URIMAP + "/" + cicsPlex + parms.regionName;
+    return CicsCmciRestClient.postExpectParsedXml(session, cmciResource, [], requestBody) as any;
+}
+
+/**
+ * Define a new client URIMap resource to CICS through CMCI REST API
+ * @param {AbstractSession} session - the session to connect to CMCI with
+ * @param {IURIMapParms} parms - parameters for defining your URIMap
+ * @returns {Promise<any>} promise that resolves to the response (XML parsed into a javascript object)
+ *                          when the request is complete
+ * @throws {ImperativeError} CICS URIMap name not defined or blank
+ * @throws {ImperativeError} CICS CSD group not defined or blank
+ * @throws {ImperativeError} CICS URIMap path not defined or blank
+ * @throws {ImperativeError} CICS URIMap host not defined or blank
+ * @throws {ImperativeError} CICS URIMap scheme not defined or blank
+ * @throws {ImperativeError} CICS region name not defined or blank
+ * @throws {ImperativeError} CicsCmciRestClient request fails
+ */
+export async function defineUrimapClient(session: AbstractSession, parms: IURIMapParms): Promise<ICMCIApiResponse> {
+    validateUrimapParms(parms);
+
+    Logger.getAppLogger().debug("Attempting to define a client URIMap with the following parameters:\n%s", JSON.stringify(parms));
+    const requestBody: any = buildUrimapRequestBody(parms, "client");
+
+    const cicsPlex = parms.cicsPlex == null ? "" : parms.cicsPlex + "/";
+    const cmciResource = "/" + CicsCmciConstants.CICS_SYSTEM_MANAGEMENT + "/" +
+        CicsCmciConstants.CICS_DEFINITION_URIMAP + "/" + cicsPlex + parms.regionName;
+    return CicsCmciRestClient.postExpectParsedXml(session, cmciResource, [], requestBody) as any;
+}
+
+/**
+ * Define a new pipeline URIMap resource to CICS through CMCI REST API
+ * @param {AbstractSession} session - the session to connect to CMCI with
+ * @param {IURIMapParms} parms - parameters for defining your URIMap
+ * @returns {Promise<any>} promise that resolves to the response (XML parsed into a javascript object)
+ *                          when the request is complete
+ * @throws {ImperativeError} CICS URIMap name not defined or blank
+ * @throws {ImperativeError} CICS CSD group not defined or blank
+ * @throws {ImperativeError} CICS URIMap path not defined or blank
+ * @throws {ImperativeError} CICS URIMap host not defined or blank
+ * @throws {ImperativeError} CICS URIMap scheme not defined or blank
+ * @throws {ImperativeError} CICS region name not defined or blank
+ * @throws {ImperativeError} CICS URIMap pipeline name not defined or blank
+ * @throws {ImperativeError} CicsCmciRestClient request fails
+ */
+export async function defineUrimapPipeline(session: AbstractSession, parms: IURIMapParms): Promise<ICMCIApiResponse> {
+    validateUrimapParms(parms);
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.pipelineName, "CICS URIMap Pipeline name", "CICS URIMap pipeline name is required");
+
+    Logger.getAppLogger().debug("Attempting to define a pipeline URIMap with the following parameters:\n%s", JSON.stringify(parms));
+    const requestBody: any = buildUrimapRequestBody(parms, "pipeline");
+    requestBody.request.create.attributes.$.pipeline = parms.pipelineName;
+
+    const cicsPlex = parms.cicsPlex == null ? "" : parms.cicsPlex + "/";
+    const cmciResource = "/" + CicsCmciConstants.CICS_SYSTEM_MANAGEMENT + "/" +
+        CicsCmciConstants.CICS_DEFINITION_URIMAP + "/" + cicsPlex + parms.regionName;
+    return CicsCmciRestClient.postExpectParsedXml(session, cmciResource, [], requestBody) as any;
+}
+
+/**
+ * Validate parameters for defining a URIMap
+ * @param {IURIMapParms} parms - parameters to validate
+ * @throws {ImperativeError} CICS URIMap name not defined or blank
+ * @throws {ImperativeError} CICS CSD group not defined or blank
+ * @throws {ImperativeError} CICS URIMap path not defined or blank
+ * @throws {ImperativeError} CICS URIMap host not defined or blank
+ * @throws {ImperativeError} CICS URIMap scheme not defined or blank
+ * @throws {ImperativeError} CICS region name not defined or blank
+ */
+function validateUrimapParms(parms: IURIMapParms) {
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "CICS URIMap Name", "CICS URIMap name is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.csdGroup, "CICS CSD Group", "CICS CSD group is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.path, "CICS URIMap Path", "CICS URIMap path is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.host, "CICS URIMap Host", "CICS URIMap host is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.scheme, "CICS URIMap Scheme", "CICS URIMap scheme is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.regionName, "CICS Region name", "CICS region name is required");
+}
+
+/**
+ * Build request body for defining a URIMap
+ * @param {IURIMapParms} parms - parameters containing attribute values
+ * @param {string} usage - value of the usage attribute (server, client, or pipeline)
+ */
+function buildUrimapRequestBody(parms: IURIMapParms, usage: "server" | "client" | "pipeline") {
+    return {
+        request: {
+            create: {
+                parameter: {
+                    $: {
+                        name: "CSD",
+                    }
+                },
+                attributes: {
+                    $: {
+                        name: parms.name,
+                        csdgroup: parms.csdGroup,
+                        path: parms.path,
+                        host: parms.host,
+                        scheme: parms.scheme,
+                        usage
+                    }
+                }
+            }
+        }
+    };
 }

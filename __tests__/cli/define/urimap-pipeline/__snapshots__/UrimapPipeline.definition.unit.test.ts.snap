@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cics define urimap-pipeline should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "up",
+  ],
+  "description": "Define a new URIMAP of type pipeline to CICS. This processes incoming HTTP(S) requests",
+  "examples": Array [
+    Object {
+      "description": "Define a URIMAP named URIMAPA for the pipeline named PIPE123 to the region named MYREGION in the CSD group MYGRP where the host is www.example.com and the path is /example/index.html",
+      "options": "URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --pipeline-name PIPE123 --region-name MYREGION",
+    },
+  ],
+  "name": "urimap-pipeline",
+  "options": Array [
+    Object {
+      "aliases": Array [
+        "up",
+      ],
+      "description": "The path component of the URI",
+      "name": "urimap-path",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "uh",
+      ],
+      "description": "The host component of the URI",
+      "name": "urimap-host",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "us",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": false,
+        "values": Array [
+          "http",
+          "https",
+        ],
+      },
+      "defaultValue": "http",
+      "description": "The scheme component to be used with the request (http or https)",
+      "name": "urimap-scheme",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "pn",
+      ],
+      "description": "The name of the PIPELINE resource definition for the web service. The maximum length of the pipeline name is eight characters",
+      "name": "pipeline-name",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "description": "The CICS region name to which to define the new URIMAP",
+      "name": "region-name",
+      "type": "string",
+    },
+    Object {
+      "description": "The name of the CICSPlex to which to define the new URIMAP",
+      "name": "cics-plex",
+      "type": "string",
+    },
+  ],
+  "positionals": Array [
+    Object {
+      "description": "The name of the URIMAP to create. The maximum length of the program name is eight characters.",
+      "name": "urimapName",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "description": "The CICS system definition (CSD) Group for the new transaction that you want to define. The maximum length of the group name is eight characters.",
+      "name": "csdGroup",
+      "required": true,
+      "type": "string",
+    },
+  ],
+  "profile": Object {
+    "optional": Array [
+      "cics",
+    ],
+  },
+  "type": "command",
+}
+`;
