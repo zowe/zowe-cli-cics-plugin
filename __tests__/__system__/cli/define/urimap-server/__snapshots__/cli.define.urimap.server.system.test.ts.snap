@@ -5,7 +5,7 @@ exports[`CICS define urimap-server command should be able to display the help 1`
  COMMAND NAME
  ------------
 
-   urimap-server
+   urimap-server | us
 
  DESCRIPTION
  -----------
@@ -22,8 +22,8 @@ exports[`CICS define urimap-server command should be able to display the help 1`
 
    urimapName		 (string)
 
-      The name of the URIMAP to create. The maximum length of the program name is
-      eight characters.
+      The name of the URIMAP to create. The maximum length of the urimap name is eight
+      characters.
 
    csdGroup		 (string)
 

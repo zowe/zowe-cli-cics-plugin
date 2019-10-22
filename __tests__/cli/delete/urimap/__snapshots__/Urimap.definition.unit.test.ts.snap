@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cics delete urimap should not have changed 1`] = `
+Object {
+  "aliases": Array [],
+  "description": "Delete a urimap from CICS.",
+  "examples": Array [
+    Object {
+      "description": "Delete a urimap named URIMAPA from the region named MYREGION belonging to the csdgroup MYGRP",
+      "options": "URIMAPA MYGRP --regionName MYREGION",
+    },
+  ],
+  "name": "urimap",
+  "options": Array [
+    Object {
+      "description": "The CICS region name from which to delete the urimap",
+      "name": "regionName",
+      "required": true,
+      "type": "string",
+    },
+  ],
+  "positionals": Array [
+    Object {
+      "description": "The name of the urimap to delete. The maximum length of the urimap name is eight characters.",
+      "name": "urimapName",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "description": "The CICS system definition (CSD) Group for the urimap that you want to delete. The maximum length of the group name is eight characters.",
+      "name": "csdGroup",
+      "required": true,
+      "type": "string",
+    },
+  ],
+  "profile": Object {
+    "optional": Array [
+      "cics",
+    ],
+  },
+  "type": "command",
+}
+`;
