@@ -7,15 +7,14 @@ Object {
   "examples": Array [
     Object {
       "description": "Delete a urimap named URIMAPA from the region named MYREGION belonging to the csdgroup MYGRP",
-      "options": "URIMAPA MYGRP --regionName MYREGION",
+      "options": "URIMAPA MYGRP --region-name MYREGION",
     },
   ],
   "name": "urimap",
   "options": Array [
     Object {
       "description": "The CICS region name from which to delete the urimap",
-      "name": "regionName",
-      "required": true,
+      "name": "region-name",
       "type": "string",
     },
   ],

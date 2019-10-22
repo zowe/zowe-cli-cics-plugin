@@ -28,7 +28,7 @@ exports[`CICS define urimap-pipeline command should be able to display the help 
 
    csdGroup		 (string)
 
-      The CICS system definition (CSD) Group for the new transaction that you want to
+      The CICS system definition (CSD) Group for the new urimap that you want to
       define. The maximum length of the group name is eight characters.
 
  REQUIRED OPTIONS
