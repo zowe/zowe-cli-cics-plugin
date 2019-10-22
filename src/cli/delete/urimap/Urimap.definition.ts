@@ -34,14 +34,13 @@ export const UrimapDefinition: ICommandDefinition = {
         required: true
     }],
     options: [{
-        name: "regionName",
+        name: "region-name",
         description: strings.OPTIONS.REGIONNAME,
-        type: "string",
-        required: true
+        type: "string"
     }],
     profile: {optional: ["cics"]},
     examples: [{
         description: strings.EXAMPLES.EX1,
-        options: "URIMAPA MYGRP --regionName MYREGION"
+        options: "URIMAPA MYGRP --region-name MYREGION"
     }]
 };
