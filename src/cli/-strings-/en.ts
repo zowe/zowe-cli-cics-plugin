@@ -63,7 +63,7 @@ export default {
                 },
                 POSITIONALS: {
                     URIMAPNAME: "The name of the URIMAP to create. The maximum length of the urimap name is eight characters.",
-                    CSDGROUP: "The CICS system definition (CSD) Group for the new transaction that you want to define." +
+                    CSDGROUP: "The CICS system definition (CSD) Group for the new urimap that you want to define." +
                         " The maximum length of the group name is eight characters."
                 },
                 OPTIONS: {
@@ -141,7 +141,7 @@ export default {
                 DESCRIPTION: "Delete a urimap from CICS.",
                 POSITIONALS: {
                     URIMAPNAME: "The name of the urimap to delete. The maximum length of the urimap name is eight characters.",
-                    CSDGROUP: "The CICS system definition (CSD) Group for the transaction that you want to delete." +
+                    CSDGROUP: "The CICS system definition (CSD) Group for the urimap that you want to delete." +
                         " The maximum length of the group name is eight characters."
                 },
                 OPTIONS: {
