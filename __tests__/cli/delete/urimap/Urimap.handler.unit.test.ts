@@ -84,7 +84,7 @@ describe("DeleteUrimapHandler", () => {
             resultsummary: {api_response1: "1024", api_response2: "0", recordcount: "0", displayed_recordcount: "0"},
             records: "testing"
         }
-    }
+    };
 
     const functionSpy = jest.spyOn(Delete, "deleteUrimap");
 
@@ -93,7 +93,7 @@ describe("DeleteUrimapHandler", () => {
         functionSpy.mockImplementation(async () => defaultReturn);
     });
 
-    it("should call the deleteUrimap api", async() => {
+    it("should call the deleteUrimap api", async () => {
         const handler = new UrimapHandler();
 
         const commandParameters = {...DEFAULT_PARAMETERS};

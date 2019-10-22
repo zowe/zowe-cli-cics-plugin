@@ -26,7 +26,7 @@ describe("CMCI - Delete urimap", () => {
     const group = "group";
     const content = "ThisIsATest";
 
-    let deleteParms: IURIMapParms = {
+    const deleteParms: IURIMapParms = {
         regionName: region,
         name: urimap,
         csdGroup: group
@@ -102,14 +102,14 @@ describe("CMCI - Delete urimap", () => {
             deleteParms.csdGroup = group;
         });
 
-        it("should be able to delete a urimap", async() => {
+        it("should be able to delete a urimap", async () => {
             endPoint = "/" + CicsCmciConstants.CICS_SYSTEM_MANAGEMENT + "/" +
-            CicsCmciConstants.CICS_DEFINITION_URIMAP + "/" + region + 
+            CicsCmciConstants.CICS_DEFINITION_URIMAP + "/" + region +
             `?CRITERIA=(NAME=${deleteParms.name})&PARAMETER=CSDGROUP(${deleteParms.csdGroup})`;
 
             response = await deleteUrimap(dummySession, deleteParms);
             expect(response).toContain(content);
             expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, []);
-        })
-    })
-})
+        });
+    });
+});
