@@ -62,7 +62,7 @@ export default {
                     PIPELINE: "Define a new URIMAP of type pipeline to CICS. This processes incoming HTTP(S) requests"
                 },
                 POSITIONALS: {
-                    URIMAPNAME: "The name of the URIMAP to create. The maximum length of the program name is eight characters.",
+                    URIMAPNAME: "The name of the URIMAP to create. The maximum length of the urimap name is eight characters.",
                     CSDGROUP: "The CICS system definition (CSD) Group for the new transaction that you want to define." +
                         " The maximum length of the group name is eight characters."
                 },
@@ -135,6 +135,23 @@ export default {
                 },
                 EXAMPLES: {
                     EX1: "Delete a transaction named TRN1 from the region named MYREGION"
+                }
+            },
+            URIMAP: {
+                DESCRIPTION: "Delete a urimap from CICS.",
+                POSITIONALS: {
+                    URIMAPNAME: "The name of the urimap to delete. The maximum length of the urimap name is eight characters.",
+                    CSDGROUP: "The CICS system definition (CSD) Group for the transaction that you want to delete." +
+                        " The maximum length of the group name is eight characters."
+                },
+                OPTIONS: {
+                    REGIONNAME: "The CICS region name from which to delete the urimap"
+                },
+                MESSAGES: {
+                    SUCCESS: "The urimap '%s' was deleted successfully."
+                },
+                EXAMPLES: {
+                    EX1: "Delete a urimap named URIMAPA from the region named MYREGION belonging to the csdgroup MYGRP"
                 }
             }
         }

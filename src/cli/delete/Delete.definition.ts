@@ -12,6 +12,7 @@
 import { ICommandDefinition } from "@zowe/imperative";
 import { ProgramDefinition } from "./program/Program.definition";
 import { TransactionDefinition } from "./transaction/Transaction.definition";
+import { UrimapDefinition } from "./urimap/Urimap.definition";
 
 import i18nTypings from "../-strings-/en";
 import { CicsSession } from "../CicsSession";
@@ -28,7 +29,8 @@ const definition: ICommandDefinition = {
     description: strings.DESCRIPTION,
     type: "group",
     children: [ProgramDefinition,
-               TransactionDefinition],
+               TransactionDefinition,
+               UrimapDefinition],
     passOn: [
         {
             property: "options",
