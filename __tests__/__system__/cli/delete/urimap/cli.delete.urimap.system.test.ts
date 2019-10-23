@@ -126,7 +126,7 @@ describe("CICS delete urimap command", () => {
         expect(output.status).toEqual(1);
     });
 
-    it("should get a syntax error if csdGroup is omitted", () => {
+    it("should get a syntax error if urimapName is omitted", () => {
         const output = runCliScript(__dirname + "/__scripts__/delete_urimap.sh", TEST_ENVIRONMENT, ["", "FAKEGRP"]);
         const stderr = output.stderr.toString();
         expect(stderr).toContain("Syntax");
