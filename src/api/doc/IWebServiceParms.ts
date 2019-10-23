@@ -9,10 +9,51 @@
 *                                                                                 *
 */
 
-export * from "./ICMCIApiResponse";
-export * from "./ICMCIResponseResultSummary";
-export * from "./IProgramParms";
-export * from "./IResourceParms";
-export * from "./ITransactionParms";
-export * from "./IURIMapParms";
-export * from "./IWebServiceParms";
+export interface IWebServiceParms {
+    /**
+     * The name of the webservice
+     * Up to eight characters long
+     */
+    name: string;
+
+    /**
+     * CSD group for the webservice
+     * Up to eight characters long
+     */
+    csdGroup: string;
+
+    /**
+     *
+     */
+    pipeline: string;
+
+    /**
+     *
+     */
+    wsBind: string;
+
+    /**
+     *
+     */
+    description?: string;
+
+    /**
+     *
+     */
+    validation: boolean;
+
+    /**
+     *
+     */
+    wsdlFile: string;
+
+    /**
+     * The name of the CICS region of the webservice
+     */
+    regionName: string;
+
+    /**
+     * CICS Plex of the webservice
+     */
+    cicsPlex?: string;
+}
