@@ -5,7 +5,7 @@ exports[`CICS define urimap-pipeline command should be able to display the help 
  COMMAND NAME
  ------------
 
-   urimap-pipeline
+   urimap-pipeline | up
 
  DESCRIPTION
  -----------
@@ -23,12 +23,12 @@ exports[`CICS define urimap-pipeline command should be able to display the help 
 
    urimapName		 (string)
 
-      The name of the URIMAP to create. The maximum length of the program name is
-      eight characters.
+      The name of the URIMAP to create. The maximum length of the urimap name is eight
+      characters.
 
    csdGroup		 (string)
 
-      The CICS system definition (CSD) Group for the new transaction that you want to
+      The CICS system definition (CSD) Group for the new urimap that you want to
       define. The maximum length of the group name is eight characters.
 
  REQUIRED OPTIONS
@@ -128,9 +128,9 @@ exports[`CICS define urimap-pipeline command should be able to display the help 
  EXAMPLES
  --------
 
-   - Define a URIMAP named URIMAPA to the region named MYREGION
-   in the CSD group MYGRP where the host is www.example.com and the path is
-   /example/index.html:
+   - Define a URIMAP named URIMAPA for the pipeline named
+   PIPE123 to the region named MYREGION in the CSD group MYGRP where the host is
+   www.example.com and the path is /example/index.html:
 
       $ zowe cics define urimap-pipeline URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --pipeline-name PIPE123 --region-name MYREGION
 

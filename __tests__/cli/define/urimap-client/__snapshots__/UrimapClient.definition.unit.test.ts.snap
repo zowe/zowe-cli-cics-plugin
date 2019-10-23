@@ -61,13 +61,13 @@ Object {
   ],
   "positionals": Array [
     Object {
-      "description": "The name of the URIMAP to create. The maximum length of the program name is eight characters.",
+      "description": "The name of the URIMAP to create. The maximum length of the urimap name is eight characters.",
       "name": "urimapName",
       "required": true,
       "type": "string",
     },
     Object {
-      "description": "The CICS system definition (CSD) Group for the new transaction that you want to define. The maximum length of the group name is eight characters.",
+      "description": "The CICS system definition (CSD) Group for the new urimap that you want to define. The maximum length of the group name is eight characters.",
       "name": "csdGroup",
       "required": true,
       "type": "string",

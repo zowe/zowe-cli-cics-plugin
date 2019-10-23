@@ -1,45 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CICS delete transaction command should be able to display the help 1`] = `
+exports[`CICS delete urimap command should be able to display the help 1`] = `
 "
  COMMAND NAME
  ------------
 
-   transaction | tran
+   urimap
 
  DESCRIPTION
  -----------
 
-   Delete a transaction from CICS.
+   Delete a urimap from CICS.
 
  USAGE
  -----
 
-   zowe cics delete transaction <transactionName> <csdGroup> [options]
+   zowe cics delete urimap <urimapName> <csdGroup> [options]
 
  POSITIONAL ARGUMENTS
  --------------------
 
-   transactionName		 (string)
+   urimapName		 (string)
 
-      The name of the transaction to delete. The maximum length of the transaction
-      name is four characters.
+      The name of the urimap to delete. The maximum length of the urimap name is eight
+      characters.
 
    csdGroup		 (string)
 
-      The CICS system definition (CSD) Group for the transaction that you want to
-      delete. The maximum length of the group name is eight characters.
+      The CICS system definition (CSD) Group for the urimap that you want to delete.
+      The maximum length of the group name is eight characters.
 
  OPTIONS
  -------
 
    --region-name  (string)
 
-      The CICS region name from which to delete the transaction
-
-   --cics-plex  (string)
-
-      The name of the CICSPlex from which to delete the transaction
+      The CICS region name from which to delete the urimap
 
  CICS CONNECTION OPTIONS
  -----------------------
@@ -104,10 +100,10 @@ exports[`CICS delete transaction command should be able to display the help 1`] 
  EXAMPLES
  --------
 
-   - Delete a transaction named TRN1 from the region named
-   MYREGION:
+   - Delete a urimap named URIMAPA from the region named
+   MYREGION belonging to the csdgroup MYGRP:
 
-      $ zowe cics delete transaction TRN1 MYGRP --region-name MYREGION
+      $ zowe cics delete urimap URIMAPA MYGRP --region-name MYREGION
 
 "
 `;
