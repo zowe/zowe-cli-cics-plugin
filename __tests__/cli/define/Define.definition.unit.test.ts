@@ -12,7 +12,7 @@
 import { ICommandDefinition } from "@zowe/imperative";
 
 describe("cics define program", () => {
-    const DEFINE_RESOURCES = 5;
+    const DEFINE_RESOURCES = 6;
 
     it ("should not have changed", () => {
         const definition: ICommandDefinition = require("../../../src/cli/define/Define.definition");
