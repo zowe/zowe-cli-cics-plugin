@@ -11,8 +11,8 @@
 
 import { CommandProfiles, IHandlerParameters, IProfile, Session } from "@zowe/imperative";
 import { ICMCIApiResponse } from "../../../../src";
-import { WebServiceDefinition } from "../../../../src/cli/define/webservice/WebService.definition";
-import WebServiceHandler from "../../../../src/cli/define/webservice/WebService.handler";
+import { WebServiceDefinition } from "../../../../src/cli/define/webservice/Webservice.definition";
+import WebServiceHandler from "../../../../src/cli/define/webservice/Webservice.handler";
 
 jest.mock("../../../../src/api/methods/define");
 const Define = require("../../../../src/api/methods/define");

@@ -13,7 +13,7 @@ import { ICommandDefinition } from "@zowe/imperative";
 
 describe("cics define webservice", () => {
     it ("should not have changed", () => {
-        const path = "../../../../src/cli/define/webservice/WebService.definition";
+        const path = "../../../../src/cli/define/webservice/Webservice.definition";
         const definition: ICommandDefinition = require(path).WebServiceDefinition;
         expect(definition).toBeDefined();
         delete definition.handler;
