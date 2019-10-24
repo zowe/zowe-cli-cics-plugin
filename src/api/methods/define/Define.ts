@@ -235,7 +235,7 @@ function buildUrimapRequestBody(parms: IURIMapParms, usage: "server" | "client" 
 
 export async function defineWebservice(session: AbstractSession, parms: IWebServiceParms): Promise<ICMCIApiResponse> {
     ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "CICS Web service name", "CICS web service name is required");
-    ImperativeExpect.toBeDefinedAndNonBlank(parms.pipeline, "CICS Pipeline name", "CICS pipeline name is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.pipelineName, "CICS Pipeline name", "CICS pipeline name is required");
     ImperativeExpect.toBeDefinedAndNonBlank(parms.wsBind, "CICS Web service binding file", "CICS web service binding file is required");
     ImperativeExpect.toNotBeNullOrUndefined(parms.validation, "CICS web service validation is required");
     ImperativeExpect.toBeDefinedAndNonBlank(parms.csdGroup, "CICS CSD Group", "CICS CSD group is required");
@@ -245,7 +245,7 @@ export async function defineWebservice(session: AbstractSession, parms: IWebServ
     const requestAttrs: any = {
         name: parms.name,
         csdgroup: parms.csdGroup,
-        pipeline: parms.pipeline,
+        pipeline: parms.pipelineName,
         wsbind: parms.wsBind,
         validation: parms.validation ? "yes" : "no"
     };

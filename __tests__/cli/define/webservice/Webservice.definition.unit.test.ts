@@ -9,51 +9,14 @@
 *                                                                                 *
 */
 
-export interface IWebServiceParms {
-    /**
-     * The name of the webservice
-     * Up to eight characters long
-     */
-    name: string;
+import { ICommandDefinition } from "@zowe/imperative";
 
-    /**
-     * CSD group for the webservice
-     * Up to eight characters long
-     */
-    csdGroup: string;
-
-    /**
-     *
-     */
-    pipelineName: string;
-
-    /**
-     *
-     */
-    wsBind: string;
-
-    /**
-     *
-     */
-    description?: string;
-
-    /**
-     *
-     */
-    validation: boolean;
-
-    /**
-     *
-     */
-    wsdlFile?: string;
-
-    /**
-     * The name of the CICS region of the webservice
-     */
-    regionName: string;
-
-    /**
-     * CICS Plex of the webservice
-     */
-    cicsPlex?: string;
-}
+describe("cics define webservice", () => {
+    it ("should not have changed", () => {
+        const path = "../../../../src/cli/define/webservice/WebService.definition";
+        const definition: ICommandDefinition = require(path).WebServiceDefinition;
+        expect(definition).toBeDefined();
+        delete definition.handler;
+        expect(definition).toMatchSnapshot();
+    });
+});

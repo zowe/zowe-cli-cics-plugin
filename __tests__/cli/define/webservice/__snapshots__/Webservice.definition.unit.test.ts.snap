@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cics define webservice should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "web",
+  ],
+  "description": "Define a new web service to CICS.",
+  "examples": Array [
+    Object {
+      "description": "Define a webservice named WEBSVCA for the pipeline named PIPE123 to the region named MYREGION in the CSD group MYGRP where the binding file is /u/exampleapp/wsbind/example.log",
+      "options": "WEBSVCA MYGRP --pipeline-name PIPELINE --wsbind /u/exampleapp/wsbind/example.log --region-name MYREGION",
+    },
+  ],
+  "name": "webservice",
+  "options": Array [
+    Object {
+      "aliases": Array [
+        "pn",
+      ],
+      "description": "The name of the PIPELINE resource definition for the web service. The maximum length of the pipeline name is eight characters",
+      "name": "pipeline-name",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "description": "The file name of the web service binding file on HFS.",
+      "name": "wsbind",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "desc",
+      ],
+      "description": "Description of the web service resource being defined.",
+      "name": "description",
+      "type": "string",
+    },
+    Object {
+      "defaultValue": false,
+      "description": "Specifies whether full validation of SOAP messages against the corresponding schema in the web service description should be performed at run time.",
+      "name": "validation",
+      "type": "boolean",
+    },
+    Object {
+      "aliases": Array [
+        "wsdl",
+      ],
+      "description": "The file name of the web service description (WSDL) file on HFS.",
+      "name": "wsdlfile",
+      "type": "string",
+    },
+    Object {
+      "description": "The CICS region name to which to define the new web service.",
+      "name": "region-name",
+      "type": "string",
+    },
+    Object {
+      "description": "The name of the CICSPlex to which to define the new web service.",
+      "name": "cics-plex",
+      "type": "string",
+    },
+  ],
+  "positionals": Array [
+    Object {
+      "description": "The name of the WEBSERVICE to create. The maximum length of the web service name is eight characters.",
+      "name": "webserviceName",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "description": "The CICS system definition (CSD) Group for the new web service that you want to define. The maximum length of the group name is eight characters.",
+      "name": "csdGroup",
+      "required": true,
+      "type": "string",
+    },
+  ],
+  "profile": Object {
+    "optional": Array [
+      "cics",
+    ],
+  },
+  "type": "command",
+}
+`;

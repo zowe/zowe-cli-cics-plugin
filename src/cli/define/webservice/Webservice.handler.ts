@@ -37,7 +37,7 @@ export default class WebServiceHandler extends CicsBaseHandler {
         const response = await defineWebservice(session, {
             name: params.arguments.webserviceName,
             csdGroup: params.arguments.csdGroup,
-            pipeline: params.arguments.pipelineName,
+            pipelineName: params.arguments.pipelineName,
             wsBind: params.arguments.wsbind,
             description: params.arguments.description,
             validation: params.arguments.validation,
