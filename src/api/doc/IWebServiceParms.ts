@@ -25,12 +25,12 @@ export interface IWebServiceParms {
     /**
      *
      */
-    pipelineName: string;
+    pipelineName?: string;
 
     /**
      *
      */
-    wsBind: string;
+    wsBind?: string;
 
     /**
      *
@@ -40,7 +40,7 @@ export interface IWebServiceParms {
     /**
      *
      */
-    validation: boolean;
+    validation?: boolean;
 
     /**
      *
