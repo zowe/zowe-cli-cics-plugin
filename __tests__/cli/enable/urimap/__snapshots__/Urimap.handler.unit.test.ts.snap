@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`enableUrimapHandler should call the enableUrimap api 1`] = `"The urimap '%s' was enabled successfully."`;
+
+exports[`enableUrimapHandler should call the enableUrimap api 2`] = `
+Object {
+  "response": Object {
+    "records": "testing",
+    "resultsummary": Object {
+      "api_response1": "1024",
+      "api_response2": "0",
+      "displayed_recordcount": "0",
+      "recordcount": "0",
+    },
+  },
+}
+`;
