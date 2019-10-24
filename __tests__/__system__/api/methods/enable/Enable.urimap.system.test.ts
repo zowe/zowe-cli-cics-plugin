@@ -10,21 +10,21 @@
 */
 
 import { Session } from "@zowe/imperative";
-import { ITestEnvironment } from "../../../../../__tests__/__src__/environment/doc/response/ITestEnvironment";
-import { TestEnvironment } from "../../../../../__tests__/__src__/environment/TestEnvironment";
+import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
+import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
 import { generateRandomAlphaNumericString } from "../../../../__src__/TestUtils";
-import { defineUrimapServer, defineUrimapClient, defineUrimapPipeline, deleteUrimap, IURIMapParms, } from "../../../../../src";
+import { defineUrimapServer, defineUrimapClient, defineUrimapPipeline, deleteUrimap, disableUrimap, IURIMapParms, enableUrimap } from "../../../../../src";
 
 let testEnvironment: ITestEnvironment;
 let regionName: string;
 let csdGroup: string;
 let session: Session;
 
-describe("CICS Delete URImap", () => {
+describe("CICS Enable URImap", () => {
 
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
-            testName: "cics_cmci_delete_urimap",
+            testName: "cics_cmci_enable_urimap",
             installPlugin: true,
             tempProfileTypes: ["cics"]
         });
@@ -49,7 +49,7 @@ describe("CICS Delete URImap", () => {
 
     const options: IURIMapParms = {} as any;
 
-    it("should delete a URIMap of type server from CICS", async () => {
+    it("should enable a URIMap of type server from CICS", async () => {
         let error;
         let response;
 
@@ -64,9 +64,10 @@ describe("CICS Delete URImap", () => {
         options.csdGroup = csdGroup;
         options.regionName = regionName;
         await defineUrimapServer(session, options);
+        await disableUrimap(session, options);
 
         try {
-            response = await deleteUrimap(session, options);
+            response = await enableUrimap(session, options);
         } catch (err) {
             error = err;
         }
@@ -74,9 +75,10 @@ describe("CICS Delete URImap", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.response.resultsummary.api_response1).toBe("1024");
+        await deleteUrimap(session, options);
     });
 
-    it("should delete a URIMap of type pipeline from CICS", async () => {
+    it("should enable a URIMap of type pipeline from CICS", async () => {
         let error;
         let response;
 
@@ -91,9 +93,10 @@ describe("CICS Delete URImap", () => {
         options.csdGroup = csdGroup;
         options.regionName = regionName;
         await defineUrimapPipeline(session, options);
+        await disableUrimap(session, options);
 
         try {
-            response = await deleteUrimap(session, options);
+            response = await enableUrimap(session, options);
         } catch (err) {
             error = err;
         }
@@ -101,9 +104,10 @@ describe("CICS Delete URImap", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.response.resultsummary.api_response1).toBe("1024");
+        await deleteUrimap(session, options);
     });
 
-    it("should delete a URIMap of type client from CICS", async () => {
+    it("should enable a URIMap of type client from CICS", async () => {
         let error;
         let response;
 
@@ -117,9 +121,10 @@ describe("CICS Delete URImap", () => {
         options.csdGroup = csdGroup;
         options.regionName = regionName;
         await defineUrimapClient(session, options);
+        await disableUrimap(session, options);
 
         try {
-            response = await deleteUrimap(session, options);
+            response = await enableUrimap(session, options);
         } catch (err) {
             error = err;
         }
@@ -127,9 +132,10 @@ describe("CICS Delete URImap", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.response.resultsummary.api_response1).toBe("1024");
+        await deleteUrimap(session, options);
     });
 
-    it("should fail to delete a URIMap to CICS with invalid CICS region", async () => {
+    it("should fail to enable a URIMap to CICS with invalid CICS region", async () => {
         let error;
         let response;
 
@@ -144,7 +150,7 @@ describe("CICS Delete URImap", () => {
         options.regionName = "fake";
 
         try {
-            response = await deleteUrimap(session, options);
+            response = await enableUrimap(session, options);
         } catch (err) {
             error = err;
         }
@@ -155,7 +161,7 @@ describe("CICS Delete URImap", () => {
         expect(error.message).toContain("INVALIDPARM");
     });
 
-    it("should fail to delete a URIMap that does not exist", async () => {
+    it("should fail to enable a URIMap that does not exist", async () => {
         let error;
         let response;
 
@@ -169,7 +175,7 @@ describe("CICS Delete URImap", () => {
         options.regionName = regionName;
 
         try {
-            response = await deleteUrimap(session, options);
+            response = await enableUrimap(session, options);
         } catch (err) {
             error = err;
         }
