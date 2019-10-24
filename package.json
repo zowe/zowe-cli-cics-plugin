@@ -1,6 +1,6 @@
 {
   "name": "@zowe/cics-for-zowe-cli",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "IBM CICS Plug-in for Zowe CLI",
   "homepage": "https://github.com/zowe/zowe-cli-cics-plugin#readme",
   "bugs": {
@@ -42,7 +42,7 @@
     "configurationModule": "lib/imperative.js"
   },
   "dependencies": {
-    "@zowe/imperative": "4.4.1",
+    "@zowe/imperative": "4.4.3",
     "xml2js": "0.4.19"
   },
   "peerDependencies": {
