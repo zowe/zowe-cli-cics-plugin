@@ -126,6 +126,7 @@ describe("enableUrimapHandler", () => {
             }),
             {
                 name: urimapName,
+                csdGroup,
                 regionName
             }
         );

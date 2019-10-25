@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { Session } from "@zowe/imperative";
+import { Session, selectProfileNameDesc } from "@zowe/imperative";
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
 import { generateRandomAlphaNumericString } from "../../../../__src__/TestUtils";
@@ -19,6 +19,12 @@ let testEnvironment: ITestEnvironment;
 let regionName: string;
 let csdGroup: string;
 let session: Session;
+
+function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+const sleepTime = 2000;
 
 describe("CICS Disable URImap", () => {
 
@@ -53,7 +59,7 @@ describe("CICS Disable URImap", () => {
         let error;
         let response;
 
-        const urimapNameSuffixLength = 3;
+        const urimapNameSuffixLength = 6;
         const urimapName = "X" + generateRandomAlphaNumericString(urimapNameSuffixLength);
 
         options.name = urimapName;
@@ -64,6 +70,7 @@ describe("CICS Disable URImap", () => {
         options.csdGroup = csdGroup;
         options.regionName = regionName;
         await defineUrimapServer(session, options);
+        await sleep(sleepTime);
 
         try {
             response = await disableUrimap(session, options);
@@ -74,6 +81,7 @@ describe("CICS Disable URImap", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.response.resultsummary.api_response1).toBe("1024");
+        await sleep(sleepTime);
         await deleteUrimap(session, options);
     });
 
@@ -81,7 +89,7 @@ describe("CICS Disable URImap", () => {
         let error;
         let response;
 
-        const urimapNameSuffixLength = 3;
+        const urimapNameSuffixLength = 6;
         const urimapName = "X" + generateRandomAlphaNumericString(urimapNameSuffixLength);
 
         options.name = urimapName;
@@ -92,6 +100,7 @@ describe("CICS Disable URImap", () => {
         options.csdGroup = csdGroup;
         options.regionName = regionName;
         await defineUrimapPipeline(session, options);
+        await sleep(sleepTime);
 
         try {
             response = await disableUrimap(session, options);
@@ -102,6 +111,7 @@ describe("CICS Disable URImap", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.response.resultsummary.api_response1).toBe("1024");
+        await sleep(sleepTime);
         await deleteUrimap(session, options);
     });
 
@@ -109,7 +119,7 @@ describe("CICS Disable URImap", () => {
         let error;
         let response;
 
-        const urimapNameSuffixLength = 3;
+        const urimapNameSuffixLength = 6;
         const urimapName = "X" + generateRandomAlphaNumericString(urimapNameSuffixLength);
 
         options.name = urimapName;
@@ -119,6 +129,7 @@ describe("CICS Disable URImap", () => {
         options.csdGroup = csdGroup;
         options.regionName = regionName;
         await defineUrimapClient(session, options);
+        await sleep(sleepTime);
 
         try {
             response = await disableUrimap(session, options);
@@ -129,6 +140,7 @@ describe("CICS Disable URImap", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.response.resultsummary.api_response1).toBe("1024");
+        await sleep(sleepTime);
         await deleteUrimap(session, options);
     });
 
@@ -136,7 +148,7 @@ describe("CICS Disable URImap", () => {
         let error;
         let response;
 
-        const urimapNameSuffixLength = 3;
+        const urimapNameSuffixLength = 6;
         const urimapName = "X" + generateRandomAlphaNumericString(urimapNameSuffixLength);
 
         options.name = urimapName;

@@ -23,6 +23,12 @@ let password: string;
 let protocol: string;
 let rejectUnauthorized: boolean;
 
+function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+const sleepTime = 2000;
+
 describe("CICS enable urimap command", () => {
 
     beforeAll(async () => {
@@ -53,7 +59,7 @@ describe("CICS enable urimap command", () => {
     });
 
     it("should be able to enable a urimap of type server with basic options", async () => {
-        const urimapNameSuffixLength = 3;
+        const urimapNameSuffixLength = 6;
         const urimapName = "X" + generateRandomAlphaNumericString(urimapNameSuffixLength);
         const urimapPath = "fake/path";
         const urimapHost = "www.example.com";
@@ -65,20 +71,23 @@ describe("CICS enable urimap command", () => {
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+        await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../disable/urimap/__scripts__/disable_urimap.sh", TEST_ENVIRONMENT,
-            [urimapName, regionName]);
+            [urimapName, csdGroup, regionName]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+        await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/__scripts__/enable_urimap.sh", TEST_ENVIRONMENT,
-        [urimapName, regionName]);
+            [urimapName, csdGroup, regionName]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+        await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../delete/urimap/__scripts__/delete_urimap.sh", TEST_ENVIRONMENT,
             [urimapName, csdGroup, regionName]);
@@ -89,7 +98,7 @@ describe("CICS enable urimap command", () => {
     });
 
     it("should be able to enable a urimap of type pipeline with basic options", async () => {
-        const urimapNameSuffixLength = 3;
+        const urimapNameSuffixLength = 6;
         const urimapName = "X" + generateRandomAlphaNumericString(urimapNameSuffixLength);
         const urimapPath = "fake/path";
         const urimapHost = "www.example.com";
@@ -101,20 +110,23 @@ describe("CICS enable urimap command", () => {
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+        await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../disable/urimap/__scripts__/disable_urimap.sh", TEST_ENVIRONMENT,
-        [urimapName, regionName]);
+            [urimapName, csdGroup, regionName]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+        await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/__scripts__/enable_urimap.sh", TEST_ENVIRONMENT,
-        [urimapName, regionName]);
+            [urimapName, csdGroup, regionName]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+        await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../delete/urimap/__scripts__/delete_urimap.sh", TEST_ENVIRONMENT,
             [urimapName, csdGroup, regionName]);
@@ -125,7 +137,7 @@ describe("CICS enable urimap command", () => {
     });
 
     it("should be able to enable a urimap of type client with basic options", async () => {
-        const urimapNameSuffixLength = 3;
+        const urimapNameSuffixLength = 6;
         const urimapName = "X" + generateRandomAlphaNumericString(urimapNameSuffixLength);
         const urimapPath = "fake/path";
         const urimapHost = "www.example.com";
@@ -136,20 +148,23 @@ describe("CICS enable urimap command", () => {
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+        await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../disable/urimap/__scripts__/disable_urimap.sh", TEST_ENVIRONMENT,
-            [urimapName, regionName]);
+            [urimapName, csdGroup, regionName]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+        await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/__scripts__/enable_urimap.sh", TEST_ENVIRONMENT,
-        [urimapName, regionName]);
+        [urimapName, csdGroup, regionName]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+        await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../delete/urimap/__scripts__/delete_urimap.sh", TEST_ENVIRONMENT,
             [urimapName, csdGroup, regionName]);
@@ -160,7 +175,7 @@ describe("CICS enable urimap command", () => {
     });
 
     it("should get a syntax error if urimapName is omitted", () => {
-        const output = runCliScript(__dirname + "/__scripts__/enable_urimap.sh", TEST_ENVIRONMENT, ["", "FAKEREG"]);
+        const output = runCliScript(__dirname + "/__scripts__/enable_urimap.sh", TEST_ENVIRONMENT, ["", "FAKEGRP", "FAKEREG"]);
         const stderr = output.stderr.toString();
         expect(stderr).toContain("Syntax");
         expect(stderr).toContain("Missing Positional Argument");
@@ -168,9 +183,18 @@ describe("CICS enable urimap command", () => {
         expect(output.status).toEqual(1);
     });
 
+    it("should get a syntax error if csdGroup is omitted", () => {
+        const output = runCliScript(__dirname + "/__scripts__/enable_urimap.sh", TEST_ENVIRONMENT, ["FAKEURI", "", "FAKEREG"]);
+        const stderr = output.stderr.toString();
+        expect(stderr).toContain("Syntax");
+        expect(stderr).toContain("Missing Positional Argument");
+        expect(stderr).toContain("csdGroup");
+        expect(output.status).toEqual(1);
+    });
+
     it("should be able to successfully enable a urimap of type server with profile options", async () => {
 
-        const urimapNameSuffixLength = 3;
+        const urimapNameSuffixLength = 6;
         const urimapName = "X" + generateRandomAlphaNumericString(urimapNameSuffixLength);
         const urimapPath = "fake/path";
         const urimapHost = "www.example.com";
@@ -195,9 +219,11 @@ describe("CICS enable urimap command", () => {
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+        await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../disable/urimap/__scripts__/disable_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
             [urimapName,
+                csdGroup,
                 regionName,
                 host,
                 port,
@@ -209,9 +235,11 @@ describe("CICS enable urimap command", () => {
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+        await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/__scripts__/enable_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
             [urimapName,
+                csdGroup,
                 regionName,
                 host,
                 port,
@@ -223,6 +251,7 @@ describe("CICS enable urimap command", () => {
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+        await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../delete/urimap/__scripts__/delete_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
             [urimapName,
@@ -242,7 +271,7 @@ describe("CICS enable urimap command", () => {
 
     it("should be able to successfully enable a pipeline of type server with profile options", async () => {
 
-        const urimapNameSuffixLength = 3;
+        const urimapNameSuffixLength = 6;
         const urimapName = "X" + generateRandomAlphaNumericString(urimapNameSuffixLength);
         const urimapPath = "fake/path";
         const urimapHost = "www.example.com";
@@ -267,9 +296,11 @@ describe("CICS enable urimap command", () => {
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+        await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../disable/urimap/__scripts__/disable_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
             [urimapName,
+                csdGroup,
                 regionName,
                 host,
                 port,
@@ -281,9 +312,11 @@ describe("CICS enable urimap command", () => {
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+        await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/__scripts__/enable_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
         [urimapName,
+            csdGroup,
             regionName,
             host,
             port,
@@ -295,6 +328,7 @@ describe("CICS enable urimap command", () => {
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+        await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../delete/urimap/__scripts__/delete_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
             [urimapName,
@@ -314,7 +348,7 @@ describe("CICS enable urimap command", () => {
 
     it("should be able to successfully enable a urimap of type client with profile options", async () => {
 
-        const urimapNameSuffixLength = 3;
+        const urimapNameSuffixLength = 6;
         const urimapName = "X" + generateRandomAlphaNumericString(urimapNameSuffixLength);
         const urimapPath = "fake/path";
         const urimapHost = "www.example.com";
@@ -337,9 +371,11 @@ describe("CICS enable urimap command", () => {
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+        await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../disable/urimap/__scripts__/disable_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
         [urimapName,
+            csdGroup,
             regionName,
             host,
             port,
@@ -351,9 +387,11 @@ describe("CICS enable urimap command", () => {
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+        await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/__scripts__/enable_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
         [urimapName,
+            csdGroup,
             regionName,
             host,
             port,
@@ -365,6 +403,7 @@ describe("CICS enable urimap command", () => {
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
+        await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../delete/urimap/__scripts__/delete_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
             [urimapName,

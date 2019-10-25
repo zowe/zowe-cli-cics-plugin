@@ -20,7 +20,7 @@ export interface IURIMapParms {
      * CSD group for the URIMap
      * Up to eight characters long
      */
-    csdGroup?: string;
+    csdGroup: string;
 
     /**
      * Path component of URI to which the map applies

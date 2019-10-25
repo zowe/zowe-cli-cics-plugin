@@ -2,5 +2,6 @@
 set -e
 
 urimap_name=$1
-region_name=$2
-zowe cics enable urimap "$urimap_name" --region-name "$region_name"
+csd_group=$2
+region_name=$3
+zowe cics enable urimap "$urimap_name" "$csd_group" --region-name "$region_name"

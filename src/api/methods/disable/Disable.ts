@@ -28,22 +28,25 @@ import { ICMCIApiResponse, IProgramParms, ITransactionParms, IURIMapParms } from
 
 export async function disableUrimap(session: AbstractSession, parms: IURIMapParms): Promise<ICMCIApiResponse> {
     ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "CICS URIMap name", "CICS URIMap name is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.csdGroup, "CICS CSD group", "CICS CSD group name is required");
     ImperativeExpect.toBeDefinedAndNonBlank(parms.regionName, "CICS Region name", "CICS region name is required");
 
     Logger.getAppLogger().debug("Attempting to disable a URIMap with the following parameters:\n%s", JSON.stringify(parms));
 
     const cicsPlex = parms.cicsPlex == null ? "" : parms.cicsPlex + "/";
     const cmciResource = "/" + CicsCmciConstants.CICS_SYSTEM_MANAGEMENT + "/" +
-        CicsCmciConstants.CICS_URIMAP + "/" + cicsPlex +
-        `${parms.regionName}?CRITERIA=(NAME=${parms.name})`;
+        CicsCmciConstants.CICS_DEFINITION_URIMAP + "/" + cicsPlex +
+        `${parms.regionName}?CRITERIA=(NAME=${parms.name})&PARAMETER=CSDGROUP(${parms.csdGroup})`;
     const requestBody: any = {
         request: {
-            action: {
-                $: {
-                    name: "DISABLE"
+            update: {
+                attributes: {
+                    $: {
+                        STATUS: "DISABLED"
+                    }
                 }
             }
         }
     };
-    return CicsCmciRestClient.postExpectParsedXml(session, cmciResource, [], requestBody);
+    return CicsCmciRestClient.putExpectParsedXml(session, cmciResource, [], requestBody);
 }

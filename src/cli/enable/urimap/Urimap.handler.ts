@@ -37,7 +37,8 @@ export default class UrimapHandler extends CicsBaseHandler {
 
         const response = await enableUrimap(session, {
             name: params.arguments.urimapName,
-            regionName: params.arguments.regionName || profile.regionName,
+            csdGroup: params.arguments.csdGroup,
+            regionName: params.arguments.regionName || profile.regionName
         });
 
         params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.urimapName);

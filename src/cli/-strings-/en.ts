@@ -163,7 +163,9 @@ export default {
             URIMAP: {
                 DESCRIPTION: "Disable a urimap from CICS.",
                 POSITIONALS: {
-                    URIMAPNAME: "The name of the urimap to disable. The maximum length of the urimap name is eight characters."
+                    URIMAPNAME: "The name of the urimap to disable. The maximum length of the urimap name is eight characters.",
+                    CSDGROUP: "The CICS system definition (CSD) Group for the new program that you want to disable." +
+                    " The maximum length of the group name is eight characters."
                 },
                 OPTIONS: {
                     REGIONNAME: "The CICS region name in which to disable the urimap"
@@ -222,7 +224,9 @@ export default {
             URIMAP: {
                 DESCRIPTION: "Enable a urimap from CICS.",
                 POSITIONALS: {
-                    URIMAPNAME: "The name of the urimap to enable. The maximum length of the urimap name is eight characters."
+                    URIMAPNAME: "The name of the urimap to enable. The maximum length of the urimap name is eight characters.",
+                    CSDGROUP: "The CICS system definition (CSD) Group for the new program that you want to disable." +
+                    " The maximum length of the group name is eight characters."
                 },
                 OPTIONS: {
                     REGIONNAME: "The CICS region name in which to enable the urimap"
