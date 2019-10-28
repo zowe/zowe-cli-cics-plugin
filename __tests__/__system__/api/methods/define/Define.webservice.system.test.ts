@@ -58,7 +58,8 @@ describe("CICS Define web service", () => {
 
         options.name = websvcName;
         options.pipelineName = "AAAA1234";
-        options.wsBind = "fake";
+        options.wsBind = "/u/exampleapp/wsbind/example.log";
+        options.validation = false;
         options.csdGroup = csdGroup;
         options.regionName = regionName;
 
@@ -83,7 +84,8 @@ describe("CICS Define web service", () => {
 
         options.name = websvcName;
         options.pipelineName = "AAAA1234";
-        options.wsBind = "fake";
+        options.wsBind = "/u/exampleapp/wsbind/example.log";
+        options.validation = false;
         options.csdGroup = csdGroup;
         options.regionName = "FAKE";
 
@@ -108,7 +110,8 @@ describe("CICS Define web service", () => {
 
         options.name = websvcName;
         options.pipelineName = "AAAA1234";
-        options.wsBind = "fake";
+        options.wsBind = "/u/exampleapp/wsbind/example.log";
+        options.validation = false;
         options.csdGroup = csdGroup;
         options.regionName = regionName;
 

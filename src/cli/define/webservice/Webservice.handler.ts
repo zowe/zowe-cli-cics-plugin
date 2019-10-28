@@ -34,11 +34,24 @@ export default class WebServiceHandler extends CicsBaseHandler {
         };
         params.response.progress.startBar({task: status});
 
+        /*
+        * Git Bash on Windows attempts to replace forward slashes with a
+        * directory path (e.g., /u -> U:/). CICS is picky when it validates the
+        * wsbind path. Unlike typical Unix paths, it must start with one slash
+        * and two are not allowed. We need to support paths prefixed with two
+        * slashes so Git Bash does not tamper with them, and then strip off the
+        * extra leading slash here so CICS validation will not complain.
+        */
+        let wsBind: string = params.arguments.wsbind;
+        if (wsBind.startsWith("//")) {
+            wsBind = wsBind.slice(1);
+        }
+
         const response = await defineWebservice(session, {
             name: params.arguments.webserviceName,
             csdGroup: params.arguments.csdGroup,
             pipelineName: params.arguments.pipelineName,
-            wsBind: params.arguments.wsbind,
+            wsBind,
             description: params.arguments.description,
             validation: params.arguments.validation,
             wsdlFile: params.arguments.wsdlFile,

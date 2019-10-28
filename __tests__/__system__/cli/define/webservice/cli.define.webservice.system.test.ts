@@ -83,7 +83,6 @@ describe("CICS define web service command", () => {
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain(websvcName);
-        expect(output.stdout.toString()).toContain("ENABLED");
 
         await deleteWebservice(session, options);
     });
@@ -169,7 +168,6 @@ describe("CICS define web service command", () => {
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain(websvcName);
-        expect(output.stdout.toString()).toContain("ENABLED");
 
         await deleteWebservice(session, options);
     });
