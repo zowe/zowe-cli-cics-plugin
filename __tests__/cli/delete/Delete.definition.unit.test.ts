@@ -12,7 +12,7 @@
 import { ICommandDefinition } from "@zowe/imperative";
 
 describe("cics delete program", () => {
-    const DELETE_RESOURCES = 3;
+    const DELETE_RESOURCES = 4;
 
     it ("should not have changed", () => {
         const definition: ICommandDefinition = require("../../../src/cli/delete/Delete.definition");
