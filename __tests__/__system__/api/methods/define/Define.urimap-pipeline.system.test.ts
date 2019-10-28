@@ -53,8 +53,8 @@ describe("CICS Define pipeline URImap", () => {
         let error;
         let response;
 
-        const urimapNameSuffixLength = 3;
-        const urimapName = "X" + generateRandomAlphaNumericString(urimapNameSuffixLength);
+        const urimapNameSuffixLength = 4;
+        const urimapName = "AAAA" + generateRandomAlphaNumericString(urimapNameSuffixLength);
 
         options.name = urimapName;
         options.path = "fake";
@@ -80,8 +80,8 @@ describe("CICS Define pipeline URImap", () => {
         let error;
         let response;
 
-        const urimapNameSuffixLength = 3;
-        const urimapName = "X" + generateRandomAlphaNumericString(urimapNameSuffixLength);
+        const urimapNameSuffixLength = 4;
+        const urimapName = "AAAA" + generateRandomAlphaNumericString(urimapNameSuffixLength);
 
         options.name = urimapName;
         options.path = "fake";
@@ -107,8 +107,8 @@ describe("CICS Define pipeline URImap", () => {
         let error;
         let response;
 
-        const urimapNameSuffixLength = 3;
-        const urimapName = "X" + generateRandomAlphaNumericString(urimapNameSuffixLength);
+        const urimapNameSuffixLength = 4;
+        const urimapName = "AAAA" + generateRandomAlphaNumericString(urimapNameSuffixLength);
 
         options.name = urimapName;
         options.path = "fake";
