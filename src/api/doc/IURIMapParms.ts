@@ -59,13 +59,13 @@ export interface IURIMapParms {
 
     /**
      * Transaction resource associated with the URIMap
-     * Only used for pipeline URIMaps, up to 8 characters long
+     * Only used for pipeline URIMaps, up to 4 characters long
      */
     transactionName?: string;
 
     /**
      * Web service resource associated with the URIMap
-     * Only used for pipeline URIMaps, up to 8 characters long
+     * Only used for pipeline URIMaps, up to 32 characters long
      */
     webserviceName?: string;
 

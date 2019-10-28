@@ -76,8 +76,8 @@ export const UrimapPipelineDefinition: ICommandDefinition = {
             type: "string"
         },
         {
-            name: "webservice",
-            aliases: ["wsn"],
+            name: "webservice-name",
+            aliases: ["wn"],
             description: strings.OPTIONS.WEBSERVICENAME,
             type: "string"
         },

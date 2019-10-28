@@ -77,9 +77,9 @@ export default {
                         "The maximum length of the pipeline name is eight characters.",
                     DESCRIPTION: "Description of the URIMAP resource being defined.",
                     TRANSACTIONNAME: "The name of the TRANSACTION resource definition for the URIMAP. " +
-                        "The maximum length of the transaction name is eight characters.",
+                        "The maximum length of the transaction name is four characters.",
                     WEBSERVICENAME: "The name of the WEBSERVICE resource definition for the URIMAP. " +
-                        "The maximum length of the transaction name is eight characters."
+                        "The maximum length of the transaction name is 32 characters."
                 },
                 MESSAGES: {
                     SUCCESS: "The URIMAP '%s' was defined successfully."

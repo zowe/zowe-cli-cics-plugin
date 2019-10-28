@@ -69,16 +69,16 @@ Object {
       "aliases": Array [
         "tn",
       ],
-      "description": "The name of the TRANSACTION resource definition for the URIMAP. The maximum length of the transaction name is eight characters.",
+      "description": "The name of the TRANSACTION resource definition for the URIMAP. The maximum length of the transaction name is four characters.",
       "name": "transaction-name",
       "type": "string",
     },
     Object {
       "aliases": Array [
-        "wsn",
+        "wn",
       ],
-      "description": "The name of the WEBSERVICE resource definition for the URIMAP. The maximum length of the transaction name is eight characters.",
-      "name": "webservice",
+      "description": "The name of the WEBSERVICE resource definition for the URIMAP. The maximum length of the transaction name is 32 characters.",
+      "name": "webservice-name",
       "type": "string",
     },
     Object {

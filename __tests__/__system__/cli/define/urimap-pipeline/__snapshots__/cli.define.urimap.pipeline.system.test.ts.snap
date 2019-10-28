@@ -64,12 +64,12 @@ exports[`CICS define urimap-pipeline command should be able to display the help 
    --transaction-name  | --tn (string)
 
       The name of the TRANSACTION resource definition for the URIMAP. The maximum
-      length of the transaction name is eight characters.
+      length of the transaction name is four characters.
 
-   --webservice  | --wsn (string)
+   --webservice-name  | --wn (string)
 
       The name of the WEBSERVICE resource definition for the URIMAP. The maximum
-      length of the transaction name is eight characters.
+      length of the transaction name is 32 characters.
 
    --region-name  (string)
 
