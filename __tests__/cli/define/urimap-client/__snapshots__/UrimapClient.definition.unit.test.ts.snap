@@ -18,7 +18,7 @@ Object {
       "aliases": Array [
         "up",
       ],
-      "description": "The path component of the URI",
+      "description": "The path component of the URI.",
       "name": "urimap-path",
       "required": true,
       "type": "string",
@@ -27,7 +27,7 @@ Object {
       "aliases": Array [
         "uh",
       ],
-      "description": "The host component of the URI",
+      "description": "The host component of the URI.",
       "name": "urimap-host",
       "required": true,
       "type": "string",
@@ -44,17 +44,25 @@ Object {
         ],
       },
       "defaultValue": "http",
-      "description": "The scheme component to be used with the request (http or https)",
+      "description": "The scheme component to be used with the request (http or https).",
       "name": "urimap-scheme",
       "type": "string",
     },
     Object {
-      "description": "The CICS region name to which to define the new URIMAP",
+      "aliases": Array [
+        "desc",
+      ],
+      "description": "Description of the URIMAP resource being defined.",
+      "name": "description",
+      "type": "string",
+    },
+    Object {
+      "description": "The CICS region name to which to define the new URIMAP.",
       "name": "region-name",
       "type": "string",
     },
     Object {
-      "description": "The name of the CICSPlex to which to define the new URIMAP",
+      "description": "The name of the CICSPlex to which to define the new URIMAP.",
       "name": "cics-plex",
       "type": "string",
     },

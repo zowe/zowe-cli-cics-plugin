@@ -18,7 +18,7 @@ Object {
       "aliases": Array [
         "up",
       ],
-      "description": "The path component of the URI",
+      "description": "The path component of the URI.",
       "name": "urimap-path",
       "required": true,
       "type": "string",
@@ -27,7 +27,7 @@ Object {
       "aliases": Array [
         "uh",
       ],
-      "description": "The host component of the URI",
+      "description": "The host component of the URI.",
       "name": "urimap-host",
       "required": true,
       "type": "string",
@@ -44,7 +44,7 @@ Object {
         ],
       },
       "defaultValue": "http",
-      "description": "The scheme component to be used with the request (http or https)",
+      "description": "The scheme component to be used with the request (http or https).",
       "name": "urimap-scheme",
       "type": "string",
     },
@@ -52,18 +52,42 @@ Object {
       "aliases": Array [
         "pn",
       ],
-      "description": "The name of the PIPELINE resource definition for the web service. The maximum length of the pipeline name is eight characters",
+      "description": "The name of the PIPELINE resource definition for the URIMAP. The maximum length of the pipeline name is eight characters.",
       "name": "pipeline-name",
       "required": true,
       "type": "string",
     },
     Object {
-      "description": "The CICS region name to which to define the new URIMAP",
+      "aliases": Array [
+        "desc",
+      ],
+      "description": "Description of the URIMAP resource being defined.",
+      "name": "description",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "tn",
+      ],
+      "description": "The name of the TRANSACTION resource definition for the URIMAP. The maximum length of the transaction name is eight characters.",
+      "name": "transaction-name",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "wsn",
+      ],
+      "description": "The name of the WEBSERVICE resource definition for the URIMAP. The maximum length of the transaction name is eight characters.",
+      "name": "webservice",
+      "type": "string",
+    },
+    Object {
+      "description": "The CICS region name to which to define the new URIMAP.",
       "name": "region-name",
       "type": "string",
     },
     Object {
-      "description": "The name of the CICSPlex to which to define the new URIMAP",
+      "description": "The name of the CICSPlex to which to define the new URIMAP.",
       "name": "cics-plex",
       "type": "string",
     },

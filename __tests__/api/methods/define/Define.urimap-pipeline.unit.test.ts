@@ -23,6 +23,9 @@ describe("CMCI - Define pipeline URIMap", () => {
     const group = "group";
     const cicsPlex = "plex";
     const content = "This\nis\r\na\ntest";
+    const description = "description";
+    const transaction = "transaction";
+    const webservice = "webservice";
 
     const defineParms: IURIMapParms  = {
         regionName: region,
@@ -406,6 +409,23 @@ describe("CMCI - Define pipeline URIMap", () => {
             defineParms.cicsPlex = cicsPlex;
             endPoint = "/" + CicsCmciConstants.CICS_SYSTEM_MANAGEMENT + "/" +
                 CicsCmciConstants.CICS_DEFINITION_URIMAP + "/" + cicsPlex +"/" + region;
+
+            response = await defineUrimapPipeline(dummySession, defineParms);
+
+            // expect(response.success).toBe(true);
+            expect(response).toContain(content);
+            expect(defineSpy).toHaveBeenCalledWith(dummySession, endPoint, [], requestBody);
+        });
+
+        it("should be able to define a URIMap with optional parameters specified", async () => {
+            defineParms.description = description;
+            defineParms.transactionName = transaction;
+            defineParms.webserviceName = webservice;
+            endPoint = "/" + CicsCmciConstants.CICS_SYSTEM_MANAGEMENT + "/" +
+                CicsCmciConstants.CICS_DEFINITION_URIMAP + "/" + cicsPlex +"/" + region;
+            requestBody.request.create.attributes.$.description = description;
+            requestBody.request.create.attributes.$.transaction = transaction;
+            requestBody.request.create.attributes.$.webservice = webservice;
 
             response = await defineUrimapPipeline(dummySession, defineParms);
 
