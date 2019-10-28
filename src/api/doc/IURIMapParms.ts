@@ -53,6 +53,23 @@ export interface IURIMapParms {
     pipelineName?: string;
 
     /**
+     * Description text for the URIMap
+     */
+    description?: string;
+
+    /**
+     * Transaction resource associated with the URIMap
+     * Only used for pipeline URIMaps, up to 4 characters long
+     */
+    transactionName?: string;
+
+    /**
+     * Web service resource associated with the URIMap
+     * Only used for pipeline URIMaps, up to 32 characters long
+     */
+    webserviceName?: string;
+
+    /**
      * The name of the CICS region of the URIMap
      */
     regionName: string;

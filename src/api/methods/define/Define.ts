@@ -210,6 +210,27 @@ function validateUrimapParms(parms: IURIMapParms) {
  * @param {string} usage - value of the usage attribute (server, client, or pipeline)
  */
 function buildUrimapRequestBody(parms: IURIMapParms, usage: "server" | "client" | "pipeline") {
+    const requestAttrs: any = {
+        name: parms.name,
+        csdgroup: parms.csdGroup,
+        path: parms.path,
+        host: parms.host,
+        scheme: parms.scheme,
+        usage
+    };
+
+    if (parms.description != null) {
+        requestAttrs.description = parms.description;
+    }
+
+    if (parms.transactionName != null) {
+        requestAttrs.transaction = parms.transactionName;
+    }
+
+    if (parms.webserviceName != null) {
+        requestAttrs.webservice = parms.webserviceName;
+    }
+
     return {
         request: {
             create: {
@@ -219,14 +240,7 @@ function buildUrimapRequestBody(parms: IURIMapParms, usage: "server" | "client" 
                     }
                 },
                 attributes: {
-                    $: {
-                        name: parms.name,
-                        csdgroup: parms.csdGroup,
-                        path: parms.path,
-                        host: parms.host,
-                        scheme: parms.scheme,
-                        usage
-                    }
+                    $: requestAttrs
                 }
             }
         }

@@ -81,6 +81,9 @@ describe("DefineUrimapPipelineHandler", () => {
     const urimapPath = "testPath";
     const urimapScheme = "http";
     const cicsPlex = "testPlex";
+    const description = "description";
+    const transactionName = "testTransaction";
+    const webserviceName = "testWebservice";
 
     const defaultReturn: ICMCIApiResponse = {
         response: {
@@ -96,7 +99,7 @@ describe("DefineUrimapPipelineHandler", () => {
         functionSpy.mockImplementation(async () => defaultReturn);
     });
 
-    it("should call the defineUrimapPipeline api", async () => {
+    it("should call the defineUrimapPipeline api with required options specified", async () => {
         const handler = new UrimapPipelineHandler();
 
         const commandParameters = {...DEFAULT_PARAMETERS};
@@ -139,6 +142,61 @@ describe("DefineUrimapPipelineHandler", () => {
                 host: urimapHost,
                 pipelineName,
                 scheme: urimapScheme,
+                regionName,
+                cicsPlex
+            }
+        );
+    });
+
+    it("should call the defineUrimapPipeline api with all options specified", async () => {
+        const handler = new UrimapPipelineHandler();
+
+        const commandParameters = {...DEFAULT_PARAMETERS};
+        commandParameters.arguments = {
+            ...commandParameters.arguments,
+            urimapName,
+            csdGroup,
+            urimapPath,
+            urimapHost,
+            pipelineName,
+            urimapScheme,
+            description,
+            transactionName,
+            webserviceName,
+            regionName,
+            cicsPlex,
+            host,
+            port,
+            user,
+            password,
+            rejectUnauthorized,
+            protocol
+        };
+
+        await handler.process(commandParameters);
+
+        expect(functionSpy).toHaveBeenCalledTimes(1);
+        const testProfile = PROFILE_MAP.get("cics")[0];
+        expect(functionSpy).toHaveBeenCalledWith(
+            new Session({
+                type: "basic",
+                hostname: testProfile.host,
+                port: testProfile.port,
+                user: testProfile.user,
+                password: testProfile.password,
+                rejectUnauthorized,
+                protocol
+            }),
+            {
+                name: urimapName,
+                csdGroup,
+                path: urimapPath,
+                host: urimapHost,
+                pipelineName,
+                scheme: urimapScheme,
+                description,
+                transactionName,
+                webserviceName,
                 regionName,
                 cicsPlex
             }
