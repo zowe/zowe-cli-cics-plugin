@@ -67,14 +67,19 @@ export default {
                         " The maximum length of the group name is eight characters."
                 },
                 OPTIONS: {
-                    URIMAPHOST: "The host component of the URI",
-                    URIMAPPATH: "The path component of the URI",
-                    URIMAPSCHEME: "The scheme component to be used with the request (http or https)",
-                    REGIONNAME: "The CICS region name to which to define the new URIMAP",
-                    CICSPLEX: "The name of the CICSPlex to which to define the new URIMAP",
-                    PROGRAMNAME: "The application program that makes or handles the requests",
-                    PIPELINENAME: "The name of the PIPELINE resource definition for the web service." +
-                        " The maximum length of the pipeline name is eight characters",
+                    URIMAPHOST: "The host component of the URI.",
+                    URIMAPPATH: "The path component of the URI.",
+                    URIMAPSCHEME: "The scheme component to be used with the request (http or https).",
+                    REGIONNAME: "The CICS region name to which to define the new URIMAP.",
+                    CICSPLEX: "The name of the CICSPlex to which to define the new URIMAP.",
+                    PROGRAMNAME: "The application program that makes or handles the requests.",
+                    PIPELINENAME: "The name of the PIPELINE resource definition for the URIMAP. " +
+                        "The maximum length of the pipeline name is eight characters.",
+                    DESCRIPTION: "Description of the URIMAP resource being defined.",
+                    TRANSACTIONNAME: "The name of the TRANSACTION resource definition for the URIMAP. " +
+                        "The maximum length of the transaction name is eight characters.",
+                    WEBSERVICENAME: "The name of the WEBSERVICE resource definition for the URIMAP. " +
+                        "The maximum length of the transaction name is eight characters."
                 },
                 MESSAGES: {
                     SUCCESS: "The URIMAP '%s' was defined successfully."

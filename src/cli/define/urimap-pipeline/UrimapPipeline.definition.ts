@@ -64,6 +64,24 @@ export const UrimapPipelineDefinition: ICommandDefinition = {
             required: true
         },
         {
+            name: "description",
+            aliases: ["desc"],
+            description: strings.OPTIONS.DESCRIPTION,
+            type: "string"
+        },
+        {
+            name: "transaction-name",
+            aliases: ["tn"],
+            description: strings.OPTIONS.TRANSACTIONNAME,
+            type: "string"
+        },
+        {
+            name: "webservice",
+            aliases: ["wsn"],
+            description: strings.OPTIONS.WEBSERVICENAME,
+            type: "string"
+        },
+        {
             name: "region-name",
             description: strings.OPTIONS.REGIONNAME,
             type: "string",

@@ -64,6 +64,12 @@ export const UrimapServerDefinition: ICommandDefinition = {
             required: true
         },
         {
+            name: "description",
+            aliases: ["desc"],
+            description: strings.OPTIONS.DESCRIPTION,
+            type: "string"
+        },
+        {
             name: "region-name",
             description: strings.OPTIONS.REGIONNAME,
             type: "string",
