@@ -13,20 +13,20 @@ import { Session } from "@zowe/imperative";
 import {
     CicsCmciConstants,
     CicsCmciRestClient,
-    IURIMapParms,
-    deleteUrimap
+    IWebServiceParms,
+    deleteWebservice
 } from "../../../../src";
 
-describe("CMCI - Delete urimap", () => {
+describe("CMCI - Delete web service", () => {
 
-    const urimap = "urimap";
+    const webservice = "webservice";
     const region = "region";
     const group = "group";
     const content = "ThisIsATest";
 
-    const deleteParms: IURIMapParms = {
+    const deleteParms: IWebServiceParms = {
         regionName: region,
-        name: urimap,
+        name: webservice,
         csdGroup: group
     };
 
@@ -46,14 +46,14 @@ describe("CMCI - Delete urimap", () => {
             response = undefined;
             error = undefined;
             deleteParms.regionName = region;
-            deleteParms.name = urimap;
+            deleteParms.name = webservice;
             deleteParms.csdGroup = group;
         });
 
         it("should throw an error if no region name is specified", async () => {
             deleteParms.regionName = undefined;
             try {
-                response = await deleteUrimap(dummySession, deleteParms);
+                response = await deleteWebservice(dummySession, deleteParms);
             } catch (err) {
                 error = err;
             }
@@ -62,22 +62,22 @@ describe("CMCI - Delete urimap", () => {
             expect(error.message).toContain("CICS region name is required");
         });
 
-        it("should throw an error if no urimap name is specified", async () => {
+        it("should throw an error if no web service name is specified", async () => {
             deleteParms.name = undefined;
             try {
-                response = await deleteUrimap(dummySession, deleteParms);
+                response = await deleteWebservice(dummySession, deleteParms);
             } catch (err) {
                 error = err;
             }
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("CICS URIMap name is required");
+            expect(error.message).toContain("CICS Web service name is required");
         });
 
         it("should throw an error if no csdgroup is specified", async () => {
             deleteParms.csdGroup = undefined;
             try {
-                response = await deleteUrimap(dummySession, deleteParms);
+                response = await deleteWebservice(dummySession, deleteParms);
             } catch (err) {
                 error = err;
             }
@@ -96,16 +96,16 @@ describe("CMCI - Delete urimap", () => {
             deleteSpy.mockClear();
             deleteSpy.mockImplementation(() => content);
             deleteParms.regionName = region;
-            deleteParms.name = urimap;
+            deleteParms.name = webservice;
             deleteParms.csdGroup = group;
         });
 
-        it("should be able to delete a urimap", async () => {
+        it("should be able to delete a web service", async () => {
             endPoint = "/" + CicsCmciConstants.CICS_SYSTEM_MANAGEMENT + "/" +
-            CicsCmciConstants.CICS_DEFINITION_URIMAP + "/" + region +
+            CicsCmciConstants.CICS_DEFINITION_WEBSERVICE + "/" + region +
             `?CRITERIA=(NAME=${deleteParms.name})&PARAMETER=CSDGROUP(${deleteParms.csdGroup})`;
 
-            response = await deleteUrimap(dummySession, deleteParms);
+            response = await deleteWebservice(dummySession, deleteParms);
             expect(response).toContain(content);
             expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, []);
         });

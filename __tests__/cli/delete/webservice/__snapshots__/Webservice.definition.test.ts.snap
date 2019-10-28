@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cics delete web service should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "web",
+  ],
+  "description": "Delete a web service from CICS.",
+  "examples": Array [
+    Object {
+      "description": "Delete a web service named WEBSVCA from the region named MYREGION belonging to the csdgroup MYGRP",
+      "options": "WEBSVCA MYGRP --region-name MYREGION",
+    },
+  ],
+  "name": "webservice",
+  "options": Array [
+    Object {
+      "description": "The CICS region name from which to delete the web service",
+      "name": "region-name",
+      "type": "string",
+    },
+  ],
+  "positionals": Array [
+    Object {
+      "description": "The name of the web service to delete. The maximum length of the web service name is eight characters.",
+      "name": "webserviceName",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "description": "The CICS system definition (CSD) Group for the web service that you want to delete. The maximum length of the group name is eight characters.",
+      "name": "csdGroup",
+      "required": true,
+      "type": "string",
+    },
+  ],
+  "profile": Object {
+    "optional": Array [
+      "cics",
+    ],
+  },
+  "type": "command",
+}
+`;
