@@ -9,11 +9,16 @@
 *                                                                                 *
 */
 
-export * from "./define";
-export * from "./delete";
-export * from "./disable";
-export * from "./discard";
-export * from "./enable";
-export * from "./get";
-export * from "./set";
-export * from "./install";
+import { ICommandDefinition } from "@zowe/imperative";
+
+describe("cics disable urimap", () => {
+    const DISABLE_RESOURCES = 1;
+
+    it ("should not have changed", () => {
+        const definition: ICommandDefinition = require("../../../src/cli/disable/Disable.definition");
+        expect(definition).toBeDefined();
+        expect(definition.children.length).toBe(DISABLE_RESOURCES);
+        delete definition.children;
+        expect(definition).toMatchSnapshot();
+    });
+});

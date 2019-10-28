@@ -182,6 +182,29 @@ export default {
             }
         }
     },
+    DISABLE: {
+        SUMMARY: "Disable resources from CICS",
+        DESCRIPTION: "Disable resources (for example, urimaps) from CICS through IBM CMCI.",
+        RESOURCES: {
+            URIMAP: {
+                DESCRIPTION: "Disable a urimap from CICS.",
+                POSITIONALS: {
+                    URIMAPNAME: "The name of the urimap to disable. The maximum length of the urimap name is eight characters.",
+                    CSDGROUP: "The CICS system definition (CSD) Group for the new program that you want to disable." +
+                    " The maximum length of the group name is eight characters."
+                },
+                OPTIONS: {
+                    REGIONNAME: "The CICS region name in which to disable the urimap"
+                },
+                MESSAGES: {
+                    SUCCESS: "The urimap '%s' was disabled successfully."
+                },
+                EXAMPLES: {
+                    EX1: "Disable a urimap named URIMAPA from the region named MYREGION"
+                }
+            }
+        }
+    },
     DISCARD: {
         SUMMARY: "Discard resources from CICS",
         DESCRIPTION: "Discard resources (for example, programs) from CICS through IBM CMCI.",
@@ -216,6 +239,29 @@ export default {
                 },
                 EXAMPLES: {
                     EX1: "Discard a transaction named TRN1 from the region named MYREGION"
+                }
+            }
+        }
+    },
+    ENABLE: {
+        SUMMARY: "Enable resources from CICS",
+        DESCRIPTION: "Enable resources (for example, urimaps) from CICS through IBM CMCI.",
+        RESOURCES: {
+            URIMAP: {
+                DESCRIPTION: "Enable a urimap from CICS.",
+                POSITIONALS: {
+                    URIMAPNAME: "The name of the urimap to enable. The maximum length of the urimap name is eight characters.",
+                    CSDGROUP: "The CICS system definition (CSD) Group for the new program that you want to disable." +
+                    " The maximum length of the group name is eight characters."
+                },
+                OPTIONS: {
+                    REGIONNAME: "The CICS region name in which to enable the urimap"
+                },
+                MESSAGES: {
+                    SUCCESS: "The urimap '%s' was enabled successfully."
+                },
+                EXAMPLES: {
+                    EX1: "Enable a urimap named URIMAPA from the region named MYREGION"
                 }
             }
         }

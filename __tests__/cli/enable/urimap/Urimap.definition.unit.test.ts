@@ -9,11 +9,13 @@
 *                                                                                 *
 */
 
-export * from "./define";
-export * from "./delete";
-export * from "./disable";
-export * from "./discard";
-export * from "./enable";
-export * from "./get";
-export * from "./set";
-export * from "./install";
+import { ICommandDefinition } from "@zowe/imperative";
+
+describe("cics enable urimap", () => {
+    it ("should not have changed", () => {
+        const definition: ICommandDefinition = require("../../../../src/cli/enable/urimap/Urimap.definition").UrimapDefinition;
+        expect(definition).toBeDefined();
+        delete definition.handler;
+        expect(definition).toMatchSnapshot();
+    });
+});
