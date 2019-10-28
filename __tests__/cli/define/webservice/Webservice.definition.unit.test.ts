@@ -11,14 +11,12 @@
 
 import { ICommandDefinition } from "@zowe/imperative";
 
-describe("cics define program", () => {
-    const DEFINE_RESOURCES = 6;
-
+describe("cics define webservice", () => {
     it ("should not have changed", () => {
-        const definition: ICommandDefinition = require("../../../src/cli/define/Define.definition");
+        const path = "../../../../src/cli/define/webservice/Webservice.definition";
+        const definition: ICommandDefinition = require(path).WebServiceDefinition;
         expect(definition).toBeDefined();
-        expect(definition.children.length).toBe(DEFINE_RESOURCES);
-        delete definition.children;
+        delete definition.handler;
         expect(definition).toMatchSnapshot();
     });
 });

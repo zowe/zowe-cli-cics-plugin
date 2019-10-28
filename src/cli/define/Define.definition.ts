@@ -10,15 +10,16 @@
 */
 
 import { ICommandDefinition } from "@zowe/imperative";
-import { ProgramDefinition } from "./program/Program.definition";
-
-import i18nTypings from "../-strings-/en";
-import { TransactionDefinition } from "./transaction/Transaction.definition";
 import { CicsSession } from "../CicsSession";
 
+import { ProgramDefinition } from "./program/Program.definition";
+import { TransactionDefinition } from "./transaction/Transaction.definition";
 import { UrimapServerDefinition } from "./urimap-server/UrimapServer.definition";
 import { UrimapClientDefinition } from "./urimap-client/UrimapClient.definition";
 import { UrimapPipelineDefinition } from "./urimap-pipeline/UrimapPipeline.definition";
+import { WebServiceDefinition } from "./webservice/Webservice.definition";
+
+import i18nTypings from "../-strings-/en";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
 const strings = (require("../-strings-/en").default as typeof i18nTypings).DEFINE;
@@ -35,7 +36,8 @@ const definition: ICommandDefinition = {
                TransactionDefinition,
                UrimapServerDefinition,
                UrimapClientDefinition,
-               UrimapPipelineDefinition],
+               UrimapPipelineDefinition,
+               WebServiceDefinition],
     passOn: [
         {
             property: "options",

@@ -12,7 +12,7 @@
 import { AbstractSession, ImperativeExpect, Logger } from "@zowe/imperative";
 import { CicsCmciRestClient } from "../../rest";
 import { CicsCmciConstants } from "../../constants";
-import { ICMCIApiResponse, IProgramParms, ITransactionParms, IURIMapParms } from "../../doc";
+import { ICMCIApiResponse, IProgramParms, ITransactionParms, IURIMapParms, IWebServiceParms } from "../../doc";
 
 /**
  * Define a new program resource to CICS through CMCI REST API
@@ -231,4 +231,52 @@ function buildUrimapRequestBody(parms: IURIMapParms, usage: "server" | "client" 
             }
         }
     };
+}
+
+export async function defineWebservice(session: AbstractSession, parms: IWebServiceParms): Promise<ICMCIApiResponse> {
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "CICS Web service name", "CICS web service name is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.pipelineName, "CICS Pipeline name", "CICS pipeline name is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.wsBind, "CICS Web service binding file", "CICS web service binding file is required");
+    ImperativeExpect.toNotBeNullOrUndefined(parms.validation, "CICS web service validation is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.csdGroup, "CICS CSD Group", "CICS CSD group is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.regionName, "CICS Region name", "CICS region name is required");
+
+    Logger.getAppLogger().debug("Attempting to define a web service with the following parameters:\n%s", JSON.stringify(parms));
+    const requestAttrs: any = {
+        name: parms.name,
+        csdgroup: parms.csdGroup,
+        pipeline: parms.pipelineName,
+        wsbind: parms.wsBind,
+        validation: parms.validation ? "yes" : "no"
+    };
+
+    if (parms.description != null) {
+        requestAttrs.description = parms.description;
+    }
+
+    if (parms.wsdlFile != null) {
+        requestAttrs.wsdlFile = parms.wsdlFile;
+    }
+
+    const requestBody: any = {
+        request: {
+            create: {
+                parameter: {
+                    $: {
+                        name: "CSD",
+                    }
+                },
+                attributes: {
+                    $: requestAttrs
+                }
+            }
+        }
+    };
+
+    const cicsPlex = parms.cicsPlex == null ? "" : parms.cicsPlex + "/";
+    const cmciResource = "/" + CicsCmciConstants.CICS_SYSTEM_MANAGEMENT + "/" +
+        CicsCmciConstants.CICS_DEFINITION_WEBSERVICE + "/" + cicsPlex +
+        parms.regionName;
+    return CicsCmciRestClient.postExpectParsedXml(session, cmciResource,
+        [], requestBody) as any;
 }
