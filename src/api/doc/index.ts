@@ -15,3 +15,4 @@ export * from "./IProgramParms";
 export * from "./IResourceParms";
 export * from "./ITransactionParms";
 export * from "./IURIMapParms";
+export * from "./IWebServiceParms";

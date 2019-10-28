@@ -98,6 +98,32 @@ export default {
                             "in the CSD group MYGRP where the host is www.example.com and the path is /example/index.html"
                     }
                 }
+            },
+            WEBSERVICE: {
+                DESCRIPTION: "Define a new web service to CICS.",
+                POSITIONALS: {
+                    WEBSERVICENAME: "The name of the WEBSERVICE to create. The maximum length of the web service name is eight characters.",
+                    CSDGROUP: "The CICS system definition (CSD) Group for the new web service that you want to define." +
+                        " The maximum length of the group name is eight characters."
+                },
+                OPTIONS: {
+                    PIPELINENAME: "The name of the PIPELINE resource definition for the web service." +
+                        " The maximum length of the pipeline name is eight characters",
+                    WSBIND: "The file name of the web service binding file on HFS.",
+                    DESCRIPTION: "Description of the web service resource being defined.",
+                    VALIDATION: "Specifies whether full validation of SOAP messages against the corresponding schema in the web service " +
+                        "description should be performed at run time.",
+                    WSDLFILE: "The file name of the web service description (WSDL) file on HFS.",
+                    REGIONNAME: "The CICS region name to which to define the new web service.",
+                    CICSPLEX: "The name of the CICSPlex to which to define the new web service."
+                },
+                MESSAGES: {
+                    SUCCESS: "The WEBSERVICE '%s' was defined successfully."
+                },
+                EXAMPLES: {
+                    EX1: "Define a webservice named WEBSVCA for the pipeline named PIPE123 to the region named MYREGION " +
+                        "in the CSD group MYGRP where the binding file is /u/exampleapp/wsbind/example.log"
+                }
             }
         }
     },
