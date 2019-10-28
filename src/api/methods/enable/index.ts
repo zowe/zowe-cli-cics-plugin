@@ -9,11 +9,4 @@
 *                                                                                 *
 */
 
-export * from "./define";
-export * from "./delete";
-export * from "./disable";
-export * from "./discard";
-export * from "./enable";
-export * from "./get";
-export * from "./set";
-export * from "./install";
+export * from "./Enable";
