@@ -41,6 +41,9 @@ export default class UrimapPipelineHandler extends CicsBaseHandler {
             host: params.arguments.urimapHost,
             pipelineName: params.arguments.pipelineName,
             scheme: params.arguments.urimapScheme,
+            description: params.arguments.description,
+            transactionName: params.arguments.transactionName,
+            webserviceName: params.arguments.webserviceName,
             regionName: params.arguments.regionName || profile.regionName,
             cicsPlex: params.arguments.cicsPlex || profile.cicsPlex
         });

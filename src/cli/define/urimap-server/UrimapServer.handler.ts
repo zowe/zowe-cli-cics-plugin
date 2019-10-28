@@ -41,6 +41,7 @@ export default class UrimapServerHandler extends CicsBaseHandler {
             host: params.arguments.urimapHost,
             programName: params.arguments.programName,
             scheme: params.arguments.urimapScheme,
+            description: params.arguments.description,
             regionName: params.arguments.regionName || profile.regionName,
             cicsPlex: params.arguments.cicsPlex || profile.cicsPlex
         });

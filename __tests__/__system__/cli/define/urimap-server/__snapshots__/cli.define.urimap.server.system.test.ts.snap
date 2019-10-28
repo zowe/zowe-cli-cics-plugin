@@ -35,33 +35,37 @@ exports[`CICS define urimap-server command should be able to display the help 1`
 
    --urimap-path  | --up (string)
 
-      The path component of the URI
+      The path component of the URI.
 
    --urimap-host  | --uh (string)
 
-      The host component of the URI
+      The host component of the URI.
 
    --program-name  | --pn (string)
 
-      The application program that makes or handles the requests
+      The application program that makes or handles the requests.
 
  OPTIONS
  -------
 
    --urimap-scheme  | --us (string)
 
-      The scheme component to be used with the request (http or https)
+      The scheme component to be used with the request (http or https).
 
       Default value: http
       Allowed values: http, https
 
+   --description  | --desc (string)
+
+      Description of the URIMAP resource being defined.
+
    --region-name  (string)
 
-      The CICS region name to which to define the new URIMAP
+      The CICS region name to which to define the new URIMAP.
 
    --cics-plex  (string)
 
-      The name of the CICSPlex to which to define the new URIMAP
+      The name of the CICSPlex to which to define the new URIMAP.
 
  CICS CONNECTION OPTIONS
  -----------------------

@@ -36,34 +36,48 @@ exports[`CICS define urimap-pipeline command should be able to display the help 
 
    --urimap-path  | --up (string)
 
-      The path component of the URI
+      The path component of the URI.
 
    --urimap-host  | --uh (string)
 
-      The host component of the URI
+      The host component of the URI.
 
    --pipeline-name  | --pn (string)
 
-      The name of the PIPELINE resource definition for the web service. The maximum
-      length of the pipeline name is eight characters
+      The name of the PIPELINE resource definition for the URIMAP. The maximum length
+      of the pipeline name is eight characters.
 
  OPTIONS
  -------
 
    --urimap-scheme  | --us (string)
 
-      The scheme component to be used with the request (http or https)
+      The scheme component to be used with the request (http or https).
 
       Default value: http
       Allowed values: http, https
 
+   --description  | --desc (string)
+
+      Description of the URIMAP resource being defined.
+
+   --transaction-name  | --tn (string)
+
+      The name of the TRANSACTION resource definition for the URIMAP. The maximum
+      length of the transaction name is four characters.
+
+   --webservice-name  | --wn (string)
+
+      The name of the WEBSERVICE resource definition for the URIMAP. The maximum
+      length of the transaction name is 32 characters.
+
    --region-name  (string)
 
-      The CICS region name to which to define the new URIMAP
+      The CICS region name to which to define the new URIMAP.
 
    --cics-plex  (string)
 
-      The name of the CICSPlex to which to define the new URIMAP
+      The name of the CICSPlex to which to define the new URIMAP.
 
  CICS CONNECTION OPTIONS
  -----------------------
