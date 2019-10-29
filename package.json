@@ -1,6 +1,6 @@
 {
   "name": "@zowe/cics-for-zowe-cli",
-  "version": "3.5.0",
+  "version": "3.6.0",
   "description": "IBM CICS Plug-in for Zowe CLI",
   "homepage": "https://github.com/zowe/zowe-cli-cics-plugin#readme",
   "bugs": {
