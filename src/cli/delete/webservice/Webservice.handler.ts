@@ -10,7 +10,7 @@
 */
 
 import { AbstractSession, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@zowe/imperative";
-import { ICMCIApiResponse, deleteUrimap } from "../../../api";
+import { ICMCIApiResponse, deleteWebservice } from "../../../api";
 import { CicsBaseHandler } from "../../CicsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
@@ -19,29 +19,29 @@ import i18nTypings from "../../-strings-/en";
 const strings = (require("../../-strings-/en").default as typeof i18nTypings).DELETE.RESOURCES.URIMAP;
 
 /**
- * Command handler for deleting CICS URIMaps via CMCI
+ * Command handler for deleting CICS web services via CMCI
  * @export
- * @class UrimapHandler
+ * @class WebServiceHandler
  * @implements {ICommandHandler}
  */
 
-export default class UrimapHandler extends CicsBaseHandler {
+export default class WebServiceHandler extends CicsBaseHandler {
     public async processWithSession(params: IHandlerParameters, session: AbstractSession, profile: IProfile): Promise<ICMCIApiResponse> {
 
         const status: ITaskWithStatus = {
-            statusMessage: "Deleting URIMAP from CICS",
+            statusMessage: "Deleting web service from CICS",
             percentComplete: 0,
             stageName: TaskStage.IN_PROGRESS
         };
         params.response.progress.startBar({task: status});
 
-        const response = await deleteUrimap(session, {
-            name: params.arguments.urimapName,
+        const response = await deleteWebservice(session, {
+            name: params.arguments.webserviceName,
             csdGroup: params.arguments.csdGroup,
             regionName: params.arguments.regionName || profile.regionName,
         });
 
-        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.urimapName);
+        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.webserviceName);
         return response;
     }
 }

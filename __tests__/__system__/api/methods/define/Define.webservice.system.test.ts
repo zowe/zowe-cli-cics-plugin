@@ -53,8 +53,8 @@ describe("CICS Define web service", () => {
         let error;
         let response;
 
-        const websvcNameSuffixLength = 3;
-        const websvcName = "X" + generateRandomAlphaNumericString(websvcNameSuffixLength);
+        const websvcNameSuffixLength = 4;
+        const websvcName = "AAAA" + generateRandomAlphaNumericString(websvcNameSuffixLength);
 
         options.name = websvcName;
         options.pipelineName = "AAAA1234";
@@ -79,8 +79,8 @@ describe("CICS Define web service", () => {
         let error;
         let response;
 
-        const websvcNameSuffixLength = 3;
-        const websvcName = "X" + generateRandomAlphaNumericString(websvcNameSuffixLength);
+        const websvcNameSuffixLength = 4;
+        const websvcName = "AAAA" + generateRandomAlphaNumericString(websvcNameSuffixLength);
 
         options.name = websvcName;
         options.pipelineName = "AAAA1234";
@@ -105,8 +105,8 @@ describe("CICS Define web service", () => {
         let error;
         let response;
 
-        const websvcNameSuffixLength = 3;
-        const websvcName = "X" + generateRandomAlphaNumericString(websvcNameSuffixLength);
+        const websvcNameSuffixLength = 4;
+        const websvcName = "AAAA" + generateRandomAlphaNumericString(websvcNameSuffixLength);
 
         options.name = websvcName;
         options.pipelineName = "AAAA1234";

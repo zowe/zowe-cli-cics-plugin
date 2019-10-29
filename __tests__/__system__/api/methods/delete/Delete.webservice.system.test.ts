@@ -10,21 +10,21 @@
 */
 
 import { Session } from "@zowe/imperative";
-import { ITestEnvironment } from "../../../../../__tests__/__src__/environment/doc/response/ITestEnvironment";
-import { TestEnvironment } from "../../../../../__tests__/__src__/environment/TestEnvironment";
+import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
+import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
 import { generateRandomAlphaNumericString } from "../../../../__src__/TestUtils";
-import { defineUrimapClient, deleteUrimap, IURIMapParms, } from "../../../../../src";
+import { defineWebservice, deleteWebservice, IWebServiceParms } from "../../../../../src";
 
 let testEnvironment: ITestEnvironment;
 let regionName: string;
 let csdGroup: string;
 let session: Session;
 
-describe("CICS Define client URImap", () => {
+describe("CICS Delete web service", () => {
 
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
-            testName: "cics_cmci_define_urimap-client",
+            testName: "cics_cmci_delete_webservice",
             installPlugin: true,
             tempProfileTypes: ["cics"]
         });
@@ -47,24 +47,26 @@ describe("CICS Define client URImap", () => {
         await TestEnvironment.cleanUp(testEnvironment);
     });
 
-    const options: IURIMapParms = {} as any;
+    const options: IWebServiceParms = {
+        pipelineName: "AAAA1234",
+        wsBind: "/u/exampleapp/wsbind/example.log",
+        validation: false
+    } as any;
 
-    it("should define a URIMap to CICS", async () => {
+    it("should delete a web service from CICS", async () => {
         let error;
         let response;
 
-        const urimapNameSuffixLength = 4;
-        const urimapName = "AAAA" + generateRandomAlphaNumericString(urimapNameSuffixLength);
+        const webserviceNameSuffixLength = 4;
+        const webserviceName = "AAAA" + generateRandomAlphaNumericString(webserviceNameSuffixLength);
 
-        options.name = urimapName;
-        options.path = "fake";
-        options.host = "fake";
-        options.scheme = "http";
+        options.name = webserviceName;
         options.csdGroup = csdGroup;
         options.regionName = regionName;
 
         try {
-            response = await defineUrimapClient(session, options);
+            await defineWebservice(session, options);
+            response = await deleteWebservice(session, options);
         } catch (err) {
             error = err;
         }
@@ -72,25 +74,21 @@ describe("CICS Define client URImap", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.response.resultsummary.api_response1).toBe("1024");
-        await deleteUrimap(session, options);
     });
 
-    it("should fail to define a URIMap to CICS with invalid CICS region", async () => {
+    it("should fail to delete a web service from CICS with invalid CICS region", async () => {
         let error;
         let response;
 
-        const urimapNameSuffixLength = 4;
-        const urimapName = "AAAA" + generateRandomAlphaNumericString(urimapNameSuffixLength);
+        const webserviceNameSuffixLength = 4;
+        const webserviceName = "AAAA" + generateRandomAlphaNumericString(webserviceNameSuffixLength);
 
-        options.name = urimapName;
-        options.path = "fake";
-        options.host = "fake";
-        options.scheme = "http";
+        options.name = webserviceName;
         options.csdGroup = csdGroup;
         options.regionName = "FAKE";
 
         try {
-            response = await defineUrimapClient(session, options);
+            response = await deleteWebservice(session, options);
         } catch (err) {
             error = err;
         }
@@ -99,44 +97,5 @@ describe("CICS Define client URImap", () => {
         expect(response).toBeFalsy();
         expect(error.message).toContain("Did not receive the expected response from CMCI REST API");
         expect(error.message).toContain("INVALIDPARM");
-    });
-
-    it("should fail to define a URIMap to CICS due to duplicate name", async () => {
-        let error;
-        let response;
-
-        const urimapNameSuffixLength = 4;
-        const urimapName = "AAAA" + generateRandomAlphaNumericString(urimapNameSuffixLength);
-
-        options.name = urimapName;
-        options.path = "fake";
-        options.host = "fake";
-        options.scheme = "http";
-        options.csdGroup = csdGroup;
-        options.regionName = regionName;
-
-        // define a URIMap to CICS
-        try {
-            response = await defineUrimapClient(session, options);
-        } catch (err) {
-            error = err;
-        }
-
-        expect(error).toBeFalsy();
-        expect(response).toBeTruthy();
-        response = null; // reset
-
-        // define the same URIMap and validate duplicate error
-        try {
-            response = await defineUrimapClient(session, options);
-        } catch (err) {
-            error = err;
-        }
-
-        expect(error).toBeTruthy();
-        expect(response).toBeFalsy();
-        expect(error.message).toContain("Did not receive the expected response from CMCI REST API");
-        expect(error.message).toContain("DUPRES");
-        await deleteUrimap(session, options);
     });
 });

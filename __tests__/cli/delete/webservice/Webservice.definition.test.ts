@@ -11,14 +11,11 @@
 
 import { ICommandDefinition } from "@zowe/imperative";
 
-describe("cics delete program", () => {
-    const DELETE_RESOURCES = 4;
-
+describe("cics delete web service", () => {
     it ("should not have changed", () => {
-        const definition: ICommandDefinition = require("../../../src/cli/delete/Delete.definition");
+        const definition: ICommandDefinition = require("../../../../src/cli/delete/webservice/Webservice.definition").WebServiceDefinition;
         expect(definition).toBeDefined();
-        expect(definition.children.length).toBe(DELETE_RESOURCES);
-        delete definition.children;
+        delete definition.handler;
         expect(definition).toMatchSnapshot();
     });
 });
