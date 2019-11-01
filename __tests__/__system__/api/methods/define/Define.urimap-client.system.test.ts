@@ -20,6 +20,13 @@ let regionName: string;
 let csdGroup: string;
 let enable: boolean;
 let session: Session;
+let urimapName: string;
+
+function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+const sleepTime = 4000;
 
 describe("CICS Define client URImap", () => {
 
@@ -32,7 +39,9 @@ describe("CICS Define client URImap", () => {
         csdGroup = testEnvironment.systemTestProperties.cmci.csdGroup;
         enable = false;
         regionName = testEnvironment.systemTestProperties.cmci.regionName;
+        const urimapNameSuffixLength = 4;
         const cmciProperties = await testEnvironment.systemTestProperties.cmci;
+        urimapName = "AAAA" + generateRandomAlphaNumericString(urimapNameSuffixLength);
 
         session = new Session({
             user: cmciProperties.user,
@@ -55,9 +64,6 @@ describe("CICS Define client URImap", () => {
         let error;
         let response;
 
-        const urimapNameSuffixLength = 4;
-        const urimapName = "AAAA" + generateRandomAlphaNumericString(urimapNameSuffixLength);
-
         options.name = urimapName;
         options.path = "fake";
         options.host = "fake";
@@ -75,15 +81,13 @@ describe("CICS Define client URImap", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.response.resultsummary.api_response1).toBe("1024");
+        await sleep(sleepTime);
         await deleteUrimap(session, options);
     });
 
     it("should fail to define a URIMap to CICS with invalid CICS region", async () => {
         let error;
         let response;
-
-        const urimapNameSuffixLength = 4;
-        const urimapName = "AAAA" + generateRandomAlphaNumericString(urimapNameSuffixLength);
 
         options.name = urimapName;
         options.path = "fake";
@@ -108,9 +112,6 @@ describe("CICS Define client URImap", () => {
         let error;
         let response;
 
-        const urimapNameSuffixLength = 4;
-        const urimapName = "AAAA" + generateRandomAlphaNumericString(urimapNameSuffixLength);
-
         options.name = urimapName;
         options.path = "fake";
         options.host = "fake";
@@ -129,6 +130,7 @@ describe("CICS Define client URImap", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         response = null; // reset
+        await sleep(sleepTime);
 
         // define the same URIMap and validate duplicate error
         try {
@@ -141,6 +143,7 @@ describe("CICS Define client URImap", () => {
         expect(response).toBeFalsy();
         expect(error.message).toContain("Did not receive the expected response from CMCI REST API");
         expect(error.message).toContain("DUPRES");
+        await sleep(sleepTime);
         await deleteUrimap(session, options);
     });
 });

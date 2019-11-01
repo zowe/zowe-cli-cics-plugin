@@ -363,7 +363,8 @@ describe("CMCI - Define server URIMap", () => {
                             host,
                             scheme,
                             program,
-                            usage: "server"
+                            usage: "server",
+                            status: "ENABLED"
                         }
                     }
                 }

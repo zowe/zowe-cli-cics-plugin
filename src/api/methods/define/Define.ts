@@ -232,7 +232,7 @@ function buildUrimapRequestBody(parms: IURIMapParms, usage: "server" | "client" 
     }
 
     if (parms.enable === false) {
-        requestAttrs.status = "DISBLED";
+        requestAttrs.status = "DISABLED";
     } else {
         requestAttrs.status = "ENABLED";
     }

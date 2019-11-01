@@ -24,7 +24,7 @@ function sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-const sleepTime = 2000;
+const sleepTime = 5000;
 
 describe("CICS Discard URImap", () => {
 
@@ -69,6 +69,7 @@ describe("CICS Discard URImap", () => {
         options.programName = "AAAA1234";
         options.csdGroup = csdGroup;
         options.regionName = regionName;
+        options.enable = false;
         await defineUrimapServer(session, options);
         await sleep(sleepTime);
         await installUrimap(session, options);
@@ -101,10 +102,11 @@ describe("CICS Discard URImap", () => {
         options.pipelineName = "AAAB1234";
         options.csdGroup = csdGroup;
         options.regionName = regionName;
+        options.enable = false;
         await defineUrimapServer(session, options);
         await sleep(sleepTime);
         await installUrimap(session, options);
-        await sleep(2*sleepTime);
+        await sleep(sleepTime);
 
         try {
             response = await discardUrimap(session, options);
@@ -132,10 +134,11 @@ describe("CICS Discard URImap", () => {
         options.scheme = "http";
         options.csdGroup = csdGroup;
         options.regionName = regionName;
+        options.enable = false;
         await defineUrimapServer(session, options);
         await sleep(sleepTime);
         await installUrimap(session, options);
-        await sleep(2*sleepTime);
+        await sleep(sleepTime);
 
         try {
             response = await discardUrimap(session, options);

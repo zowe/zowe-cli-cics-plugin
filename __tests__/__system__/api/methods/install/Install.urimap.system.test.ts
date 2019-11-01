@@ -70,6 +70,7 @@ describe("CICS Install URImap", () => {
         options.programName = "AAAA1234";
         options.csdGroup = csdGroup;
         options.regionName = regionName;
+        options.enable = false;
         await defineUrimapServer(session, options);
         await sleep(sleepTime);
 
@@ -99,9 +100,10 @@ describe("CICS Install URImap", () => {
         options.path = "fake";
         options.host = "fake";
         options.scheme = "http";
-        options.pipelineName = "AAAB1234";
+        options.pipelineName = "AAAB1235";
         options.csdGroup = csdGroup;
         options.regionName = regionName;
+        options.enable = false;
         await defineUrimapServer(session, options);
         await sleep(sleepTime);
 
@@ -133,6 +135,7 @@ describe("CICS Install URImap", () => {
         options.scheme = "http";
         options.csdGroup = csdGroup;
         options.regionName = regionName;
+        options.enable = false;
         await defineUrimapServer(session, options);
         await sleep(sleepTime);
 

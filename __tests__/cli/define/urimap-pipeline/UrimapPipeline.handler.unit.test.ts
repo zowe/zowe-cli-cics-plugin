@@ -146,7 +146,10 @@ describe("DefineUrimapPipelineHandler", () => {
                 scheme: urimapScheme,
                 regionName,
                 cicsPlex,
-                enable
+                enable,
+                description: undefined,
+                transactionName: undefined,
+                webserviceName: undefined
             }
         );
     });

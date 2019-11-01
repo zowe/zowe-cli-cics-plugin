@@ -27,6 +27,12 @@ let protocol: string;
 let rejectUnauthorized: boolean;
 let session: Session;
 
+function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+const sleepTime = 2000;
+
 describe("CICS define urimap-pipeline command", () => {
 
     beforeAll(async () => {
@@ -67,7 +73,7 @@ describe("CICS define urimap-pipeline command", () => {
     });
 
     it("should be able to successfully define a pipeline urimap with basic options", async () => {
-        const urimapNameSuffixLength = 4;
+        const urimapNameSuffixLength = 5;
         const urimapName = "DFN" + generateRandomAlphaNumericString(urimapNameSuffixLength);
         const options: IURIMapParms = { name: urimapName, csdGroup, regionName };
         let output = runCliScript(__dirname + "/__scripts__/define_urimap_pipeline.sh", TEST_ENVIRONMENT,
@@ -86,7 +92,9 @@ describe("CICS define urimap-pipeline command", () => {
         expect(output.stdout.toString()).toContain(urimapName);
         expect(output.stdout.toString()).toContain("ENABLED");
 
+        await sleep(sleepTime);
         await deleteUrimap(session, options);
+        await sleep(sleepTime);
     });
 
     it("should be able to successfully define a pipeline urimap with all options", async () => {
@@ -116,7 +124,9 @@ describe("CICS define urimap-pipeline command", () => {
         expect(output.stdout.toString()).toContain(transactionName);
         expect(output.stdout.toString()).toContain(webserviceName);
 
+        await sleep(sleepTime);
         await deleteUrimap(session, options);
+        await sleep(sleepTime);
     });
 
     it("should get a syntax error if urimap name is omitted", () => {
@@ -216,7 +226,9 @@ describe("CICS define urimap-pipeline command", () => {
         expect(output.stdout.toString()).toContain(urimapName);
         expect(output.stdout.toString()).toContain("ENABLED");
 
+        await sleep(sleepTime);
         await deleteUrimap(session, options);
+        await sleep(sleepTime);
     });
 
 });

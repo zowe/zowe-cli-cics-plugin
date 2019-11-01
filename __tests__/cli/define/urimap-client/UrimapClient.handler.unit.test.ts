@@ -140,7 +140,8 @@ describe("DefineUrimapClientHandler", () => {
                 scheme: urimapScheme,
                 regionName,
                 cicsPlex,
-                enable
+                enable,
+                description: undefined
             }
         );
     });

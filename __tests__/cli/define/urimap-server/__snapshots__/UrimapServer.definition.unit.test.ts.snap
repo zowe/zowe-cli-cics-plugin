@@ -75,6 +75,12 @@ Object {
       "name": "cics-plex",
       "type": "string",
     },
+    Object {
+      "defaultValue": true,
+      "description": "Whether or not the URIMAP is to be enabled on install by default. ",
+      "name": "enable",
+      "type": "boolean",
+    },
   ],
   "positionals": Array [
     Object {

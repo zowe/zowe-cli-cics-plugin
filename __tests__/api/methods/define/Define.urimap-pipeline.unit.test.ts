@@ -366,7 +366,8 @@ describe("CMCI - Define pipeline URIMap", () => {
                             host,
                             scheme,
                             pipeline,
-                            usage: "pipeline"
+                            usage: "pipeline",
+                            status: "ENABLED"
                         }
                     }
                 }

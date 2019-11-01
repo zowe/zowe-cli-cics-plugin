@@ -27,6 +27,12 @@ let protocol: string;
 let rejectUnauthorized: boolean;
 let session: Session;
 
+function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+const sleepTime = 2000;
+
 describe("CICS define urimap-server command", () => {
 
     beforeAll(async () => {
@@ -86,7 +92,9 @@ describe("CICS define urimap-server command", () => {
         expect(output.stdout.toString()).toContain(urimapName);
         expect(output.stdout.toString()).toContain("ENABLED");
 
+        await sleep(sleepTime);
         await deleteUrimap(session, options);
+        await sleep(sleepTime);
     });
 
     it("should get a syntax error if urimap name is omitted", () => {
@@ -186,7 +194,9 @@ describe("CICS define urimap-server command", () => {
         expect(output.stdout.toString()).toContain(urimapName);
         expect(output.stdout.toString()).toContain("ENABLED");
 
+        await sleep(sleepTime);
         await deleteUrimap(session, options);
+        await sleep(sleepTime);
     });
 
 });
