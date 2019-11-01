@@ -90,6 +90,12 @@ export const UrimapPipelineDefinition: ICommandDefinition = {
             name: "cics-plex",
             description: strings.OPTIONS.CICSPLEX,
             type: "string"
+        },
+        {
+            name: "enable",
+            description: strings.OPTIONS.ENABLE,
+            type: "boolean",
+            defaultValue: true
         }],
     profile: {optional: ["cics"]},
     examples: [{

@@ -19,6 +19,7 @@ let testEnvironment: ITestEnvironment;
 let regionName: string;
 let csdGroup: string;
 let session: Session;
+let enable: boolean;
 
 describe("CICS Define server URImap", () => {
 
@@ -29,6 +30,7 @@ describe("CICS Define server URImap", () => {
             tempProfileTypes: ["cics"]
         });
         csdGroup = testEnvironment.systemTestProperties.cmci.csdGroup;
+        enable = false;
         regionName = testEnvironment.systemTestProperties.cmci.regionName;
         const cmciProperties = await testEnvironment.systemTestProperties.cmci;
 
@@ -62,6 +64,7 @@ describe("CICS Define server URImap", () => {
         options.scheme = "http";
         options.programName = "AAAA1234";
         options.csdGroup = csdGroup;
+        options.enable = enable;
         options.regionName = regionName;
 
         try {
@@ -116,6 +119,7 @@ describe("CICS Define server URImap", () => {
         options.scheme = "http";
         options.programName = "AAAA1234";
         options.csdGroup = csdGroup;
+        options.enable = enable;
         options.regionName = regionName;
 
         // define a URIMap to CICS

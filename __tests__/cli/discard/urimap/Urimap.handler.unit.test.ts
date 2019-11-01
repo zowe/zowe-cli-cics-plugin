@@ -11,11 +11,11 @@
 
 import { CommandProfiles, IHandlerParameters, IProfile, Session } from "@zowe/imperative";
 import { ICMCIApiResponse } from "../../../../src";
-import { UrimapClientDefinition } from "../../../../src/cli/define/urimap-client/UrimapClient.definition";
-import UrimapClientHandler from "../../../../src/cli/define/urimap-client/UrimapClient.handler";
+import { UrimapDefinition } from "../../../../src/cli/discard/urimap/Urimap.definition";
+import UrimapHandler from "../../../../src/cli/discard/urimap/Urimap.handler";
 
-jest.mock("../../../../src/api/methods/define");
-const Define = require("../../../../src/api/methods/define");
+jest.mock("../../../../src/api/methods/discard");
+const Discard = require("../../../../src/api/methods/discard");
 
 const host = "somewhere.com";
 const port = "43443";
@@ -32,7 +32,9 @@ PROFILE_MAP.set(
         host,
         port,
         user,
-        password
+        password,
+        protocol,
+        rejectUnauthorized
     }]
 );
 const PROFILES: CommandProfiles = new CommandProfiles(PROFILE_MAP);
@@ -67,20 +69,14 @@ const DEFAULT_PARAMETERS: IHandlerParameters = {
             })
         }
     },
-    definition: UrimapClientDefinition,
-    fullDefinition: UrimapClientDefinition,
+    definition: UrimapDefinition,
+    fullDefinition: UrimapDefinition,
     profiles: PROFILES
 };
 
-describe("DefineUrimapClientHandler", () => {
-    const regionName = "testRegion";
-    const csdGroup = "testGroup";
+describe("DiscardUrimapHandler", () => {
     const urimapName = "testUrimap";
-    const urimapHost = "testHost";
-    const urimapPath = "testPath";
-    const urimapScheme = "http";
-    const cicsPlex = "testPlex";
-    const enable = false;
+    const regionName = "testRegion";
 
     const defaultReturn: ICMCIApiResponse = {
         response: {
@@ -89,33 +85,27 @@ describe("DefineUrimapClientHandler", () => {
         }
     };
 
-    const functionSpy = jest.spyOn(Define, "defineUrimapClient");
+    const functionSpy = jest.spyOn(Discard, "discardUrimap");
 
     beforeEach(() => {
         functionSpy.mockClear();
         functionSpy.mockImplementation(async () => defaultReturn);
     });
 
-    it("should call the defineUrimapClient api", async () => {
-        const handler = new UrimapClientHandler();
+    it("should call the discardUrimap api", async () => {
+        const handler = new UrimapHandler();
 
         const commandParameters = {...DEFAULT_PARAMETERS};
         commandParameters.arguments = {
             ...commandParameters.arguments,
             urimapName,
-            csdGroup,
-            urimapPath,
-            urimapHost,
-            urimapScheme,
             regionName,
-            cicsPlex,
-            enable,
             host,
             port,
             user,
             password,
-            rejectUnauthorized,
-            protocol
+            protocol,
+            rejectUnauthorized
         };
 
         await handler.process(commandParameters);
@@ -134,13 +124,7 @@ describe("DefineUrimapClientHandler", () => {
             }),
             {
                 name: urimapName,
-                csdGroup,
-                path: urimapPath,
-                host: urimapHost,
-                scheme: urimapScheme,
-                regionName,
-                cicsPlex,
-                enable
+                regionName
             }
         );
     });

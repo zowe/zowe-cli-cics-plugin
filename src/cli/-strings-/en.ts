@@ -79,7 +79,8 @@ export default {
                     TRANSACTIONNAME: "The name of the TRANSACTION resource definition for the URIMAP. " +
                         "The maximum length of the transaction name is four characters.",
                     WEBSERVICENAME: "The name of the WEBSERVICE resource definition for the URIMAP. " +
-                        "The maximum length of the transaction name is 32 characters."
+                        "The maximum length of the transaction name is 32 characters.",
+                    ENABLE: "Whether or not the URIMAP is to be enabled on install by default. "
                 },
                 MESSAGES: {
                     SUCCESS: "The URIMAP '%s' was defined successfully."

@@ -14,4 +14,4 @@ USER=${10}
 PASSWORD=${11}
 PROTOCOL=${12}
 REJECT=${13}
-zowe cics define urimap-server "$urimap_name" "$csd_group" --urimap-path "$urimap_path" --urimap-host "$urimap_host" --urimap-scheme "$urimap_scheme" --program-name "$program_name" --region-name "$region_name" --host $HOST --port $PORT --user $USER --password $PASSWORD --protocol "$PROTOCOL" --reject-unauthorized "$REJECT"
+zowe cics define urimap-server "$urimap_name" "$csd_group" --urimap-path "$urimap_path" --urimap-host "$urimap_host" --urimap-scheme "$urimap_scheme" --program-name "$program_name" --region-name "$region_name"  --enable false --host $HOST --port $PORT --user $USER --password $PASSWORD --protocol "$PROTOCOL" --reject-unauthorized "$REJECT"

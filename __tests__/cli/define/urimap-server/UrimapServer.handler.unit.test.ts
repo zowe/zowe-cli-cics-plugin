@@ -81,6 +81,7 @@ describe("DefineUrimapServerHandler", () => {
     const urimapPath = "testPath";
     const urimapScheme = "http";
     const cicsPlex = "testPlex";
+    const enable = false;
 
     const defaultReturn: ICMCIApiResponse = {
         response: {
@@ -110,6 +111,7 @@ describe("DefineUrimapServerHandler", () => {
             urimapScheme,
             regionName,
             cicsPlex,
+            enable,
             host,
             port,
             user,
@@ -140,7 +142,8 @@ describe("DefineUrimapServerHandler", () => {
                 programName,
                 scheme: urimapScheme,
                 regionName,
-                cicsPlex
+                cicsPlex,
+                enable
             }
         );
     });

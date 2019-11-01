@@ -18,6 +18,7 @@ import { defineUrimapClient, deleteUrimap, IURIMapParms, } from "../../../../../
 let testEnvironment: ITestEnvironment;
 let regionName: string;
 let csdGroup: string;
+let enable: boolean;
 let session: Session;
 
 describe("CICS Define client URImap", () => {
@@ -29,6 +30,7 @@ describe("CICS Define client URImap", () => {
             tempProfileTypes: ["cics"]
         });
         csdGroup = testEnvironment.systemTestProperties.cmci.csdGroup;
+        enable = false;
         regionName = testEnvironment.systemTestProperties.cmci.regionName;
         const cmciProperties = await testEnvironment.systemTestProperties.cmci;
 
@@ -61,6 +63,7 @@ describe("CICS Define client URImap", () => {
         options.host = "fake";
         options.scheme = "http";
         options.csdGroup = csdGroup;
+        options.enable = enable;
         options.regionName = regionName;
 
         try {
@@ -113,6 +116,7 @@ describe("CICS Define client URImap", () => {
         options.host = "fake";
         options.scheme = "http";
         options.csdGroup = csdGroup;
+        options.enable = enable;
         options.regionName = regionName;
 
         // define a URIMap to CICS

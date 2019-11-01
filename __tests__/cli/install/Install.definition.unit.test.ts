@@ -12,7 +12,7 @@
 import { ICommandDefinition } from "@zowe/imperative";
 
 describe("cics install program", () => {
-    const INSTALL_RESOURCES = 2;
+    const INSTALL_RESOURCES = 3;
 
     it ("should not have changed", () => {
         const definition: ICommandDefinition = require("../../../src/cli/install/Install.definition");

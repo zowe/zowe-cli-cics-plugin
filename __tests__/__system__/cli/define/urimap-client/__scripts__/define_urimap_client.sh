@@ -7,4 +7,4 @@ urimap_path=$3
 urimap_host=$4
 region_name=$5
 
-zowe cics define urimap-client "$urimap_name" "$csd_group" --urimap-path "$urimap_path" --urimap-host "$urimap_host" --region-name "$region_name"
+zowe cics define urimap-client "$urimap_name" "$csd_group" --urimap-path "$urimap_path" --urimap-host "$urimap_host" --region-name "$region_name" --enable false

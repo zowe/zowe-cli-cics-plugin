@@ -11,14 +11,11 @@
 
 import { ICommandDefinition } from "@zowe/imperative";
 
-describe("cics discard program", () => {
-    const DISCARD_RESOURCES = 3;
-
+describe("cics discard urimap", () => {
     it ("should not have changed", () => {
-        const definition: ICommandDefinition = require("../../../src/cli/discard/Discard.definition");
+        const definition: ICommandDefinition = require("../../../../src/cli/discard/urimap/Urimap.definition").UrimapDefinition;
         expect(definition).toBeDefined();
-        expect(definition.children.length).toBe(DISCARD_RESOURCES);
-        delete definition.children;
+        delete definition.handler;
         expect(definition).toMatchSnapshot();
     });
 });

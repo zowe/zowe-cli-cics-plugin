@@ -19,6 +19,7 @@ let testEnvironment: ITestEnvironment;
 let regionName: string;
 let csdGroup: string;
 let session: Session;
+let enable: boolean;
 
 describe("CICS Define pipeline URImap", () => {
 
@@ -30,6 +31,7 @@ describe("CICS Define pipeline URImap", () => {
         });
         csdGroup = testEnvironment.systemTestProperties.cmci.csdGroup;
         regionName = testEnvironment.systemTestProperties.cmci.regionName;
+        enable = false;
         const cmciProperties = await testEnvironment.systemTestProperties.cmci;
 
         session = new Session({
@@ -62,6 +64,7 @@ describe("CICS Define pipeline URImap", () => {
         options.scheme = "http";
         options.pipelineName = "AAAA1234";
         options.csdGroup = csdGroup;
+        options.enable = enable;
         options.regionName = regionName;
 
         try {
@@ -116,6 +119,7 @@ describe("CICS Define pipeline URImap", () => {
         options.scheme = "http";
         options.pipelineName = "AAAA1234";
         options.csdGroup = csdGroup;
+        options.enable = enable;
         options.regionName = regionName;
 
         // define a URIMap to CICS

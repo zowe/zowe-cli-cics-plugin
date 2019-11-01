@@ -231,6 +231,12 @@ function buildUrimapRequestBody(parms: IURIMapParms, usage: "server" | "client" 
         requestAttrs.webservice = parms.webserviceName;
     }
 
+    if (parms.enable === false) {
+        requestAttrs.status = "DISBLED";
+    } else {
+        requestAttrs.status = "ENABLED";
+    }
+
     return {
         request: {
             create: {

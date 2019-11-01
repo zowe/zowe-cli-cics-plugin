@@ -9,12 +9,11 @@
 *                                                                                 *
 */
 
-import { Session } from "@zowe/imperative";
+import { Session, selectProfileNameDesc } from "@zowe/imperative";
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
 import { generateRandomAlphaNumericString } from "../../../../__src__/TestUtils";
-import { defineUrimapServer, defineUrimapClient, defineUrimapPipeline, deleteUrimap, disableUrimap, IURIMapParms, enableUrimap, discardUrimap,
-         installUrimap } from "../../../../../src";
+import { defineUrimapServer, defineUrimapClient, defineUrimapPipeline, deleteUrimap, IURIMapParms, discardUrimap, installUrimap, disableUrimap } from "../../../../../src";
 
 let testEnvironment: ITestEnvironment;
 let regionName: string;
@@ -27,11 +26,11 @@ function sleep(ms: number) {
 
 const sleepTime = 2000;
 
-describe("CICS Enable URImap", () => {
+describe("CICS Discard URImap", () => {
 
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
-            testName: "cics_cmci_enable_urimap",
+            testName: "cics_cmci_discard_urimap",
             installPlugin: true,
             tempProfileTypes: ["cics"]
         });
@@ -56,7 +55,7 @@ describe("CICS Enable URImap", () => {
 
     const options: IURIMapParms = {} as any;
 
-    it("should enable a URIMap of type server from CICS", async () => {
+    it("should discard a URIMap of type server from CICS", async () => {
         let error;
         let response;
 
@@ -76,7 +75,7 @@ describe("CICS Enable URImap", () => {
         await sleep(sleepTime);
 
         try {
-            response = await enableUrimap(session, options);
+            response = await discardUrimap(session, options);
         } catch (err) {
             error = err;
         }
@@ -85,14 +84,10 @@ describe("CICS Enable URImap", () => {
         expect(response).toBeTruthy();
         expect(response.response.resultsummary.api_response1).toBe("1024");
         await sleep(sleepTime);
-        await disableUrimap(session, options);
-        await sleep(sleepTime);
-        await discardUrimap(session, options);
-        await sleep(sleepTime);
         await deleteUrimap(session, options);
     });
 
-    it("should enable a URIMap of type pipeline from CICS", async () => {
+    it("should discard a URIMap of type pipeline from CICS", async () => {
         let error;
         let response;
 
@@ -109,10 +104,10 @@ describe("CICS Enable URImap", () => {
         await defineUrimapServer(session, options);
         await sleep(sleepTime);
         await installUrimap(session, options);
-        await sleep(sleepTime);
+        await sleep(2*sleepTime);
 
         try {
-            response = await enableUrimap(session, options);
+            response = await discardUrimap(session, options);
         } catch (err) {
             error = err;
         }
@@ -121,14 +116,10 @@ describe("CICS Enable URImap", () => {
         expect(response).toBeTruthy();
         expect(response.response.resultsummary.api_response1).toBe("1024");
         await sleep(sleepTime);
-        await disableUrimap(session, options);
-        await sleep(sleepTime);
-        await discardUrimap(session, options);
-        await sleep(sleepTime);
         await deleteUrimap(session, options);
     });
 
-    it("should enable a URIMap of type client from CICS", async () => {
+    it("should discard a URIMap of type client from CICS", async () => {
         let error;
         let response;
 
@@ -144,10 +135,10 @@ describe("CICS Enable URImap", () => {
         await defineUrimapServer(session, options);
         await sleep(sleepTime);
         await installUrimap(session, options);
-        await sleep(sleepTime);
+        await sleep(2*sleepTime);
 
         try {
-            response = await enableUrimap(session, options);
+            response = await discardUrimap(session, options);
         } catch (err) {
             error = err;
         }
@@ -156,14 +147,10 @@ describe("CICS Enable URImap", () => {
         expect(response).toBeTruthy();
         expect(response.response.resultsummary.api_response1).toBe("1024");
         await sleep(sleepTime);
-        await disableUrimap(session, options);
-        await sleep(sleepTime);
-        await discardUrimap(session, options);
-        await sleep(sleepTime);
         await deleteUrimap(session, options);
     });
 
-    it("should fail to enable a URIMap to CICS with invalid CICS region", async () => {
+    it("should fail to discard a URIMap to CICS with invalid CICS region", async () => {
         let error;
         let response;
 
@@ -178,7 +165,7 @@ describe("CICS Enable URImap", () => {
         options.regionName = "fake";
 
         try {
-            response = await enableUrimap(session, options);
+            response = await discardUrimap(session, options);
         } catch (err) {
             error = err;
         }
@@ -189,7 +176,7 @@ describe("CICS Enable URImap", () => {
         expect(error.message).toContain("INVALIDPARM");
     });
 
-    it("should fail to enable a URIMap that does not exist", async () => {
+    it("should fail to discard a URIMap that does not exist", async () => {
         let error;
         let response;
 
@@ -203,7 +190,7 @@ describe("CICS Enable URImap", () => {
         options.regionName = regionName;
 
         try {
-            response = await enableUrimap(session, options);
+            response = await discardUrimap(session, options);
         } catch (err) {
             error = err;
         }

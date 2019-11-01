@@ -78,4 +78,9 @@ export interface IURIMapParms {
      * CICS Plex of the URIMap
      */
     cicsPlex?: string;
+
+    /**
+     * Enable attribute of the URIMap
+     */
+    enable?: boolean;
 }
