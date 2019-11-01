@@ -211,9 +211,7 @@ export default {
             URIMAP: {
                 DESCRIPTION: "Disable a urimap from CICS.",
                 POSITIONALS: {
-                    URIMAPNAME: "The name of the urimap to disable. The maximum length of the urimap name is eight characters.",
-                    CSDGROUP: "The CICS system definition (CSD) Group for the new program that you want to disable." +
-                    " The maximum length of the group name is eight characters."
+                    URIMAPNAME: "The name of the urimap to disable. The maximum length of the urimap name is eight characters."
                 },
                 OPTIONS: {
                     REGIONNAME: "The CICS region name in which to disable the urimap"
@@ -262,6 +260,21 @@ export default {
                 EXAMPLES: {
                     EX1: "Discard a transaction named TRN1 from the region named MYREGION"
                 }
+            },
+            URIMAP: {
+                DESCRIPTION: "Discard a urimap from CICS.",
+                POSITIONALS: {
+                    URIMAPNAME: "The name of the urimap to discard. The maximum length of the urimap name is eight characters.",
+                },
+                OPTIONS: {
+                    REGIONNAME: "The CICS region name from which to discard the urimap"
+                },
+                MESSAGES: {
+                    SUCCESS: "The urimap '%s' was discarded successfully."
+                },
+                EXAMPLES: {
+                    EX1: "Discard a urimap named URIMAPA to the region named MYREGION belonging to the csdgroup MYGRP"
+                }
             }
         }
     },
@@ -272,9 +285,7 @@ export default {
             URIMAP: {
                 DESCRIPTION: "Enable a urimap from CICS.",
                 POSITIONALS: {
-                    URIMAPNAME: "The name of the urimap to enable. The maximum length of the urimap name is eight characters.",
-                    CSDGROUP: "The CICS system definition (CSD) Group for the new program that you want to disable." +
-                    " The maximum length of the group name is eight characters."
+                    URIMAPNAME: "The name of the urimap to enable. The maximum length of the urimap name is eight characters."
                 },
                 OPTIONS: {
                     REGIONNAME: "The CICS region name in which to enable the urimap"
@@ -359,6 +370,23 @@ export default {
                 EXAMPLES: {
                     EX1: "Install a transaction named TRN1 to the region named MYREGION " +
                         "in the CSD group MYGRP",
+                }
+            },
+            URIMAP: {
+                DESCRIPTION: "Install a urimap to CICS.",
+                POSITIONALS: {
+                    URIMAPNAME: "The name of the urimap to install. The maximum length of the urimap name is eight characters.",
+                    CSDGROUP: "The CICS system definition (CSD) Group for the urimap that you want to install." +
+                        " The maximum length of the group name is eight characters."
+                },
+                OPTIONS: {
+                    REGIONNAME: "The CICS region name to which to install the urimap"
+                },
+                MESSAGES: {
+                    SUCCESS: "The urimap '%s' was installed successfully."
+                },
+                EXAMPLES: {
+                    EX1: "Install a urimap named URIMAPA to the region named MYREGION belonging to the csdgroup MYGRP"
                 }
             }
         }

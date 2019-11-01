@@ -77,7 +77,6 @@ const DEFAULT_PARAMETERS: IHandlerParameters = {
 describe("enableUrimapHandler", () => {
     const urimapName = "testUrimap";
     const regionName = "testRegion";
-    const csdGroup = "testGroup";
 
     const defaultReturn: ICMCIApiResponse = {
         response: {
@@ -101,7 +100,6 @@ describe("enableUrimapHandler", () => {
             ...commandParameters.arguments,
             urimapName,
             regionName,
-            csdGroup,
             host,
             port,
             user,
@@ -126,7 +124,6 @@ describe("enableUrimapHandler", () => {
             }),
             {
                 name: urimapName,
-                csdGroup,
                 regionName
             }
         );

@@ -12,7 +12,7 @@
 import { AbstractSession, ImperativeExpect, Logger } from "@zowe/imperative";
 import { CicsCmciRestClient } from "../../rest";
 import { CicsCmciConstants } from "../../constants";
-import { ICMCIApiResponse, IProgramParms, ITransactionParms } from "../../doc";
+import { ICMCIApiResponse, IProgramParms, ITransactionParms, IURIMapParms } from "../../doc";
 
 /**
  * Discard a program installed in CICS through CMCI REST API
@@ -57,5 +57,18 @@ export async function discardTransaction(session: AbstractSession, parms: ITrans
     const cmciResource = "/" + CicsCmciConstants.CICS_SYSTEM_MANAGEMENT + "/" +
         CicsCmciConstants.CICS_LOCAL_TRANSACTION + "/" + cicsPlex + parms.regionName +
         "?CRITERIA=(TRANID=" + parms.name + ")";
+    return CicsCmciRestClient.deleteExpectParsedXml(session, cmciResource, []);
+}
+
+export async function discardUrimap(session: AbstractSession, parms: IURIMapParms): Promise<ICMCIApiResponse> {
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "CICS URIMap name", "CICS URIMap name is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.regionName, "CICS Region name", "CICS region name is required");
+
+    Logger.getAppLogger().debug("Attempting to discard a URIMap with the following parameters:\n%s", JSON.stringify(parms));
+
+    const cicsPlex = parms.cicsPlex == null ? "" : parms.cicsPlex + "/";
+    const cmciResource = "/" + CicsCmciConstants.CICS_SYSTEM_MANAGEMENT + "/" +
+        CicsCmciConstants.CICS_URIMAP + "/" + cicsPlex +
+        `${parms.regionName}?CRITERIA=(NAME='${parms.name}')`;
     return CicsCmciRestClient.deleteExpectParsedXml(session, cmciResource, []);
 }

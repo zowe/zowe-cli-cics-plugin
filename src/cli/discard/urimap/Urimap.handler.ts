@@ -10,16 +10,16 @@
 */
 
 import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@zowe/imperative";
-import { ICMCIApiResponse, disableUrimap } from "../../../api";
+import { ICMCIApiResponse, discardUrimap } from "../../../api";
 import { CicsBaseHandler } from "../../CicsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../../-strings-/en").default as typeof i18nTypings).DISABLE.RESOURCES.URIMAP;
+const strings = (require("../../-strings-/en").default as typeof i18nTypings).DISCARD.RESOURCES.URIMAP;
 
 /**
- * Command handler for disabling CICS URIMaps via CMCI
+ * Command handler for discarding CICS URIMaps via CMCI
  * @export
  * @class UrimapHandler
  * @implements {ICommandHandler}
@@ -29,15 +29,15 @@ export default class UrimapHandler extends CicsBaseHandler {
     public async processWithSession(params: IHandlerParameters, session: AbstractSession, profile: IProfile): Promise<ICMCIApiResponse> {
 
         const status: ITaskWithStatus = {
-            statusMessage: "Disabling URIMAP from CICS",
+            statusMessage: "Discarding URIMAP from CICS",
             percentComplete: 0,
             stageName: TaskStage.IN_PROGRESS
         };
         params.response.progress.startBar({task: status});
 
-        const response = await disableUrimap(session, {
+        const response = await discardUrimap(session, {
             name: params.arguments.urimapName,
-            regionName: params.arguments.regionName || profile.regionName,
+            regionName: params.arguments.regionName || profile.regionName
         });
 
         params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.urimapName);

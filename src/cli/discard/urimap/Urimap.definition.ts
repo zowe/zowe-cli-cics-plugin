@@ -14,7 +14,7 @@ import { ICommandDefinition } from "@zowe/imperative";
 import i18nTypings from "../../-strings-/en";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../../-strings-/en").default as typeof i18nTypings).DISABLE.RESOURCES.URIMAP;
+const strings = (require("../../-strings-/en").default as typeof i18nTypings).DISCARD.RESOURCES.URIMAP;
 
 export const UrimapDefinition: ICommandDefinition = {
     name: "urimap",
@@ -36,6 +36,6 @@ export const UrimapDefinition: ICommandDefinition = {
     profile: {optional: ["cics"]},
     examples: [{
         description: strings.EXAMPLES.EX1,
-        options: "URIMAPA --region-name MYREGION"
+        options: "URIMAPA CSDGROUP --region-name MYREGION"
     }]
 };

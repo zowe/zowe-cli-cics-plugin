@@ -15,7 +15,7 @@ exports[`CICS disable urimap command should be able to display the help 1`] = `
  USAGE
  -----
 
-   zowe cics disable urimap <urimapName> <csdGroup> [options]
+   zowe cics disable urimap <urimapName> [options]
 
  POSITIONAL ARGUMENTS
  --------------------
@@ -24,11 +24,6 @@ exports[`CICS disable urimap command should be able to display the help 1`] = `
 
       The name of the urimap to disable. The maximum length of the urimap name is
       eight characters.
-
-   csdGroup		 (string)
-
-      The CICS system definition (CSD) Group for the new program that you want to
-      disable. The maximum length of the group name is eight characters.
 
  OPTIONS
  -------
