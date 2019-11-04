@@ -274,7 +274,7 @@ export default {
                     SUCCESS: "The urimap '%s' was discarded successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Discard a urimap named URIMAPA to the region named MYREGION belonging to the csdgroup MYGRP"
+                    EX1: "Discard a urimap named URIMAPA from the region named MYREGION"
                 }
             }
         }

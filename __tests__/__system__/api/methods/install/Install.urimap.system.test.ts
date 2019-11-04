@@ -104,7 +104,7 @@ describe("CICS Install URImap", () => {
         options.csdGroup = csdGroup;
         options.regionName = regionName;
         options.enable = false;
-        await defineUrimapServer(session, options);
+        await defineUrimapPipeline(session, options);
         await sleep(sleepTime);
 
         try {
@@ -136,7 +136,7 @@ describe("CICS Install URImap", () => {
         options.csdGroup = csdGroup;
         options.regionName = regionName;
         options.enable = false;
-        await defineUrimapServer(session, options);
+        await defineUrimapClient(session, options);
         await sleep(sleepTime);
 
         try {

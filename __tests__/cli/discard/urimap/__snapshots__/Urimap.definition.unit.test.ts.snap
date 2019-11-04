@@ -6,8 +6,8 @@ Object {
   "description": "Discard a urimap from CICS.",
   "examples": Array [
     Object {
-      "description": "Discard a urimap named URIMAPA to the region named MYREGION belonging to the csdgroup MYGRP",
-      "options": "URIMAPA CSDGROUP --region-name MYREGION",
+      "description": "Discard a urimap named URIMAPA from the region named MYREGION",
+      "options": "URIMAPA --region-name MYREGION",
     },
   ],
   "name": "urimap",

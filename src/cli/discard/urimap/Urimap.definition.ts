@@ -36,6 +36,6 @@ export const UrimapDefinition: ICommandDefinition = {
     profile: {optional: ["cics"]},
     examples: [{
         description: strings.EXAMPLES.EX1,
-        options: "URIMAPA CSDGROUP --region-name MYREGION"
+        options: "URIMAPA --region-name MYREGION"
     }]
 };

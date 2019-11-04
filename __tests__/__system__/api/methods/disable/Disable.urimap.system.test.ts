@@ -106,7 +106,7 @@ describe("CICS Disable URImap", () => {
         options.pipelineName = "AAAB1234";
         options.csdGroup = csdGroup;
         options.regionName = regionName;
-        await defineUrimapServer(session, options);
+        await defineUrimapPipeline(session, options);
         await sleep(sleepTime);
         await installUrimap(session, options);
         await sleep(sleepTime);
@@ -141,7 +141,7 @@ describe("CICS Disable URImap", () => {
         options.scheme = "http";
         options.csdGroup = csdGroup;
         options.regionName = regionName;
-        await defineUrimapServer(session, options);
+        await defineUrimapClient(session, options);
         await sleep(sleepTime);
         await installUrimap(session, options);
         await sleep(sleepTime);
