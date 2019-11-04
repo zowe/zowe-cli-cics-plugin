@@ -27,12 +27,6 @@ let protocol: string;
 let rejectUnauthorized: boolean;
 let session: Session;
 
-function sleep(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-const sleepTime = 2000;
-
 describe("CICS define urimap-pipeline command", () => {
 
     beforeAll(async () => {
@@ -70,63 +64,6 @@ describe("CICS define urimap-pipeline command", () => {
         expect(output.stderr.toString()).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toMatchSnapshot();
-    });
-
-    it("should be able to successfully define a pipeline urimap with basic options", async () => {
-        const urimapNameSuffixLength = 5;
-        const urimapName = "DFN" + generateRandomAlphaNumericString(urimapNameSuffixLength);
-        const options: IURIMapParms = { name: urimapName, csdGroup, regionName };
-        let output = runCliScript(__dirname + "/__scripts__/define_urimap_pipeline.sh", TEST_ENVIRONMENT,
-            [urimapName, csdGroup, "urimap/test/invalid.html", "www.example.com", "FAKEPIPE", regionName]);
-        let stderr = output.stderr.toString();
-        expect(stderr).toEqual("");
-        expect(output.status).toEqual(0);
-        expect(output.stdout.toString()).toContain("success");
-
-        output = runCliScript(__dirname + "/__scripts__/get_resource_urimap.sh", TEST_ENVIRONMENT,
-            [regionName,
-                csdGroup]);
-        stderr = output.stderr.toString();
-        expect(stderr).toEqual("");
-        expect(output.status).toEqual(0);
-        expect(output.stdout.toString()).toContain(urimapName);
-        expect(output.stdout.toString()).toContain("ENABLED");
-
-        await sleep(sleepTime);
-        await deleteUrimap(session, options);
-        await sleep(sleepTime);
-    });
-
-    it("should be able to successfully define a pipeline urimap with all options", async () => {
-        const urimapNameSuffixLength = 4;
-        const urimapName = "DFN" + generateRandomAlphaNumericString(urimapNameSuffixLength);
-        const description = "hi i am urimap";
-        const transactionName = "tTxn";
-        const webserviceName = "testWebService";
-        const options: IURIMapParms = { name: urimapName, csdGroup, regionName };
-        let output = runCliScript(__dirname + "/__scripts__/define_urimap_pipeline_all_options.sh", TEST_ENVIRONMENT,
-            [urimapName, csdGroup, "urimap/test/invalid.html", "www.example.com", "FAKEPIPE", regionName,
-            description, transactionName, webserviceName]);
-        let stderr = output.stderr.toString();
-        expect(stderr).toEqual("");
-        expect(output.status).toEqual(0);
-        expect(output.stdout.toString()).toContain("success");
-
-        output = runCliScript(__dirname + "/__scripts__/get_resource_urimap.sh", TEST_ENVIRONMENT,
-            [regionName,
-                csdGroup]);
-        stderr = output.stderr.toString();
-        expect(stderr).toEqual("");
-        expect(output.status).toEqual(0);
-        expect(output.stdout.toString()).toContain(urimapName);
-        expect(output.stdout.toString()).toContain("ENABLED");
-        expect(output.stdout.toString()).toContain(description);
-        expect(output.stdout.toString()).toContain(transactionName);
-        expect(output.stdout.toString()).toContain(webserviceName);
-
-        await sleep(sleepTime);
-        await deleteUrimap(session, options);
-        await sleep(sleepTime);
     });
 
     it("should get a syntax error if urimap name is omitted", () => {
@@ -183,52 +120,4 @@ describe("CICS define urimap-pipeline command", () => {
         expect(stderr).toContain("region-name");
         expect(output.status).toEqual(1);
     });
-
-    it("should be able to successfully define a pipeline urimap using profile options", async () => {
-        const urimapNameSuffixLength = 4;
-        const urimapName = "DFN" + generateRandomAlphaNumericString(urimapNameSuffixLength);
-        const urimapHost = "www.example.com";
-        const urimapScheme = "http";
-        const urimapPath = "urimap/test/invalid.html";
-        const pipelineName = "FAKEPIPE";
-        const options: IURIMapParms = { name: urimapName, csdGroup, regionName };
-        let output = runCliScript(__dirname + "/__scripts__/define_urimap_pipeline_fully_qualified.sh", TEST_ENVIRONMENT,
-            [urimapName,
-                csdGroup,
-                urimapPath,
-                urimapHost,
-                urimapScheme,
-                pipelineName,
-                regionName,
-                host,
-                port,
-                user,
-                password,
-                protocol,
-                rejectUnauthorized]);
-        let stderr = output.stderr.toString();
-        expect(stderr).toEqual("");
-        expect(output.status).toEqual(0);
-        expect(output.stdout.toString()).toContain("success");
-
-        output = runCliScript(__dirname + "/__scripts__/get_resource_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
-            [regionName,
-                csdGroup,
-                host,
-                port,
-                user,
-                password,
-                protocol,
-                rejectUnauthorized]);
-        stderr = output.stderr.toString();
-        expect(stderr).toEqual("");
-        expect(output.status).toEqual(0);
-        expect(output.stdout.toString()).toContain(urimapName);
-        expect(output.stdout.toString()).toContain("ENABLED");
-
-        await sleep(sleepTime);
-        await deleteUrimap(session, options);
-        await sleep(sleepTime);
-    });
-
 });

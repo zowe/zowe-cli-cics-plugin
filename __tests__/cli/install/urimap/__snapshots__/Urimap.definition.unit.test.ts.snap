@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cics install urimap should not have changed 1`] = `
+Object {
+  "aliases": Array [],
+  "description": "Install a urimap to CICS.",
+  "examples": Array [
+    Object {
+      "description": "Install a urimap named URIMAPA to the region named MYREGION belonging to the csdgroup MYGRP",
+      "options": "URIMAPA CSDGROUP --region-name MYREGION",
+    },
+  ],
+  "name": "urimap",
+  "options": Array [
+    Object {
+      "description": "The CICS region name to which to install the urimap",
+      "name": "region-name",
+      "type": "string",
+    },
+  ],
+  "positionals": Array [
+    Object {
+      "description": "The name of the urimap to install. The maximum length of the urimap name is eight characters.",
+      "name": "urimapName",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "description": "The CICS system definition (CSD) Group for the urimap that you want to install. The maximum length of the group name is eight characters.",
+      "name": "csdGroup",
+      "required": true,
+      "type": "string",
+    },
+  ],
+  "profile": Object {
+    "optional": Array [
+      "cics",
+    ],
+  },
+  "type": "command",
+}
+`;

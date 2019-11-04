@@ -29,11 +29,11 @@ function sleep(ms: number) {
 
 const sleepTime = 2000;
 
-describe("CICS enable urimap command", () => {
+describe("CICS install urimap command", () => {
 
     beforeAll(async () => {
         TEST_ENVIRONMENT = await TestEnvironment.setUp({
-            testName: "enable_urimap",
+            testName: "install_urimap",
             installPlugin: true,
             tempProfileTypes: ["cics"]
         });
@@ -52,14 +52,14 @@ describe("CICS enable urimap command", () => {
     });
 
     it("should be able to display the help", () => {
-        const output = runCliScript(__dirname + "/__scripts__/enable_urimap_help.sh", TEST_ENVIRONMENT, []);
+        const output = runCliScript(__dirname + "/__scripts__/install_urimap_help.sh", TEST_ENVIRONMENT, []);
         expect(output.stderr.toString()).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toMatchSnapshot();
     });
 
     it("should get a syntax error if urimapName is omitted", () => {
-        const output = runCliScript(__dirname + "/__scripts__/enable_urimap.sh", TEST_ENVIRONMENT, ["", "FAKEGRP", "FAKEREG"]);
+        const output = runCliScript(__dirname + "/__scripts__/install_urimap.sh", TEST_ENVIRONMENT, ["", "FAKEGRP", "FAKEREG"]);
         const stderr = output.stderr.toString();
         expect(stderr).toContain("Syntax");
         expect(stderr).toContain("Missing Positional Argument");
