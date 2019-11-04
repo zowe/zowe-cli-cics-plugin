@@ -95,7 +95,8 @@ exports[`CICS discard urimap command should be able to display the help 1`] = `
  EXAMPLES
  --------
 
-   - Discard a urimap named URIMAPA from the region named MYREGION:
+   - Discard a urimap named URIMAPA from the region named
+   MYREGION:
 
       $ zowe cics discard urimap URIMAPA --region-name MYREGION
 
