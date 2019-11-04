@@ -97,7 +97,7 @@ exports[`CICS discard urimap command should be able to display the help 1`] = `
 
    - Discard a urimap named URIMAPA from the region named MYREGION:
 
-      $ zowe cics discard urimap URIMAPA CSDGROUP --region-name MYREGION
+      $ zowe cics discard urimap URIMAPA --region-name MYREGION
 
 "
 `;
