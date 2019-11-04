@@ -103,7 +103,7 @@ describe("CICS Discard URImap", () => {
         options.csdGroup = csdGroup;
         options.regionName = regionName;
         options.enable = false;
-        await defineUrimapServer(session, options);
+        await defineUrimapPipeline(session, options);
         await sleep(sleepTime);
         await installUrimap(session, options);
         await sleep(sleepTime);
@@ -135,7 +135,7 @@ describe("CICS Discard URImap", () => {
         options.csdGroup = csdGroup;
         options.regionName = regionName;
         options.enable = false;
-        await defineUrimapServer(session, options);
+        await defineUrimapClient(session, options);
         await sleep(sleepTime);
         await installUrimap(session, options);
         await sleep(sleepTime);
