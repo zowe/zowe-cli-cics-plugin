@@ -9,12 +9,26 @@
 *                                                                                 *
 */
 
-export * from "./add";
-export * from "./define";
-export * from "./delete";
-export * from "./disable";
-export * from "./discard";
-export * from "./enable";
-export * from "./get";
-export * from "./set";
-export * from "./install";
+export interface ICSDGroupParms {
+    /**
+     * The name of the CSD Group
+     * Up to eight characters long
+     */
+    name: string;
+
+    /**
+     * CSD list name for the CSD Group
+     * Up to eight characters long
+     */
+    csdList: string;
+
+    /**
+     * The name of the CICS region of the CSD List
+     */
+    regionName: string;
+
+    /**
+     * CICS Plex of the CSD List
+     */
+    cicsPlex?: string;
+}
