@@ -27,11 +27,6 @@ export const UrimapDefinition: ICommandDefinition = {
         description: strings.POSITIONALS.URIMAPNAME,
         type: "string",
         required: true
-    }, {
-        name: "csdGroup",
-        description: strings.POSITIONALS.CSDGROUP,
-        type: "string",
-        required: true
     }],
     options: [{
         name: "region-name",

@@ -66,29 +66,6 @@ describe("CICS define urimap-server command", () => {
         expect(output.stdout.toString()).toMatchSnapshot();
     });
 
-    it("should be able to successfully define a server urimap with basic options", async () => {
-        const urimapNameSuffixLength = 4;
-        const urimapName = "DFN" + generateRandomAlphaNumericString(urimapNameSuffixLength);
-        const options: IURIMapParms = { name: urimapName, csdGroup, regionName };
-        let output = runCliScript(__dirname + "/__scripts__/define_urimap_server.sh", TEST_ENVIRONMENT,
-            [urimapName, csdGroup, "urimap/test/invalid.html", "www.example.com", "IEFBR14", regionName]);
-        let stderr = output.stderr.toString();
-        expect(stderr).toEqual("");
-        expect(output.status).toEqual(0);
-        expect(output.stdout.toString()).toContain("success");
-
-        output = runCliScript(__dirname + "/__scripts__/get_resource_urimap.sh", TEST_ENVIRONMENT,
-            [regionName,
-                csdGroup]);
-        stderr = output.stderr.toString();
-        expect(stderr).toEqual("");
-        expect(output.status).toEqual(0);
-        expect(output.stdout.toString()).toContain(urimapName);
-        expect(output.stdout.toString()).toContain("ENABLED");
-
-        await deleteUrimap(session, options);
-    });
-
     it("should get a syntax error if urimap name is omitted", () => {
         const output = runCliScript(__dirname + "/__scripts__/define_urimap_server.sh", TEST_ENVIRONMENT,
             ["", "FAKEGRP", "FAKEPATH", "FAKEHOST", "FAKEPGM", "FAKERGN"]);
@@ -142,51 +119,6 @@ describe("CICS define urimap-server command", () => {
         expect(stderr).toContain("Syntax");
         expect(stderr).toContain("region-name");
         expect(output.status).toEqual(1);
-    });
-
-    it("should be able to successfully define a server urimap using profile options", async () => {
-        const urimapNameSuffixLength = 4;
-        const urimapName = "DFN" + generateRandomAlphaNumericString(urimapNameSuffixLength);
-        const urimapHost = "www.example.com";
-        const urimapScheme = "http";
-        const urimapPath = "urimap/test/invalid.html";
-        const programName = "IEFBR14";
-        const options: IURIMapParms = { name: urimapName, csdGroup, regionName };
-        let output = runCliScript(__dirname + "/__scripts__/define_urimap_server_fully_qualified.sh", TEST_ENVIRONMENT,
-            [urimapName,
-                csdGroup,
-                urimapPath,
-                urimapHost,
-                urimapScheme,
-                programName,
-                regionName,
-                host,
-                port,
-                user,
-                password,
-                protocol,
-                rejectUnauthorized]);
-        let stderr = output.stderr.toString();
-        expect(stderr).toEqual("");
-        expect(output.status).toEqual(0);
-        expect(output.stdout.toString()).toContain("success");
-
-        output = runCliScript(__dirname + "/__scripts__/get_resource_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
-            [regionName,
-                csdGroup,
-                host,
-                port,
-                user,
-                password,
-                protocol,
-                rejectUnauthorized]);
-        stderr = output.stderr.toString();
-        expect(stderr).toEqual("");
-        expect(output.status).toEqual(0);
-        expect(output.stdout.toString()).toContain(urimapName);
-        expect(output.stdout.toString()).toContain("ENABLED");
-
-        await deleteUrimap(session, options);
     });
 
 });

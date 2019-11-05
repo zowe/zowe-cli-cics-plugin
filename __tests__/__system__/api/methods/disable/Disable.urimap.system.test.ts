@@ -13,7 +13,8 @@ import { Session, selectProfileNameDesc } from "@zowe/imperative";
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
 import { generateRandomAlphaNumericString } from "../../../../__src__/TestUtils";
-import { defineUrimapServer, defineUrimapClient, defineUrimapPipeline, deleteUrimap, disableUrimap, IURIMapParms } from "../../../../../src";
+import { defineUrimapServer, defineUrimapClient, defineUrimapPipeline, deleteUrimap, disableUrimap, IURIMapParms, discardUrimap,
+         installUrimap, enableUrimap } from "../../../../../src";
 
 let testEnvironment: ITestEnvironment;
 let regionName: string;
@@ -71,6 +72,10 @@ describe("CICS Disable URImap", () => {
         options.regionName = regionName;
         await defineUrimapServer(session, options);
         await sleep(sleepTime);
+        await installUrimap(session, options);
+        await sleep(sleepTime);
+        await enableUrimap(session, options);
+        await sleep(sleepTime);
 
         try {
             response = await disableUrimap(session, options);
@@ -81,6 +86,8 @@ describe("CICS Disable URImap", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.response.resultsummary.api_response1).toBe("1024");
+        await sleep(sleepTime);
+        await discardUrimap(session, options);
         await sleep(sleepTime);
         await deleteUrimap(session, options);
     });
@@ -101,6 +108,10 @@ describe("CICS Disable URImap", () => {
         options.regionName = regionName;
         await defineUrimapPipeline(session, options);
         await sleep(sleepTime);
+        await installUrimap(session, options);
+        await sleep(sleepTime);
+        await enableUrimap(session, options);
+        await sleep(sleepTime);
 
         try {
             response = await disableUrimap(session, options);
@@ -111,6 +122,8 @@ describe("CICS Disable URImap", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.response.resultsummary.api_response1).toBe("1024");
+        await sleep(sleepTime);
+        await discardUrimap(session, options);
         await sleep(sleepTime);
         await deleteUrimap(session, options);
     });
@@ -130,6 +143,10 @@ describe("CICS Disable URImap", () => {
         options.regionName = regionName;
         await defineUrimapClient(session, options);
         await sleep(sleepTime);
+        await installUrimap(session, options);
+        await sleep(sleepTime);
+        await enableUrimap(session, options);
+        await sleep(sleepTime);
 
         try {
             response = await disableUrimap(session, options);
@@ -140,6 +157,8 @@ describe("CICS Disable URImap", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.response.resultsummary.api_response1).toBe("1024");
+        await sleep(sleepTime);
+        await discardUrimap(session, options);
         await sleep(sleepTime);
         await deleteUrimap(session, options);
     });

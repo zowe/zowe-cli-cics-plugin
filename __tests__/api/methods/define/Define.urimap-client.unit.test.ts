@@ -308,7 +308,8 @@ describe("CMCI - Define client URIMap", () => {
                             path,
                             host,
                             scheme,
-                            usage: "client"
+                            usage: "client",
+                            status: "ENABLED"
                         }
                     }
                 }

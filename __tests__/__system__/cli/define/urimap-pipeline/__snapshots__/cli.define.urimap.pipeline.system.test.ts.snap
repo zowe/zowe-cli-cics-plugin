@@ -79,6 +79,12 @@ exports[`CICS define urimap-pipeline command should be able to display the help 
 
       The name of the CICSPlex to which to define the new URIMAP.
 
+   --enable  (boolean)
+
+      Whether or not the URIMAP is to be enabled on install by default.
+
+      Default value: true
+
  CICS CONNECTION OPTIONS
  -----------------------
 

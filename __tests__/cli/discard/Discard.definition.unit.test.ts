@@ -12,7 +12,7 @@
 import { ICommandDefinition } from "@zowe/imperative";
 
 describe("cics discard program", () => {
-    const DISCARD_RESOURCES = 2;
+    const DISCARD_RESOURCES = 3;
 
     it ("should not have changed", () => {
         const definition: ICommandDefinition = require("../../../src/cli/discard/Discard.definition");

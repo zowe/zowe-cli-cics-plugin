@@ -84,6 +84,7 @@ describe("DefineUrimapPipelineHandler", () => {
     const description = "description";
     const transactionName = "testTransaction";
     const webserviceName = "testWebservice";
+    const enable = false;
 
     const defaultReturn: ICMCIApiResponse = {
         response: {
@@ -113,6 +114,7 @@ describe("DefineUrimapPipelineHandler", () => {
             urimapScheme,
             regionName,
             cicsPlex,
+            enable,
             host,
             port,
             user,
@@ -143,7 +145,11 @@ describe("DefineUrimapPipelineHandler", () => {
                 pipelineName,
                 scheme: urimapScheme,
                 regionName,
-                cicsPlex
+                cicsPlex,
+                enable,
+                description: undefined,
+                transactionName: undefined,
+                webserviceName: undefined
             }
         );
     });

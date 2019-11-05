@@ -22,13 +22,11 @@ describe("CMCI - Disable urimap", () => {
 
     const urimap = "urimap";
     const region = "region";
-    const csdgroup =  "mygroup";
     const content = "ThisIsATest";
 
     const disableParms: IURIMapParms = {
         regionName: region,
-        name: urimap,
-        csdGroup: csdgroup
+        name: urimap
     };
 
     const dummySession = new Session({
@@ -49,7 +47,6 @@ describe("CMCI - Disable urimap", () => {
             error = undefined;
             disableParms.regionName = region;
             disableParms.name = urimap;
-            disableParms.csdGroup = csdgroup;
         });
 
         it("should throw an error if no region name is specified", async () => {
@@ -75,18 +72,6 @@ describe("CMCI - Disable urimap", () => {
             expect(error).toBeDefined();
             expect(error.message).toContain("CICS URIMap name is required");
         });
-
-        it("should throw an error if no CSD group is specified", async () => {
-            disableParms.csdGroup = undefined;
-            try {
-                response = await disableUrimap(dummySession, disableParms);
-            } catch (err) {
-                error = err;
-            }
-            expect(response).toBeUndefined();
-            expect(error).toBeDefined();
-            expect(error.message).toContain("CICS CSD group name is required");
-        });
     });
 
     describe("success scenarios", () => {
@@ -99,19 +84,18 @@ describe("CMCI - Disable urimap", () => {
             disableSpy.mockImplementation(() => content);
             disableParms.regionName = region;
             disableParms.name = urimap;
-            disableParms.csdGroup = csdgroup;
         });
 
         it("should be able to disable a urimap", async () => {
             endPoint = "/" + CicsCmciConstants.CICS_SYSTEM_MANAGEMENT + "/" +
-            CicsCmciConstants.CICS_DEFINITION_URIMAP + "/" + region +
-            `?CRITERIA=(NAME=${disableParms.name})&PARAMETER=CSDGROUP(${disableParms.csdGroup})`;
+            CicsCmciConstants.CICS_URIMAP + "/" + region +
+            `?CRITERIA=(NAME=${disableParms.name})`;
             requestBody = {
                 request: {
                     update: {
                         attributes: {
                             $: {
-                                STATUS: "DISABLED"
+                                ENABLESTATUS: "DISABLED"
                             }
                         }
                     }

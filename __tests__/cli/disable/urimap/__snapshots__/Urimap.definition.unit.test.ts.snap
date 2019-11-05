@@ -25,12 +25,6 @@ Object {
       "required": true,
       "type": "string",
     },
-    Object {
-      "description": "The CICS system definition (CSD) Group for the new program that you want to disable. The maximum length of the group name is eight characters.",
-      "name": "csdGroup",
-      "required": true,
-      "type": "string",
-    },
   ],
   "profile": Object {
     "optional": Array [
