@@ -14,9 +14,9 @@
 export default {
     ADD: {
         SUMMARY: "Add new resources to CICS",
-        DESCRIPTION: "Add new resources (for example, CSD Groups) to CICS through IBM CMCI.",
+        DESCRIPTION: "Add new resources (for example, CSD Groups to CSD Lists) to CICS through IBM CMCI.",
         RESOURCES: {
-            CSDGROUP: {
+            CSDGROUPTOLIST: {
                 DESCRIPTION: "Add a CSD Group to a CICS CSD List.",
                 POSITIONALS: {
                     NAME: "The name of the CSD Group to add. The maximum length of the CSD Group name is eight characters",
@@ -433,6 +433,29 @@ export default {
                 },
                 EXAMPLES: {
                     DEFINE_EXAMPLE_ONE: "Refresh a program named PGM123 from the region named MYREGION"
+                }
+            }
+        }
+    },
+    REMOVE: {
+        SUMMARY: "Remove resources from CICS",
+        DESCRIPTION: "Remove resources (for example, CSD Groups in CSD Lists) from CICS through IBM CMCI.",
+        RESOURCES: {
+            CSDGROUPFROMLIST: {
+                DESCRIPTION: "Remove a CSD Group from a CICS CSD List.",
+                POSITIONALS: {
+                    NAME: "The name of the CSD Group to remove. The maximum length of the CSD Group name is eight characters",
+                    CSDLIST: "The name of the CSD List to remove the group from. The maximum length of the CSD List name is eight characters",
+                },
+                OPTIONS: {
+                    REGIONNAME: "The CICS region name to which to remove the CSD Group from the CSD List",
+                    CICSPLEX: "The name of the CICSPlex to which to remove the CSD Group from the CSD List",
+                },
+                MESSAGES: {
+                    SUCCESS: "The CSD Group '%s' was successfully removed from '%s'."
+                },
+                EXAMPLES: {
+                    EX1: "Remove the CSD Group CSDGRP from the CSD List CSDLST in the region named MYREG"
                 }
             }
         }

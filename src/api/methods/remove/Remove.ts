@@ -15,7 +15,7 @@ import { CicsCmciConstants } from "../../constants";
 import { ICMCIApiResponse, ICSDGroupParms } from "../../doc";
 
 /**
- * Add a new CSD Group resource to a CSD List in CICS through CMCI REST API
+ * Remove a CSD Group resource from a CSD List in CICS through CMCI REST API
  * @param {AbstractSession} session - the session to connect to CMCI with
  * @param {ICSDGroupParms} parms - parameters for defining your CSD Group
  * @returns {Promise<any>} promise that resolves to the response (XML parsed into a javascript object)
@@ -24,11 +24,11 @@ import { ICMCIApiResponse, ICSDGroupParms } from "../../doc";
  * @throws {ImperativeError} CICS CSD List not defined or blank
  * @throws {ImperativeError} CicsCmciRestClient request fails
  */
-export async function addCSDGroupToList(session: AbstractSession, parms: ICSDGroupParms): Promise<ICMCIApiResponse> {
+export async function removeCSDGroupFromList(session: AbstractSession, parms: ICSDGroupParms): Promise<ICMCIApiResponse> {
     ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "CICS CSD Group Name", "CICS CSD Group Name is required");
     ImperativeExpect.toBeDefinedAndNonBlank(parms.csdList, "CICS CSD List", "CICS CSD List is required");
 
-    Logger.getAppLogger().debug("Attempting to add a CSD Group to a CSD List with the following parameters:\n%s", JSON.stringify(parms));
+    Logger.getAppLogger().debug("Attempting to remove a CSD Group from a CSD List with the following parameters:\n%s", JSON.stringify(parms));
 
     const requestAttrs: any = {
         ADD_CSDGROUP: parms.name,
@@ -36,23 +36,7 @@ export async function addCSDGroupToList(session: AbstractSession, parms: ICSDGro
     };
     const cicsPlex = parms.cicsPlex == null ? "" : parms.cicsPlex + "/";
     const cmciResource = "/" + CicsCmciConstants.CICS_SYSTEM_MANAGEMENT + "/" +
-        CicsCmciConstants.CICS_CSDGROUP + "/" + cicsPlex + parms.regionName +
-        "?CRITERIA=NAME=='" + parms.name + "'";
-
-    const requestBody: any = {
-        request: {
-            action: {
-                $: {
-                    name: "CSDADD",
-                },
-                parameter: {
-                    $: {
-                        name: "TO_CSDLIST",
-                        value: parms.csdList
-                    }
-                }
-            }
-        }
-    };
-    return CicsCmciRestClient.putExpectParsedXml(session, cmciResource, [], requestBody) as any;
+        CicsCmciConstants.CICS_CSDGROUP_IN_LIST + "/" + cicsPlex + parms.regionName +
+        "?CRITERIA=(CSDLIST=='" + parms.csdList + "')%20AND%20(CSDGROUP=='" + parms.name + "')";
+    return CicsCmciRestClient.deleteExpectParsedXml(session, cmciResource, []) as any;
 }

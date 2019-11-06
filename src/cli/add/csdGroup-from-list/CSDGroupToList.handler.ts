@@ -10,13 +10,13 @@
 */
 
 import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@zowe/imperative";
-import { ICMCIApiResponse, addCSDGroup } from "../../../api";
+import { ICMCIApiResponse, addCSDGroupToList } from "../../../api";
 import { CicsBaseHandler } from "../../CicsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../../-strings-/en").default as typeof i18nTypings).ADD.RESOURCES.CSDGROUP;
+const strings = (require("../../-strings-/en").default as typeof i18nTypings).ADD.RESOURCES.CSDGROUPTOLIST;
 
 /**
  * Command handler for adding CICS CSD Groups to CSD Lists via CMCI
@@ -24,7 +24,7 @@ const strings = (require("../../-strings-/en").default as typeof i18nTypings).AD
  * @class CSDGroupHandler
  * @implements {ICommandHandler}
  */
-export default class CSDGroupHandler extends CicsBaseHandler {
+export default class CSDGroupToListHandler extends CicsBaseHandler {
     public async processWithSession(params: IHandlerParameters, session: AbstractSession, profile: IProfile): Promise<ICMCIApiResponse> {
 
         const status: ITaskWithStatus = {
@@ -34,7 +34,7 @@ export default class CSDGroupHandler extends CicsBaseHandler {
         };
         params.response.progress.startBar({task: status});
 
-        const response = await addCSDGroup(session, {
+        const response = await addCSDGroupToList(session, {
             name: params.arguments.name,
             csdList: params.arguments.csdList,
             regionName: params.arguments.regionName || profile.regionName,

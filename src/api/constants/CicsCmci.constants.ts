@@ -60,6 +60,11 @@ export const CicsCmciConstants: { [key: string]: any } = {
     CICS_CSDGROUP: "CICSCSDGroup",
 
     /**
+     * Specifies the required part of the REST interface URI to access CSD Group in list definitions
+     */
+    CICS_CSDGROUP_IN_LIST: "CICSCSDGroupInList",
+
+    /**
      * ORDERBY parameter
      */
     ORDER_BY: "ORDERBY",
