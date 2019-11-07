@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cics remove-from-list should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "rfl",
+  ],
+  "description": "Remove resources (for example, CSD Groups in CSD Lists) from CICS through IBM CMCI.",
+  "name": "remove-from-list",
+  "passOn": Array [
+    Object {
+      "ignoreNodes": Array [
+        Object {
+          "type": "group",
+        },
+      ],
+      "merge": true,
+      "property": "options",
+      "value": Array [
+        Object {
+          "aliases": Array [
+            "H",
+          ],
+          "description": "The CICS server host name.",
+          "group": "Cics Connection Options",
+          "name": "host",
+          "required": true,
+          "type": "string",
+        },
+        Object {
+          "aliases": Array [
+            "P",
+          ],
+          "defaultValue": 443,
+          "description": "The CICS server port.",
+          "group": "Cics Connection Options",
+          "name": "port",
+          "type": "number",
+        },
+        Object {
+          "aliases": Array [
+            "u",
+          ],
+          "description": "Mainframe (CICS) user name, which can be the same as your TSO login.",
+          "group": "Cics Connection Options",
+          "name": "user",
+          "required": true,
+          "type": "string",
+        },
+        Object {
+          "aliases": Array [
+            "pw",
+          ],
+          "description": "Mainframe (CICS) password, which can be the same as your TSO password.",
+          "group": "Cics Connection Options",
+          "name": "password",
+          "required": true,
+          "type": "string",
+        },
+        Object {
+          "aliases": Array [
+            "ru",
+          ],
+          "defaultValue": true,
+          "description": "Reject self-signed certificates.",
+          "group": "Cics Connection Options",
+          "name": "reject-unauthorized",
+          "required": false,
+          "type": "boolean",
+        },
+        Object {
+          "aliases": Array [
+            "o",
+          ],
+          "allowableValues": Object {
+            "caseSensitive": false,
+            "values": Array [
+              "http",
+              "https",
+            ],
+          },
+          "defaultValue": "http",
+          "description": "Specifies CMCI protocol (http or https).",
+          "group": "Cics Connection Options",
+          "name": "protocol",
+          "required": true,
+          "type": "string",
+        },
+      ],
+    },
+  ],
+  "summary": "Remove resources from CICS",
+  "type": "group",
+}
+`;
