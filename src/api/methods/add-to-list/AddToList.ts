@@ -27,6 +27,7 @@ import { ICMCIApiResponse, ICSDGroupParms } from "../../doc";
 export async function addCSDGroupToList(session: AbstractSession, parms: ICSDGroupParms): Promise<ICMCIApiResponse> {
     ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "CICS CSD Group Name", "CICS CSD Group Name is required");
     ImperativeExpect.toBeDefinedAndNonBlank(parms.csdList, "CICS CSD List", "CICS CSD List is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.regionName, "CICS Region name", "CICS region name is required");
 
     Logger.getAppLogger().debug("Attempting to add a CSD Group to a CSD List with the following parameters:\n%s", JSON.stringify(parms));
 
