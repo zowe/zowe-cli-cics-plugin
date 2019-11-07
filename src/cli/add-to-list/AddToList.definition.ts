@@ -12,22 +12,22 @@
 import { ICommandDefinition } from "@zowe/imperative";
 import { CicsSession } from "../CicsSession";
 
-import { CSDGroupFromListDefinition } from "./csdGroup-from-list/CSDGroupFromList.definition";
+import { CSDGroupDefinition } from "./csdGroup/CSDGroup.definition";
 
 import i18nTypings from "../-strings-/en";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../-strings-/en").default as typeof i18nTypings).REMOVE;
+const strings = (require("../-strings-/en").default as typeof i18nTypings).ADDTOLIST;
 
 /**
- * Definition for the "remove" group of commands under the CICS plugin
+ * Definition for the "add" group of commands under the CICS plugin
  */
 const definition: ICommandDefinition = {
-    name: "remove", aliases: ["rm"],
+    name: "add-to-list", aliases: ["atl"],
     summary: strings.SUMMARY,
     description: strings.DESCRIPTION,
     type: "group",
-    children: [CSDGroupFromListDefinition],
+    children: [CSDGroupDefinition],
     passOn: [
         {
             property: "options",

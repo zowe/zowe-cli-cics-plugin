@@ -14,13 +14,13 @@ import { ICommandDefinition } from "@zowe/imperative";
 import i18nTypings from "../../-strings-/en";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../../-strings-/en").default as typeof i18nTypings).ADD.RESOURCES.CSDGROUPTOLIST;
+const strings = (require("../../-strings-/en").default as typeof i18nTypings).ADDTOLIST.RESOURCES.CSDGROUP;
 
-export const CSDGroupToListDefinition: ICommandDefinition = {
-    name: "csdGroup-to-list",
-    aliases: ["ctl"],
+export const CSDGroupDefinition: ICommandDefinition = {
+    name: "csdGroup",
+    aliases: ["csdg"],
     description: strings.DESCRIPTION,
-    handler: __dirname + "/CSDGroupToList.handler",
+    handler: __dirname + "/csdGroup.handler",
     type: "command",
     positionals: [{
         name: "name",

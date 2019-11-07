@@ -9,4 +9,4 @@
 *                                                                                 *
 */
 
-export * from "./Add";
+export * from "./RemoveFromList";

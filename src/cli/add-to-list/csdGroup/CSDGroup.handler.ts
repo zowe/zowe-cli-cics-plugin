@@ -16,7 +16,7 @@ import { CicsBaseHandler } from "../../CicsBaseHandler";
 import i18nTypings from "../../-strings-/en";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../../-strings-/en").default as typeof i18nTypings).ADD.RESOURCES.CSDGROUPTOLIST;
+const strings = (require("../../-strings-/en").default as typeof i18nTypings).ADDTOLIST.RESOURCES.CSDGROUP;
 
 /**
  * Command handler for adding CICS CSD Groups to CSD Lists via CMCI
@@ -24,7 +24,7 @@ const strings = (require("../../-strings-/en").default as typeof i18nTypings).AD
  * @class CSDGroupHandler
  * @implements {ICommandHandler}
  */
-export default class CSDGroupToListHandler extends CicsBaseHandler {
+export default class CSDGroupHandler extends CicsBaseHandler {
     public async processWithSession(params: IHandlerParameters, session: AbstractSession, profile: IProfile): Promise<ICMCIApiResponse> {
 
         const status: ITaskWithStatus = {

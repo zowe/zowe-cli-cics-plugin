@@ -12,11 +12,11 @@
 // ******* ATTENTION:  LEASE KEEP IN ALPHABETICAL ORDER
 
 export default {
-    ADD: {
+    ADDTOLIST: {
         SUMMARY: "Add new resources to CICS",
         DESCRIPTION: "Add new resources (for example, CSD Groups to CSD Lists) to CICS through IBM CMCI.",
         RESOURCES: {
-            CSDGROUPTOLIST: {
+            CSDGROUP: {
                 DESCRIPTION: "Add a CSD Group to a CICS CSD List.",
                 POSITIONALS: {
                     NAME: "The name of the CSD Group to add. The maximum length of the CSD Group name is eight characters",
@@ -437,11 +437,11 @@ export default {
             }
         }
     },
-    REMOVE: {
+    REMOVEFROMLIST: {
         SUMMARY: "Remove resources from CICS",
         DESCRIPTION: "Remove resources (for example, CSD Groups in CSD Lists) from CICS through IBM CMCI.",
         RESOURCES: {
-            CSDGROUPFROMLIST: {
+            CSDGROUP: {
                 DESCRIPTION: "Remove a CSD Group from a CICS CSD List.",
                 POSITIONALS: {
                     NAME: "The name of the CSD Group to remove. The maximum length of the CSD Group name is eight characters",
