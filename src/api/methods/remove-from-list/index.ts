@@ -9,11 +9,4 @@
 *                                                                                 *
 */
 
-export * from "./ICMCIApiResponse";
-export * from "./ICMCIResponseResultSummary";
-export * from "./ICSDGroupParms";
-export * from "./IProgramParms";
-export * from "./IResourceParms";
-export * from "./ITransactionParms";
-export * from "./IURIMapParms";
-export * from "./IWebServiceParms";
+export * from "./RemoveFromList";

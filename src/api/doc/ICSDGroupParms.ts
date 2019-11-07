@@ -9,11 +9,26 @@
 *                                                                                 *
 */
 
-export * from "./ICMCIApiResponse";
-export * from "./ICMCIResponseResultSummary";
-export * from "./ICSDGroupParms";
-export * from "./IProgramParms";
-export * from "./IResourceParms";
-export * from "./ITransactionParms";
-export * from "./IURIMapParms";
-export * from "./IWebServiceParms";
+export interface ICSDGroupParms {
+    /**
+     * The name of the CSD Group
+     * Up to eight characters long
+     */
+    name: string;
+
+    /**
+     * CSD list name for the CSD Group
+     * Up to eight characters long
+     */
+    csdList: string;
+
+    /**
+     * The name of the CICS region of the CSD List
+     */
+    regionName: string;
+
+    /**
+     * CICS Plex of the CSD List
+     */
+    cicsPlex?: string;
+}

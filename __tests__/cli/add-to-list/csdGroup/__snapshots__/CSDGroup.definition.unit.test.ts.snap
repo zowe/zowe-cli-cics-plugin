@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cics add-to-list csdGroup should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "csdg",
+  ],
+  "description": "Add a CSD Group to a CICS CSD List.",
+  "examples": Array [
+    Object {
+      "description": "Add the CSD Group CSDGRP to the CSD List CSDLST in the region named MYREG",
+      "options": "MYGRP MYLIST --region-name MYREG",
+    },
+  ],
+  "name": "csdGroup",
+  "options": Array [
+    Object {
+      "description": "The CICS region name to which to add the CSD Group to the CSD List",
+      "name": "region-name",
+      "type": "string",
+    },
+    Object {
+      "description": "The name of the CICSPlex to which to add the CSD Group to the CSD List",
+      "name": "cics-plex",
+      "type": "string",
+    },
+  ],
+  "positionals": Array [
+    Object {
+      "description": "The name of the CSD Group to add. The maximum length of the CSD Group name is eight characters",
+      "name": "name",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "description": "The name of the CSD List to add the group to. The maximum length of the CSD List name is eight characters",
+      "name": "csdList",
+      "required": true,
+      "type": "string",
+    },
+  ],
+  "profile": Object {
+    "optional": Array [
+      "cics",
+    ],
+  },
+  "type": "command",
+}
+`;

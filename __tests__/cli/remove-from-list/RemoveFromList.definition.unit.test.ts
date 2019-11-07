@@ -9,11 +9,16 @@
 *                                                                                 *
 */
 
-export * from "./ICMCIApiResponse";
-export * from "./ICMCIResponseResultSummary";
-export * from "./ICSDGroupParms";
-export * from "./IProgramParms";
-export * from "./IResourceParms";
-export * from "./ITransactionParms";
-export * from "./IURIMapParms";
-export * from "./IWebServiceParms";
+import { ICommandDefinition } from "@zowe/imperative";
+
+describe("cics remove-from-list", () => {
+    const REMOVE_FROM_LIST_RESOURCES = 1;
+
+    it ("should not have changed", () => {
+        const definition: ICommandDefinition = require("../../../src/cli/remove-from-list/RemoveFromList.definition");
+        expect(definition).toBeDefined();
+        expect(definition.children.length).toBe(REMOVE_FROM_LIST_RESOURCES);
+        delete definition.children;
+        expect(definition).toMatchSnapshot();
+    });
+});

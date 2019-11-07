@@ -12,6 +12,29 @@
 // ******* ATTENTION:  LEASE KEEP IN ALPHABETICAL ORDER
 
 export default {
+    ADDTOLIST: {
+        SUMMARY: "Add new resources to CICS",
+        DESCRIPTION: "Add new resources (for example, CSD Groups to CSD Lists) to CICS through IBM CMCI.",
+        RESOURCES: {
+            CSDGROUP: {
+                DESCRIPTION: "Add a CSD Group to a CICS CSD List.",
+                POSITIONALS: {
+                    NAME: "The name of the CSD Group to add. The maximum length of the CSD Group name is eight characters",
+                    CSDLIST: "The name of the CSD List to add the group to. The maximum length of the CSD List name is eight characters",
+                },
+                OPTIONS: {
+                    REGIONNAME: "The CICS region name to which to add the CSD Group to the CSD List",
+                    CICSPLEX: "The name of the CICSPlex to which to add the CSD Group to the CSD List",
+                },
+                MESSAGES: {
+                    SUCCESS: "The CSD Group '%s' was successfully added to '%s'."
+                },
+                EXAMPLES: {
+                    EX1: "Add the CSD Group CSDGRP to the CSD List CSDLST in the region named MYREG"
+                }
+            }
+        }
+    },
     DEFINE: {
         SUMMARY: "Define new resources to CICS",
         DESCRIPTION: "Define new resources (for example, programs) to CICS through IBM CMCI.",
@@ -410,6 +433,29 @@ export default {
                 },
                 EXAMPLES: {
                     DEFINE_EXAMPLE_ONE: "Refresh a program named PGM123 from the region named MYREGION"
+                }
+            }
+        }
+    },
+    REMOVEFROMLIST: {
+        SUMMARY: "Remove resources from CICS",
+        DESCRIPTION: "Remove resources (for example, CSD Groups in CSD Lists) from CICS through IBM CMCI.",
+        RESOURCES: {
+            CSDGROUP: {
+                DESCRIPTION: "Remove a CSD Group from a CICS CSD List.",
+                POSITIONALS: {
+                    NAME: "The name of the CSD Group to remove. The maximum length of the CSD Group name is eight characters",
+                    CSDLIST: "The name of the CSD List to remove the group from. The maximum length of the CSD List name is eight characters",
+                },
+                OPTIONS: {
+                    REGIONNAME: "The CICS region name to which to remove the CSD Group from the CSD List",
+                    CICSPLEX: "The name of the CICSPlex to which to remove the CSD Group from the CSD List",
+                },
+                MESSAGES: {
+                    SUCCESS: "The CSD Group '%s' was successfully removed from '%s'."
+                },
+                EXAMPLES: {
+                    EX1: "Remove the CSD Group CSDGRP from the CSD List CSDLST in the region named MYREG"
                 }
             }
         }
