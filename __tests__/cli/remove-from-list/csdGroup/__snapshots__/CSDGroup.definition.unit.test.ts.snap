@@ -8,7 +8,7 @@ Object {
   "description": "Remove a CSD Group from a CICS CSD List.",
   "examples": Array [
     Object {
-      "description": "Remove the CSD Group CSDGRP from the CSD List CSDLST in the region named MYREG",
+      "description": "Remove the CSD Group MYGRP from the CSD List MYLIST in the region named MYREG",
       "options": "MYGRP MYLIST --region-name MYREG",
     },
   ],
