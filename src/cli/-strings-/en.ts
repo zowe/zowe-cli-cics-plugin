@@ -30,7 +30,7 @@ export default {
                     SUCCESS: "The CSD Group '%s' was successfully added to '%s'."
                 },
                 EXAMPLES: {
-                    EX1: "Add the CSD Group CSDGRP to the CSD List CSDLST in the region named MYREG"
+                    EX1: "Add the CSD Group MYGRP to the CSD List MYLIST in the region named MYREG"
                 }
             }
         }
@@ -455,7 +455,7 @@ export default {
                     SUCCESS: "The CSD Group '%s' was successfully removed from '%s'."
                 },
                 EXAMPLES: {
-                    EX1: "Remove the CSD Group CSDGRP from the CSD List CSDLST in the region named MYREG"
+                    EX1: "Remove the CSD Group MYGRP from the CSD List MYLIST in the region named MYREG"
                 }
             }
         }

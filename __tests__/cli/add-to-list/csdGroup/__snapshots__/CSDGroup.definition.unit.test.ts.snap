@@ -8,7 +8,7 @@ Object {
   "description": "Add a CSD Group to a CICS CSD List.",
   "examples": Array [
     Object {
-      "description": "Add the CSD Group CSDGRP to the CSD List CSDLST in the region named MYREG",
+      "description": "Add the CSD Group MYGRP to the CSD List MYLIST in the region named MYREG",
       "options": "MYGRP MYLIST --region-name MYREG",
     },
   ],
