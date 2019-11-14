@@ -20,7 +20,7 @@ export const CSDGroupDefinition: ICommandDefinition = {
     name: "csdGroup",
     aliases: ["csdg"],
     description: strings.DESCRIPTION,
-    handler: __dirname + "/csdGroup.handler",
+    handler: __dirname + "/CSDGroup.handler",
     type: "command",
     positionals: [{
         name: "name",
