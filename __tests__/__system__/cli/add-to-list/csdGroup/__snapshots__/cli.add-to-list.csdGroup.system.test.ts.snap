@@ -104,7 +104,7 @@ exports[`CICS add-to-list csdGroup command should be able to display the help 1`
  EXAMPLES
  --------
 
-   - Add the CSD Group CSDGRP to the CSD List CSDLST in the
+   - Add the CSD Group MYGRP to the CSD List MYLIST in the
    region named MYREG:
 
       $ zowe cics add-to-list csdGroup MYGRP MYLIST --region-name MYREG
