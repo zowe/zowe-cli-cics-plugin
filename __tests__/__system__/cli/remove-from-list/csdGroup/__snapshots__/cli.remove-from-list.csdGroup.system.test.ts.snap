@@ -104,7 +104,7 @@ exports[`CICS remove-from-list csdGroup command should be able to display the he
  EXAMPLES
  --------
 
-   - Remove the CSD Group CSDGRP from the CSD List CSDLST in the
+   - Remove the CSD Group MYGRP from the CSD List MYLIST in the
    region named MYREG:
 
       $ zowe cics remove-from-list csdGroup MYGRP MYLIST --region-name MYREG
