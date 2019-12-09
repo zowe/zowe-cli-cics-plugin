@@ -45,8 +45,8 @@ describe("CICS Disable URImap", () => {
             hostname: cmciProperties.host,
             port: cmciProperties.port,
             type: "basic",
-            strictSSL: false,
-            protocol: testEnvironment.systemTestProperties.cmci.protocol as any || "http",
+            rejectUnauthorized: cmciProperties.rejectUnauthorized || false,
+            protocol: cmciProperties.protocol as any || "https",
         });
     });
 

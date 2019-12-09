@@ -50,8 +50,8 @@ describe("CICS define web service command", () => {
             port: cmciProperties.port,
             user: cmciProperties.user,
             password: cmciProperties.password,
-            strictSSL: false,
-            protocol: "http",
+            rejectUnauthorized: cmciProperties.rejectUnauthorized || false,
+            protocol: cmciProperties.protocol as any || "https",
         });
     });
 

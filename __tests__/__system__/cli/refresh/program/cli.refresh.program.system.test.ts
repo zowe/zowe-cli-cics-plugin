@@ -23,6 +23,7 @@ let host: string;
 let port: number;
 let user: string;
 let password: string;
+let ru: boolean;
 
 describe("CICS refresh program command", () => {
 
@@ -38,6 +39,7 @@ describe("CICS refresh program command", () => {
         port = TEST_ENVIRONMENT.systemTestProperties.cmci.port;
         user = TEST_ENVIRONMENT.systemTestProperties.cmci.user;
         password = TEST_ENVIRONMENT.systemTestProperties.cmci.password;
+        ru = TEST_ENVIRONMENT.systemTestProperties.cmci.rejectUnauthorized || false;
 
         session = new Session({
             user,
@@ -45,8 +47,8 @@ describe("CICS refresh program command", () => {
             hostname: host,
             port,
             type: "basic",
-            strictSSL: false,
-            protocol: "http",
+            rejectUnauthorized: ru,
+            protocol: TEST_ENVIRONMENT.systemTestProperties.cmci.protocol as any || "https",
         });
     });
 

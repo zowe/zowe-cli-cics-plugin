@@ -51,8 +51,8 @@ describe("CICS define urimap-client command", () => {
             port: cmciProperties.port,
             user: cmciProperties.user,
             password: cmciProperties.password,
-            strictSSL: false,
-            protocol: "http",
+            rejectUnauthorized: cmciProperties.rejectUnauthorized || false,
+            protocol: cmciProperties.protocol as any || "https",
         });
     });
 
