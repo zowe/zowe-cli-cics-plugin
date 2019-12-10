@@ -55,8 +55,8 @@ describe("CICS install program command", () => {
             port: cmciProperties.port,
             user: cmciProperties.user,
             password: cmciProperties.password,
-            strictSSL: false,
-            protocol: protocol as any || "http",
+            rejectUnauthorized: cmciProperties.rejectUnauthorized || false,
+            protocol: cmciProperties.protocol as any || "https",
         });
 
         return CicsCmciRestClient.deleteExpectParsedXml(session,
@@ -72,8 +72,8 @@ describe("CICS install program command", () => {
             port: cmciProperties.port,
             user: cmciProperties.user,
             password: cmciProperties.password,
-            strictSSL: false,
-            protocol: protocol as any || "http",
+            rejectUnauthorized: cmciProperties.rejectUnauthorized || false,
+            protocol: cmciProperties.protocol as any || "https",
         });
 
         return CicsCmciRestClient.deleteExpectParsedXml(deleteSession,

@@ -23,5 +23,5 @@ cmci:
   port: my-cics-port
   csdGroup: my-csd-group
   regionName: my-region-name
-  protocol: http
+  protocol: https
   rejectUnauthorized: false

@@ -56,8 +56,8 @@ describe("CICS discard transaction command", () => {
             port: cmciProperties.port,
             user: cmciProperties.user,
             password: cmciProperties.password,
-            strictSSL: false,
-            protocol: "http",
+            rejectUnauthorized: cmciProperties.rejectUnauthorized || false,
+            protocol: cmciProperties.protocol as any || "https",
         });
 
         return CicsCmciRestClient.deleteExpectParsedXml(session,
