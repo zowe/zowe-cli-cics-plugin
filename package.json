@@ -4,14 +4,14 @@
   "description": "CLI Plug-in for IBM CICS",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gizafoundation/zowe-cli-cics-plugin.git"
+    "url": "https://github.com/zowe/zowe-cli-cics-plugin.git"
   },
   "main": "lib/index.js",
   "files": [
     "lib"
   ],
   "publishConfig": {
-    "registry": "https://gizaartifactory.jfrog.io/gizaartifactory/api/npm/npm-local-release/"
+    "registry": "https://zowe.jfrog.io/zowe/api/npm/npm-local-release/"
   },
   "bin": {
     "cics": "./lib/main.js"
