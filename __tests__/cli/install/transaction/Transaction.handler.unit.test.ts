@@ -22,7 +22,7 @@ const port = "43443";
 const user = "someone";
 const password = "somesecret";
 const rejectUnauthorized = false;
-const protocol = "http";
+const protocol = "https";
 
 const PROFILE_MAP = new Map<string, IProfile[]>();
 PROFILE_MAP.set(

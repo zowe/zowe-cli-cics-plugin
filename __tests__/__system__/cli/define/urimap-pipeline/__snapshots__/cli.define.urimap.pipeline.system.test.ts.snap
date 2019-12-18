@@ -116,7 +116,7 @@ exports[`CICS define urimap-pipeline command should be able to display the help 
 
       Specifies CMCI protocol (http or https).
 
-      Default value: http
+      Default value: https
       Allowed values: http, https
 
  PROFILE OPTIONS

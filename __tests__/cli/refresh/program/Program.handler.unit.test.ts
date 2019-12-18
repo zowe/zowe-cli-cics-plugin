@@ -21,7 +21,7 @@ const host = "somewhere.com";
 const port = "43443";
 const user = "someone";
 const password = "somesecret";
-const protocol = "http";
+const protocol = "https";
 
 const PROFILE_MAP = new Map<string, IProfile[]>();
 PROFILE_MAP.set(
@@ -120,7 +120,7 @@ describe("RefreshProgramHandler", () => {
                 user: testProfile.user,
                 password: testProfile.password,
                 rejectUnauthorized: false,
-                protocol: "http",
+                protocol: "https",
             }),
             {
                 name: programName,

@@ -78,7 +78,7 @@ exports[`Create cics Profile Success scenarios should display create cics profil
 
       Specifies CMCI protocol (http or https).
 
-      Default value: http
+      Default value: https
       Allowed values: http, https
 
  GLOBAL OPTIONS
