@@ -54,7 +54,20 @@ export const UrimapClientDefinition: ICommandDefinition = {
             description: strings.OPTIONS.URIMAPSCHEME,
             type: "string",
             allowableValues: {values: ["http", "https"], caseSensitive: false},
-            defaultValue: "http"
+            defaultValue: "https"
+        },
+        {
+            name: "authenticate",
+            aliases: ["auth"],
+            description: strings.OPTIONS.AUTHENTICATE,
+            type: "string",
+            allowableValues: {values: ["NO", "BASIC"], caseSensitive: true},
+        },
+        {
+            name: "certificate",
+            aliases: ["cert"],
+            description: strings.OPTIONS.CERTIFICATE,
+            type: "string"
         },
         {
             name: "description",

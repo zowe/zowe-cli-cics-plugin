@@ -43,9 +43,32 @@ Object {
           "https",
         ],
       },
-      "defaultValue": "http",
+      "defaultValue": "https",
       "description": "The scheme component to be used with the request (http or https).",
       "name": "urimap-scheme",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "auth",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "NO",
+          "BASIC",
+        ],
+      },
+      "description": "The authentication and identification scheme to be used for client URIMAPs.",
+      "name": "authenticate",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "cert",
+      ],
+      "description": "The label of a certificate in the keyring that is to be used as the client certificate in SSL handshakes",
+      "name": "certificate",
       "type": "string",
     },
     Object {
