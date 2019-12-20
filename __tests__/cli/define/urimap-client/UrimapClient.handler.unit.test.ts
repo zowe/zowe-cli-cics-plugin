@@ -81,6 +81,8 @@ describe("DefineUrimapClientHandler", () => {
     const urimapScheme = "http";
     const cicsPlex = "testPlex";
     const enable = false;
+    const authenticate = "BASIC";
+    const certificate = "CERT01";
 
     const defaultReturn: ICMCIApiResponse = {
         response: {
@@ -110,6 +112,8 @@ describe("DefineUrimapClientHandler", () => {
             regionName,
             cicsPlex,
             enable,
+            certificate,
+            authenticate,
             host,
             port,
             user,
@@ -141,7 +145,9 @@ describe("DefineUrimapClientHandler", () => {
                 regionName,
                 cicsPlex,
                 enable,
-                description: undefined
+                description: undefined,
+                authenticate,
+                certificate
             }
         );
     });
