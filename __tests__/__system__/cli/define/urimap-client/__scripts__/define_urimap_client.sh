@@ -6,5 +6,8 @@ csd_group=$2
 urimap_path=$3
 urimap_host=$4
 region_name=$5
+enable=$6
+authenticate=$7
+certificate=$8
 
-zowe cics define urimap-client "$urimap_name" "$csd_group" --urimap-path "$urimap_path" --urimap-host "$urimap_host" --region-name "$region_name" --enable false
+zowe cics define urimap-client "$urimap_name" "$csd_group" --urimap-path "$urimap_path" --urimap-host "$urimap_host" --region-name "$region_name" --enable "$enable" --authenticate "$authenticate" --certificate "$certificate"

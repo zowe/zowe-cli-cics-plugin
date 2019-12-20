@@ -22,6 +22,10 @@ let user: string;
 let password: string;
 let protocol: string;
 let rejectUnauthorized: boolean;
+const enable: string = "false";
+const authenticate: string = "BASIC";
+const certificate: string = "TESTCERT";
+const tcpipservice: string = "TESTSVC";
 
 function sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -66,7 +70,7 @@ describe("CICS disable urimap command", () => {
         const programName = "FAKEPGM";
 
         let output = runCliScript(__dirname + "/../../define/urimap-server/__scripts__/define_urimap_server.sh", TEST_ENVIRONMENT,
-            [urimapName, csdGroup, urimapPath, urimapHost, programName, regionName]);
+            [urimapName, csdGroup, urimapPath, urimapHost, programName, regionName, enable, tcpipservice]);
         let stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -121,7 +125,7 @@ describe("CICS disable urimap command", () => {
         const pipelineName = "FAKEPIPE";
 
         let output = runCliScript(__dirname + "/../../define/urimap-pipeline/__scripts__/define_urimap_pipeline.sh", TEST_ENVIRONMENT,
-            [urimapName, csdGroup, urimapPath, urimapHost, pipelineName, regionName]);
+            [urimapName, csdGroup, urimapPath, urimapHost, pipelineName, regionName, enable, tcpipservice]);
         let stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -175,7 +179,7 @@ describe("CICS disable urimap command", () => {
         const urimapHost = "www.example.com";
 
         let output = runCliScript(__dirname + "/../../define/urimap-client/__scripts__/define_urimap_client.sh", TEST_ENVIRONMENT,
-            [urimapName, csdGroup, urimapPath, urimapHost, regionName]);
+            [urimapName, csdGroup, urimapPath, urimapHost, regionName, enable, authenticate, certificate]);
         let stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -248,6 +252,8 @@ describe("CICS disable urimap command", () => {
                 urimapScheme,
                 programName,
                 regionName,
+                enable,
+                tcpipservice,
                 host,
                 port,
                 user,
@@ -354,6 +360,8 @@ describe("CICS disable urimap command", () => {
                 urimapScheme,
                 pipelineName,
                 regionName,
+                enable,
+                tcpipservice,
                 host,
                 port,
                 user,
@@ -458,6 +466,9 @@ describe("CICS disable urimap command", () => {
                 urimapHost,
                 urimapScheme,
                 regionName,
+                enable,
+                authenticate,
+                certificate,
                 host,
                 port,
                 user,

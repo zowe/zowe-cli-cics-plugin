@@ -72,6 +72,7 @@ describe("CICS Define pipeline URImap", () => {
         options.csdGroup = csdGroup;
         options.enable = enable;
         options.regionName = regionName;
+        options.tcpipservice = "TESTSVC";
 
         try {
             response = await defineUrimapPipeline(session, options);
@@ -97,6 +98,7 @@ describe("CICS Define pipeline URImap", () => {
         options.pipelineName = "AAAA1234";
         options.csdGroup = csdGroup;
         options.regionName = "FAKE";
+        options.tcpipservice = "TESTSVC";
 
         try {
             response = await defineUrimapPipeline(session, options);
@@ -122,6 +124,7 @@ describe("CICS Define pipeline URImap", () => {
         options.csdGroup = csdGroup;
         options.enable = enable;
         options.regionName = regionName;
+        options.tcpipservice = "TESTSVC";
 
         // define a URIMap to CICS
         try {
