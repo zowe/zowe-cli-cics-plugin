@@ -24,7 +24,7 @@ let protocol: string;
 let rejectUnauthorized: boolean;
 const enable: string = "false";
 const authenticate: string = "BASIC";
-const certificate: string = "TESTCERT";
+const certificate: string = "CICS";
 const tcpipservice: string = "TESTSVC";
 
 describe("CICS delete urimap command", () => {
@@ -146,7 +146,7 @@ describe("CICS delete urimap command", () => {
         const urimapPath = "fake/path";
         const urimapHost = "www.example.com";
         const programName = "FAKEPGM";
-        const urimapScheme = "HTTP";
+        const urimapScheme = "HTTPS";
 
         let output = runCliScript(__dirname + "/../../define/urimap-server/__scripts__/define_urimap_server_fully_qualified.sh", TEST_ENVIRONMENT,
             [urimapName,
@@ -192,7 +192,7 @@ describe("CICS delete urimap command", () => {
         const urimapPath = "fake/path";
         const urimapHost = "www.example.com";
         const pipelineName = "FAKEPIPE";
-        const urimapScheme = "HTTP";
+        const urimapScheme = "HTTPS";
 
         let output = runCliScript(__dirname + "/../../define/urimap-pipeline/__scripts__/define_urimap_pipeline_fully_qualified.sh", TEST_ENVIRONMENT,
             [urimapName,
@@ -237,7 +237,7 @@ describe("CICS delete urimap command", () => {
         const urimapName = "X" + generateRandomAlphaNumericString(urimapNameSuffixLength);
         const urimapPath = "fake/path";
         const urimapHost = "www.example.com";
-        const urimapScheme = "HTTP";
+        const urimapScheme = "HTTPS";
 
         let output = runCliScript(__dirname + "/../../define/urimap-client/__scripts__/define_urimap_client_fully_qualified.sh", TEST_ENVIRONMENT,
             [urimapName,

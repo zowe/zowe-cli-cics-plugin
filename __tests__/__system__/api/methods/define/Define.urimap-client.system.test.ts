@@ -72,7 +72,7 @@ describe("CICS Define client URImap", () => {
         options.enable = enable;
         options.regionName = regionName;
         options.authenticate = "BASIC";
-        options.certificate = "TESTCERT";
+        options.certificate = "CICS";
 
         try {
             response = await defineUrimapClient(session, options);
@@ -94,11 +94,11 @@ describe("CICS Define client URImap", () => {
         options.name = urimapName;
         options.path = "fake";
         options.host = "fake";
-        options.scheme = "http";
+        options.scheme = "https";
         options.csdGroup = csdGroup;
         options.regionName = "FAKE";
         options.authenticate = "BASIC";
-        options.certificate = "TESTCERT";
+        options.certificate = "CICS";
 
         try {
             response = await defineUrimapClient(session, options);
@@ -119,12 +119,12 @@ describe("CICS Define client URImap", () => {
         options.name = urimapName;
         options.path = "fake";
         options.host = "fake";
-        options.scheme = "http";
+        options.scheme = "https";
         options.csdGroup = csdGroup;
         options.enable = enable;
         options.regionName = regionName;
         options.authenticate = "BASIC";
-        options.certificate = "TESTCERT";
+        options.certificate = "CICS";
 
         // define a URIMap to CICS
         try {
