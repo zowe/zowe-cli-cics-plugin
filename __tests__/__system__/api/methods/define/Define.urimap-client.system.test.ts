@@ -21,6 +21,7 @@ let csdGroup: string;
 let enable: boolean;
 let session: Session;
 let urimapName: string;
+let certificate: string;
 
 function sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -42,6 +43,7 @@ describe("CICS Define client URImap", () => {
         const urimapNameSuffixLength = 4;
         const cmciProperties = await testEnvironment.systemTestProperties.cmci;
         urimapName = "AAAA" + generateRandomAlphaNumericString(urimapNameSuffixLength);
+        certificate = testEnvironment.systemTestProperties.urimap.certificate;
 
         session = new Session({
             user: cmciProperties.user,
@@ -72,7 +74,7 @@ describe("CICS Define client URImap", () => {
         options.enable = enable;
         options.regionName = regionName;
         options.authenticate = "BASIC";
-        options.certificate = "CICS";
+        options.certificate = certificate;
 
         try {
             response = await defineUrimapClient(session, options);

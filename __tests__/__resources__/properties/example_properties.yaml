@@ -25,3 +25,5 @@ cmci:
   regionName: my-region-name
   protocol: https
   rejectUnauthorized: false
+urimap:
+  certificate: "certName"

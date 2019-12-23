@@ -22,9 +22,9 @@ let user: string;
 let password: string;
 let protocol: string;
 let rejectUnauthorized: boolean;
+let certificate: string;
 const enable: string = "false";
 const authenticate: string = "BASIC";
-const certificate: string = "CICS";
 const tcpipservice: string = "TESTSVC";
 
 describe("CICS delete urimap command", () => {
@@ -43,6 +43,7 @@ describe("CICS delete urimap command", () => {
         password = TEST_ENVIRONMENT.systemTestProperties.cmci.password;
         protocol = TEST_ENVIRONMENT.systemTestProperties.cmci.protocol;
         rejectUnauthorized = TEST_ENVIRONMENT.systemTestProperties.cmci.rejectUnauthorized;
+        certificate = TEST_ENVIRONMENT.systemTestProperties.urimap.certificate;
     });
 
     afterAll(async () => {

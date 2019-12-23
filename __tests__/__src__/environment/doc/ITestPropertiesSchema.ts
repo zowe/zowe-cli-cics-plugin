@@ -56,4 +56,10 @@ export interface ITestPropertiesSchema {
         rejectUnauthorized?: boolean;
     };
 
+    urimap: {
+        /**
+         * Name of the certificate to use for CICS Client Testing
+         */
+        certificate?: string;
+    };
 }
