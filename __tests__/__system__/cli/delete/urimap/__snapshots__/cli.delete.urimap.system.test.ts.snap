@@ -68,7 +68,7 @@ exports[`CICS delete urimap command should be able to display the help 1`] = `
 
       Specifies CMCI protocol (http or https).
 
-      Default value: http
+      Default value: https
       Allowed values: http, https
 
  PROFILE OPTIONS
