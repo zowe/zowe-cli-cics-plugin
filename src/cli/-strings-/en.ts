@@ -98,12 +98,16 @@ export default {
                     PROGRAMNAME: "The application program that makes or handles the requests.",
                     PIPELINENAME: "The name of the PIPELINE resource definition for the URIMAP. " +
                         "The maximum length of the pipeline name is eight characters.",
+                    CERTIFICATE: "The label of a certificate in the keyring that is to be used as the client " +
+                        "certificate in SSL handshakes",
+                    AUTHENTICATE: "The authentication and identification scheme to be used for client URIMAPs.",
                     DESCRIPTION: "Description of the URIMAP resource being defined.",
                     TRANSACTIONNAME: "The name of the TRANSACTION resource definition for the URIMAP. " +
                         "The maximum length of the transaction name is four characters.",
                     WEBSERVICENAME: "The name of the WEBSERVICE resource definition for the URIMAP. " +
                         "The maximum length of the transaction name is 32 characters.",
-                    ENABLE: "Whether or not the URIMAP is to be enabled on install by default. "
+                    ENABLE: "Whether or not the URIMAP is to be enabled on install by default. ",
+                    TCPIPSERVICE: "The TCPIPSERVICE to which the URIMAP definition applies."
                 },
                 MESSAGES: {
                     SUCCESS: "The URIMAP '%s' was defined successfully."

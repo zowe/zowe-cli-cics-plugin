@@ -76,7 +76,7 @@ Object {
               "https",
             ],
           },
-          "defaultValue": "http",
+          "defaultValue": "https",
           "description": "Specifies CMCI protocol (http or https).",
           "group": "Cics Connection Options",
           "name": "protocol",

@@ -26,6 +26,7 @@ describe("CMCI - Define pipeline URIMap", () => {
     const description = "description";
     const transaction = "transaction";
     const webservice = "webservice";
+    const tcpipservice = "TCPIPSRV";
 
     const defineParms: IURIMapParms  = {
         regionName: region,
@@ -422,11 +423,13 @@ describe("CMCI - Define pipeline URIMap", () => {
             defineParms.description = description;
             defineParms.transactionName = transaction;
             defineParms.webserviceName = webservice;
+            defineParms.tcpipservice = tcpipservice;
             endPoint = "/" + CicsCmciConstants.CICS_SYSTEM_MANAGEMENT + "/" +
                 CicsCmciConstants.CICS_DEFINITION_URIMAP + "/" + cicsPlex +"/" + region;
             requestBody.request.create.attributes.$.description = description;
             requestBody.request.create.attributes.$.transaction = transaction;
             requestBody.request.create.attributes.$.webservice = webservice;
+            requestBody.request.create.attributes.$.tcpipservice = tcpipservice;
 
             response = await defineUrimapPipeline(dummySession, defineParms);
 

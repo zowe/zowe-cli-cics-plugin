@@ -86,7 +86,7 @@ export class CicsSession {
         aliases: ["o"],
         description: "Specifies CMCI protocol (http or https).",
         type: "string",
-        defaultValue: "http",
+        defaultValue: "https",
         required: true,
         allowableValues: {values: ["http", "https"], caseSensitive: false},
         group: CicsSession.CICS_CONNECTION_OPTION_GROUP
@@ -120,7 +120,7 @@ export class CicsSession {
             user: profile.user,
             password: profile.pass,
             basePath: profile.basePath,
-            protocol: profile.protocol || "http",
+            protocol: profile.protocol || "https",
         });
     }
 
@@ -140,7 +140,7 @@ export class CicsSession {
             password: args.password,
             basePath: args.basePath,
             rejectUnauthorized: args.rejectUnauthorized,
-            protocol: args.protocol || "http",
+            protocol: args.protocol || "https",
         });
     }
 

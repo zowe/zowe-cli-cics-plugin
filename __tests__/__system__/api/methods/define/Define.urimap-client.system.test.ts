@@ -21,6 +21,7 @@ let csdGroup: string;
 let enable: boolean;
 let session: Session;
 let urimapName: string;
+let certificate: string;
 
 function sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -42,6 +43,7 @@ describe("CICS Define client URImap", () => {
         const urimapNameSuffixLength = 4;
         const cmciProperties = await testEnvironment.systemTestProperties.cmci;
         urimapName = "AAAA" + generateRandomAlphaNumericString(urimapNameSuffixLength);
+        certificate = testEnvironment.systemTestProperties.urimap.certificate;
 
         session = new Session({
             user: cmciProperties.user,
@@ -67,10 +69,12 @@ describe("CICS Define client URImap", () => {
         options.name = urimapName;
         options.path = "fake";
         options.host = "fake";
-        options.scheme = "http";
+        options.scheme = "https";
         options.csdGroup = csdGroup;
         options.enable = enable;
         options.regionName = regionName;
+        options.authenticate = "BASIC";
+        options.certificate = certificate;
 
         try {
             response = await defineUrimapClient(session, options);
@@ -92,9 +96,11 @@ describe("CICS Define client URImap", () => {
         options.name = urimapName;
         options.path = "fake";
         options.host = "fake";
-        options.scheme = "http";
+        options.scheme = "https";
         options.csdGroup = csdGroup;
         options.regionName = "FAKE";
+        options.authenticate = "BASIC";
+        options.certificate = certificate;
 
         try {
             response = await defineUrimapClient(session, options);
@@ -115,10 +121,12 @@ describe("CICS Define client URImap", () => {
         options.name = urimapName;
         options.path = "fake";
         options.host = "fake";
-        options.scheme = "http";
+        options.scheme = "https";
         options.csdGroup = csdGroup;
         options.enable = enable;
         options.regionName = regionName;
+        options.authenticate = "BASIC";
+        options.certificate = certificate;
 
         // define a URIMap to CICS
         try {

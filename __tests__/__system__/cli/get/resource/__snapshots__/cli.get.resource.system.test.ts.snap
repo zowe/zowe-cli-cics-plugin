@@ -75,7 +75,7 @@ exports[`cics get resource should display the help 1`] = `
 
       Specifies CMCI protocol (http or https).
 
-      Default value: http
+      Default value: https
       Allowed values: http, https
 
  PROFILE OPTIONS

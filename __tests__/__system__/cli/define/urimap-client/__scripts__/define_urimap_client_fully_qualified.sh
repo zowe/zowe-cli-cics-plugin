@@ -7,10 +7,13 @@ urimap_path=$3
 urimap_host=$4
 urimap_scheme=$5
 region_name=$6
-HOST=$7
-PORT=$8
-USER=$9
-PASSWORD=${10}
-PROTOCOL=${11}
-REJECT=${12}
-zowe cics define urimap-client "$urimap_name" "$csd_group" --urimap-path "$urimap_path" --urimap-host "$urimap_host" --urimap-scheme "$urimap_scheme" --region-name "$region_name" --enable false --host $HOST --port $PORT --user $USER --password $PASSWORD --protocol "$PROTOCOL" --reject-unauthorized "$REJECT"
+enable=$7
+authenticate=$8
+certificate=$9
+HOST=${10}
+PORT=${11}
+USER=${12}
+PASSWORD=${13}
+PROTOCOL=${14}
+REJECT=${15}
+zowe cics define urimap-client "$urimap_name" "$csd_group" --urimap-path "$urimap_path" --urimap-host "$urimap_host" --urimap-scheme "$urimap_scheme" --region-name "$region_name" --enable "$enable" --authenticate "$authenticate" --certificate "$certificate" --host $HOST --port $PORT --user $USER --password $PASSWORD --protocol "$PROTOCOL" --reject-unauthorized "$REJECT"

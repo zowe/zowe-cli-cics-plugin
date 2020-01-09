@@ -52,12 +52,16 @@ exports[`CICS define urimap-server command should be able to display the help 1`
 
       The scheme component to be used with the request (http or https).
 
-      Default value: http
+      Default value: https
       Allowed values: http, https
 
    --description  | --desc (string)
 
       Description of the URIMAP resource being defined.
+
+   --tcpipservice  | --tcpip (string)
+
+      The TCPIPSERVICE to which the URIMAP definition applies.
 
    --region-name  (string)
 
@@ -104,7 +108,7 @@ exports[`CICS define urimap-server command should be able to display the help 1`
 
       Specifies CMCI protocol (http or https).
 
-      Default value: http
+      Default value: https
       Allowed values: http, https
 
  PROFILE OPTIONS

@@ -20,6 +20,7 @@ let testEnvironment: ITestEnvironment;
 let regionName: string;
 let csdGroup: string;
 let session: Session;
+let certificate: string;
 
 function sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -37,6 +38,7 @@ describe("CICS Install URImap", () => {
         });
         csdGroup = testEnvironment.systemTestProperties.cmci.csdGroup;
         regionName = testEnvironment.systemTestProperties.cmci.regionName;
+        certificate = testEnvironment.systemTestProperties.urimap.certificate;
         const cmciProperties = await testEnvironment.systemTestProperties.cmci;
 
         session = new Session({
@@ -66,11 +68,14 @@ describe("CICS Install URImap", () => {
         options.name = urimapName;
         options.path = "fake";
         options.host = "fake";
-        options.scheme = "http";
+        options.scheme = "https";
         options.programName = "AAAA1234";
         options.csdGroup = csdGroup;
         options.regionName = regionName;
         options.enable = false;
+        options.authenticate = undefined;
+        options.certificate = undefined;
+        options.tcpipservice = "TESTSVC";
         await defineUrimapServer(session, options);
         await sleep(sleepTime);
 
@@ -99,11 +104,14 @@ describe("CICS Install URImap", () => {
         options.name = urimapName;
         options.path = "fake";
         options.host = "fake";
-        options.scheme = "http";
+        options.scheme = "https";
         options.pipelineName = "AAAB1235";
         options.csdGroup = csdGroup;
         options.regionName = regionName;
         options.enable = false;
+        options.authenticate = undefined;
+        options.certificate = undefined;
+        options.tcpipservice = "TESTSVC";
         await defineUrimapPipeline(session, options);
         await sleep(sleepTime);
 
@@ -132,10 +140,13 @@ describe("CICS Install URImap", () => {
         options.name = urimapName;
         options.path = "fake";
         options.host = "fake";
-        options.scheme = "http";
+        options.scheme = "https";
         options.csdGroup = csdGroup;
         options.regionName = regionName;
         options.enable = false;
+        options.authenticate = "BASIC";
+        options.certificate = certificate;
+        options.tcpipservice = undefined;
         await defineUrimapClient(session, options);
         await sleep(sleepTime);
 
@@ -164,9 +175,12 @@ describe("CICS Install URImap", () => {
         options.name = urimapName;
         options.path = "fake";
         options.host = "fake";
-        options.scheme = "http";
+        options.scheme = "https";
         options.csdGroup = csdGroup;
         options.regionName = "fake";
+        options.authenticate = undefined;
+        options.certificate = undefined;
+        options.tcpipservice = "TESTSVC";
 
         try {
             response = await installUrimap(session, options);
@@ -189,9 +203,12 @@ describe("CICS Install URImap", () => {
         options.name = urimapName;
         options.path = "fake";
         options.host = "fake";
-        options.scheme = "http";
+        options.scheme = "https";
         options.csdGroup = csdGroup;
         options.regionName = regionName;
+        options.authenticate = undefined;
+        options.certificate = undefined;
+        options.tcpipservice = "TESTSVC";
 
         try {
             response = await installUrimap(session, options);

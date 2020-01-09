@@ -19,6 +19,7 @@ let testEnvironment: ITestEnvironment;
 let regionName: string;
 let csdGroup: string;
 let session: Session;
+let certificate: string;
 
 describe("CICS Delete URImap", () => {
 
@@ -31,6 +32,7 @@ describe("CICS Delete URImap", () => {
         csdGroup = testEnvironment.systemTestProperties.cmci.csdGroup;
         regionName = testEnvironment.systemTestProperties.cmci.regionName;
         const cmciProperties = await testEnvironment.systemTestProperties.cmci;
+        certificate = testEnvironment.systemTestProperties.urimap.certificate;
 
         session = new Session({
             user: cmciProperties.user,
@@ -59,10 +61,13 @@ describe("CICS Delete URImap", () => {
         options.name = urimapName;
         options.path = "fake";
         options.host = "fake";
-        options.scheme = "http";
+        options.scheme = "https";
         options.programName = "AAAA1234";
         options.csdGroup = csdGroup;
         options.regionName = regionName;
+        options.authenticate = undefined;
+        options.certificate = undefined;
+        options.tcpipservice = "TESTSVC";
         await defineUrimapServer(session, options);
 
         try {
@@ -86,10 +91,13 @@ describe("CICS Delete URImap", () => {
         options.name = urimapName;
         options.path = "fake";
         options.host = "fake";
-        options.scheme = "http";
+        options.scheme = "https";
         options.pipelineName = "AAAB1234";
         options.csdGroup = csdGroup;
         options.regionName = regionName;
+        options.authenticate = undefined;
+        options.certificate = undefined;
+        options.tcpipservice = "TESTSVC";
         await defineUrimapPipeline(session, options);
 
         try {
@@ -113,9 +121,12 @@ describe("CICS Delete URImap", () => {
         options.name = urimapName;
         options.path = "fake";
         options.host = "fake";
-        options.scheme = "http";
+        options.scheme = "https";
         options.csdGroup = csdGroup;
         options.regionName = regionName;
+        options.authenticate = "BASIC";
+        options.certificate = certificate;
+        options.tcpipservice = undefined;
         await defineUrimapClient(session, options);
 
         try {
@@ -129,7 +140,7 @@ describe("CICS Delete URImap", () => {
         expect(response.response.resultsummary.api_response1).toBe("1024");
     });
 
-    it("should fail to delete a URIMap to CICS with invalid CICS region", async () => {
+    it("should fail to delete a URIMap from CICS with invalid CICS region", async () => {
         let error;
         let response;
 
@@ -139,9 +150,12 @@ describe("CICS Delete URImap", () => {
         options.name = urimapName;
         options.path = "fake";
         options.host = "fake";
-        options.scheme = "http";
+        options.scheme = "https";
         options.csdGroup = csdGroup;
         options.regionName = "fake";
+        options.authenticate = undefined;
+        options.certificate = undefined;
+        options.tcpipservice = "TESTSVC";
 
         try {
             response = await deleteUrimap(session, options);
@@ -164,9 +178,12 @@ describe("CICS Delete URImap", () => {
         options.name = urimapName;
         options.path = "fake";
         options.host = "fake";
-        options.scheme = "http";
+        options.scheme = "https";
         options.csdGroup = csdGroup;
         options.regionName = regionName;
+        options.authenticate = undefined;
+        options.certificate = undefined;
+        options.tcpipservice = "TESTSVC";
 
         try {
             response = await deleteUrimap(session, options);

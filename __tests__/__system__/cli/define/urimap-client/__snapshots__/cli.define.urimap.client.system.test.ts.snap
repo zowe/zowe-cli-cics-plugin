@@ -48,8 +48,19 @@ exports[`CICS define urimap-client command should be able to display the help 1`
 
       The scheme component to be used with the request (http or https).
 
-      Default value: http
+      Default value: https
       Allowed values: http, https
+
+   --authenticate  | --auth (string)
+
+      The authentication and identification scheme to be used for client URIMAPs.
+
+      Allowed values: NO, BASIC
+
+   --certificate  | --cert (string)
+
+      The label of a certificate in the keyring that is to be used as the client
+      certificate in SSL handshakes
 
    --description  | --desc (string)
 
@@ -100,7 +111,7 @@ exports[`CICS define urimap-client command should be able to display the help 1`
 
       Specifies CMCI protocol (http or https).
 
-      Default value: http
+      Default value: https
       Allowed values: http, https
 
  PROFILE OPTIONS

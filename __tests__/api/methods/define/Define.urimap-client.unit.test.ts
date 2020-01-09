@@ -22,6 +22,9 @@ describe("CMCI - Define client URIMap", () => {
     const group = "group";
     const cicsPlex = "plex";
     const content = "This\nis\r\na\ntest";
+    const description = "description";
+    const authenticate = "BASIC";
+    const certificate = "CERT01";
 
     const defineParms: IURIMapParms  = {
         regionName: region,
@@ -352,6 +355,23 @@ describe("CMCI - Define client URIMap", () => {
             defineParms.cicsPlex = cicsPlex;
             endPoint = "/" + CicsCmciConstants.CICS_SYSTEM_MANAGEMENT + "/" +
                 CicsCmciConstants.CICS_DEFINITION_URIMAP + "/" + cicsPlex +"/" + region;
+
+            response = await defineUrimapClient(dummySession, defineParms);
+
+            // expect(response.success).toBe(true);
+            expect(response).toContain(content);
+            expect(defineSpy).toHaveBeenCalledWith(dummySession, endPoint, [], requestBody);
+        });
+
+        it("should be able to define a URIMap with optional parameters specified", async () => {
+            defineParms.description = description;
+            defineParms.authenticate = authenticate;
+            defineParms.certificate = certificate;
+            endPoint = "/" + CicsCmciConstants.CICS_SYSTEM_MANAGEMENT + "/" +
+                CicsCmciConstants.CICS_DEFINITION_URIMAP + "/" + cicsPlex +"/" + region;
+            requestBody.request.create.attributes.$.description = description;
+            requestBody.request.create.attributes.$.authenticate = authenticate;
+            requestBody.request.create.attributes.$.certificate = certificate;
 
             response = await defineUrimapClient(dummySession, defineParms);
 
