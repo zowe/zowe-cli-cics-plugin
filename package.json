@@ -4,14 +4,14 @@
   "description": "CLI Plug-in for IBM CICS",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gizafoundation/zowe-cli-cics-plugin.git"
+    "url": "https://github.com/zowe/zowe-cli-cics-plugin.git"
   },
   "main": "lib/index.js",
   "files": [
     "lib"
   ],
   "publishConfig": {
-    "registry": "https://gizaartifactory.jfrog.io/gizaartifactory/api/npm/npm-local-release/"
+    "registry": "https://zowe.jfrog.io/zowe/api/npm/npm-local-release/"
   },
   "bin": {
     "cics": "./lib/main.js"
@@ -38,11 +38,12 @@
     "xml2js": "0.4.19"
   },
   "peerDependencies": {
-    "@brightside/core": "2.x",
-    "@brightside/imperative": "2.x"
+    "@brightside/core": "1.x",
+    "@brightside/imperative": "1.x"
   },
   "devDependencies": {
-    "@brightside/imperative": ">=2.0.0-0",
+    "@brightside/imperative": "^1.0.8",
+    "@types/fs-extra": "^8.0.1",
     "@types/jest": "^20.0.5",
     "@types/node": "^8.0.0",
     "@types/xml2js": "^0.4.3",

@@ -9,7 +9,8 @@
 *                                                                                 *
 */
 
-import { ICommandArguments, ICommandOptionDefinition, IProfile, Logger, Session } from "@brightside/imperative";
+import { ICommandOptionDefinition, IProfile, Logger, Session } from "@brightside/imperative";
+
 
 /**
  * Utility Methods for Brightside
@@ -92,7 +93,6 @@ export class CicsSession {
             port: profile.port,
             user: profile.user,
             password: profile.pass,
-            basePath: profile.basePath,
             protocol: "http",
         });
     }
@@ -103,7 +103,8 @@ export class CicsSession {
      * @param {IProfile} args - The arguments specified by the user
      * @returns {Session} - A session for usage in the CMCI REST Client
      */
-    public static createBasicCicsSessionFromArguments(args: ICommandArguments): Session {
+    public static createBasicCicsSessionFromArguments(args: any): Session {
+        // args should've been of type ICommandArguments (which is an abstraction of yargs.Arguments)
         this.log.debug("Creating a CICS session from arguments");
         return new Session({
             type: "basic",
@@ -111,7 +112,6 @@ export class CicsSession {
             port: args.port,
             user: args.user,
             password: args.password,
-            basePath: args.basePath,
             strictSSL: false,
             protocol: "http",
         });
