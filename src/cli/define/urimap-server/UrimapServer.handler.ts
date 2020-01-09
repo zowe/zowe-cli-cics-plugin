@@ -44,7 +44,8 @@ export default class UrimapServerHandler extends CicsBaseHandler {
             description: params.arguments.description,
             enable: params.arguments.enable,
             regionName: params.arguments.regionName || profile.regionName,
-            cicsPlex: params.arguments.cicsPlex || profile.cicsPlex
+            cicsPlex: params.arguments.cicsPlex || profile.cicsPlex,
+            tcpipservice: params.arguments.tcpipservice
         });
 
         params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.urimapName);

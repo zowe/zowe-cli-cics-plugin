@@ -43,7 +43,7 @@ Object {
           "https",
         ],
       },
-      "defaultValue": "http",
+      "defaultValue": "https",
       "description": "The scheme component to be used with the request (http or https).",
       "name": "urimap-scheme",
       "type": "string",
@@ -79,6 +79,14 @@ Object {
       ],
       "description": "The name of the WEBSERVICE resource definition for the URIMAP. The maximum length of the transaction name is 32 characters.",
       "name": "webservice-name",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "tcpip",
+      ],
+      "description": "The TCPIPSERVICE to which the URIMAP definition applies.",
+      "name": "tcpipservice",
       "type": "string",
     },
     Object {

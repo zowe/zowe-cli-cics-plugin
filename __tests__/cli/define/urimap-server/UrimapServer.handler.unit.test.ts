@@ -82,6 +82,7 @@ describe("DefineUrimapServerHandler", () => {
     const urimapScheme = "http";
     const cicsPlex = "testPlex";
     const enable = false;
+    const tcpipservice = "TCPIPSRV";
 
     const defaultReturn: ICMCIApiResponse = {
         response: {
@@ -112,6 +113,7 @@ describe("DefineUrimapServerHandler", () => {
             regionName,
             cicsPlex,
             enable,
+            tcpipservice,
             host,
             port,
             user,
@@ -144,6 +146,7 @@ describe("DefineUrimapServerHandler", () => {
                 regionName,
                 cicsPlex,
                 enable,
+                tcpipservice,
                 description: undefined
             }
         );

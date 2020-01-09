@@ -27,6 +27,7 @@ let password: string;
 let protocol: string;
 let rejectUnauthorized: boolean;
 let session: Session;
+let certificate: string;
 
 describe("CICS define urimap-client command", () => {
 
@@ -45,6 +46,7 @@ describe("CICS define urimap-client command", () => {
         password = TEST_ENVIRONMENT.systemTestProperties.cmci.password;
         protocol = TEST_ENVIRONMENT.systemTestProperties.cmci.protocol;
         rejectUnauthorized = TEST_ENVIRONMENT.systemTestProperties.cmci.rejectUnauthorized;
+        certificate = TEST_ENVIRONMENT.systemTestProperties.urimap.certificate;
         session = new Session({
             type: "basic",
             hostname: cmciProperties.host,
@@ -69,7 +71,7 @@ describe("CICS define urimap-client command", () => {
 
     it("should get a syntax error if urimap name is omitted", () => {
         const output = runCliScript(__dirname + "/__scripts__/define_urimap_client.sh", TEST_ENVIRONMENT,
-            ["", "FAKEGRP", "FAKEPATH", "FAKEHOST", "FAKERGN"]);
+            ["", "FAKEGRP", "FAKEPATH", "FAKEHOST", "FAKERGN", "false", "BASIC", certificate]);
         const stderr = output.stderr.toString();
         expect(stderr).toContain("Syntax");
         expect(stderr).toContain("urimap");
@@ -79,7 +81,7 @@ describe("CICS define urimap-client command", () => {
 
     it("should get a syntax error if CSD group is omitted", () => {
         const output = runCliScript(__dirname + "/__scripts__/define_urimap_client.sh", TEST_ENVIRONMENT,
-            ["FAKESRV", "", "FAKEPATH", "FAKEHOST", "FAKERGN"]);
+            ["FAKESRV", "", "FAKEPATH", "FAKEHOST", "FAKERGN", "false", "BASIC", certificate]);
         const stderr = output.stderr.toString();
         expect(stderr).toContain("Syntax");
         expect(stderr).toContain("csdGroup");
@@ -88,7 +90,7 @@ describe("CICS define urimap-client command", () => {
 
     it("should get a syntax error if urimap path is omitted", () => {
         const output = runCliScript(__dirname + "/__scripts__/define_urimap_client.sh", TEST_ENVIRONMENT,
-            ["FAKESRV", "FAKEGRP", "", "FAKEHOST", "FAKERGN"]);
+            ["FAKESRV", "FAKEGRP", "", "FAKEHOST", "FAKERGN", "false", "BASIC", certificate]);
         const stderr = output.stderr.toString();
         expect(stderr).toContain("Syntax");
         expect(stderr).toContain("urimap-path");
@@ -97,7 +99,7 @@ describe("CICS define urimap-client command", () => {
 
     it("should get a syntax error if urimap host is omitted", () => {
         const output = runCliScript(__dirname + "/__scripts__/define_urimap_client.sh", TEST_ENVIRONMENT,
-            ["FAKESRV", "FAKEGRP", "FAKEPATH", "", "FAKERGN"]);
+            ["FAKESRV", "FAKEGRP", "FAKEPATH", "", "FAKERGN", "false", "BASIC", certificate]);
         const stderr = output.stderr.toString();
         expect(stderr).toContain("Syntax");
         expect(stderr).toContain("urimap-host");
@@ -106,7 +108,7 @@ describe("CICS define urimap-client command", () => {
 
     it("should get a syntax error if region name is omitted", () => {
         const output = runCliScript(__dirname + "/__scripts__/define_urimap_client.sh", TEST_ENVIRONMENT,
-            ["FAKESRV", "FAKEGRP", "FAKEPATH", "FAKEHOST", ""]);
+            ["FAKESRV", "FAKEGRP", "FAKEPATH", "FAKEHOST", "", "false", "BASIC", certificate]);
         const stderr = output.stderr.toString();
         expect(stderr).toContain("Syntax");
         expect(stderr).toContain("region-name");

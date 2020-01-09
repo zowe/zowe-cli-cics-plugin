@@ -53,6 +53,19 @@ export interface IURIMapParms {
     pipelineName?: string;
 
     /**
+     * Certificate that will be used to negotiate an SSL handshake
+     * Only used for client URIMaps
+     */
+    certificate?: string;
+
+    /**
+     * Authentication and identification scheme to be used for URIMAPs
+     * Only used for client URIMaps
+     * Allowed values: NO, BASIC
+     */
+    authenticate?: string;
+
+    /**
      * Description text for the URIMap
      */
     description?: string;
@@ -83,4 +96,10 @@ export interface IURIMapParms {
      * Enable attribute of the URIMap
      */
     enable?: boolean;
+
+    /**
+     * The TCPIPSERVICE to which a URIMAP applies
+     * Only used for server and pipeline URIMAPs; up to 8 characters long
+     */
+    tcpipservice?: string;
 }

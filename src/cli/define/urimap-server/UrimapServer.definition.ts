@@ -54,7 +54,7 @@ export const UrimapServerDefinition: ICommandDefinition = {
             description: strings.OPTIONS.URIMAPSCHEME,
             type: "string",
             allowableValues: {values: ["http", "https"], caseSensitive: false},
-            defaultValue: "http"
+            defaultValue: "https"
         },
         {
             name: "program-name",
@@ -67,6 +67,12 @@ export const UrimapServerDefinition: ICommandDefinition = {
             name: "description",
             aliases: ["desc"],
             description: strings.OPTIONS.DESCRIPTION,
+            type: "string"
+        },
+        {
+            name: "tcpipservice",
+            aliases: ["tcpip"],
+            description: strings.OPTIONS.TCPIPSERVICE,
             type: "string"
         },
         {

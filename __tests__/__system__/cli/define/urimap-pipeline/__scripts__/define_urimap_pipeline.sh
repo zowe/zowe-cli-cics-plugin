@@ -7,5 +7,7 @@ urimap_path=$3
 urimap_host=$4
 pipeline_name=$5
 region_name=$6
+enable=$7
+tcpipservice=$8
 
-zowe cics define urimap-pipeline "$urimap_name" "$csd_group" --urimap-path "$urimap_path" --urimap-host "$urimap_host" --pipeline-name "$pipeline_name" --region-name "$region_name" --enable false
+zowe cics define urimap-pipeline "$urimap_name" "$csd_group" --urimap-path "$urimap_path" --urimap-host "$urimap_host" --pipeline-name "$pipeline_name" --region-name "$region_name" --enable "$enable" --tcpipservice "$tcpipservice"
