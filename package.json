@@ -46,7 +46,7 @@
   },
   "peerDependencies": {
     "@zowe/imperative": "^4.0.0",
-    "@zowe/cli": "^5.0.0"
+    "@zowe/cli": "^6.0.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^5.0.5",
