@@ -38,6 +38,7 @@ PROFILE_MAP.set(
 const PROFILES: CommandProfiles = new CommandProfiles(PROFILE_MAP);
 const DEFAULT_PARAMETERS: IHandlerParameters = {
     arguments: {$0: "", _: []}, // Please provide arguments later on
+    positionals: ["cics", "define", "urimap-client"],
     response: {
         data: {
             setMessage: jest.fn((setMsgArgs) => {

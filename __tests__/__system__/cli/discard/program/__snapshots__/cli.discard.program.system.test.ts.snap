@@ -77,6 +77,22 @@ exports[`CICS discard program command should be able to display the help 1`] = `
 
       The name of a (cics) profile to load for this command execution.
 
+   --base-profile  | --base-p (string)
+
+      The name of a (base) profile to load for this command execution.
+
+ BASE CONNECTION OPTIONS
+ -----------------------
+
+   --token-type  | --tt (string)
+
+      The type of token to get and use for the API. Omit this option to use the
+      default token type, which is provided by 'zowe auth login'.
+
+   --token-value  | --tv (string)
+
+      The value of the token to pass to the API.
+
  GLOBAL OPTIONS
  --------------
 
