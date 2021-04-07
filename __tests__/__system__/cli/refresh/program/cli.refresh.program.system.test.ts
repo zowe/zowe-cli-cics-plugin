@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { ITestEnvironment, TestEnvironment, runCliScript } from "@zowe/ts-cli-test-utils";
+import { ITestEnvironment, TestEnvironment, runCliScript } from "@zowe/cli-test-utils";
 import { ITestPropertiesSchema } from "../../../../__src__/doc/ITestPropertiesSchema";
 import { Session } from "@zowe/imperative";
 import { defineProgram, deleteProgram, discardProgram, installProgram, IProgramParms } from "../../../../../src";

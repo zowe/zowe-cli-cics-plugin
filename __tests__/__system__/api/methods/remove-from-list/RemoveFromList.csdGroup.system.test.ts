@@ -10,7 +10,7 @@
 */
 
 import { Session } from "@zowe/imperative";
-import { ITestEnvironment, TestEnvironment } from "@zowe/ts-cli-test-utils";
+import { ITestEnvironment, TestEnvironment } from "@zowe/cli-test-utils";
 import { ITestPropertiesSchema } from "../../../../__src__/doc/ITestPropertiesSchema";
 import { generateRandomAlphaNumericString } from "../../../../__src__/TestUtils";
 import { addCSDGroupToList, removeCSDGroupFromList, ICSDGroupParms } from "../../../../../src";
