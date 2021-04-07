@@ -9,12 +9,11 @@
 *                                                                                 *
 */
 
-import { runCliScript } from "../../../../__src__/TestUtils";
-import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
-import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
+import { ITestEnvironment, TestEnvironment, runCliScript } from "@zowe/ts-cli-test-utils";
+import { ITestPropertiesSchema } from "../../../../__src__/doc/ITestPropertiesSchema";
 
 // Test environment will be populated in the "beforeAll"
-let TEST_ENVIRONMENT: ITestEnvironment;
+let TEST_ENVIRONMENT: ITestEnvironment<ITestPropertiesSchema>;
 let regionName: string;
 let host: string;
 let port: number;
@@ -33,12 +32,12 @@ describe("cics get resource", () => {
             tempProfileTypes: ["cics"]
         });
         regionName = TEST_ENVIRONMENT.systemTestProperties.cmci.regionName;
-        host = TEST_ENVIRONMENT.systemTestProperties.cmci.host;
-        port = TEST_ENVIRONMENT.systemTestProperties.cmci.port;
-        user = TEST_ENVIRONMENT.systemTestProperties.cmci.user;
-        password = TEST_ENVIRONMENT.systemTestProperties.cmci.password;
-        protocol = TEST_ENVIRONMENT.systemTestProperties.cmci.protocol;
-        rejectUnauthorized = TEST_ENVIRONMENT.systemTestProperties.cmci.rejectUnauthorized;
+        host = TEST_ENVIRONMENT.systemTestProperties.cics.host;
+        port = TEST_ENVIRONMENT.systemTestProperties.cics.port;
+        user = TEST_ENVIRONMENT.systemTestProperties.cics.user;
+        password = TEST_ENVIRONMENT.systemTestProperties.cics.password;
+        protocol = TEST_ENVIRONMENT.systemTestProperties.cics.protocol;
+        rejectUnauthorized = TEST_ENVIRONMENT.systemTestProperties.cics.rejectUnauthorized;
     });
 
     afterAll(async () => {

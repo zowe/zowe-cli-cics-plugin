@@ -9,11 +9,10 @@
 *                                                                                 *
 */
 
-import { ITestEnvironment } from "../../../__src__/environment/doc/response/ITestEnvironment";
-import { TestEnvironment } from "../../../__src__/environment/TestEnvironment";
-import { runCliScript } from "../../../__src__/TestUtils";
+import { ITestEnvironment, TestEnvironment, runCliScript } from "@zowe/ts-cli-test-utils";
+import { ITestPropertiesSchema } from "../../../__src__/doc/ITestPropertiesSchema";
 
-let testEnvironment: ITestEnvironment;
+let testEnvironment: ITestEnvironment<ITestPropertiesSchema>;
 
 /*
  NOTE!!  The cics plugin must be installed into Brightside in order to test the creation of a cics profile.

@@ -9,13 +9,12 @@
 *                                                                                 *
 */
 
-import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
-import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
-import { runCliScript } from "../../../../__src__/TestUtils";
+import { ITestEnvironment, TestEnvironment, runCliScript } from "@zowe/ts-cli-test-utils";
+import { ITestPropertiesSchema } from "../../../../__src__/doc/ITestPropertiesSchema";
 import { Session } from "@zowe/imperative";
 import { defineProgram, deleteProgram, discardProgram, installProgram, IProgramParms } from "../../../../../src";
 
-let TEST_ENVIRONMENT: ITestEnvironment;
+let TEST_ENVIRONMENT: ITestEnvironment<ITestPropertiesSchema>;
 let regionName: string;
 let csdGroup: string;
 let session: Session;
@@ -35,11 +34,11 @@ describe("CICS refresh program command", () => {
         });
         csdGroup = TEST_ENVIRONMENT.systemTestProperties.cmci.csdGroup;
         regionName = TEST_ENVIRONMENT.systemTestProperties.cmci.regionName;
-        host = TEST_ENVIRONMENT.systemTestProperties.cmci.host;
-        port = TEST_ENVIRONMENT.systemTestProperties.cmci.port;
-        user = TEST_ENVIRONMENT.systemTestProperties.cmci.user;
-        password = TEST_ENVIRONMENT.systemTestProperties.cmci.password;
-        ru = TEST_ENVIRONMENT.systemTestProperties.cmci.rejectUnauthorized || false;
+        host = TEST_ENVIRONMENT.systemTestProperties.cics.host;
+        port = TEST_ENVIRONMENT.systemTestProperties.cics.port;
+        user = TEST_ENVIRONMENT.systemTestProperties.cics.user;
+        password = TEST_ENVIRONMENT.systemTestProperties.cics.password;
+        ru = TEST_ENVIRONMENT.systemTestProperties.cics.rejectUnauthorized || false;
 
         session = new Session({
             user,
@@ -48,7 +47,7 @@ describe("CICS refresh program command", () => {
             port,
             type: "basic",
             rejectUnauthorized: ru,
-            protocol: TEST_ENVIRONMENT.systemTestProperties.cmci.protocol as any || "https",
+            protocol: TEST_ENVIRONMENT.systemTestProperties.cics.protocol as any || "https",
         });
     });
 

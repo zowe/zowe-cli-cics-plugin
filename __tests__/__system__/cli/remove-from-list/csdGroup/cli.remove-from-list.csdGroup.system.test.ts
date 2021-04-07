@@ -9,13 +9,10 @@
 *                                                                                 *
 */
 
-import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
-import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
-import { generateRandomAlphaNumericString, runCliScript } from "../../../../__src__/TestUtils";
-import { Session } from "@zowe/imperative";
-import { CicsCmciConstants, CicsCmciRestClient, addCSDGroupToList, removeCSDGroupFromList } from "../../../../../src";
+import { ITestEnvironment, TestEnvironment, runCliScript } from "@zowe/ts-cli-test-utils";
+import { ITestPropertiesSchema } from "../../../../__src__/doc/ITestPropertiesSchema";
 
-let TEST_ENVIRONMENT: ITestEnvironment;
+let TEST_ENVIRONMENT: ITestEnvironment<ITestPropertiesSchema>;
 let regionName: string;
 let csdGroup: string;
 let host: string;
@@ -34,12 +31,12 @@ describe("CICS remove-from-list csdGroup command", () => {
         });
         csdGroup = TEST_ENVIRONMENT.systemTestProperties.cmci.csdGroup;
         regionName = TEST_ENVIRONMENT.systemTestProperties.cmci.regionName;
-        host = TEST_ENVIRONMENT.systemTestProperties.cmci.host;
-        port = TEST_ENVIRONMENT.systemTestProperties.cmci.port;
-        user = TEST_ENVIRONMENT.systemTestProperties.cmci.user;
-        password = TEST_ENVIRONMENT.systemTestProperties.cmci.password;
-        protocol = TEST_ENVIRONMENT.systemTestProperties.cmci.protocol;
-        rejectUnauthorized = TEST_ENVIRONMENT.systemTestProperties.cmci.rejectUnauthorized;
+        host = TEST_ENVIRONMENT.systemTestProperties.cics.host;
+        port = TEST_ENVIRONMENT.systemTestProperties.cics.port;
+        user = TEST_ENVIRONMENT.systemTestProperties.cics.user;
+        password = TEST_ENVIRONMENT.systemTestProperties.cics.password;
+        protocol = TEST_ENVIRONMENT.systemTestProperties.cics.protocol;
+        rejectUnauthorized = TEST_ENVIRONMENT.systemTestProperties.cics.rejectUnauthorized;
     });
 
     afterAll(async () => {
