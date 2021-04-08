@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { ITestEnvironment, TestEnvironment, runCliScript } from "@zowe/cli-test-utils";
+import { ITestEnvironment, TestEnvironment, runCliScript, isStderrEmptyForProfilesCommand } from "@zowe/cli-test-utils";
 import { ITestPropertiesSchema } from "../../../__src__/doc/ITestPropertiesSchema";
 
 let testEnvironment: ITestEnvironment<ITestPropertiesSchema>;
@@ -52,7 +52,7 @@ describe("Create cics Profile", () => {
             const response = runCliScript(scriptPath,
                 testEnvironment, args);
 
-            expect(response.stderr.toString()).toBe("");
+            expect(isStderrEmptyForProfilesCommand(response.stderr)).toBe(true);
             expect(response.status).toBe(0);
             expect(response.stdout.toString()).toContain("Profile created successfully");
         });
