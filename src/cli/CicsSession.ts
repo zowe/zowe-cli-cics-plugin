@@ -27,7 +27,6 @@ export class CicsSession {
         aliases: ["H"],
         description: "The CICS server host name.",
         type: "string",
-        required: true,
         group: CicsSession.CICS_CONNECTION_OPTION_GROUP
     };
 
@@ -51,7 +50,6 @@ export class CicsSession {
         aliases: ["u"],
         description: "Mainframe (CICS) user name, which can be the same as your TSO login.",
         type: "string",
-        required: true,
         group: CicsSession.CICS_CONNECTION_OPTION_GROUP
     };
 
@@ -64,7 +62,6 @@ export class CicsSession {
         description: "Mainframe (CICS) password, which can be the same as your TSO password.",
         type: "string",
         group: CicsSession.CICS_CONNECTION_OPTION_GROUP,
-        required: true
     };
     /**
      * Option used in profile creation and commands for rejectUnauthorized setting for connecting to FMP
@@ -75,7 +72,6 @@ export class CicsSession {
         description: "Reject self-signed certificates.",
         type: "boolean",
         defaultValue: true,
-        required: false,
         group: CicsSession.CICS_CONNECTION_OPTION_GROUP
     };
     /**
@@ -87,7 +83,6 @@ export class CicsSession {
         description: "Specifies CMCI protocol (http or https).",
         type: "string",
         defaultValue: "https",
-        required: true,
         allowableValues: {values: ["http", "https"], caseSensitive: false},
         group: CicsSession.CICS_CONNECTION_OPTION_GROUP
     };
@@ -143,7 +138,6 @@ export class CicsSession {
             protocol: args.protocol || "https",
         });
     }
-
 
     private static get log(): Logger {
         return Logger.getAppLogger();
