@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { ICommandArguments, ICommandOptionDefinition, IProfile, Logger, Session } from "@zowe/imperative";
+import { ConnectionPropsForSessCfg, ICommandArguments, ICommandOptionDefinition, IProfile, ISession, Logger, SessConstants, Session } from "@zowe/imperative";
 
 /**
  * Utility Methods for Brightside
@@ -137,6 +137,29 @@ export class CicsSession {
             rejectUnauthorized: args.rejectUnauthorized,
             protocol: args.protocol || "https",
         });
+    }
+
+    /**
+     * Given command line arguments, create a REST Client Session.
+     * @static
+     * @param {IProfile} args - The arguments specified by the user
+     * @param {boolean} doPrompting - Whether to prompt for missing arguments (defaults to true)
+     * @returns {Session} - A session for usage in the CMCI REST Client
+     */
+    public static async createSessCfgFromArgs(args: ICommandArguments, doPrompting = true): Promise<Session> {
+        const sessCfg: ISession = {
+            type: "basic",
+            hostname: args.host,
+            port: args.port,
+            user: args.user,
+            password: args.password,
+            basePath: args.basePath,
+            rejectUnauthorized: args.rejectUnauthorized,
+            protocol: args.protocol || "https",
+        };
+
+        const sessCfgWithCreds = await ConnectionPropsForSessCfg.addPropsOrPrompt<ISession>(sessCfg, args, {doPrompting});
+        return new Session(sessCfgWithCreds);
     }
 
     private static get log(): Logger {

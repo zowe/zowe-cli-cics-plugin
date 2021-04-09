@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ConnectionPropsForSessCfg, ICommandHandler, IHandlerParameters, IProfile, Session } from "@zowe/imperative";
+import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile } from "@zowe/imperative";
 import { ICMCIApiResponse } from "../api/doc/ICMCIApiResponse";
 import { CicsSession } from "./CicsSession";
 
@@ -28,10 +28,9 @@ export abstract class CicsBaseHandler implements ICommandHandler {
      */
     public async process(commandParameters: IHandlerParameters) {
         const profile = commandParameters.profiles.get("cics", false) || {};
-        const session = CicsSession.createBasicCicsSessionFromArguments(commandParameters.arguments);
-        const sessCfgWithCreds = await ConnectionPropsForSessCfg.addPropsOrPrompt(session.ISession, commandParameters.arguments);
+        const session = await CicsSession.createSessCfgFromArgs(commandParameters.arguments);
 
-        const response = await this.processWithSession(commandParameters, new Session(sessCfgWithCreds), profile);
+        const response = await this.processWithSession(commandParameters, session, profile);
 
         commandParameters.response.progress.endBar(); // end any progress bars
 
@@ -49,7 +48,7 @@ export abstract class CicsBaseHandler implements ICommandHandler {
      *
      * @returns {Promise<ICMCIApiResponse>} The response from the underlying cics api call.
      */
-    public abstract async processWithSession(
+    public abstract processWithSession(
         commandParameters: IHandlerParameters,
         session: AbstractSession,
         cicsProfile: IProfile
