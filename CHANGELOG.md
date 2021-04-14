@@ -2,6 +2,10 @@
 
 All notable changes to the IBM® CICS® Plug-in for Zowe CLI will be documented in this file.
 
+## Recent Changes
+
+- Publish `@next` tag that is compatible with team config profiles.
+
 ## `4.0.2`
 
 - Tag version 4.X.X as @zowe-v1-lts

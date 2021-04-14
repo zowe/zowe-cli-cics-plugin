@@ -37,7 +37,6 @@ const config: IImperativeConfig = {
                             aliases: ["H"],
                             description: "The CMCI server host name",
                             type: "string",
-                            required: true,
                         },
                     },
                     port: {
@@ -59,7 +58,6 @@ const config: IImperativeConfig = {
                             description: "Your username to connect to CICS",
                             type: "string",
                             implies: ["password"],
-                            required: true,
                         },
                     },
                     password: {
@@ -71,7 +69,6 @@ const config: IImperativeConfig = {
                             description: "Your password to connect to CICS",
                             type: "string",
                             implies: ["user"],
-                            required: true,
                         },
                     },
                     regionName: {
@@ -99,7 +96,7 @@ const config: IImperativeConfig = {
                         optionDefinition: CicsSession.CICS_OPTION_PROTOCOL
                     }
                 },
-                required: ["host"],
+                required: [],
             },
             createProfileExamples: [
                 {

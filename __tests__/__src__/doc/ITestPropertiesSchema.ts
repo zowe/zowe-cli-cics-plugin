@@ -16,25 +16,41 @@
 export interface ITestPropertiesSchema {
 
     /**
-     * Properties related to connecting to CMCI
+     * Properties related to connecting to CICS service
      */
-    cmci: {
+    cics: {
         /**
          * user ID to connect to CMCI
          */
-        user: string,
-        /**
-         * Password to connect to CMCI
-         */
-        password: string,
-        /**
-         * host name for  CMCI
-         */
-        host: string,
-        /**
-         * Port for CMCI
-         */
-        port?: number,
+         user: string,
+         /**
+          * Password to connect to CMCI
+          */
+         password: string,
+         /**
+          * host name for  CMCI
+          */
+         host: string,
+         /**
+          * Port for CMCI
+          */
+         port?: number,
+
+         /**
+          * http or https protocol for CMCI
+          */
+         protocol?: string;
+
+         /**
+          * http or https protocol for CMCI
+          */
+         rejectUnauthorized?: boolean;
+    };
+
+    /**
+     * Properties related to connecting to CMCI
+     */
+    cmci: {
         /**
          * CSD group to define resources to
          */
@@ -44,16 +60,6 @@ export interface ITestPropertiesSchema {
          * Name of the CICS region e.g. "CICSCMCI"
          */
         regionName?: string;
-
-        /**
-         * http or https protocol for CMCI
-         */
-        protocol?: string;
-
-        /**
-         * http or https protocol for CMCI
-         */
-        rejectUnauthorized?: boolean;
     };
 
     urimap: {

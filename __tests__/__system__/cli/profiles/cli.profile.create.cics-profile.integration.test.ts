@@ -9,11 +9,10 @@
 *                                                                                 *
 */
 
-import { ITestEnvironment } from "../../../__src__/environment/doc/response/ITestEnvironment";
-import { TestEnvironment } from "../../../__src__/environment/TestEnvironment";
-import { runCliScript } from "../../../__src__/TestUtils";
+import { ITestEnvironment, TestEnvironment, runCliScript, isStderrEmptyForProfilesCommand } from "@zowe/cli-test-utils";
+import { ITestPropertiesSchema } from "../../../__src__/doc/ITestPropertiesSchema";
 
-let testEnvironment: ITestEnvironment;
+let testEnvironment: ITestEnvironment<ITestPropertiesSchema>;
 
 /*
  NOTE!!  The cics plugin must be installed into Brightside in order to test the creation of a cics profile.
@@ -53,7 +52,7 @@ describe("Create cics Profile", () => {
             const response = runCliScript(scriptPath,
                 testEnvironment, args);
 
-            expect(response.stderr.toString()).toBe("");
+            expect(isStderrEmptyForProfilesCommand(response.stderr)).toBe(true);
             expect(response.status).toBe(0);
             expect(response.stdout.toString()).toContain("Profile created successfully");
         });
