@@ -2,6 +2,10 @@
 
 All notable changes to the IBM® CICS® Plug-in for Zowe CLI will be documented in this file.
 
+## Recent Changes
+
+- Remove @zowe/cli peer dependency to better support NPM v7
+
 ## `4.0.2`
 
 - Tag version 4.X.X as @zowe-v1-lts
