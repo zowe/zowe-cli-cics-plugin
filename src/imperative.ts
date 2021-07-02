@@ -20,6 +20,13 @@ const config: IImperativeConfig = {
     productDisplayName: PluginConstants.PLUGIN_NAME,
     name: PluginConstants.PLUGIN_GROUP_NAME,
     pluginHealthCheck: "./lib/healthCheck.handler",
+    apimlConnLookup: [
+        {
+          apiId: "place_the_cics_apiId_here",
+          gatewayUrl: "api/v1",
+          connProfType: "cics"
+        }
+    ],
     profiles: [
         {
             type: "cics",
