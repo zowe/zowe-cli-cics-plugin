@@ -1,4 +1,4 @@
-name: CICS Plugin for Zowe CLI CI
+name: zowe-cli-cics-plugin
 
 on: [push, pull_request]
 
