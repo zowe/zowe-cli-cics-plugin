@@ -19,11 +19,11 @@ import org.zowe.pipelines.nodejs.models.SemverLevel
  */
 def PRODUCT_NAME = "Zowe CLI"
 
-node('ca-jenkins-agent') {
+node('zowe-jenkins-agent') {
     // Initialize the pipeline
     def pipeline = new NodeJSPipeline(this)
 
-    // Build admins, users that can approve the build and receieve emails for 
+    // Build admins, users that can approve the build and receieve emails for
     // all protected branch builds.
     pipeline.admins.add("tucker01", "gejohnston", "zfernand0", "mikebauerca", "markackert", "dkelosky")
 
@@ -62,7 +62,7 @@ node('ca-jenkins-agent') {
     ]
 
     // Initialize the pipeline library, should create 5 steps
-    pipeline.setup()
+    pipeline.setup(nodeJsVersion: 'v12.22.1')
 
     // Create a custom lint stage that runs immediately after the setup.
     pipeline.createStage(
@@ -85,7 +85,7 @@ node('ca-jenkins-agent') {
     def TEST_ROOT = "__tests__/__results__"
     def UNIT_TEST_ROOT = "$TEST_ROOT/unit"
     def UNIT_JUNIT_OUTPUT = "$UNIT_TEST_ROOT/junit.xml"
-    
+
     // Perform a unit test and capture the results
     pipeline.test(
         name: "Unit",
