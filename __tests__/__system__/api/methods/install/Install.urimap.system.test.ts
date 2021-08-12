@@ -9,12 +9,12 @@
 *                                                                                 *
 */
 
-import { Session, selectProfileNameDesc } from "@zowe/imperative";
+import { Session } from "@zowe/imperative";
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
 import { generateRandomAlphaNumericString } from "../../../../__src__/TestUtils";
-import { defineUrimapServer, defineUrimapClient, defineUrimapPipeline, deleteUrimap, disableUrimap, IURIMapParms, discardUrimap,
-         installUrimap, enableUrimap } from "../../../../../src";
+import { defineUrimapServer, defineUrimapClient, defineUrimapPipeline, deleteUrimap, IURIMapParms, discardUrimap,
+    installUrimap } from "../../../../../src";
 
 let testEnvironment: ITestEnvironment;
 let regionName: string;

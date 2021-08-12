@@ -11,9 +11,7 @@
 
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
-import { generateRandomAlphaNumericString, runCliScript } from "../../../../__src__/TestUtils";
-import { Session } from "@zowe/imperative";
-import { CicsCmciConstants, CicsCmciRestClient, addCSDGroupToList, removeCSDGroupFromList } from "../../../../../src";
+import { runCliScript } from "../../../../__src__/TestUtils";
 
 let TEST_ENVIRONMENT: ITestEnvironment;
 let regionName: string;

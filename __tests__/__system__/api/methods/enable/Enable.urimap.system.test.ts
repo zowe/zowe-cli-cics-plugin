@@ -14,7 +14,7 @@ import { ITestEnvironment } from "../../../../__src__/environment/doc/response/I
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
 import { generateRandomAlphaNumericString } from "../../../../__src__/TestUtils";
 import { defineUrimapServer, defineUrimapClient, defineUrimapPipeline, deleteUrimap, disableUrimap, IURIMapParms, enableUrimap, discardUrimap,
-         installUrimap } from "../../../../../src";
+    installUrimap } from "../../../../../src";
 
 let testEnvironment: ITestEnvironment;
 let regionName: string;

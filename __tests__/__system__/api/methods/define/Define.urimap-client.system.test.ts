@@ -13,7 +13,7 @@ import { Session } from "@zowe/imperative";
 import { ITestEnvironment } from "../../../../../__tests__/__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../../__tests__/__src__/environment/TestEnvironment";
 import { generateRandomAlphaNumericString } from "../../../../__src__/TestUtils";
-import { defineUrimapClient, deleteUrimap, IURIMapParms, } from "../../../../../src";
+import { defineUrimapClient, deleteUrimap, IURIMapParms } from "../../../../../src";
 
 let testEnvironment: ITestEnvironment;
 let regionName: string;

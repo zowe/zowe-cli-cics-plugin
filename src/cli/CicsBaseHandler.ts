@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, Session } from "@zowe/imperative";
+import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile } from "@zowe/imperative";
 import { ICMCIApiResponse } from "../api/doc/ICMCIApiResponse";
 import { CicsSession } from "./CicsSession";
 

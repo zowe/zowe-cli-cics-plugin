@@ -33,11 +33,11 @@ const definition: ICommandDefinition = {
     description: strings.DESCRIPTION,
     type: "group",
     children: [ProgramDefinition,
-               TransactionDefinition,
-               UrimapServerDefinition,
-               UrimapClientDefinition,
-               UrimapPipelineDefinition,
-               WebServiceDefinition],
+        TransactionDefinition,
+        UrimapServerDefinition,
+        UrimapClientDefinition,
+        UrimapPipelineDefinition,
+        WebServiceDefinition],
     passOn: [
         {
             property: "options",
