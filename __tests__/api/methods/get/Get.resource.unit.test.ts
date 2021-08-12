@@ -120,7 +120,7 @@ describe("CMCI - Get resource", () => {
             expect(error).toBeDefined();
             expect(error.message).toContain("Required parameter 'CICS Region name' must not be blank");
         });
-     });
+    });
 
     describe("success scenarios", () => {
 

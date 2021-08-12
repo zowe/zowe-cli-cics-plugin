@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ImperativeExpect, Logger, Imperative } from "@zowe/imperative";
+import { AbstractSession, ImperativeExpect, Logger } from "@zowe/imperative";
 import { CicsCmciRestClient } from "../../rest";
 import { CicsCmciConstants } from "../../constants";
 import { ICMCIApiResponse, ICSDGroupParms } from "../../doc";
@@ -31,10 +31,6 @@ export async function removeCSDGroupFromList(session: AbstractSession, parms: IC
 
     Logger.getAppLogger().debug("Attempting to remove a CSD Group from a CSD List with the following parameters:\n%s", JSON.stringify(parms));
 
-    const requestAttrs: any = {
-        ADD_CSDGROUP: parms.name,
-        TO_CSDLIST: parms.csdList,
-    };
     const cicsPlex = parms.cicsPlex == null ? "" : parms.cicsPlex + "/";
     const cmciResource = "/" + CicsCmciConstants.CICS_SYSTEM_MANAGEMENT + "/" +
         CicsCmciConstants.CICS_CSDGROUP_IN_LIST + "/" + cicsPlex + parms.regionName +

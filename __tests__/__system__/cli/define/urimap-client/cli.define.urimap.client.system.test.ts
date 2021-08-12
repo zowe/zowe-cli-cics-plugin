@@ -11,11 +11,8 @@
 
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
-import { generateRandomAlphaNumericString, runCliScript } from "../../../../__src__/TestUtils";
+import { runCliScript } from "../../../../__src__/TestUtils";
 import { Session } from "@zowe/imperative";
-import { IURIMapParms } from "../../../../../src";
-import { getResource } from "../../../../../src/api/methods/get/Get";
-import { deleteUrimap } from "../../../../../src/api/methods/delete/Delete";
 
 let TEST_ENVIRONMENT: ITestEnvironment;
 let regionName: string;

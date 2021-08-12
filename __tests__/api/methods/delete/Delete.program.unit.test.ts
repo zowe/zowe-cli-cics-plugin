@@ -14,7 +14,6 @@ import {
     CicsCmciConstants,
     CicsCmciRestClient,
     deleteProgram,
-    deleteTransaction,
     IProgramParms
 } from "../../../../src";
 

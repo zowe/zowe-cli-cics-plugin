@@ -12,7 +12,7 @@
 import { AbstractSession, ImperativeExpect, Logger } from "@zowe/imperative";
 import { CicsCmciRestClient } from "../../rest";
 import { CicsCmciConstants } from "../../constants";
-import { ICMCIApiResponse, IProgramParms, ITransactionParms, IURIMapParms } from "../../doc";
+import { ICMCIApiResponse, IURIMapParms } from "../../doc";
 
 /**
  * Disable a URIMap installed in CICS through CMCI REST API

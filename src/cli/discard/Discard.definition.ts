@@ -29,8 +29,8 @@ const definition: ICommandDefinition = {
     description: strings.DESCRIPTION,
     type: "group",
     children: [ProgramDefinition,
-               TransactionDefinition,
-               UrimapDefinition],
+        TransactionDefinition,
+        UrimapDefinition],
     passOn: [
         {
             property: "options",
