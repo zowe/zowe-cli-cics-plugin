@@ -37,7 +37,8 @@
     "test": "npm run test:unit && npm run test:system",
     "test:system": "env-cmd __tests__/__resources__/env/system.env jest .*/__system__/.* --coverage false --runInBand",
     "test:unit": "env-cmd __tests__/__resources__/env/unit.env jest --coverage --testPathIgnorePatterns \".*/__system__/.*\" ",
-    "installPlugin": "npm install && npm run clean && npm run build && zowe plugins install ."
+    "installPlugin": "npm install && npm run clean && npm run build && zowe plugins install .",
+    "typedoc": "typedoc --out ./docs/typedoc/ ./src/ --disableOutputCheck"
   },
   "imperative": {
     "configurationModule": "lib/imperative.js"
@@ -74,6 +75,7 @@
     "shebang-regex": "^2.0.0",
     "ts-jest": "^25.5.1",
     "ts-node": "^3.2.0",
+    "typedoc": "0.20.36",
     "typescript": "^3.7.4",
     "uuid": "^3.2.1"
   },
