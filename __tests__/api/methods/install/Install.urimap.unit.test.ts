@@ -14,7 +14,6 @@ import {
     CicsCmciConstants,
     CicsCmciRestClient,
     installUrimap,
-    IProgramParms,
     IURIMapParms,
 } from "../../../../src";
 

@@ -26,108 +26,108 @@ const protocol = "https";
 
 const PROFILE_MAP = new Map<string, IProfile[]>();
 PROFILE_MAP.set(
-  "cics", [{
-    name: "cics",
-    type: "cics",
-    host,
-    port,
-    user,
-    password
-  }]
+    "cics", [{
+        name: "cics",
+        type: "cics",
+        host,
+        port,
+        user,
+        password
+    }]
 );
 const PROFILES: CommandProfiles = new CommandProfiles(PROFILE_MAP);
 const DEFAULT_PARAMETERS: IHandlerParameters = {
-  arguments: {$0: "", _: []}, // Please provide arguments later on
-  positionals: ["cics", "install", "transaction"],
-  response: {
-    data: {
-      setMessage: jest.fn((setMsgArgs) => {
-        expect(setMsgArgs).toMatchSnapshot();
-      }),
-      setObj: jest.fn((setObjArgs) => {
-        expect(setObjArgs).toMatchSnapshot();
-      }),
-      setExitCode: jest.fn()
+    arguments: {$0: "", _: []}, // Please provide arguments later on
+    positionals: ["cics", "install", "transaction"],
+    response: {
+        data: {
+            setMessage: jest.fn((setMsgArgs) => {
+                expect(setMsgArgs).toMatchSnapshot();
+            }),
+            setObj: jest.fn((setObjArgs) => {
+                expect(setObjArgs).toMatchSnapshot();
+            }),
+            setExitCode: jest.fn()
+        },
+        console: {
+            log: jest.fn((logs) => {
+                expect(logs.toString()).toMatchSnapshot();
+            }),
+            error: jest.fn((errors) => {
+                expect(errors.toString()).toMatchSnapshot();
+            }),
+            errorHeader: jest.fn(() => undefined),
+            prompt: jest.fn(() => undefined)
+        },
+        progress: {
+            startBar: jest.fn((parms) => undefined),
+            endBar: jest.fn(() => undefined)
+        },
+        format: {
+            output: jest.fn((parms) => {
+                expect(parms).toMatchSnapshot();
+            })
+        }
     },
-    console: {
-      log: jest.fn((logs) => {
-        expect(logs.toString()).toMatchSnapshot();
-      }),
-      error: jest.fn((errors) => {
-        expect(errors.toString()).toMatchSnapshot();
-      }),
-      errorHeader: jest.fn(() => undefined),
-      prompt: jest.fn(() => undefined)
-    },
-    progress: {
-      startBar: jest.fn((parms) => undefined),
-      endBar: jest.fn(() => undefined)
-    },
-    format: {
-      output: jest.fn((parms) => {
-        expect(parms).toMatchSnapshot();
-      })
-    }
-  },
-  definition: TransactionDefinition,
-  fullDefinition: TransactionDefinition,
-  profiles: PROFILES
+    definition: TransactionDefinition,
+    fullDefinition: TransactionDefinition,
+    profiles: PROFILES
 };
 
 describe("InstallTransactionHandler", () => {
-  const transactionName = "testTransaction";
-  const regionName = "testRegion";
-  const csdGroup = "testGroup";
+    const transactionName = "testTransaction";
+    const regionName = "testRegion";
+    const csdGroup = "testGroup";
 
-  const defaultReturn: ICMCIApiResponse = {
-    response: {
-      resultsummary: {api_response1: "1024", api_response2: "0", recordcount: "0", displayed_recordcount: "0"},
-      records: "testing"
-    }
-  };
-
-  const functionSpy = jest.spyOn(Install, "installTransaction");
-
-  beforeEach(() => {
-    functionSpy.mockClear();
-    functionSpy.mockImplementation(async () => defaultReturn);
-  });
-
-  it("should call the installTransaction api", async () => {
-    const handler = new TransactionHandler();
-
-    const commandParameters = {...DEFAULT_PARAMETERS};
-    commandParameters.arguments = {
-      ...commandParameters.arguments,
-      transactionName,
-      regionName,
-      csdGroup,
-      host,
-      port,
-      user,
-      password,
-      rejectUnauthorized
+    const defaultReturn: ICMCIApiResponse = {
+        response: {
+            resultsummary: {api_response1: "1024", api_response2: "0", recordcount: "0", displayed_recordcount: "0"},
+            records: "testing"
+        }
     };
 
-    await handler.process(commandParameters);
+    const functionSpy = jest.spyOn(Install, "installTransaction");
 
-    expect(functionSpy).toHaveBeenCalledTimes(1);
-    const testProfile = PROFILE_MAP.get("cics")[0];
-    expect(functionSpy).toHaveBeenCalledWith(
-      new Session({
-        type: "basic",
-        hostname: testProfile.host,
-        port: testProfile.port,
-        user: testProfile.user,
-        password: testProfile.password,
-        rejectUnauthorized,
-        protocol
-      }),
-      {
-        name: transactionName,
-        csdGroup,
-        regionName
-      }
-    );
-  });
+    beforeEach(() => {
+        functionSpy.mockClear();
+        functionSpy.mockImplementation(async () => defaultReturn);
+    });
+
+    it("should call the installTransaction api", async () => {
+        const handler = new TransactionHandler();
+
+        const commandParameters = {...DEFAULT_PARAMETERS};
+        commandParameters.arguments = {
+            ...commandParameters.arguments,
+            transactionName,
+            regionName,
+            csdGroup,
+            host,
+            port,
+            user,
+            password,
+            rejectUnauthorized
+        };
+
+        await handler.process(commandParameters);
+
+        expect(functionSpy).toHaveBeenCalledTimes(1);
+        const testProfile = PROFILE_MAP.get("cics")[0];
+        expect(functionSpy).toHaveBeenCalledWith(
+            new Session({
+                type: "basic",
+                hostname: testProfile.host,
+                port: testProfile.port,
+                user: testProfile.user,
+                password: testProfile.password,
+                rejectUnauthorized,
+                protocol
+            }),
+            {
+                name: transactionName,
+                csdGroup,
+                regionName
+            }
+        );
+    });
 });

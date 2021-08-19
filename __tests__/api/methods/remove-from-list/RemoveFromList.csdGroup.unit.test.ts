@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { Session, listGroupWithOnlyProfileCommandSummary } from "@zowe/imperative";
+import { Session } from "@zowe/imperative";
 import { CicsCmciRestClient, CicsCmciConstants, ICSDGroupParms, removeCSDGroupFromList } from "../../../../src";
 
 describe("CMCI - Remove csdGroup from list", () => {

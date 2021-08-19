@@ -9,8 +9,8 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@zowe/imperative";
-import { defineTransaction, ICMCIApiResponse, defineWebservice } from "../../../api";
+import { AbstractSession, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@zowe/imperative";
+import { ICMCIApiResponse, defineWebservice } from "../../../api";
 import { CicsBaseHandler } from "../../CicsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";

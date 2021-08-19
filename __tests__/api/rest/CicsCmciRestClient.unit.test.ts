@@ -13,11 +13,6 @@ import { IImperativeError, RestClient, Session } from "@zowe/imperative";
 import { CicsCmciRestClient } from "../../../src";
 
 describe("CicsCmciRestClient tests", () => {
-    // it("should append the cmrf header to all requests", () => {
-    //     const cicsCmciRestClient = new CicsCmciRestClient(new Session({hostname: "dummy"}));
-    //     expect((cicsCmciRestClient as any).appendHeaders([])).toMatchSnapshot();
-    // });
-
     const dummySession = new Session({hostname: "dummy"});
     const testEndpoint = "testing";
     const dummyHeaders = [{testEndpoint}];

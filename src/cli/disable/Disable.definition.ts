@@ -27,7 +27,7 @@ const definition: ICommandDefinition = {
     description: strings.DESCRIPTION,
     type: "group",
     children: [
-               UrimapDefinition],
+        UrimapDefinition],
     passOn: [
         {
             property: "options",
