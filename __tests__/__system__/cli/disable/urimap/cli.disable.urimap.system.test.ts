@@ -79,7 +79,7 @@ describe("CICS disable urimap command", () => {
         await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../install/urimap/__scripts__/install_urimap.sh", TEST_ENVIRONMENT,
-        [urimapName, csdGroup, regionName]);
+            [urimapName, csdGroup, regionName]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -87,7 +87,7 @@ describe("CICS disable urimap command", () => {
         await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../enable/urimap/__scripts__/enable_urimap.sh", TEST_ENVIRONMENT,
-        [urimapName, regionName]);
+            [urimapName, regionName]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -103,7 +103,7 @@ describe("CICS disable urimap command", () => {
         await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../discard/urimap/__scripts__/discard_urimap.sh", TEST_ENVIRONMENT,
-        [urimapName, regionName]);
+            [urimapName, regionName]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -134,7 +134,7 @@ describe("CICS disable urimap command", () => {
         await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../install/urimap/__scripts__/install_urimap.sh", TEST_ENVIRONMENT,
-        [urimapName, csdGroup, regionName]);
+            [urimapName, csdGroup, regionName]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -142,7 +142,7 @@ describe("CICS disable urimap command", () => {
         await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../enable/urimap/__scripts__/enable_urimap.sh", TEST_ENVIRONMENT,
-        [urimapName, regionName]);
+            [urimapName, regionName]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -158,7 +158,7 @@ describe("CICS disable urimap command", () => {
         await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../discard/urimap/__scripts__/discard_urimap.sh", TEST_ENVIRONMENT,
-        [urimapName, regionName]);
+            [urimapName, regionName]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -188,7 +188,7 @@ describe("CICS disable urimap command", () => {
         await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../install/urimap/__scripts__/install_urimap.sh", TEST_ENVIRONMENT,
-        [urimapName, csdGroup, regionName]);
+            [urimapName, csdGroup, regionName]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -196,7 +196,7 @@ describe("CICS disable urimap command", () => {
         await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../enable/urimap/__scripts__/enable_urimap.sh", TEST_ENVIRONMENT,
-        [urimapName, regionName]);
+            [urimapName, regionName]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -212,7 +212,7 @@ describe("CICS disable urimap command", () => {
         await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../discard/urimap/__scripts__/discard_urimap.sh", TEST_ENVIRONMENT,
-        [urimapName, regionName]);
+            [urimapName, regionName]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -268,15 +268,15 @@ describe("CICS disable urimap command", () => {
         await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../install/urimap/__scripts__/install_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
-        [urimapName,
-            csdGroup,
-            regionName,
-            host,
-            port,
-            user,
-            password,
-            protocol,
-            rejectUnauthorized]);
+            [urimapName,
+                csdGroup,
+                regionName,
+                host,
+                port,
+                user,
+                password,
+                protocol,
+                rejectUnauthorized]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -284,14 +284,14 @@ describe("CICS disable urimap command", () => {
         await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../enable/urimap/__scripts__/enable_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
-        [urimapName,
-            regionName,
-            host,
-            port,
-            user,
-            password,
-            protocol,
-            rejectUnauthorized]);
+            [urimapName,
+                regionName,
+                host,
+                port,
+                user,
+                password,
+                protocol,
+                rejectUnauthorized]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -314,14 +314,14 @@ describe("CICS disable urimap command", () => {
         await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../discard/urimap/__scripts__/discard_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
-        [urimapName,
-            regionName,
-            host,
-            port,
-            user,
-            password,
-            protocol,
-            rejectUnauthorized]);
+            [urimapName,
+                regionName,
+                host,
+                port,
+                user,
+                password,
+                protocol,
+                rejectUnauthorized]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -376,15 +376,15 @@ describe("CICS disable urimap command", () => {
         await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../install/urimap/__scripts__/install_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
-        [urimapName,
-            csdGroup,
-            regionName,
-            host,
-            port,
-            user,
-            password,
-            protocol,
-            rejectUnauthorized]);
+            [urimapName,
+                csdGroup,
+                regionName,
+                host,
+                port,
+                user,
+                password,
+                protocol,
+                rejectUnauthorized]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -392,14 +392,14 @@ describe("CICS disable urimap command", () => {
         await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../enable/urimap/__scripts__/enable_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
-        [urimapName,
-            regionName,
-            host,
-            port,
-            user,
-            password,
-            protocol,
-            rejectUnauthorized]);
+            [urimapName,
+                regionName,
+                host,
+                port,
+                user,
+                password,
+                protocol,
+                rejectUnauthorized]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -422,14 +422,14 @@ describe("CICS disable urimap command", () => {
         await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../discard/urimap/__scripts__/discard_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
-        [urimapName,
-            regionName,
-            host,
-            port,
-            user,
-            password,
-            protocol,
-            rejectUnauthorized]);
+            [urimapName,
+                regionName,
+                host,
+                port,
+                user,
+                password,
+                protocol,
+                rejectUnauthorized]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -483,15 +483,15 @@ describe("CICS disable urimap command", () => {
         await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../install/urimap/__scripts__/install_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
-        [urimapName,
-            csdGroup,
-            regionName,
-            host,
-            port,
-            user,
-            password,
-            protocol,
-            rejectUnauthorized]);
+            [urimapName,
+                csdGroup,
+                regionName,
+                host,
+                port,
+                user,
+                password,
+                protocol,
+                rejectUnauthorized]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -499,14 +499,14 @@ describe("CICS disable urimap command", () => {
         await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../enable/urimap/__scripts__/enable_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
-        [urimapName,
-            regionName,
-            host,
-            port,
-            user,
-            password,
-            protocol,
-            rejectUnauthorized]);
+            [urimapName,
+                regionName,
+                host,
+                port,
+                user,
+                password,
+                protocol,
+                rejectUnauthorized]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -514,14 +514,14 @@ describe("CICS disable urimap command", () => {
         await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/__scripts__/disable_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
-        [urimapName,
-            regionName,
-            host,
-            port,
-            user,
-            password,
-            protocol,
-            rejectUnauthorized]);
+            [urimapName,
+                regionName,
+                host,
+                port,
+                user,
+                password,
+                protocol,
+                rejectUnauthorized]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
@@ -529,14 +529,14 @@ describe("CICS disable urimap command", () => {
         await sleep(sleepTime);
 
         output = runCliScript(__dirname + "/../../discard/urimap/__scripts__/discard_urimap_fully_qualified.sh", TEST_ENVIRONMENT,
-        [urimapName,
-            regionName,
-            host,
-            port,
-            user,
-            password,
-            protocol,
-            rejectUnauthorized]);
+            [urimapName,
+                regionName,
+                host,
+                port,
+                user,
+                password,
+                protocol,
+                rejectUnauthorized]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);

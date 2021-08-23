@@ -22,9 +22,9 @@ const config: IImperativeConfig = {
     pluginHealthCheck: "./lib/healthCheck.handler",
     apimlConnLookup: [
         {
-          apiId: "place_the_cics_apiId_here",
-          gatewayUrl: "api/v1",
-          connProfType: "cics"
+            apiId: "place_the_cics_apiId_here",
+            gatewayUrl: "api/v1",
+            connProfType: "cics"
         }
     ],
     profiles: [

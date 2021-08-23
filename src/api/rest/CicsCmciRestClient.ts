@@ -57,7 +57,7 @@ export class CicsCmciRestClient extends RestClient {
      * @throws {ImperativeError} verifyResponseCodes fails
      */
     public static async getExpectParsedXml(session: AbstractSession,
-                                           resource: string, reqHeaders: any[] = []): Promise<ICMCIApiResponse> {
+        resource: string, reqHeaders: any[] = []): Promise<ICMCIApiResponse> {
         const data = await CicsCmciRestClient.getExpectString(session, resource, reqHeaders);
         const apiResponse = CicsCmciRestClient.parseStringSync(data);
         return CicsCmciRestClient.verifyResponseCodes(apiResponse);
@@ -73,7 +73,7 @@ export class CicsCmciRestClient extends RestClient {
      * @throws {ImperativeError} verifyResponseCodes fails
      */
     public static async deleteExpectParsedXml(session: AbstractSession,
-                                              resource: string, reqHeaders: any[] = []): Promise<ICMCIApiResponse> {
+        resource: string, reqHeaders: any[] = []): Promise<ICMCIApiResponse> {
         const data = await CicsCmciRestClient.deleteExpectString(session, resource, reqHeaders);
         const apiResponse = CicsCmciRestClient.parseStringSync(data);
         return CicsCmciRestClient.verifyResponseCodes(apiResponse);
@@ -91,8 +91,8 @@ export class CicsCmciRestClient extends RestClient {
      * @throws {ImperativeError} verifyResponseCodes fails
      */
     public static async putExpectParsedXml(session: AbstractSession,
-                                           resource: string, reqHeaders: any[] = [],
-                                           payload: any): Promise<ICMCIApiResponse> {
+        resource: string, reqHeaders: any[] = [],
+        payload: any): Promise<ICMCIApiResponse> {
         if (payload != null) {
             payload = CicsCmciRestClient.convertPayloadToXML(payload);
         }
@@ -113,8 +113,8 @@ export class CicsCmciRestClient extends RestClient {
      * @throws {ImperativeError} verifyResponseCodes fails
      */
     public static async postExpectParsedXml(session: AbstractSession,
-                                            resource: string, reqHeaders: any[] = [],
-                                            payload: any): Promise<ICMCIApiResponse> {
+        resource: string, reqHeaders: any[] = [],
+        payload: any): Promise<ICMCIApiResponse> {
         if (payload != null) {
             payload = CicsCmciRestClient.convertPayloadToXML(payload);
         }

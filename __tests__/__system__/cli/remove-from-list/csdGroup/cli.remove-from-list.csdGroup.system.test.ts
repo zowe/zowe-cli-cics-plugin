@@ -90,30 +90,30 @@ describe("CICS remove-from-list csdGroup command", () => {
     it("should be able to successfully add and remove a csdGroup to/from a list with profile options", async () => {
         const dummyList = "TESTLIST";
         let output = runCliScript(__dirname + "/../../add-to-list/csdGroup/__scripts__/add_to_list_csdGroup_fully_qualified.sh", TEST_ENVIRONMENT,
-        [csdGroup,
-            dummyList,
-            regionName,
-            host,
-            port,
-            user,
-            password,
-            protocol,
-            rejectUnauthorized]);
+            [csdGroup,
+                dummyList,
+                regionName,
+                host,
+                port,
+                user,
+                password,
+                protocol,
+                rejectUnauthorized]);
         let stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
 
         output = runCliScript(__dirname + "/__scripts__/remove_from_list_csdGroup_fully_qualified.sh", TEST_ENVIRONMENT,
-        [csdGroup,
-            dummyList,
-            regionName,
-            host,
-            port,
-            user,
-            password,
-            protocol,
-            rejectUnauthorized]);
+            [csdGroup,
+                dummyList,
+                regionName,
+                host,
+                port,
+                user,
+                password,
+                protocol,
+                rejectUnauthorized]);
         stderr = output.stderr.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);

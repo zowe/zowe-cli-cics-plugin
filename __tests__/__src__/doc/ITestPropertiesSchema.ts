@@ -22,29 +22,29 @@ export interface ITestPropertiesSchema {
         /**
          * user ID to connect to CMCI
          */
-         user: string,
-         /**
+        user: string,
+        /**
           * Password to connect to CMCI
           */
-         password: string,
-         /**
+        password: string,
+        /**
           * host name for  CMCI
           */
-         host: string,
-         /**
+        host: string,
+        /**
           * Port for CMCI
           */
-         port?: number,
+        port?: number,
 
-         /**
+        /**
           * http or https protocol for CMCI
           */
-         protocol?: string;
+        protocol?: string;
 
-         /**
+        /**
           * http or https protocol for CMCI
           */
-         rejectUnauthorized?: boolean;
+        rejectUnauthorized?: boolean;
     };
 
     /**

@@ -13,7 +13,7 @@ import { Session } from "@zowe/imperative";
 import {
     CicsCmciConstants,
     CicsCmciRestClient,
-    deleteTransaction, installTransaction,
+    deleteTransaction,
     ITransactionParms
 } from "../../../../src";
 

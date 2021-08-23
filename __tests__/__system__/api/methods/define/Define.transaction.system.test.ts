@@ -13,7 +13,7 @@ import { Session } from "@zowe/imperative";
 import { ITestEnvironment, TestEnvironment } from "@zowe/cli-test-utils";
 import { ITestPropertiesSchema } from "../../../../__src__/doc/ITestPropertiesSchema";
 import { generateRandomAlphaNumericString } from "../../../../__src__/TestUtils";
-import { defineTransaction, deleteTransaction, ITransactionParms, } from "../../../../../src";
+import { defineTransaction, deleteTransaction, ITransactionParms } from "../../../../../src";
 
 let testEnvironment: ITestEnvironment<ITestPropertiesSchema>;
 let regionName: string;
