@@ -13,8 +13,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build Typedoc
+      - name: Build documentation
         run: npm run typedoc
+
+      - name: Archive build
+        id: upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: master-typedoc
+          path: docs/typedoc
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4
