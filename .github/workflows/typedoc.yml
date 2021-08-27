@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - test-gh-pages
 jobs:
   typedoc:
     runs-on: ubuntu-latest
