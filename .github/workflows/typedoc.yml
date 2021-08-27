@@ -1,0 +1,24 @@
+name: Publish Typedoc to GH Pages
+on:
+  push:
+    branches:
+      - master
+      - test-gh-pages
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Typedoc
+        run: npm run typedoc
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: docs/typedoc # The folder the action should deploy.
