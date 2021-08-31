@@ -111,7 +111,7 @@ exports[`CICS remove-from-list csdGroup command should be able to display the he
 
    --help-examples  (boolean)
 
-      Display examples for all the commands in a the group
+      Display examples for all the commands in a group
 
    --help-web  | --hw (boolean)
 

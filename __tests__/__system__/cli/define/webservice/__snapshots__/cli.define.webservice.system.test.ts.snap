@@ -138,7 +138,7 @@ exports[`CICS define web service command should be able to display the help 1`] 
 
    --help-examples  (boolean)
 
-      Display examples for all the commands in a the group
+      Display examples for all the commands in a group
 
    --help-web  | --hw (boolean)
 

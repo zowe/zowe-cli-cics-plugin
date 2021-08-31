@@ -159,7 +159,7 @@ exports[`CICS define urimap-pipeline command should be able to display the help 
 
    --help-examples  (boolean)
 
-      Display examples for all the commands in a the group
+      Display examples for all the commands in a group
 
    --help-web  | --hw (boolean)
 
