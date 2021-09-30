@@ -55,7 +55,7 @@ describe("CMCI - Define transaction", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("Cannot read property 'name' of undefined");
+            expect(error.message).toMatch(/Cannot read (property 'name' of undefined|properties of undefined \(reading 'name'\))/);
         });
 
         it("should throw error if transaction name is not defined", async () => {
