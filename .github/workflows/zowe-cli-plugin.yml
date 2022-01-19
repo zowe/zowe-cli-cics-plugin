@@ -1,4 +1,4 @@
-name: zowe-cli-cics-plugin
+name: zowe-cli-plugin
 
 on: [push, pull_request]
 
@@ -51,7 +51,7 @@ jobs:
     - name: Unit Tests
       id: unit
       if: ${{ always() && steps.build.outcome == 'success' }}
-      run: npm run test:unit >> file.txt
+      run: npm run test:unit >> unit-tests.txt
 
     - name: Archive Results
       id: upload
@@ -59,7 +59,9 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: ${{ matrix.os }}-${{ matrix.node-version }}-results
-        path: __tests__/__results__/
+        path: |
+          __tests__/__results__/
+          unit-tests.txt
 
     - name: Upload Results to Codecov
       if: ${{ always() && steps.build.outcome == 'success' }}
