@@ -53,7 +53,7 @@ describe("CMCI - Add csdGroup to list", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("Cannot read property 'name' of undefined");
+            expect(error.message).toMatch(/(cannot read).*undefined/ig);
         });
 
         it("should throw error if csdGroup name is not defined", async () => {
