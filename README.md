@@ -17,39 +17,39 @@ The IBM CICS Plug-in for Zowe CLI lets you extend Zowe CLI to interact with IBM 
 
 As an application developer, you can use the plug-in to perform various CICS-related tasks, such as the following:
 
--   Deploy code changes to CICS applications that were developed with COBOL.
--   Deploy changes to CICS regions for testing or delivery.
--   Automate CICS interaction steps in your CI/CD pipeline with Jenkins Automation Server or TravisCI.
+- Deploy code changes to CICS applications that were developed with COBOL.
+- Deploy changes to CICS regions for testing or delivery.
+- Automate CICS interaction steps in your CI/CD pipeline with Jenkins Automation Server or TravisCI.
 
-The plug-in uses the IBM CICS Management Client Interface (CMCI) API to achieve the interaction with CICS. For more information, see [CICS management client interface](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.3.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) on the IBM Knowledge Center.
+The plug-in uses the IBM CICS management client interface (CMCI) API to achieve the interaction with CICS. For more information, see [CICS management client interface](https://www.ibm.com/docs/en/cics-ts/5.6?topic=environment-cics-management-client-interface-cmci).
 
 ## Software requirements
 
 Before you install and use the plug-in:
 
--   Install Zowe CLI on your computer.
+- Install Zowe CLI on your computer.
 
-    **Note:** For more information, see [Installing Zowe CLI](https://zowe.github.io/docs-site/latest/user-guide/cli-installcli.html).
+    **Note:** For more information, see [Installing Zowe CLI](https://docs.zowe.org/stable/user-guide/cli-installcli/).
 
--   Ensure that [IBM CICS Transaction Server v5.2](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.home.doc/welcomePage/welcomePage.html) or later is installed and running in your mainframe environment.
+- Ensure that [IBM CICS Transaction Server V5.3](https://www.ibm.com/docs/en/cics-ts/5.3) or later is installed and running in your mainframe environment.
 
--   Ensure that [IBM CICS Management Client Interface (CMCI)](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) is configured and running in your CICS region.
+- Ensure that [CICS management client interface](https://www.ibm.com/docs/en/cics-ts/5.6?topic=environment-cics-management-client-interface-cmci) is configured and running in your CICS region.
 
 ## Installing
 
 Use one of the following methods to install the plug-in:
 
--   Install the plug-in from an online registry or a local package.
+- Install the plug-in from an online registry or a local package.
 
-    Use the online registry/local package method when you simply want to install the plug-in to Zowe CLI and start using it.
+    Use the online registry / local package method when you simply want to install the plug-in to Zowe CLI and start using it.
 
-    For more information, see [Installing plug-ins](https://zowe.github.io/docs-site/latest/user-guide/cli-installplugins.html) on the [Zowe Docs](https://zowe.github.io/docs-site/latest/) website.
+    For more information, see [Installing Zowe CLI plug-ins](https://docs.zowe.org/stable/user-guide/cli-installplugins/) on Zowe Docs.
 
--   Build the plug-in from source and install it into your Zowe CLI implementation.
+- Build the plug-in from source and install it into your Zowe CLI implementation.
 
     Use the build from source method when you want to install the plug-in to Zowe CLI using the most current binaries and modify the behavior of the plug-in. For example, you want to create a new command and use the plug-in with the command that you created.
-    
-    For more information, see [Building the plug-in from source](#building-the-plug-in-from-source).
+
+    For more information, see [Building from source](#building-from-source).
 
 ## Building from source
 
@@ -57,36 +57,41 @@ Use one of the following methods to install the plug-in:
 
 **Follow these steps:**
 
-1.  The first time that you clone the IBM CICS Plug-in for Zowe CLI GitHub repository, issue the following command against the local directory:
+1. The first time that you clone the IBM CICS Plug-in for Zowe CLI GitHub repository, issue the following command against the local directory:
 
-    ```
+    ```console
     npm install
     ```
+
     The command installs the required dependencies for the plug-in and several development tools. You can run the task at any time to update the tools as needed.
 
-2.  To build your code changes, issue the following command:
-    ```
+2. To build your code changes, issue the following command:
+
+    ```console
     npm run build
     ```
+
     The first time you build your code changes, you will be prompted for the location of the Imperative CLI Framework package, which is located in the `node_modules/@zowe` folder in the Zowe CLI home directory.
 
     **Note:** When you update `package.json` to include new dependencies, or when you pull changes that affect `package.json`, issue the `npm update` command to download the dependencies.
 
-3.  Issue one of the following commands to install the plug-in:
-        
-    ```
+3. Issue one of the following commands to install the plug-in:
+
+    ```console
     zowe plugins install @zowe/cics-for-zowe-cli
     ```
+
     Or:
-    ```
+
+    ```console
     zowe plugins install .
     ```
 
-**Tip:** After the installation process completes, it validates that the plug-in was installed correct and the names of its commands, options, and arguments do not conflict with that of the other plug-ins that you installed into your Zowe CLI implimentation.
+**Tip:** After the installation process completes, it validates that the plug-in was installed correct and the names of its commands, options, and arguments do not conflict with that of the other plug-ins that you installed into your Zowe CLI implementation.
 
 When the validation process is successful, the following message displays:
 
-```
+```console
 Validation results for plugin 'cics':
 Successfully validated.
 ```
@@ -97,12 +102,13 @@ When an unsuccessful message displays, you can troubleshoot the installation by 
 
 You can set up a CICS profile to avoid typing your connection details on every command. The profile contains your host, port, username, and password for the CMCI instance of your choice. You can create multiple profiles and switch between them if necessary. Issue the following command to create a cics profile:
 
-```
+```console
 zowe profiles create cics <profile name> -H <host> -P <port> -u <user> -p <password>
 ```
 
 **Note:** For more information, issue the following command:
-```
+
+```console
 zowe profiles create cis --help
 ```
 
@@ -134,8 +140,9 @@ Any failures potentially indicate an issue with the set-up of the Rest API or co
 
 **Follow these steps:**
 
-1.  To uninstall the plug-in from a base application, issue the following command:
-    ```
+1. To uninstall the plug-in from a base application, issue the following command:
+
+    ```console
     zowe plugins uninstall @zowe/cics-for-zowe-cli
     ```
 

@@ -60,7 +60,7 @@ describe("CMCI - Discard transaction", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toMatch(/(cannot read).*undefined/ig);
+            expect(error.message).toMatch(/(Cannot read).*undefined/);
         });
 
         it("should throw error if transaction name is not defined", async () => {

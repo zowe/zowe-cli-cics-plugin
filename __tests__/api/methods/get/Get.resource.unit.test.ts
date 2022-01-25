@@ -58,7 +58,7 @@ describe("CMCI - Get resource", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toMatch(/(cannot read).*undefined/ig);
+            expect(error.message).toMatch(/(Cannot read).*undefined/);
         });
 
         it("should throw error if resource name is not defined", async () => {
