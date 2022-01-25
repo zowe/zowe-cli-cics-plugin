@@ -2,7 +2,7 @@
 
 All notable changes to the IBM® CICS® Plug-in for Zowe CLI will be documented in this file.
 
-## Recent Changes
+## `4.0.4`
 
 - BugFix: Included an npm-shrinkwrap file to lock-down all transitive dependencies.
 
