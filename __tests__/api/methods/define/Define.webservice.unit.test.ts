@@ -58,7 +58,7 @@ describe("CMCI - Define web service", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toMatch(/(cannot read).*undefined/ig);
+            expect(error.message).toMatch(/(Cannot read).*undefined/);
         });
 
         it("should throw error if web service name is not defined", async () => {

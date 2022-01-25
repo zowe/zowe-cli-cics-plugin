@@ -51,7 +51,7 @@ describe("CMCI - Discard program", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toMatch(/(cannot read).*undefined/ig);
+            expect(error.message).toMatch(/(Cannot read).*undefined/);
         });
 
         it("should throw error if program name is not defined", async () => {

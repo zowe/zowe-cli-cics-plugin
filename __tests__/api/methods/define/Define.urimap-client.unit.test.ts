@@ -62,7 +62,7 @@ describe("CMCI - Define client URIMap", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toMatch(/(cannot read).*undefined/ig);
+            expect(error.message).toMatch(/(Cannot read).*undefined/);
         });
 
         it("should throw error if URIMap name is not defined", async () => {

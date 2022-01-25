@@ -27,4 +27,7 @@ cmci:
   csdGroup: my-csd-group
   regionName: my-region-name
 urimap:
+  # certificate can be left blank, like the line below
+  # certificate:
   certificate: "certName"
+
