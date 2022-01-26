@@ -2,7 +2,7 @@
 
 All notable changes to the IBM® CICS® Plug-in for Zowe CLI will be documented in this file.
 
-## `5.0.0-next.202201252147`
+## Recent Changes
 
 - BugFix: Updated dependencies to resolve security vulnerabilities.
 
@@ -21,7 +21,8 @@ All notable changes to the IBM® CICS® Plug-in for Zowe CLI will be documented 
 ## `5.0.0-next.202104141723`
 
 - Publish `@next` tag that is compatible with team config profiles.
-## `4.0.4`
+
+## `4.0.5`
 
 - BugFix: Included an npm-shrinkwrap file to lock-down all transitive dependencies.
 
