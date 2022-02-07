@@ -1,12 +1,12 @@
 {
   "name": "@zowe/cics-for-zowe-cli",
-  "version": "4.0.5",
+  "version": "4.0.6",
   "lockfileVersion": 2,
   "requires": true,
   "packages": {
     "": {
       "name": "@zowe/cics-for-zowe-cli",
-      "version": "4.0.5",
+      "version": "4.0.6",
       "license": "EPL-2.0",
       "dependencies": {
         "xml2js": "0.4.19"
