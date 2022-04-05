@@ -9,7 +9,8 @@
 *                                                                                 *
 */
 
-import { ConnectionPropsForSessCfg, ICommandArguments, ICommandOptionDefinition, IHandlerParameters, IProfile, ISession, Logger, Session } from "@zowe/imperative";
+import { ConnectionPropsForSessCfg, ICommandArguments, ICommandOptionDefinition,
+    IHandlerParameters, IProfile, ISession, Logger, Session } from "@zowe/imperative";
 
 /**
  * Utility Methods for Brightside
