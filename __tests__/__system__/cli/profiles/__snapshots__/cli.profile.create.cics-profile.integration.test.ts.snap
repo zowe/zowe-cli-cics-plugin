@@ -16,6 +16,9 @@ exports[`Create cics Profile Success scenarios should display create cics profil
    name, and password for the IBM CICS management client interface (CMCI) server of
    your choice.
 
+   Warning: This command has been deprecated.
+   Recommended replacement: The 'config init' command
+
  USAGE
  -----
 
@@ -29,56 +32,53 @@ exports[`Create cics Profile Success scenarios should display create cics profil
       Specifies the name of the new cics profile. You can load this profile by using
       the name on commands that support the \\"--cics-profile\\" option.
 
- REQUIRED OPTIONS
- ----------------
-
-   --host  | -H (string)
-
-      The CMCI server host name
-
-   --user  | -u (string)
-
-      Your username to connect to CICS
-
-   --password  | -p (string)
-
-      Your password to connect to CICS
-
  OPTIONS
  -------
 
-   --port  | -P (number)
+   --host | -H (string)
+
+      The CMCI server host name
+
+   --port | -P (number)
 
       The CMCI server port
 
       Default value: 1490
 
-   --region-name  (string)
+   --user | -u (string)
+
+      Your username to connect to CICS
+
+   --password | -p (string)
+
+      Your password to connect to CICS
+
+   --region-name (string)
 
       The name of the CICS region name to interact with
 
-   --cics-plex  (string)
+   --cics-plex (string)
 
       The name of the CICSPlex to interact with
 
-   --overwrite  | --ow (boolean)
+   --overwrite | --ow (boolean)
 
       Overwrite the cics profile when a profile of the same name exists.
 
-   --disable-defaults  | --dd (boolean)
+   --disable-defaults | --dd (boolean)
 
       Disable populating profile values of undefined properties with default values.
 
  CICS CONNECTION OPTIONS
  -----------------------
 
-   --reject-unauthorized  | --ru (boolean)
+   --reject-unauthorized | --ru (boolean)
 
       Reject self-signed certificates.
 
       Default value: true
 
-   --protocol  | -o (string)
+   --protocol | -o (string)
 
       Specifies CMCI protocol (http or https).
 
@@ -88,19 +88,19 @@ exports[`Create cics Profile Success scenarios should display create cics profil
  GLOBAL OPTIONS
  --------------
 
-   --response-format-json  | --rfj (boolean)
+   --response-format-json | --rfj (boolean)
 
       Produce JSON formatted data from a command
 
-   --help  | -h (boolean)
+   --help | -h (boolean)
 
       Display help text
 
-   --help-examples  (boolean)
+   --help-examples (boolean)
 
       Display examples for all the commands in a group
 
-   --help-web  | --hw (boolean)
+   --help-web | --hw (boolean)
 
       Display HTML help in browser
 

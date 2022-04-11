@@ -9,7 +9,8 @@
 *                                                                                 *
 */
 
-import { ConnectionPropsForSessCfg, ICommandArguments, ICommandOptionDefinition, IProfile, ISession, Logger, Session } from "@zowe/imperative";
+import { ConnectionPropsForSessCfg, ICommandArguments, ICommandOptionDefinition,
+    IHandlerParameters, IProfile, ISession, Logger, Session } from "@zowe/imperative";
 
 /**
  * Utility Methods for Brightside
@@ -144,9 +145,10 @@ export class CicsSession {
      * @static
      * @param {IProfile} args - The arguments specified by the user
      * @param {boolean} doPrompting - Whether to prompt for missing arguments (defaults to true)
+     * @param {IHandlerParameters} handlerParams - The command parameters object for Daemon mode prompting
      * @returns {Session} - A session for usage in the CMCI REST Client
      */
-    public static async createSessCfgFromArgs(args: ICommandArguments, doPrompting = true): Promise<Session> {
+    public static async createSessCfgFromArgs(args: ICommandArguments, doPrompting = true, handlerParams?: IHandlerParameters): Promise<Session> {
         const sessCfg: ISession = {
             type: "basic",
             hostname: args.host,
@@ -158,7 +160,7 @@ export class CicsSession {
             protocol: args.protocol || "https",
         };
 
-        const sessCfgWithCreds = await ConnectionPropsForSessCfg.addPropsOrPrompt<ISession>(sessCfg, args, {doPrompting});
+        const sessCfgWithCreds = await ConnectionPropsForSessCfg.addPropsOrPrompt<ISession>(sessCfg, args, {doPrompting, parms: handlerParams});
         return new Session(sessCfgWithCreds);
     }
 
