@@ -30,6 +30,14 @@ All notable changes to the IBM® CICS® Plug-in for Zowe CLI will be documented 
 
 - Publish `@next` tag that is compatible with team config profiles.
 
+## `4.0.7`
+
+- BugFix: Updated `moment` dependency.
+
+## `4.0.6`
+
+- BugFix: Pruned dev dependencies from npm-shrinkwrap file.
+
 ## `4.0.5`
 
 - BugFix: Included an npm-shrinkwrap file to lock-down all transitive dependencies.
