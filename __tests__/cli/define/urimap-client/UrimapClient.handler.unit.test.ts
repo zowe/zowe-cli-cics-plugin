@@ -9,6 +9,7 @@
 *                                                                                 *
 */
 
+import { mockHandlerParameters } from "@zowe/cli-test-utils";
 import { CommandProfiles, IHandlerParameters, IProfile, Session } from "@zowe/imperative";
 import { ICMCIApiResponse } from "../../../../src";
 import { UrimapClientDefinition } from "../../../../src/cli/define/urimap-client/UrimapClient.definition";
@@ -36,43 +37,11 @@ PROFILE_MAP.set(
     }]
 );
 const PROFILES: CommandProfiles = new CommandProfiles(PROFILE_MAP);
-const DEFAULT_PARAMETERS: IHandlerParameters = {
-    arguments: {$0: "", _: []}, // Please provide arguments later on
+const DEFAULT_PARAMETERS: IHandlerParameters = mockHandlerParameters({
     positionals: ["cics", "define", "urimap-client"],
-    response: {
-        data: {
-            setMessage: jest.fn((setMsgArgs) => {
-                expect(setMsgArgs).toMatchSnapshot();
-            }),
-            setObj: jest.fn((setObjArgs) => {
-                expect(setObjArgs).toMatchSnapshot();
-            }),
-            setExitCode: jest.fn()
-        },
-        console: {
-            log: jest.fn((logs) => {
-                expect(logs.toString()).toMatchSnapshot();
-            }),
-            error: jest.fn((errors) => {
-                expect(errors.toString()).toMatchSnapshot();
-            }),
-            errorHeader: jest.fn(() => undefined),
-            prompt: jest.fn(() => undefined)
-        },
-        progress: {
-            startBar: jest.fn((parms) => undefined),
-            endBar: jest.fn(() => undefined)
-        },
-        format: {
-            output: jest.fn((parms) => {
-                expect(parms).toMatchSnapshot();
-            })
-        }
-    },
     definition: UrimapClientDefinition,
-    fullDefinition: UrimapClientDefinition,
     profiles: PROFILES
-};
+});
 
 describe("DefineUrimapClientHandler", () => {
     const regionName = "testRegion";
