@@ -2,13 +2,6 @@
 
 exports[`imperative config should match the snapshot 1`] = `
 Object {
-  "apimlConnLookup": Array [
-    Object {
-      "apiId": "place_the_cics_apiId_here",
-      "connProfType": "cics",
-      "gatewayUrl": "api/v1",
-    },
-  ],
   "commandModuleGlobs": Array [
     "**/cli/*/*.definition!(.d).*s",
   ],
