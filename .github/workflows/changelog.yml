@@ -3,7 +3,7 @@ name: Changelog
 on:
   pull_request:
     branches:
-      - master
+      - zowe-v1-lts
 
 jobs:
   changelog:

@@ -3,7 +3,7 @@ name: Audit
 on:
   pull_request:
     branches:
-      - master
+      - zowe-v1-lts
   # schedule:
   #   - cron: '0 10 * * *'
 

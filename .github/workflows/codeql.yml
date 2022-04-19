@@ -3,10 +3,10 @@ name: CodeQL
 on:
   push:
     branches:
-      - master
+      - zowe-v1-lts
   pull_request:
     branches:
-      - master
+      - zowe-v1-lts
   # schedule:
   #   - cron: '0 10 * * *'
 
