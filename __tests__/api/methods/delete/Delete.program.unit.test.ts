@@ -58,7 +58,7 @@ describe("CMCI - Delete program", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toMatch(/Cannot read (property 'name' of undefined|properties of undefined \(reading 'name'\))/);
+            expect(error.message).toMatch(/(Cannot read).*undefined/);
         });
 
         it("should throw error if program name is not defined", async () => {

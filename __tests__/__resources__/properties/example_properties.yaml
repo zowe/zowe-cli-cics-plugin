@@ -16,17 +16,16 @@
 
 
 #  see bright profiles create cics --help for more info
-cmci:
+cics:
   user: my-user-name
   password: my-password
   host: my-cics-host
   port: my-cics-port
-  # Recommend using DARKSIDE as the group
-  csdGroup: my-csd-group
-  # The region has to be configured to work over http vs https
-  regionName: my-region-name
   protocol: https
   rejectUnauthorized: false
+cmci:
+  csdGroup: my-csd-group
+  regionName: my-region-name
 urimap:
   # certificate can be left blank, like the line below
   # certificate:

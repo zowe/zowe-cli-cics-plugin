@@ -9,14 +9,14 @@
 *                                                                                 *
 */
 
-import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
-import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
-import { generateRandomAlphaNumericString, runCliScript } from "../../../../__src__/TestUtils";
+import { ITestEnvironment, TestEnvironment, runCliScript } from "@zowe/cli-test-utils";
+import { ITestPropertiesSchema } from "../../../../__src__/doc/ITestPropertiesSchema";
+import { generateRandomAlphaNumericString } from "../../../../__src__/TestUtils";
 import { Session } from "@zowe/imperative";
 import { CicsCmciConstants, CicsCmciRestClient } from "../../../../../src";
 
 const programName = "program1";
-let TEST_ENVIRONMENT: ITestEnvironment;
+let TEST_ENVIRONMENT: ITestEnvironment<ITestPropertiesSchema>;
 let regionName: string;
 let csdGroup: string;
 let host: string;
@@ -36,12 +36,12 @@ describe("CICS discard transaction command", () => {
         });
         csdGroup = TEST_ENVIRONMENT.systemTestProperties.cmci.csdGroup;
         regionName = TEST_ENVIRONMENT.systemTestProperties.cmci.regionName;
-        host = TEST_ENVIRONMENT.systemTestProperties.cmci.host;
-        port = TEST_ENVIRONMENT.systemTestProperties.cmci.port;
-        user = TEST_ENVIRONMENT.systemTestProperties.cmci.user;
-        password = TEST_ENVIRONMENT.systemTestProperties.cmci.password;
-        protocol = TEST_ENVIRONMENT.systemTestProperties.cmci.protocol;
-        rejectUnauthorized = TEST_ENVIRONMENT.systemTestProperties.cmci.rejectUnauthorized;
+        host = TEST_ENVIRONMENT.systemTestProperties.cics.host;
+        port = TEST_ENVIRONMENT.systemTestProperties.cics.port;
+        user = TEST_ENVIRONMENT.systemTestProperties.cics.user;
+        password = TEST_ENVIRONMENT.systemTestProperties.cics.password;
+        protocol = TEST_ENVIRONMENT.systemTestProperties.cics.protocol;
+        rejectUnauthorized = TEST_ENVIRONMENT.systemTestProperties.cics.rejectUnauthorized;
     });
 
     afterAll(async () => {
@@ -49,15 +49,16 @@ describe("CICS discard transaction command", () => {
     });
 
     const deleteTransaction = async (transactionName: string) => {
+        const cicsProperties = TEST_ENVIRONMENT.systemTestProperties.cics;
         const cmciProperties = TEST_ENVIRONMENT.systemTestProperties.cmci;
         const session = new Session({
             type: "basic",
-            hostname: cmciProperties.host,
-            port: cmciProperties.port,
-            user: cmciProperties.user,
-            password: cmciProperties.password,
-            rejectUnauthorized: cmciProperties.rejectUnauthorized || false,
-            protocol: cmciProperties.protocol as any || "https",
+            hostname: cicsProperties.host,
+            port: cicsProperties.port,
+            user: cicsProperties.user,
+            password: cicsProperties.password,
+            rejectUnauthorized: cicsProperties.rejectUnauthorized || false,
+            protocol: cicsProperties.protocol as any || "https",
         });
 
         return CicsCmciRestClient.deleteExpectParsedXml(session,

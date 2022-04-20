@@ -10,12 +10,12 @@
 */
 
 import { Session } from "@zowe/imperative";
-import { ITestEnvironment } from "../../../../../__tests__/__src__/environment/doc/response/ITestEnvironment";
-import { TestEnvironment } from "../../../../../__tests__/__src__/environment/TestEnvironment";
+import { ITestEnvironment, TestEnvironment } from "@zowe/cli-test-utils";
+import { ITestPropertiesSchema } from "../../../../__src__/doc/ITestPropertiesSchema";
 import { generateRandomAlphaNumericString } from "../../../../__src__/TestUtils";
 import { addCSDGroupToList, removeCSDGroupFromList, ICSDGroupParms } from "../../../../../src";
 
-let testEnvironment: ITestEnvironment;
+let testEnvironment: ITestEnvironment<ITestPropertiesSchema>;
 let regionName: string;
 let csdGroup: string;
 let csdList: string;
@@ -38,17 +38,17 @@ describe("CICS AddToList csdGroup", () => {
         csdGroup = testEnvironment.systemTestProperties.cmci.csdGroup;
         regionName = testEnvironment.systemTestProperties.cmci.regionName;
         const listNameSuffixLength = 4;
-        const cmciProperties = await testEnvironment.systemTestProperties.cmci;
+        const cicsProperties = testEnvironment.systemTestProperties.cics;
         csdList = "AAAA" + generateRandomAlphaNumericString(listNameSuffixLength);
 
         session = new Session({
-            user: cmciProperties.user,
-            password: cmciProperties.password,
-            hostname: cmciProperties.host,
-            port: cmciProperties.port,
+            user: cicsProperties.user,
+            password: cicsProperties.password,
+            hostname: cicsProperties.host,
+            port: cicsProperties.port,
             type: "basic",
-            rejectUnauthorized: cmciProperties.rejectUnauthorized || false,
-            protocol: cmciProperties.protocol as any || "https",
+            rejectUnauthorized: cicsProperties.rejectUnauthorized || false,
+            protocol: cicsProperties.protocol as any || "https",
         });
     });
 

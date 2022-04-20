@@ -53,7 +53,7 @@ describe("CMCI - Remove csdGroup from list", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toMatch(/Cannot read (property 'name' of undefined|properties of undefined \(reading 'name'\))/);
+            expect(error.message).toMatch(/(Cannot read).*undefined/);
         });
 
         it("should throw error if csdGroup name is not defined", async () => {

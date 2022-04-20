@@ -20,6 +20,13 @@ const config: IImperativeConfig = {
     productDisplayName: PluginConstants.PLUGIN_NAME,
     name: PluginConstants.PLUGIN_GROUP_NAME,
     pluginHealthCheck: "./lib/healthCheck.handler",
+    // apimlConnLookup: [
+    //     {
+    //         apiId: "place_the_cics_apiId_here",
+    //         gatewayUrl: "api/v1",
+    //         connProfType: "cics"
+    //     }
+    // ],
     profiles: [
         {
             type: "cics",
@@ -37,7 +44,6 @@ const config: IImperativeConfig = {
                             aliases: ["H"],
                             description: "The CMCI server host name",
                             type: "string",
-                            required: true,
                         },
                     },
                     port: {
@@ -59,7 +65,6 @@ const config: IImperativeConfig = {
                             description: "Your username to connect to CICS",
                             type: "string",
                             implies: ["password"],
-                            required: true,
                         },
                     },
                     password: {
@@ -71,7 +76,6 @@ const config: IImperativeConfig = {
                             description: "Your password to connect to CICS",
                             type: "string",
                             implies: ["user"],
-                            required: true,
                         },
                     },
                     regionName: {
@@ -99,7 +103,7 @@ const config: IImperativeConfig = {
                         optionDefinition: CicsSession.CICS_OPTION_PROTOCOL
                     }
                 },
-                required: ["host"],
+                required: [],
             },
             createProfileExamples: [
                 {

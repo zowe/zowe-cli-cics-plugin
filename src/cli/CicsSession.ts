@@ -9,7 +9,8 @@
 *                                                                                 *
 */
 
-import { ICommandArguments, ICommandOptionDefinition, IProfile, Logger, Session } from "@zowe/imperative";
+import { ConnectionPropsForSessCfg, ICommandArguments, ICommandOptionDefinition,
+    IHandlerParameters, IProfile, ISession, Logger, Session } from "@zowe/imperative";
 
 /**
  * Utility Methods for Brightside
@@ -27,7 +28,6 @@ export class CicsSession {
         aliases: ["H"],
         description: "The CICS server host name.",
         type: "string",
-        required: true,
         group: CicsSession.CICS_CONNECTION_OPTION_GROUP
     };
 
@@ -51,7 +51,6 @@ export class CicsSession {
         aliases: ["u"],
         description: "Mainframe (CICS) user name, which can be the same as your TSO login.",
         type: "string",
-        required: true,
         group: CicsSession.CICS_CONNECTION_OPTION_GROUP
     };
 
@@ -64,7 +63,6 @@ export class CicsSession {
         description: "Mainframe (CICS) password, which can be the same as your TSO password.",
         type: "string",
         group: CicsSession.CICS_CONNECTION_OPTION_GROUP,
-        required: true
     };
     /**
      * Option used in profile creation and commands for rejectUnauthorized setting for connecting to FMP
@@ -75,7 +73,6 @@ export class CicsSession {
         description: "Reject self-signed certificates.",
         type: "boolean",
         defaultValue: true,
-        required: false,
         group: CicsSession.CICS_CONNECTION_OPTION_GROUP
     };
     /**
@@ -87,7 +84,6 @@ export class CicsSession {
         description: "Specifies CMCI protocol (http or https).",
         type: "string",
         defaultValue: "https",
-        required: true,
         allowableValues: {values: ["http", "https"], caseSensitive: false},
         group: CicsSession.CICS_CONNECTION_OPTION_GROUP
     };
@@ -144,6 +140,29 @@ export class CicsSession {
         });
     }
 
+    /**
+     * Given command line arguments, create a REST Client Session.
+     * @static
+     * @param {IProfile} args - The arguments specified by the user
+     * @param {boolean} doPrompting - Whether to prompt for missing arguments (defaults to true)
+     * @param {IHandlerParameters} handlerParams - The command parameters object for Daemon mode prompting
+     * @returns {Session} - A session for usage in the CMCI REST Client
+     */
+    public static async createSessCfgFromArgs(args: ICommandArguments, doPrompting = true, handlerParams?: IHandlerParameters): Promise<Session> {
+        const sessCfg: ISession = {
+            type: "basic",
+            hostname: args.host,
+            port: args.port,
+            user: args.user,
+            password: args.password,
+            basePath: args.basePath,
+            rejectUnauthorized: args.rejectUnauthorized,
+            protocol: args.protocol || "https",
+        };
+
+        const sessCfgWithCreds = await ConnectionPropsForSessCfg.addPropsOrPrompt<ISession>(sessCfg, args, {doPrompting, parms: handlerParams});
+        return new Session(sessCfgWithCreds);
+    }
 
     private static get log(): Logger {
         return Logger.getAppLogger();

@@ -10,13 +10,13 @@
 */
 
 import { Session } from "@zowe/imperative";
-import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
-import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
+import { ITestEnvironment, TestEnvironment } from "@zowe/cli-test-utils";
+import { ITestPropertiesSchema } from "../../../../__src__/doc/ITestPropertiesSchema";
 import { generateRandomAlphaNumericString } from "../../../../__src__/TestUtils";
 import { defineUrimapServer, defineUrimapClient, defineUrimapPipeline, deleteUrimap, IURIMapParms, discardUrimap,
     installUrimap } from "../../../../../src";
 
-let testEnvironment: ITestEnvironment;
+let testEnvironment: ITestEnvironment<ITestPropertiesSchema>;
 let regionName: string;
 let csdGroup: string;
 let session: Session;
@@ -39,16 +39,16 @@ describe("CICS Install URImap", () => {
         csdGroup = testEnvironment.systemTestProperties.cmci.csdGroup;
         regionName = testEnvironment.systemTestProperties.cmci.regionName;
         certificate = testEnvironment.systemTestProperties.urimap.certificate;
-        const cmciProperties = await testEnvironment.systemTestProperties.cmci;
+        const cicsProperties = testEnvironment.systemTestProperties.cics;
 
         session = new Session({
-            user: cmciProperties.user,
-            password: cmciProperties.password,
-            hostname: cmciProperties.host,
-            port: cmciProperties.port,
+            user: cicsProperties.user,
+            password: cicsProperties.password,
+            hostname: cicsProperties.host,
+            port: cicsProperties.port,
             type: "basic",
-            rejectUnauthorized: cmciProperties.rejectUnauthorized || false,
-            protocol: cmciProperties.protocol as any || "https",
+            rejectUnauthorized: cicsProperties.rejectUnauthorized || false,
+            protocol: cicsProperties.protocol as any || "https",
         });
     });
 
