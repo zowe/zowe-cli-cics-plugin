@@ -19,7 +19,7 @@
         "@types/yargs": "8.0.2",
         "@typescript-eslint/eslint-plugin": "^4.29.0",
         "@typescript-eslint/parser": "^4.29.0",
-        "@zowe/imperative": "4.18.2",
+        "@zowe/imperative": "4.18.9",
         "env-cmd": "^8.0.2",
         "eslint": "^7.32.0",
         "eslint-plugin-jest": "^24.4.0",
@@ -1801,6 +1801,15 @@
         "node": ">=0.1.95"
       }
     },
+    "node_modules/@colors/colors": {
+      "version": "1.5.0",
+      "resolved": "https://registry.npmjs.org/@colors/colors/-/colors-1.5.0.tgz",
+      "integrity": "sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==",
+      "optional": true,
+      "engines": {
+        "node": ">=0.1.90"
+      }
+    },
     "node_modules/@eslint/eslintrc": {
       "version": "0.4.3",
       "resolved": "https://registry.npmjs.org/@eslint/eslintrc/-/eslintrc-0.4.3.tgz",
@@ -2772,19 +2781,6 @@
       "integrity": "sha512-qcUXuemtEu+E5wZSJHNxUXeCZhAfXKQ41D+duX+VYPde7xyEVZci+/oXKJL13tnRs9lR2pr4fod59GT6/X1/yQ==",
       "dev": true
     },
-    "node_modules/@types/lodash": {
-      "version": "4.14.178",
-      "resolved": "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.178.tgz",
-      "integrity": "sha512-0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw=="
-    },
-    "node_modules/@types/lodash-deep": {
-      "version": "2.0.0",
-      "resolved": "https://registry.npmjs.org/@types/lodash-deep/-/lodash-deep-2.0.0.tgz",
-      "integrity": "sha512-qkAm3ab2gbNBzKTDdlUxQLEuMhIBkQ+hU2W99asSwHQDjPTwa4bG08I0+L4cQCIMMzT4QmGPR2rXT4iYDv0YFg==",
-      "dependencies": {
-        "@types/lodash": "*"
-      }
-    },
     "node_modules/@types/mkdirp": {
       "version": "1.0.2",
       "resolved": "https://registry.npmjs.org/@types/mkdirp/-/mkdirp-1.0.2.tgz",
@@ -3002,27 +2998,26 @@
       }
     },
     "node_modules/@zowe/cli": {
-      "version": "6.40.0",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/cli/-/@zowe/cli-6.40.0.tgz",
-      "integrity": "sha512-bmz3vbF71yYvWC8sSBsl4d3SCPy+Njpf5kphsVBX1W9n3GAhW//KDX9Si6Lx6oDUYVkfXNlKiuUb6hWed4fJcw==",
+      "version": "6.40.8",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/cli/-/@zowe/cli-6.40.8.tgz",
+      "integrity": "sha512-QwOvy/UXlJcTE++9Pzp+cvtfUPSoILd/yw4bb7SzHPRk7C7CvTv73IQEaShiapZHZlcRlJfKhtGW5PC1XMgf6g==",
       "hasInstallScript": true,
-      "license": "EPL-2.0",
       "peer": true,
       "dependencies": {
-        "@zowe/core-for-zowe-sdk": "6.39.1",
-        "@zowe/imperative": "4.18.2",
+        "@zowe/core-for-zowe-sdk": "6.40.7",
+        "@zowe/imperative": "4.18.9",
         "@zowe/perf-timing": "1.0.7",
-        "@zowe/provisioning-for-zowe-sdk": "6.39.1",
-        "@zowe/zos-console-for-zowe-sdk": "6.39.1",
-        "@zowe/zos-files-for-zowe-sdk": "6.39.1",
-        "@zowe/zos-jobs-for-zowe-sdk": "6.40.0",
-        "@zowe/zos-logs-for-zowe-sdk": "6.39.1",
-        "@zowe/zos-tso-for-zowe-sdk": "6.39.1",
-        "@zowe/zos-uss-for-zowe-sdk": "6.39.1",
-        "@zowe/zos-workflows-for-zowe-sdk": "6.39.1",
-        "@zowe/zosmf-for-zowe-sdk": "6.39.1",
+        "@zowe/provisioning-for-zowe-sdk": "6.40.7",
+        "@zowe/zos-console-for-zowe-sdk": "6.40.7",
+        "@zowe/zos-files-for-zowe-sdk": "6.40.8",
+        "@zowe/zos-jobs-for-zowe-sdk": "6.40.8",
+        "@zowe/zos-logs-for-zowe-sdk": "6.40.7",
+        "@zowe/zos-tso-for-zowe-sdk": "6.40.7",
+        "@zowe/zos-uss-for-zowe-sdk": "6.40.7",
+        "@zowe/zos-workflows-for-zowe-sdk": "6.40.8",
+        "@zowe/zosmf-for-zowe-sdk": "6.40.7",
         "get-stdin": "7.0.0",
-        "minimatch": "3.0.4"
+        "minimatch": "3.1.2"
       },
       "bin": {
         "bright": "lib/main.js",
@@ -3033,10 +3028,9 @@
       }
     },
     "node_modules/@zowe/core-for-zowe-sdk": {
-      "version": "6.39.1",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/core-for-zowe-sdk/-/@zowe/core-for-zowe-sdk-6.39.1.tgz",
-      "integrity": "sha512-ilLJRTWcaOzcHfRMSWhgL79/jap1JsyPa04wYRaxY+AQgKy5GFqAMCDJTKyReOcwIKoMlwInXYtU7AHeXFEYYQ==",
-      "license": "EPL-2.0",
+      "version": "6.40.7",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/core-for-zowe-sdk/-/@zowe/core-for-zowe-sdk-6.40.7.tgz",
+      "integrity": "sha512-x/Wxvw+wQbMIhBhWaKk1s2fXsGgimdLg2OS1HD95C8f5lCZkyqoy0hIOH4H3gPeyQSEbEjXDKTuZAVA7sa6eSg==",
       "peer": true,
       "dependencies": {
         "string-width": "4.2.3"
@@ -3046,16 +3040,14 @@
       }
     },
     "node_modules/@zowe/imperative": {
-      "version": "4.18.2",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/imperative/-/@zowe/imperative-4.18.2.tgz",
-      "integrity": "sha512-OSpzclobIxXwlZmkHtY1mfGnvJkHwDpTJ5HQ3zxR0IAmbnFDUVmoX2tYnHJIVAx2v4TLCTLvEjHs8rXzoMhsyQ==",
-      "license": "EPL-2.0",
+      "version": "4.18.9",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/imperative/-/@zowe/imperative-4.18.9.tgz",
+      "integrity": "sha512-R0prvu0SvUJaxPBkh/8sjca28fQwrdwkK4MWMBPmSZGTBPHAaFRs5e91+klu9S1spA0GJl382u6yQyJ6U8XucQ==",
       "dependencies": {
-        "@types/lodash-deep": "2.0.0",
         "@types/yargs": "13.0.4",
         "@zowe/perf-timing": "1.0.7",
         "chalk": "2.4.2",
-        "cli-table3": "0.6.1",
+        "cli-table3": "0.6.2",
         "dataobject-parser": "1.2.1",
         "deepmerge": "3.0.0",
         "fastest-levenshtein": "1.0.12",
@@ -3068,7 +3060,6 @@
         "lodash-deep": "2.0.0",
         "log4js": "6.4.0",
         "markdown-it": "12.3.2",
-        "moment": "2.29.2",
         "mustache": "2.3.0",
         "npm-package-arg": "8.1.1",
         "opener": "1.5.2",
@@ -3076,7 +3067,6 @@
         "prettyjson": "1.2.2",
         "progress": "2.0.3",
         "readline-sync": "1.4.10",
-        "rimraf": "2.6.3",
         "semver": "5.7.0",
         "stack-trace": "0.0.10",
         "wrap-ansi": "7.0.0",
@@ -3127,17 +3117,6 @@
         "url": "https://github.com/sponsors/isaacs"
       }
     },
-    "node_modules/@zowe/imperative/node_modules/rimraf": {
-      "version": "2.6.3",
-      "resolved": "https://registry.npmjs.org/rimraf/-/rimraf-2.6.3.tgz",
-      "integrity": "sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==",
-      "dependencies": {
-        "glob": "^7.1.3"
-      },
-      "bin": {
-        "rimraf": "bin.js"
-      }
-    },
     "node_modules/@zowe/imperative/node_modules/semver": {
       "version": "5.7.0",
       "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.0.tgz",
@@ -3173,10 +3152,9 @@
       }
     },
     "node_modules/@zowe/provisioning-for-zowe-sdk": {
-      "version": "6.39.1",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/provisioning-for-zowe-sdk/-/@zowe/provisioning-for-zowe-sdk-6.39.1.tgz",
-      "integrity": "sha512-atqjlHnW0XXn0oCEjs9EBlJIcqBAXOaX/9/UKfOoZ1rd01Qln1TEd+ylHabN+jprMdCs6nFLVB7CvhSTJUZIdA==",
-      "license": "EPL-2.0",
+      "version": "6.40.7",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/provisioning-for-zowe-sdk/-/@zowe/provisioning-for-zowe-sdk-6.40.7.tgz",
+      "integrity": "sha512-mzDgGx/LeFYLfyhXCp7JPa0zmE8dKMaC/dhJ6j/gv2tMBVqf/lcAXoufmsUBfKZI5ZJ8aoQ07jhd5KK/EkYeZQ==",
       "peer": true,
       "dependencies": {
         "js-yaml": "3.14.1"
@@ -3187,10 +3165,9 @@
       }
     },
     "node_modules/@zowe/zos-console-for-zowe-sdk": {
-      "version": "6.39.1",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-console-for-zowe-sdk/-/@zowe/zos-console-for-zowe-sdk-6.39.1.tgz",
-      "integrity": "sha512-44yidbiKj4bRERIwvrG+KT60Nl7HTFAdi7uPVjCPbPsYtBLj3MPJqWSU9AxzyfHtHXN6oKrwYPfxJt/dst7Iqg==",
-      "license": "EPL-2.0",
+      "version": "6.40.7",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-console-for-zowe-sdk/-/@zowe/zos-console-for-zowe-sdk-6.40.7.tgz",
+      "integrity": "sha512-EKNBbKk1Cz58QGJ74RQM6V1fo0rLLg0rz6G+CdxjDJOvl+OId+WHeyopbv2UVcvu1pSP9a9GbmsL1ZD7ka+7aQ==",
       "peer": true,
       "peerDependencies": {
         "@zowe/core-for-zowe-sdk": "^6.24.1",
@@ -3198,13 +3175,12 @@
       }
     },
     "node_modules/@zowe/zos-files-for-zowe-sdk": {
-      "version": "6.39.1",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-files-for-zowe-sdk/-/@zowe/zos-files-for-zowe-sdk-6.39.1.tgz",
-      "integrity": "sha512-cPhgSGnQF+xG0EFjvWc+qVghc29c8PIuO8zxNSKNwbo2VaX3aQ0nXLaNMqkyFlrnGJhjFudouEYWtuKf9QeOkw==",
-      "license": "EPL-2.0",
+      "version": "6.40.8",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-files-for-zowe-sdk/-/@zowe/zos-files-for-zowe-sdk-6.40.8.tgz",
+      "integrity": "sha512-ggiJqrSBfRIJU+akIpzhhDw2gCHhi1P/rBcVCa5UKviyhkhg8yji0WoySc02gJ3Cv/P04NEuP6fzMqClYr9KGg==",
       "peer": true,
       "dependencies": {
-        "minimatch": "3.0.4"
+        "minimatch": "3.1.2"
       },
       "peerDependencies": {
         "@zowe/core-for-zowe-sdk": "^6.24.1",
@@ -3212,13 +3188,12 @@
       }
     },
     "node_modules/@zowe/zos-jobs-for-zowe-sdk": {
-      "version": "6.40.0",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-jobs-for-zowe-sdk/-/@zowe/zos-jobs-for-zowe-sdk-6.40.0.tgz",
-      "integrity": "sha512-VSOYD5szC1fLAZLGMsLR+Aqv16yAyeRdqNkBbX6YJVrDjy6yYKpH1TghCC9Pczcn/TnEtYaNSc1HYDBTN34lmw==",
-      "license": "EPL-2.0",
+      "version": "6.40.8",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-jobs-for-zowe-sdk/-/@zowe/zos-jobs-for-zowe-sdk-6.40.8.tgz",
+      "integrity": "sha512-BHXsSsIM/U3JZujnBcMzO8Zd+MWek4TX+S9eAuFK63b0RIo0FoHJxbI7cBPEwRdoEsdRmlxzkrwiVEURTZmhqg==",
       "peer": true,
       "dependencies": {
-        "@zowe/zos-files-for-zowe-sdk": "6.39.1"
+        "@zowe/zos-files-for-zowe-sdk": "6.40.8"
       },
       "peerDependencies": {
         "@zowe/core-for-zowe-sdk": "^6.24.1",
@@ -3226,10 +3201,9 @@
       }
     },
     "node_modules/@zowe/zos-logs-for-zowe-sdk": {
-      "version": "6.39.1",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-logs-for-zowe-sdk/-/@zowe/zos-logs-for-zowe-sdk-6.39.1.tgz",
-      "integrity": "sha512-v/r3KFlfhU1fDNpiqEQ/sWZqHys2f3seJgs2XfvheH0KVDh5463ephcV1dmLEKWMEtEmo0APO+Nq+o/z/X2IWg==",
-      "license": "EPL-2.0",
+      "version": "6.40.7",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-logs-for-zowe-sdk/-/@zowe/zos-logs-for-zowe-sdk-6.40.7.tgz",
+      "integrity": "sha512-Oo1k7E1rDEz+WloK6ZOCsZj6oZtn364o5uboYdYd/lYoMe+uLlOApso/JDYXLjY8Xch4rgcJ8PEl3bSSK5pKCQ==",
       "peer": true,
       "peerDependencies": {
         "@zowe/core-for-zowe-sdk": "^6.24.1",
@@ -3237,13 +3211,12 @@
       }
     },
     "node_modules/@zowe/zos-tso-for-zowe-sdk": {
-      "version": "6.39.1",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-tso-for-zowe-sdk/-/@zowe/zos-tso-for-zowe-sdk-6.39.1.tgz",
-      "integrity": "sha512-Dsy/UzLECB3kDlYilJTobgkLnFObES+Vl29Q37Q83mtOYMpRkQb+9wxIYuKs+UqJZDp+tMfzie79W5P28od1nQ==",
-      "license": "EPL-2.0",
+      "version": "6.40.7",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-tso-for-zowe-sdk/-/@zowe/zos-tso-for-zowe-sdk-6.40.7.tgz",
+      "integrity": "sha512-75PBg6q7aWLljf8DXkpQRSS/QiL+2XfZfWLxDuYp65uNtNN10shBPDj8OY9bKTu0Zdnezo+NXy1hmRwW+SvO4A==",
       "peer": true,
       "dependencies": {
-        "@zowe/zosmf-for-zowe-sdk": "6.39.1"
+        "@zowe/zosmf-for-zowe-sdk": "6.40.7"
       },
       "peerDependencies": {
         "@zowe/core-for-zowe-sdk": "^6.24.1",
@@ -3251,10 +3224,9 @@
       }
     },
     "node_modules/@zowe/zos-uss-for-zowe-sdk": {
-      "version": "6.39.1",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-uss-for-zowe-sdk/-/@zowe/zos-uss-for-zowe-sdk-6.39.1.tgz",
-      "integrity": "sha512-kf8SQXVWHeNh6pcnl2pEpaIWCAp6V+4wFSXcr7FhyJzxBmSJF7krDe7daK8k3QuemIh+KkrmMMX6VYFOHbJAPQ==",
-      "license": "EPL-2.0",
+      "version": "6.40.7",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-uss-for-zowe-sdk/-/@zowe/zos-uss-for-zowe-sdk-6.40.7.tgz",
+      "integrity": "sha512-3bnX3xI3J2KHw9BCeFGR1hMAUWm/eB5zPQmEY8s+uaooilxBBpUf39T6VzmyhQtalsXlgJkLW0IPJcjpjTJFUw==",
       "peer": true,
       "dependencies": {
         "ssh2": "1.4.0"
@@ -3264,13 +3236,12 @@
       }
     },
     "node_modules/@zowe/zos-workflows-for-zowe-sdk": {
-      "version": "6.39.1",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-workflows-for-zowe-sdk/-/@zowe/zos-workflows-for-zowe-sdk-6.39.1.tgz",
-      "integrity": "sha512-a87KvZPjUanfvK0RAvp/Y9/gqKN5JwCiJeRJla0eBuIZ80iOMvs1plNW8F3It6zQqasph0A0We8f5cc/cCMQ7Q==",
-      "license": "EPL-2.0",
+      "version": "6.40.8",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-workflows-for-zowe-sdk/-/@zowe/zos-workflows-for-zowe-sdk-6.40.8.tgz",
+      "integrity": "sha512-VQTOzlVpts8S8gxoRgZ65rFDLXXuVMNEf4kYhcgZvMaVs8a40lr9skwRQ4GkCONvxXo3TUIyOBJRoHu8KZSuDg==",
       "peer": true,
       "dependencies": {
-        "@zowe/zos-files-for-zowe-sdk": "6.39.1"
+        "@zowe/zos-files-for-zowe-sdk": "6.40.8"
       },
       "peerDependencies": {
         "@zowe/core-for-zowe-sdk": "^6.24.1",
@@ -3278,10 +3249,9 @@
       }
     },
     "node_modules/@zowe/zosmf-for-zowe-sdk": {
-      "version": "6.39.1",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zosmf-for-zowe-sdk/-/@zowe/zosmf-for-zowe-sdk-6.39.1.tgz",
-      "integrity": "sha512-fpqN9LbP3Q8d2WzidMYSXpUHv9v8WkF41Gx4WHc4Dxfm3QjMvIYHcG0N+rFgtyb83Q6Y2xA9dUkwxxQ1fLbB5w==",
-      "license": "EPL-2.0",
+      "version": "6.40.7",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zosmf-for-zowe-sdk/-/@zowe/zosmf-for-zowe-sdk-6.40.7.tgz",
+      "integrity": "sha512-vWfjoJu6iCxvS3S7DekVPjtR5UoUGsQee0v+U0YOjgUSGbiMuRdWoLL9XyAYCnx7NhEjsIBmkmZWdlLbtiapFg==",
       "peer": true,
       "peerDependencies": {
         "@zowe/core-for-zowe-sdk": "^6.24.1",
@@ -4381,9 +4351,9 @@
       }
     },
     "node_modules/cli-table3": {
-      "version": "0.6.1",
-      "resolved": "https://registry.npmjs.org/cli-table3/-/cli-table3-0.6.1.tgz",
-      "integrity": "sha512-w0q/enDHhPLq44ovMGdQeeDLvwxwavsJX7oQGYt/LrBlYsyaxyDnp6z3QzFut/6kLLKnlcUVJLrpB7KBfgG/RA==",
+      "version": "0.6.2",
+      "resolved": "https://registry.npmjs.org/cli-table3/-/cli-table3-0.6.2.tgz",
+      "integrity": "sha512-QyavHCaIC80cMivimWu4aWHilIpiDpfm3hGmqAmXVL1UsnbLuBSMd21hTX6VY4ZSDSM73ESLeF8TOYId3rBTbw==",
       "dependencies": {
         "string-width": "^4.2.0"
       },
@@ -4391,7 +4361,7 @@
         "node": "10.* || >= 12.*"
       },
       "optionalDependencies": {
-        "colors": "1.4.0"
+        "@colors/colors": "1.5.0"
       }
     },
     "node_modules/cliui": {
@@ -8165,9 +8135,9 @@
       }
     },
     "node_modules/jest-junit/node_modules/ansi-regex": {
-      "version": "4.1.0",
-      "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-4.1.0.tgz",
-      "integrity": "sha512-1apePfXM1UOSqw0o9IiFAovVz9M5S1Dg+4TrDwfMewQ6p/rmMueb7tWZjQ1rx4Loy1ArBggoqGpfqqdI4rondg==",
+      "version": "4.1.1",
+      "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-4.1.1.tgz",
+      "integrity": "sha512-ILlv4k/3f6vfQ4OoP2AGvirOktlQ98ZEL1k9FaQjxa3L1abBgbuTDAdPOpvbGncC0BTVQrl+OM8xZGK6tWXt7g==",
       "dev": true,
       "engines": {
         "node": ">=6"
@@ -8239,9 +8209,9 @@
       }
     },
     "node_modules/jest-junit/node_modules/strip-ansi/node_modules/ansi-regex": {
-      "version": "3.0.0",
-      "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-3.0.0.tgz",
-      "integrity": "sha1-7QMXwyIGT3lGbAKWa922Bas32Zg=",
+      "version": "3.0.1",
+      "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-3.0.1.tgz",
+      "integrity": "sha512-+O9Jct8wf++lXxxFc4hc8LsjaSq0HFzzL7cVsw8pRDIPdjKD2mT4ytDZlLuSBZ4cLKZFXIrMGO7DbQCtMJJMKw==",
       "dev": true,
       "engines": {
         "node": ">=4"
@@ -10661,9 +10631,9 @@
       }
     },
     "node_modules/minimatch": {
-      "version": "3.0.4",
-      "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-3.0.4.tgz",
-      "integrity": "sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==",
+      "version": "3.1.2",
+      "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-3.1.2.tgz",
+      "integrity": "sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==",
       "dependencies": {
         "brace-expansion": "^1.1.7"
       },
@@ -10837,6 +10807,7 @@
       "version": "2.29.2",
       "resolved": "https://registry.npmjs.org/moment/-/moment-2.29.2.tgz",
       "integrity": "sha512-UgzG4rvxYpN15jgCmVJwac49h9ly9NurikMWGPdVxm8GZD6XjkKPxDTjQQ43gtGgnV3X0cAyWDdP2Wexoquifg==",
+      "dev": true,
       "engines": {
         "node": "*"
       }
@@ -10858,9 +10829,9 @@
       }
     },
     "node_modules/nan": {
-      "version": "2.15.0",
-      "resolved": "https://registry.npmjs.org/nan/-/nan-2.15.0.tgz",
-      "integrity": "sha512-8ZtvEnA2c5aYCZYd1cvgdnU6cqwixRoYg70xPLWUws5ORTa/lnw+u4amixRS/Ac5U5mQVgp9pnlSUnbNWFaWZQ==",
+      "version": "2.17.0",
+      "resolved": "https://registry.npmjs.org/nan/-/nan-2.17.0.tgz",
+      "integrity": "sha512-2ZTgtl0nJsO0KQCjEpxcIr5D+Yv90plTitZt9JBfQvVJDS5seMl3FOvsh3+9CoYWXf/1l5OaZzzF6nDm4cagaQ==",
       "optional": true,
       "peer": true
     },
@@ -13845,9 +13816,9 @@
       }
     },
     "node_modules/string-length/node_modules/ansi-regex": {
-      "version": "4.1.0",
-      "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-4.1.0.tgz",
-      "integrity": "sha512-1apePfXM1UOSqw0o9IiFAovVz9M5S1Dg+4TrDwfMewQ6p/rmMueb7tWZjQ1rx4Loy1ArBggoqGpfqqdI4rondg==",
+      "version": "4.1.1",
+      "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-4.1.1.tgz",
+      "integrity": "sha512-ILlv4k/3f6vfQ4OoP2AGvirOktlQ98ZEL1k9FaQjxa3L1abBgbuTDAdPOpvbGncC0BTVQrl+OM8xZGK6tWXt7g==",
       "dev": true,
       "engines": {
         "node": ">=6"
@@ -16392,6 +16363,12 @@
         "minimist": "^1.2.0"
       }
     },
+    "@colors/colors": {
+      "version": "1.5.0",
+      "resolved": "https://registry.npmjs.org/@colors/colors/-/colors-1.5.0.tgz",
+      "integrity": "sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==",
+      "optional": true
+    },
     "@eslint/eslintrc": {
       "version": "0.4.3",
       "resolved": "https://registry.npmjs.org/@eslint/eslintrc/-/eslintrc-0.4.3.tgz",
@@ -17190,19 +17167,6 @@
       "integrity": "sha512-qcUXuemtEu+E5wZSJHNxUXeCZhAfXKQ41D+duX+VYPde7xyEVZci+/oXKJL13tnRs9lR2pr4fod59GT6/X1/yQ==",
       "dev": true
     },
-    "@types/lodash": {
-      "version": "4.14.178",
-      "resolved": "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.178.tgz",
-      "integrity": "sha512-0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw=="
-    },
-    "@types/lodash-deep": {
-      "version": "2.0.0",
-      "resolved": "https://registry.npmjs.org/@types/lodash-deep/-/lodash-deep-2.0.0.tgz",
-      "integrity": "sha512-qkAm3ab2gbNBzKTDdlUxQLEuMhIBkQ+hU2W99asSwHQDjPTwa4bG08I0+L4cQCIMMzT4QmGPR2rXT4iYDv0YFg==",
-      "requires": {
-        "@types/lodash": "*"
-      }
-    },
     "@types/mkdirp": {
       "version": "1.0.2",
       "resolved": "https://registry.npmjs.org/@types/mkdirp/-/mkdirp-1.0.2.tgz",
@@ -17346,46 +17310,45 @@
       }
     },
     "@zowe/cli": {
-      "version": "6.40.0",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/cli/-/@zowe/cli-6.40.0.tgz",
-      "integrity": "sha512-bmz3vbF71yYvWC8sSBsl4d3SCPy+Njpf5kphsVBX1W9n3GAhW//KDX9Si6Lx6oDUYVkfXNlKiuUb6hWed4fJcw==",
+      "version": "6.40.8",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/cli/-/@zowe/cli-6.40.8.tgz",
+      "integrity": "sha512-QwOvy/UXlJcTE++9Pzp+cvtfUPSoILd/yw4bb7SzHPRk7C7CvTv73IQEaShiapZHZlcRlJfKhtGW5PC1XMgf6g==",
       "peer": true,
       "requires": {
-        "@zowe/core-for-zowe-sdk": "6.39.1",
-        "@zowe/imperative": "4.18.2",
+        "@zowe/core-for-zowe-sdk": "6.40.7",
+        "@zowe/imperative": "4.18.9",
         "@zowe/perf-timing": "1.0.7",
-        "@zowe/provisioning-for-zowe-sdk": "6.39.1",
-        "@zowe/zos-console-for-zowe-sdk": "6.39.1",
-        "@zowe/zos-files-for-zowe-sdk": "6.39.1",
-        "@zowe/zos-jobs-for-zowe-sdk": "6.40.0",
-        "@zowe/zos-logs-for-zowe-sdk": "6.39.1",
-        "@zowe/zos-tso-for-zowe-sdk": "6.39.1",
-        "@zowe/zos-uss-for-zowe-sdk": "6.39.1",
-        "@zowe/zos-workflows-for-zowe-sdk": "6.39.1",
-        "@zowe/zosmf-for-zowe-sdk": "6.39.1",
+        "@zowe/provisioning-for-zowe-sdk": "6.40.7",
+        "@zowe/zos-console-for-zowe-sdk": "6.40.7",
+        "@zowe/zos-files-for-zowe-sdk": "6.40.8",
+        "@zowe/zos-jobs-for-zowe-sdk": "6.40.8",
+        "@zowe/zos-logs-for-zowe-sdk": "6.40.7",
+        "@zowe/zos-tso-for-zowe-sdk": "6.40.7",
+        "@zowe/zos-uss-for-zowe-sdk": "6.40.7",
+        "@zowe/zos-workflows-for-zowe-sdk": "6.40.8",
+        "@zowe/zosmf-for-zowe-sdk": "6.40.7",
         "get-stdin": "7.0.0",
-        "minimatch": "3.0.4"
+        "minimatch": "3.1.2"
       }
     },
     "@zowe/core-for-zowe-sdk": {
-      "version": "6.39.1",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/core-for-zowe-sdk/-/@zowe/core-for-zowe-sdk-6.39.1.tgz",
-      "integrity": "sha512-ilLJRTWcaOzcHfRMSWhgL79/jap1JsyPa04wYRaxY+AQgKy5GFqAMCDJTKyReOcwIKoMlwInXYtU7AHeXFEYYQ==",
+      "version": "6.40.7",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/core-for-zowe-sdk/-/@zowe/core-for-zowe-sdk-6.40.7.tgz",
+      "integrity": "sha512-x/Wxvw+wQbMIhBhWaKk1s2fXsGgimdLg2OS1HD95C8f5lCZkyqoy0hIOH4H3gPeyQSEbEjXDKTuZAVA7sa6eSg==",
       "peer": true,
       "requires": {
         "string-width": "4.2.3"
       }
     },
     "@zowe/imperative": {
-      "version": "4.18.2",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/imperative/-/@zowe/imperative-4.18.2.tgz",
-      "integrity": "sha512-OSpzclobIxXwlZmkHtY1mfGnvJkHwDpTJ5HQ3zxR0IAmbnFDUVmoX2tYnHJIVAx2v4TLCTLvEjHs8rXzoMhsyQ==",
+      "version": "4.18.9",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/imperative/-/@zowe/imperative-4.18.9.tgz",
+      "integrity": "sha512-R0prvu0SvUJaxPBkh/8sjca28fQwrdwkK4MWMBPmSZGTBPHAaFRs5e91+klu9S1spA0GJl382u6yQyJ6U8XucQ==",
       "requires": {
-        "@types/lodash-deep": "2.0.0",
         "@types/yargs": "13.0.4",
         "@zowe/perf-timing": "1.0.7",
         "chalk": "2.4.2",
-        "cli-table3": "0.6.1",
+        "cli-table3": "0.6.2",
         "dataobject-parser": "1.2.1",
         "deepmerge": "3.0.0",
         "fastest-levenshtein": "1.0.12",
@@ -17398,7 +17361,6 @@
         "lodash-deep": "2.0.0",
         "log4js": "6.4.0",
         "markdown-it": "12.3.2",
-        "moment": "2.29.2",
         "mustache": "2.3.0",
         "npm-package-arg": "8.1.1",
         "opener": "1.5.2",
@@ -17406,7 +17368,6 @@
         "prettyjson": "1.2.2",
         "progress": "2.0.3",
         "readline-sync": "1.4.10",
-        "rimraf": "2.6.3",
         "semver": "5.7.0",
         "stack-trace": "0.0.10",
         "wrap-ansi": "7.0.0",
@@ -17445,14 +17406,6 @@
             "path-is-absolute": "^1.0.0"
           }
         },
-        "rimraf": {
-          "version": "2.6.3",
-          "resolved": "https://registry.npmjs.org/rimraf/-/rimraf-2.6.3.tgz",
-          "integrity": "sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==",
-          "requires": {
-            "glob": "^7.1.3"
-          }
-        },
         "semver": {
           "version": "5.7.0",
           "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.0.tgz",
@@ -17482,77 +17435,77 @@
       }
     },
     "@zowe/provisioning-for-zowe-sdk": {
-      "version": "6.39.1",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/provisioning-for-zowe-sdk/-/@zowe/provisioning-for-zowe-sdk-6.39.1.tgz",
-      "integrity": "sha512-atqjlHnW0XXn0oCEjs9EBlJIcqBAXOaX/9/UKfOoZ1rd01Qln1TEd+ylHabN+jprMdCs6nFLVB7CvhSTJUZIdA==",
+      "version": "6.40.7",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/provisioning-for-zowe-sdk/-/@zowe/provisioning-for-zowe-sdk-6.40.7.tgz",
+      "integrity": "sha512-mzDgGx/LeFYLfyhXCp7JPa0zmE8dKMaC/dhJ6j/gv2tMBVqf/lcAXoufmsUBfKZI5ZJ8aoQ07jhd5KK/EkYeZQ==",
       "peer": true,
       "requires": {
         "js-yaml": "3.14.1"
       }
     },
     "@zowe/zos-console-for-zowe-sdk": {
-      "version": "6.39.1",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-console-for-zowe-sdk/-/@zowe/zos-console-for-zowe-sdk-6.39.1.tgz",
-      "integrity": "sha512-44yidbiKj4bRERIwvrG+KT60Nl7HTFAdi7uPVjCPbPsYtBLj3MPJqWSU9AxzyfHtHXN6oKrwYPfxJt/dst7Iqg==",
+      "version": "6.40.7",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-console-for-zowe-sdk/-/@zowe/zos-console-for-zowe-sdk-6.40.7.tgz",
+      "integrity": "sha512-EKNBbKk1Cz58QGJ74RQM6V1fo0rLLg0rz6G+CdxjDJOvl+OId+WHeyopbv2UVcvu1pSP9a9GbmsL1ZD7ka+7aQ==",
       "peer": true,
       "requires": {}
     },
     "@zowe/zos-files-for-zowe-sdk": {
-      "version": "6.39.1",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-files-for-zowe-sdk/-/@zowe/zos-files-for-zowe-sdk-6.39.1.tgz",
-      "integrity": "sha512-cPhgSGnQF+xG0EFjvWc+qVghc29c8PIuO8zxNSKNwbo2VaX3aQ0nXLaNMqkyFlrnGJhjFudouEYWtuKf9QeOkw==",
+      "version": "6.40.8",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-files-for-zowe-sdk/-/@zowe/zos-files-for-zowe-sdk-6.40.8.tgz",
+      "integrity": "sha512-ggiJqrSBfRIJU+akIpzhhDw2gCHhi1P/rBcVCa5UKviyhkhg8yji0WoySc02gJ3Cv/P04NEuP6fzMqClYr9KGg==",
       "peer": true,
       "requires": {
-        "minimatch": "3.0.4"
+        "minimatch": "3.1.2"
       }
     },
     "@zowe/zos-jobs-for-zowe-sdk": {
-      "version": "6.40.0",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-jobs-for-zowe-sdk/-/@zowe/zos-jobs-for-zowe-sdk-6.40.0.tgz",
-      "integrity": "sha512-VSOYD5szC1fLAZLGMsLR+Aqv16yAyeRdqNkBbX6YJVrDjy6yYKpH1TghCC9Pczcn/TnEtYaNSc1HYDBTN34lmw==",
+      "version": "6.40.8",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-jobs-for-zowe-sdk/-/@zowe/zos-jobs-for-zowe-sdk-6.40.8.tgz",
+      "integrity": "sha512-BHXsSsIM/U3JZujnBcMzO8Zd+MWek4TX+S9eAuFK63b0RIo0FoHJxbI7cBPEwRdoEsdRmlxzkrwiVEURTZmhqg==",
       "peer": true,
       "requires": {
-        "@zowe/zos-files-for-zowe-sdk": "6.39.1"
+        "@zowe/zos-files-for-zowe-sdk": "6.40.8"
       }
     },
     "@zowe/zos-logs-for-zowe-sdk": {
-      "version": "6.39.1",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-logs-for-zowe-sdk/-/@zowe/zos-logs-for-zowe-sdk-6.39.1.tgz",
-      "integrity": "sha512-v/r3KFlfhU1fDNpiqEQ/sWZqHys2f3seJgs2XfvheH0KVDh5463ephcV1dmLEKWMEtEmo0APO+Nq+o/z/X2IWg==",
+      "version": "6.40.7",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-logs-for-zowe-sdk/-/@zowe/zos-logs-for-zowe-sdk-6.40.7.tgz",
+      "integrity": "sha512-Oo1k7E1rDEz+WloK6ZOCsZj6oZtn364o5uboYdYd/lYoMe+uLlOApso/JDYXLjY8Xch4rgcJ8PEl3bSSK5pKCQ==",
       "peer": true,
       "requires": {}
     },
     "@zowe/zos-tso-for-zowe-sdk": {
-      "version": "6.39.1",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-tso-for-zowe-sdk/-/@zowe/zos-tso-for-zowe-sdk-6.39.1.tgz",
-      "integrity": "sha512-Dsy/UzLECB3kDlYilJTobgkLnFObES+Vl29Q37Q83mtOYMpRkQb+9wxIYuKs+UqJZDp+tMfzie79W5P28od1nQ==",
+      "version": "6.40.7",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-tso-for-zowe-sdk/-/@zowe/zos-tso-for-zowe-sdk-6.40.7.tgz",
+      "integrity": "sha512-75PBg6q7aWLljf8DXkpQRSS/QiL+2XfZfWLxDuYp65uNtNN10shBPDj8OY9bKTu0Zdnezo+NXy1hmRwW+SvO4A==",
       "peer": true,
       "requires": {
-        "@zowe/zosmf-for-zowe-sdk": "6.39.1"
+        "@zowe/zosmf-for-zowe-sdk": "6.40.7"
       }
     },
     "@zowe/zos-uss-for-zowe-sdk": {
-      "version": "6.39.1",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-uss-for-zowe-sdk/-/@zowe/zos-uss-for-zowe-sdk-6.39.1.tgz",
-      "integrity": "sha512-kf8SQXVWHeNh6pcnl2pEpaIWCAp6V+4wFSXcr7FhyJzxBmSJF7krDe7daK8k3QuemIh+KkrmMMX6VYFOHbJAPQ==",
+      "version": "6.40.7",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-uss-for-zowe-sdk/-/@zowe/zos-uss-for-zowe-sdk-6.40.7.tgz",
+      "integrity": "sha512-3bnX3xI3J2KHw9BCeFGR1hMAUWm/eB5zPQmEY8s+uaooilxBBpUf39T6VzmyhQtalsXlgJkLW0IPJcjpjTJFUw==",
       "peer": true,
       "requires": {
         "ssh2": "1.4.0"
       }
     },
     "@zowe/zos-workflows-for-zowe-sdk": {
-      "version": "6.39.1",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-workflows-for-zowe-sdk/-/@zowe/zos-workflows-for-zowe-sdk-6.39.1.tgz",
-      "integrity": "sha512-a87KvZPjUanfvK0RAvp/Y9/gqKN5JwCiJeRJla0eBuIZ80iOMvs1plNW8F3It6zQqasph0A0We8f5cc/cCMQ7Q==",
+      "version": "6.40.8",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zos-workflows-for-zowe-sdk/-/@zowe/zos-workflows-for-zowe-sdk-6.40.8.tgz",
+      "integrity": "sha512-VQTOzlVpts8S8gxoRgZ65rFDLXXuVMNEf4kYhcgZvMaVs8a40lr9skwRQ4GkCONvxXo3TUIyOBJRoHu8KZSuDg==",
       "peer": true,
       "requires": {
-        "@zowe/zos-files-for-zowe-sdk": "6.39.1"
+        "@zowe/zos-files-for-zowe-sdk": "6.40.8"
       }
     },
     "@zowe/zosmf-for-zowe-sdk": {
-      "version": "6.39.1",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zosmf-for-zowe-sdk/-/@zowe/zosmf-for-zowe-sdk-6.39.1.tgz",
-      "integrity": "sha512-fpqN9LbP3Q8d2WzidMYSXpUHv9v8WkF41Gx4WHc4Dxfm3QjMvIYHcG0N+rFgtyb83Q6Y2xA9dUkwxxQ1fLbB5w==",
+      "version": "6.40.7",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/zosmf-for-zowe-sdk/-/@zowe/zosmf-for-zowe-sdk-6.40.7.tgz",
+      "integrity": "sha512-vWfjoJu6iCxvS3S7DekVPjtR5UoUGsQee0v+U0YOjgUSGbiMuRdWoLL9XyAYCnx7NhEjsIBmkmZWdlLbtiapFg==",
       "peer": true,
       "requires": {}
     },
@@ -18391,11 +18344,11 @@
       "dev": true
     },
     "cli-table3": {
-      "version": "0.6.1",
-      "resolved": "https://registry.npmjs.org/cli-table3/-/cli-table3-0.6.1.tgz",
-      "integrity": "sha512-w0q/enDHhPLq44ovMGdQeeDLvwxwavsJX7oQGYt/LrBlYsyaxyDnp6z3QzFut/6kLLKnlcUVJLrpB7KBfgG/RA==",
+      "version": "0.6.2",
+      "resolved": "https://registry.npmjs.org/cli-table3/-/cli-table3-0.6.2.tgz",
+      "integrity": "sha512-QyavHCaIC80cMivimWu4aWHilIpiDpfm3hGmqAmXVL1UsnbLuBSMd21hTX6VY4ZSDSM73ESLeF8TOYId3rBTbw==",
       "requires": {
-        "colors": "1.4.0",
+        "@colors/colors": "1.5.0",
         "string-width": "^4.2.0"
       }
     },
@@ -21286,9 +21239,9 @@
           }
         },
         "ansi-regex": {
-          "version": "4.1.0",
-          "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-4.1.0.tgz",
-          "integrity": "sha512-1apePfXM1UOSqw0o9IiFAovVz9M5S1Dg+4TrDwfMewQ6p/rmMueb7tWZjQ1rx4Loy1ArBggoqGpfqqdI4rondg==",
+          "version": "4.1.1",
+          "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-4.1.1.tgz",
+          "integrity": "sha512-ILlv4k/3f6vfQ4OoP2AGvirOktlQ98ZEL1k9FaQjxa3L1abBgbuTDAdPOpvbGncC0BTVQrl+OM8xZGK6tWXt7g==",
           "dev": true
         },
         "jest-get-type": {
@@ -21342,9 +21295,9 @@
           },
           "dependencies": {
             "ansi-regex": {
-              "version": "3.0.0",
-              "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-3.0.0.tgz",
-              "integrity": "sha1-7QMXwyIGT3lGbAKWa922Bas32Zg=",
+              "version": "3.0.1",
+              "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-3.0.1.tgz",
+              "integrity": "sha512-+O9Jct8wf++lXxxFc4hc8LsjaSq0HFzzL7cVsw8pRDIPdjKD2mT4ytDZlLuSBZ4cLKZFXIrMGO7DbQCtMJJMKw==",
               "dev": true
             }
           }
@@ -23244,9 +23197,9 @@
       "dev": true
     },
     "minimatch": {
-      "version": "3.0.4",
-      "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-3.0.4.tgz",
-      "integrity": "sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==",
+      "version": "3.1.2",
+      "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-3.1.2.tgz",
+      "integrity": "sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==",
       "requires": {
         "brace-expansion": "^1.1.7"
       }
@@ -23374,7 +23327,8 @@
     "moment": {
       "version": "2.29.2",
       "resolved": "https://registry.npmjs.org/moment/-/moment-2.29.2.tgz",
-      "integrity": "sha512-UgzG4rvxYpN15jgCmVJwac49h9ly9NurikMWGPdVxm8GZD6XjkKPxDTjQQ43gtGgnV3X0cAyWDdP2Wexoquifg=="
+      "integrity": "sha512-UgzG4rvxYpN15jgCmVJwac49h9ly9NurikMWGPdVxm8GZD6XjkKPxDTjQQ43gtGgnV3X0cAyWDdP2Wexoquifg==",
+      "dev": true
     },
     "ms": {
       "version": "2.1.2",
@@ -23387,9 +23341,9 @@
       "integrity": "sha1-QCj3d4sXcIpImTCm5SrDvKDaQdA="
     },
     "nan": {
-      "version": "2.15.0",
-      "resolved": "https://registry.npmjs.org/nan/-/nan-2.15.0.tgz",
-      "integrity": "sha512-8ZtvEnA2c5aYCZYd1cvgdnU6cqwixRoYg70xPLWUws5ORTa/lnw+u4amixRS/Ac5U5mQVgp9pnlSUnbNWFaWZQ==",
+      "version": "2.17.0",
+      "resolved": "https://registry.npmjs.org/nan/-/nan-2.17.0.tgz",
+      "integrity": "sha512-2ZTgtl0nJsO0KQCjEpxcIr5D+Yv90plTitZt9JBfQvVJDS5seMl3FOvsh3+9CoYWXf/1l5OaZzzF6nDm4cagaQ==",
       "optional": true,
       "peer": true
     },
@@ -25699,9 +25653,9 @@
       },
       "dependencies": {
         "ansi-regex": {
-          "version": "4.1.0",
-          "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-4.1.0.tgz",
-          "integrity": "sha512-1apePfXM1UOSqw0o9IiFAovVz9M5S1Dg+4TrDwfMewQ6p/rmMueb7tWZjQ1rx4Loy1ArBggoqGpfqqdI4rondg==",
+          "version": "4.1.1",
+          "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-4.1.1.tgz",
+          "integrity": "sha512-ILlv4k/3f6vfQ4OoP2AGvirOktlQ98ZEL1k9FaQjxa3L1abBgbuTDAdPOpvbGncC0BTVQrl+OM8xZGK6tWXt7g==",
           "dev": true
         },
         "strip-ansi": {
