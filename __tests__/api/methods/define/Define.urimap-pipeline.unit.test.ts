@@ -10,7 +10,7 @@
 */
 
 import { Session } from "@zowe/imperative";
-import { CicsCmciRestClient, CicsCmciConstants, IURIMapParms, defineUrimapPipeline } from "../../../../src";
+import { CicsCmciRestClient, CicsCmciConstants, IURIMapParms, defineUrimapPipeline, ICMCIApiResponse } from "../../../../src";
 
 describe("CMCI - Define pipeline URIMap", () => {
 
@@ -22,7 +22,7 @@ describe("CMCI - Define pipeline URIMap", () => {
     const region = "region";
     const group = "group";
     const cicsPlex = "plex";
-    const content = "This\nis\r\na\ntest";
+    const content = "This\nis\r\na\ntest" as unknown as ICMCIApiResponse;
     const description = "description";
     const transaction = "transaction";
     const webservice = "webservice";
@@ -375,13 +375,13 @@ describe("CMCI - Define pipeline URIMap", () => {
             }
         };
 
-        const defineSpy = jest.spyOn(CicsCmciRestClient, "postExpectParsedXml").mockReturnValue(content);
+        const defineSpy = jest.spyOn(CicsCmciRestClient, "postExpectParsedXml").mockResolvedValue(content);
 
         beforeEach(() => {
             response = undefined;
             error = undefined;
             defineSpy.mockClear();
-            defineSpy.mockImplementation(() => content);
+            defineSpy.mockResolvedValue(content);
         });
 
         it("should be able to define a URIMap without cicsPlex specified", async () => {

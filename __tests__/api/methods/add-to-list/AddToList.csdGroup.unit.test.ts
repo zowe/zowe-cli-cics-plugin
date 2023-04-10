@@ -10,7 +10,7 @@
 */
 
 import { Session } from "@zowe/imperative";
-import { CicsCmciRestClient, CicsCmciConstants, ICSDGroupParms, addCSDGroupToList } from "../../../../src";
+import { CicsCmciRestClient, CicsCmciConstants, ICSDGroupParms, addCSDGroupToList, ICMCIApiResponse } from "../../../../src";
 
 describe("CMCI - Add csdGroup to list", () => {
 
@@ -18,7 +18,7 @@ describe("CMCI - Add csdGroup to list", () => {
     const group = "group";
     const cicsPlex = "plex";
     const list = "list";
-    const content = "This\nis\r\na\ntest";
+    const content = "This\nis\r\na\ntest" as unknown as ICMCIApiResponse;
 
     const addToListParms: ICSDGroupParms  = {
         regionName: region,
@@ -154,13 +154,13 @@ describe("CMCI - Add csdGroup to list", () => {
             }
         };
 
-        const defineSpy = jest.spyOn(CicsCmciRestClient, "putExpectParsedXml").mockReturnValue(content);
+        const defineSpy = jest.spyOn(CicsCmciRestClient, "putExpectParsedXml").mockResolvedValue(content);
 
         beforeEach(() => {
             response = undefined;
             error = undefined;
             defineSpy.mockClear();
-            defineSpy.mockImplementation(() => content);
+            defineSpy.mockResolvedValue(content);
         });
 
         it("should be able to add a csdGroup to list without cicsPlex specified", async () => {

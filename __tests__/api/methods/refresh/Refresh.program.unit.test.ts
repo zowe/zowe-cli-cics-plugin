@@ -10,14 +10,14 @@
 */
 
 import { Session } from "@zowe/imperative";
-import { CicsCmciConstants, CicsCmciRestClient, programNewcopy, IProgramParms } from "../../../../src";
+import { CicsCmciConstants, CicsCmciRestClient, programNewcopy, IProgramParms, ICMCIApiResponse } from "../../../../src";
 
 describe("CMCI - Refresh program", () => {
 
     const program = "program";
     const region = "region";
     const cicsPlex = "plex";
-    const content = "This\nis\r\na\ntest";
+    const content = "This\nis\r\na\ntest" as unknown as ICMCIApiResponse;
 
     const refreshParms: IProgramParms = {
         regionName: region,
@@ -127,13 +127,13 @@ describe("CMCI - Refresh program", () => {
             }
         };
 
-        const refreshSpy = jest.spyOn(CicsCmciRestClient, "putExpectParsedXml").mockReturnValue(content);
+        const refreshSpy = jest.spyOn(CicsCmciRestClient, "putExpectParsedXml").mockResolvedValue(content);
 
         beforeEach(() => {
             response = undefined;
             error = undefined;
             refreshSpy.mockClear();
-            refreshSpy.mockImplementation(() => content);
+            refreshSpy.mockResolvedValue(content);
         });
 
         it("should be able to refresh a program without cicsPlex specified", async () => {

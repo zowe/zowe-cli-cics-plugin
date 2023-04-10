@@ -10,7 +10,7 @@
 */
 
 import { Session } from "@zowe/imperative";
-import { CicsCmciConstants, CicsCmciRestClient, defineProgram, IProgramParms } from "../../../../src";
+import { CicsCmciConstants, CicsCmciRestClient, defineProgram, ICMCIApiResponse, IProgramParms } from "../../../../src";
 
 describe("CMCI - Define program", () => {
 
@@ -18,7 +18,7 @@ describe("CMCI - Define program", () => {
     const region = "region";
     const group = "group";
     const cicsPlex = "plex";
-    const content = "This\nis\r\na\ntest";
+    const content = "This\nis\r\na\ntest" as unknown as ICMCIApiResponse;
 
     const defineParms: IProgramParms = {
         regionName: region,
@@ -173,13 +173,13 @@ describe("CMCI - Define program", () => {
             }
         };
 
-        const defineSpy = jest.spyOn(CicsCmciRestClient, "postExpectParsedXml").mockReturnValue(content);
+        const defineSpy = jest.spyOn(CicsCmciRestClient, "postExpectParsedXml").mockResolvedValue(content);
 
         beforeEach(() => {
             response = undefined;
             error = undefined;
             defineSpy.mockClear();
-            defineSpy.mockImplementation(() => content);
+            defineSpy.mockResolvedValue(content);
         });
 
         it("should be able to define a program without cicsPlex specified", async () => {

@@ -14,6 +14,7 @@ import {
     CicsCmciConstants,
     CicsCmciRestClient,
     getResource,
+    ICMCIApiResponse,
     IResourceParms
 } from "../../../../src";
 
@@ -23,7 +24,7 @@ describe("CMCI - Get resource", () => {
     const region = "region";
     const cicsPlex = "plex";
     const criteria = "program=D*";
-    const content = "This\nis\r\na\ntest";
+    const content = "This\nis\r\na\ntest" as unknown as ICMCIApiResponse;
 
     const resourceParms: IResourceParms = {
         regionName: region,
@@ -124,13 +125,13 @@ describe("CMCI - Get resource", () => {
 
     describe("success scenarios", () => {
 
-        const deleteSpy = jest.spyOn(CicsCmciRestClient, "getExpectParsedXml").mockReturnValue(content);
+        const deleteSpy = jest.spyOn(CicsCmciRestClient, "getExpectParsedXml").mockResolvedValue(content);
 
         beforeEach(() => {
             response = undefined;
             error = undefined;
             deleteSpy.mockClear();
-            deleteSpy.mockImplementation(() => content);
+            deleteSpy.mockResolvedValue(content);
         });
 
         it("should be able to get a resource without cicsPlex specified", async () => {

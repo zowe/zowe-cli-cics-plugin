@@ -14,6 +14,7 @@ import {
     CicsCmciConstants,
     CicsCmciRestClient,
     discardTransaction,
+    ICMCIApiResponse,
     ITransactionParms
 } from "../../../../src";
 
@@ -24,7 +25,7 @@ describe("CMCI - Discard transaction", () => {
     const region = "region";
     const group = "group";
     const cicsPlex = "plex";
-    const content = "This\nis\r\na\ntest";
+    const content = "This\nis\r\na\ntest" as unknown as ICMCIApiResponse;
 
     const discardParms: ITransactionParms  = {
         regionName: region,
@@ -134,13 +135,13 @@ describe("CMCI - Discard transaction", () => {
 
     describe("success scenarios", () => {
 
-        const discardSpy = jest.spyOn(CicsCmciRestClient, "deleteExpectParsedXml").mockReturnValue(content);
+        const discardSpy = jest.spyOn(CicsCmciRestClient, "deleteExpectParsedXml").mockResolvedValue(content);
 
         beforeEach(() => {
             response = undefined;
             error = undefined;
             discardSpy.mockClear();
-            discardSpy.mockImplementation(() => content);
+            discardSpy.mockResolvedValue(content);
         });
 
         it("should be able to discard a transaction without cicsPlex specified", async () => {

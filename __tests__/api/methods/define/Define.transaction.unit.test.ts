@@ -10,7 +10,7 @@
 */
 
 import { Session } from "@zowe/imperative";
-import { CicsCmciRestClient, CicsCmciConstants, ITransactionParms, defineTransaction } from "../../../../src";
+import { CicsCmciRestClient, CicsCmciConstants, ITransactionParms, defineTransaction, ICMCIApiResponse } from "../../../../src";
 
 describe("CMCI - Define transaction", () => {
 
@@ -19,7 +19,7 @@ describe("CMCI - Define transaction", () => {
     const region = "region";
     const group = "group";
     const cicsPlex = "plex";
-    const content = "This\nis\r\na\ntest";
+    const content = "This\nis\r\na\ntest" as unknown as ICMCIApiResponse;
 
     const defineParms: ITransactionParms  = {
         regionName: region,
@@ -216,13 +216,13 @@ describe("CMCI - Define transaction", () => {
             }
         };
 
-        const defineSpy = jest.spyOn(CicsCmciRestClient, "postExpectParsedXml").mockReturnValue(content);
+        const defineSpy = jest.spyOn(CicsCmciRestClient, "postExpectParsedXml").mockResolvedValue(content);
 
         beforeEach(() => {
             response = undefined;
             error = undefined;
             defineSpy.mockClear();
-            defineSpy.mockImplementation(() => content);
+            defineSpy.mockResolvedValue(content);
         });
 
         it("should be able to define a transaction without cicsPlex specified", async () => {

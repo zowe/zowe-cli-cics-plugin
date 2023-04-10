@@ -14,6 +14,7 @@ import {
     CicsCmciConstants,
     CicsCmciRestClient,
     discardUrimap,
+    ICMCIApiResponse,
     IURIMapParms,
 } from "../../../../src";
 
@@ -21,7 +22,7 @@ describe("CMCI - Discard urimap", () => {
 
     const urimap = "urimap";
     const region = "region";
-    const content = "ThisIsATest";
+    const content = "ThisIsATest" as unknown as ICMCIApiResponse;
 
     const discardParms: IURIMapParms = {
         regionName: region,
@@ -73,13 +74,13 @@ describe("CMCI - Discard urimap", () => {
     });
 
     describe("success scenarios", () => {
-        const discardSpy = jest.spyOn(CicsCmciRestClient, "deleteExpectParsedXml").mockReturnValue(content);
+        const discardSpy = jest.spyOn(CicsCmciRestClient, "deleteExpectParsedXml").mockResolvedValue(content);
 
         beforeEach(() => {
             response = undefined;
             error = undefined;
             discardSpy.mockClear();
-            discardSpy.mockImplementation(() => content);
+            discardSpy.mockResolvedValue(content);
             discardParms.regionName = region;
             discardParms.name = urimap;
         });

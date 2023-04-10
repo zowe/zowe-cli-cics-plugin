@@ -13,6 +13,7 @@ import { Session } from "@zowe/imperative";
 import {
     CicsCmciConstants,
     CicsCmciRestClient,
+    ICMCIApiResponse,
     installUrimap,
     IURIMapParms,
 } from "../../../../src";
@@ -22,7 +23,7 @@ describe("CMCI - Install urimap", () => {
     const urimap = "urimap";
     const region = "region";
     const group = "group";
-    const content = "ThisIsATest";
+    const content = "ThisIsATest" as unknown as ICMCIApiResponse;
 
     const installParms: IURIMapParms = {
         regionName: region,
@@ -89,13 +90,13 @@ describe("CMCI - Install urimap", () => {
     });
 
     describe("success scenarios", () => {
-        const installSpy = jest.spyOn(CicsCmciRestClient, "putExpectParsedXml").mockReturnValue(content);
+        const installSpy = jest.spyOn(CicsCmciRestClient, "putExpectParsedXml").mockResolvedValue(content);
 
         beforeEach(() => {
             response = undefined;
             error = undefined;
             installSpy.mockClear();
-            installSpy.mockImplementation(() => content);
+            installSpy.mockResolvedValue(content);
             installParms.regionName = region;
             installParms.name = urimap;
             installParms.csdGroup = group;

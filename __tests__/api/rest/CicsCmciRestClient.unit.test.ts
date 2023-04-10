@@ -79,7 +79,7 @@ describe("CicsCmciRestClient tests", () => {
                 }
             }
         };
-        restClientExpect.mockImplementation(() => breakfastMenu);
+        restClientExpect.mockResolvedValue(breakfastMenu);
 
         const response = await CicsCmciRestClient.getExpectParsedXml(dummySession, testEndpoint, dummyHeaders);
         expect(restClientExpect).toHaveBeenCalledWith(dummySession, testEndpoint, dummyHeaders);

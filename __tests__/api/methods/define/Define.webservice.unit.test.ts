@@ -10,7 +10,7 @@
 */
 
 import { Session } from "@zowe/imperative";
-import { CicsCmciRestClient, CicsCmciConstants, IWebServiceParms, defineWebservice } from "../../../../src";
+import { CicsCmciRestClient, CicsCmciConstants, IWebServiceParms, defineWebservice, ICMCIApiResponse } from "../../../../src";
 
 describe("CMCI - Define web service", () => {
 
@@ -20,7 +20,7 @@ describe("CMCI - Define web service", () => {
     const wsBind = "wsbind";
     const region = "region";
     const cicsPlex = "plex";
-    const content = "This\nis\r\na\ntest";
+    const content = "This\nis\r\na\ntest" as unknown as ICMCIApiResponse;
 
     const defineParms: IWebServiceParms  = {
         name: websvc,
@@ -294,13 +294,13 @@ describe("CMCI - Define web service", () => {
             }
         };
 
-        const defineSpy = jest.spyOn(CicsCmciRestClient, "postExpectParsedXml").mockReturnValue(content);
+        const defineSpy = jest.spyOn(CicsCmciRestClient, "postExpectParsedXml").mockResolvedValue(content);
 
         beforeEach(() => {
             response = undefined;
             error = undefined;
             defineSpy.mockClear();
-            defineSpy.mockImplementation(() => content);
+            defineSpy.mockResolvedValue(content);
         });
 
         it("should be able to define a web service without cicsPlex specified", async () => {

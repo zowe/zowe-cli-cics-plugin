@@ -14,6 +14,7 @@ import {
     CicsCmciConstants,
     CicsCmciRestClient,
     disableUrimap,
+    ICMCIApiResponse,
     IURIMapParms,
 } from "../../../../src";
 
@@ -21,7 +22,7 @@ describe("CMCI - Disable urimap", () => {
 
     const urimap = "urimap";
     const region = "region";
-    const content = "ThisIsATest";
+    const content = "ThisIsATest" as unknown as ICMCIApiResponse;
 
     const disableParms: IURIMapParms = {
         regionName: region,
@@ -74,13 +75,13 @@ describe("CMCI - Disable urimap", () => {
     });
 
     describe("success scenarios", () => {
-        const disableSpy = jest.spyOn(CicsCmciRestClient, "putExpectParsedXml").mockReturnValue(content);
+        const disableSpy = jest.spyOn(CicsCmciRestClient, "putExpectParsedXml").mockResolvedValue(content);
 
         beforeEach(() => {
             response = undefined;
             error = undefined;
             disableSpy.mockClear();
-            disableSpy.mockImplementation(() => content);
+            disableSpy.mockResolvedValue(content);
             disableParms.regionName = region;
             disableParms.name = urimap;
         });
