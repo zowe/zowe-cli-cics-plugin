@@ -109,6 +109,10 @@ exports[`CICS remove-from-list csdGroup command should be able to display the he
  GLOBAL OPTIONS
  --------------
 
+   --show-inputs-only (boolean)
+
+      Show command inputs and do not run the command
+
    --response-format-json | --rfj (boolean)
 
       Produce JSON formatted data from a command
@@ -116,10 +120,6 @@ exports[`CICS remove-from-list csdGroup command should be able to display the he
    --help | -h (boolean)
 
       Display help text
-
-   --help-examples (boolean)
-
-      Display examples for all the commands in a group
 
    --help-web | --hw (boolean)
 

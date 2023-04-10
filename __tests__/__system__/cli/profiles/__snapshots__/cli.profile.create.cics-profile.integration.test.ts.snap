@@ -88,6 +88,10 @@ exports[`Create cics Profile Success scenarios should display create cics profil
  GLOBAL OPTIONS
  --------------
 
+   --show-inputs-only (boolean)
+
+      Show command inputs and do not run the command
+
    --response-format-json | --rfj (boolean)
 
       Produce JSON formatted data from a command
@@ -95,10 +99,6 @@ exports[`Create cics Profile Success scenarios should display create cics profil
    --help | -h (boolean)
 
       Display help text
-
-   --help-examples (boolean)
-
-      Display examples for all the commands in a group
 
    --help-web | --hw (boolean)
 
