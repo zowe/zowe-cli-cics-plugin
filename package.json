@@ -44,7 +44,7 @@
     "configurationModule": "lib/imperative.js"
   },
   "dependencies": {
-    "xml2js": "0.4.19"
+    "xml2js": "0.5.0"
   },
   "peerDependencies": {
     "@zowe/imperative": "^5.0.0"
