@@ -10,14 +10,14 @@
 */
 
 import { Session } from "@zowe/imperative";
-import { CicsCmciConstants, CicsCmciRestClient, discardProgram, IProgramParms } from "../../../../src";
+import { CicsCmciConstants, CicsCmciRestClient, discardProgram, ICMCIApiResponse, IProgramParms } from "../../../../src";
 
 describe("CMCI - Discard program", () => {
 
     const program = "program";
     const region = "region";
     const cicsPlex = "plex";
-    const content = "This\nis\r\na\ntest";
+    const content = "This\nis\r\na\ntest" as unknown as ICMCIApiResponse;
 
     const discardParms: IProgramParms = {
         regionName: region,
@@ -117,13 +117,13 @@ describe("CMCI - Discard program", () => {
 
     describe("success scenarios", () => {
 
-        const discardSpy = jest.spyOn(CicsCmciRestClient, "deleteExpectParsedXml").mockReturnValue(content);
+        const discardSpy = jest.spyOn(CicsCmciRestClient, "deleteExpectParsedXml").mockResolvedValue(content);
 
         beforeEach(() => {
             response = undefined;
             error = undefined;
             discardSpy.mockClear();
-            discardSpy.mockImplementation(() => content);
+            discardSpy.mockResolvedValue(content);
         });
 
         it("should be able to discard a program without cicsPlex specified", async () => {

@@ -10,7 +10,7 @@
 */
 
 import { Session } from "@zowe/imperative";
-import { CicsCmciConstants, CicsCmciRestClient, installProgram, IProgramParms } from "../../../../src";
+import { CicsCmciConstants, CicsCmciRestClient, ICMCIApiResponse, installProgram, IProgramParms } from "../../../../src";
 
 describe("CMCI - Install program", () => {
 
@@ -18,7 +18,7 @@ describe("CMCI - Install program", () => {
     const region = "region";
     const group = "group";
     const cicsPlex = "plex";
-    const content = "This\nis\r\na\ntest";
+    const content = "This\nis\r\na\ntest" as unknown as ICMCIApiResponse;
 
     const installParms: IProgramParms = {
         regionName: region,
@@ -165,13 +165,13 @@ describe("CMCI - Install program", () => {
             }
         };
 
-        const installSpy = jest.spyOn(CicsCmciRestClient, "putExpectParsedXml").mockReturnValue(content);
+        const installSpy = jest.spyOn(CicsCmciRestClient, "putExpectParsedXml").mockResolvedValue(content);
 
         beforeEach(() => {
             response = undefined;
             error = undefined;
             installSpy.mockClear();
-            installSpy.mockImplementation(() => content);
+            installSpy.mockResolvedValue(content);
         });
 
         it("should be able to install a program without cicsPlex specified", async () => {

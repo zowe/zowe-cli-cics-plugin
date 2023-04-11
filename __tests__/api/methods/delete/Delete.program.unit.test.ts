@@ -14,6 +14,7 @@ import {
     CicsCmciConstants,
     CicsCmciRestClient,
     deleteProgram,
+    ICMCIApiResponse,
     IProgramParms
 } from "../../../../src";
 
@@ -23,7 +24,7 @@ describe("CMCI - Delete program", () => {
     const region = "region";
     const cicsPlex = "plex";
     const group = "group";
-    const content = "This\nis\r\na\ntest";
+    const content = "This\nis\r\na\ntest" as unknown as ICMCIApiResponse;
 
     const deleteParms: IProgramParms = {
         regionName: region,
@@ -160,13 +161,13 @@ describe("CMCI - Delete program", () => {
 
     describe("success scenarios", () => {
 
-        const deleteSpy = jest.spyOn(CicsCmciRestClient, "deleteExpectParsedXml").mockReturnValue(content);
+        const deleteSpy = jest.spyOn(CicsCmciRestClient, "deleteExpectParsedXml").mockResolvedValue(content);
 
         beforeEach(() => {
             response = undefined;
             error = undefined;
             deleteSpy.mockClear();
-            deleteSpy.mockImplementation(() => content);
+            deleteSpy.mockResolvedValue(content);
         });
 
         it("should be able to delete a program without cicsPlex specified", async () => {

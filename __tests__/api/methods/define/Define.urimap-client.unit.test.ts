@@ -10,7 +10,7 @@
 */
 
 import { Session } from "@zowe/imperative";
-import { CicsCmciRestClient, CicsCmciConstants, IURIMapParms, defineUrimapClient } from "../../../../src";
+import { CicsCmciRestClient, CicsCmciConstants, IURIMapParms, defineUrimapClient, ICMCIApiResponse } from "../../../../src";
 
 describe("CMCI - Define client URIMap", () => {
 
@@ -21,7 +21,7 @@ describe("CMCI - Define client URIMap", () => {
     const region = "region";
     const group = "group";
     const cicsPlex = "plex";
-    const content = "This\nis\r\na\ntest";
+    const content = "This\nis\r\na\ntest" as unknown as ICMCIApiResponse;
     const description = "description";
     const authenticate = "BASIC";
     const certificate = "CERT01";
@@ -319,13 +319,13 @@ describe("CMCI - Define client URIMap", () => {
             }
         };
 
-        const defineSpy = jest.spyOn(CicsCmciRestClient, "postExpectParsedXml").mockReturnValue(content);
+        const defineSpy = jest.spyOn(CicsCmciRestClient, "postExpectParsedXml").mockResolvedValue(content);
 
         beforeEach(() => {
             response = undefined;
             error = undefined;
             defineSpy.mockClear();
-            defineSpy.mockImplementation(() => content);
+            defineSpy.mockResolvedValue(content);
         });
 
         it("should be able to define a URIMap without cicsPlex specified", async () => {

@@ -13,6 +13,7 @@ import { Session } from "@zowe/imperative";
 import {
     CicsCmciConstants,
     CicsCmciRestClient,
+    ICMCIApiResponse,
     IURIMapParms,
     deleteUrimap
 } from "../../../../src";
@@ -22,7 +23,7 @@ describe("CMCI - Delete urimap", () => {
     const urimap = "urimap";
     const region = "region";
     const group = "group";
-    const content = "ThisIsATest";
+    const content = "ThisIsATest" as unknown as ICMCIApiResponse;
 
     const deleteParms: IURIMapParms = {
         regionName: region,
@@ -88,13 +89,13 @@ describe("CMCI - Delete urimap", () => {
     });
 
     describe("success scenarios", () => {
-        const deleteSpy = jest.spyOn(CicsCmciRestClient, "deleteExpectParsedXml").mockReturnValue(content);
+        const deleteSpy = jest.spyOn(CicsCmciRestClient, "deleteExpectParsedXml").mockResolvedValue(content);
 
         beforeEach(() => {
             response = undefined;
             error = undefined;
             deleteSpy.mockClear();
-            deleteSpy.mockImplementation(() => content);
+            deleteSpy.mockResolvedValue(content);
             deleteParms.regionName = region;
             deleteParms.name = urimap;
             deleteParms.csdGroup = group;

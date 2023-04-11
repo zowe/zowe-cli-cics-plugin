@@ -2,6 +2,10 @@
 
 All notable changes to the IBM® CICS® Plug-in for Zowe CLI will be documented in this file.
 
+## Recent Changes
+
+- BugFix: Updated `xml2js` dependency to resolve security vulnerability.
+
 ## `5.0.0`
 
 - Major: Updated for V2 compatibility. See the prerelease items below for more details.

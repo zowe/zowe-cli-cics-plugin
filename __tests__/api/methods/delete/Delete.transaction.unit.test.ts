@@ -14,6 +14,7 @@ import {
     CicsCmciConstants,
     CicsCmciRestClient,
     deleteTransaction,
+    ICMCIApiResponse,
     ITransactionParms
 } from "../../../../src";
 
@@ -24,7 +25,7 @@ describe("CMCI - Discard transaction", () => {
     const region = "region";
     const group = "group";
     const cicsPlex = "plex";
-    const content = "This\nis\r\na\ntest";
+    const content = "This\nis\r\na\ntest" as unknown as ICMCIApiResponse;
 
     const deleteParms: ITransactionParms  = {
         regionName: region,
@@ -166,13 +167,13 @@ describe("CMCI - Discard transaction", () => {
 
     describe("success scenarios", () => {
 
-        const deleteSpy = jest.spyOn(CicsCmciRestClient, "deleteExpectParsedXml").mockReturnValue(content);
+        const deleteSpy = jest.spyOn(CicsCmciRestClient, "deleteExpectParsedXml").mockResolvedValue(content);
 
         beforeEach(() => {
             response = undefined;
             error = undefined;
             deleteSpy.mockClear();
-            deleteSpy.mockImplementation(() => content);
+            deleteSpy.mockResolvedValue(content);
         });
 
         it("should be able to delete a transaction without cicsPlex specified", async () => {
