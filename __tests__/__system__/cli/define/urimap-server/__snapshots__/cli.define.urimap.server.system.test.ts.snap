@@ -134,6 +134,14 @@ exports[`CICS define urimap-server command should be able to display the help 1`
 
       The value of the token to pass to the API.
 
+   --cert-file  (local file path)
+
+      The file path to a certificate file to use for authentication
+
+   --cert-key-file  (local file path)
+
+      The file path to a certificate key file to use for authentication
+
  GLOBAL OPTIONS
  --------------
 
