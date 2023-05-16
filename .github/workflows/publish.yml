@@ -1,0 +1,23 @@
+name: Publish to NPM
+
+on:
+  push:
+    branches:
+      - test-timothy
+#   workflow_dispatch:
+#     inputs:
+#       pkg-tags:
+#         description: "Tags to be distributed from Artifactory (separate multiple by spaces)"
+#         default: "latest"
+#         required: true
+
+jobs:
+  publish:
+    uses: zowe/zowe-cli-standalone-package/.github/workflows/zowe-cli-deploy-component.yaml@add-remote-deploy
+    #uses: zowe/zowe-cli-standalone-package/.github/workflows/zowe-cli-deploy-component.yaml
+    secrets:
+      NPM_PUBLIC_TOKEN: ${{ secrets.NPM_PUBLIC_TOKEN }}
+    with:
+      pkg-name: '@zowe/cics-for-zowe-cli'
+      pkg-tags: 'zowe-v1-lts'
+      #pkg-tags: ${{ github.event.inputs.pkg-tags }}
