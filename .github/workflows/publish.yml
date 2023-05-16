@@ -18,6 +18,6 @@ jobs:
     secrets:
       NPM_PUBLIC_TOKEN: ${{ secrets.NPM_PUBLIC_TOKEN }}
     with:
-      pkg-name: '@zowe/cics-for-zowe-cli'
+      pkg-name: 'cics-for-zowe-cli'
       pkg-tags: 'zowe-v1-lts'
       #pkg-tags: ${{ github.event.inputs.pkg-tags }}
